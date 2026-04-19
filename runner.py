@@ -88,6 +88,23 @@ _OLLAMA_TIER_MODELS: dict[str, str] = {
     "reasoning": "qwen3-coder:30b",
 }
 
+# Per-tier defaults for Anthropic and OpenAI providers, used by
+# `_resolve_model` when neither --model nor a tier-specific override
+# is passed. Bug prevention: previously, benchmarks/runner.py fell back
+# to `args.model` (default "claude-sonnet-4-6") for every provider,
+# including OpenAI — which caused the full CD-AOR loop to 404 on every
+# call under --provider openai. See beta commit 07166b5 for context.
+_ANTHROPIC_TIER_MODELS: dict[str, str] = {
+    "speed":     "claude-haiku-4-5-20251001",
+    "balanced":  "claude-sonnet-4-6",
+    "reasoning": "claude-sonnet-4-6",
+}
+_OPENAI_TIER_MODELS: dict[str, str] = {
+    "speed":     "gpt-5.4-nano",
+    "balanced":  "gpt-5.4-mini",
+    "reasoning": "gpt-5.4-mini",
+}
+
 
 # ---------------------------------------------------------------------------
 # Checkpoint helpers
@@ -265,12 +282,24 @@ def _create_orchestrator(args: argparse.Namespace, workspace_path: str):
     provider = args.provider.lower()
     ollama_host = getattr(args, "ollama_host", "localhost") or "localhost"
 
-    # For Ollama, use per-tier model defaults when no explicit override given.
+    # The argparse default for --model is "claude-sonnet-4-6" which is
+    # correct for --provider anthropic but WRONG for OpenAI / Ollama.
+    # Detect whether --model was explicitly passed by comparing against
+    # the known default string; if the user didn't override it, use
+    # the provider-appropriate tier defaults instead.
+    model_was_explicit = (args.model != "claude-sonnet-4-6")
+
     def _resolve_model(tier: str, override: str | None) -> str:
         if override:
             return override
+        if model_was_explicit:
+            return args.model
         if provider == "ollama":
             return _OLLAMA_TIER_MODELS.get(tier, args.model)
+        if provider == "openai":
+            return _OPENAI_TIER_MODELS.get(tier, "gpt-5.4-mini")
+        if provider == "anthropic":
+            return _ANTHROPIC_TIER_MODELS.get(tier, "claude-sonnet-4-6")
         return args.model
 
     speed_model     = _resolve_model("speed",     getattr(args, "speed_model",     None))
