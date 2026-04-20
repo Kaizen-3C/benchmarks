@@ -70,16 +70,28 @@ Each task supplies:
 
 Goal: confirm the runner is wired correctly by reproducing a published baseline number.
 
-| Step | Command | Expected |
+**Execution environment (REQUIRED):** all commit0 commands run inside **WSL2 (Ubuntu 24.04)**, not Windows. Docker Desktop's WSL backend serves the same daemon, so images built in either context are visible from both. Workspace lives at `~/kaizen-commit0/` on the WSL ext4 filesystem (NOT under `/mnt/c/...`, which is slow and has historical Windows-path-handling bugs in commit0 0.1.8 — see §6.1).
+
+```bash
+wsl -d Ubuntu-24.04 -- bash -lc '
+  cd $HOME/kaizen-commit0
+  . .venv/bin/activate
+  commit0 <args>
+'
+```
+
+| Step | Command (run in WSL) | Expected |
 |---|---|---|
-| 1 | `pip install commit0` | CLI installs cleanly |
+| 1 | `python3.12 -m venv .venv && . .venv/bin/activate && pip install commit0` | CLI installs cleanly (commit0 0.1.8+) |
 | 2 | `commit0 setup lite` | clones 16 starter repos to `repos/` |
-| 3 | `commit0 build lite` | builds per-library Docker images |
-| 4 | `commit0 test lite --reference` | runs hidden tests against reference (full) implementation; **must be 100%** |
+| 3 | `commit0 build --num-workers 4` | builds per-library Docker images (~40s) |
+| 4 | `commit0 test <repo> tests --reference --backend local --timeout 600` (per repo, looped over the 16 lite libs) | runs hidden tests against reference impl; **must be 100% per library** (skipped tests OK) |
 | 5 | Run a single-shot Sonnet 4.6 baseline on one library (e.g., `wcwidth`) | pass rate within ±10pp of published OpenHands-Index Sonnet number for that library |
 | 6 | Record both in `results/phase0_harness_validation.json` |
 
-If step 4 is not 100%, the harness is broken — stop and debug. If step 5 deviates wildly, our wiring of Sonnet calls is broken — stop and debug. Do NOT proceed to Kaizen-delta runs until both pass.
+If step 4 is not 100% (excluding skips), the harness is broken — stop and debug. If step 5 deviates wildly, our wiring of Sonnet calls is broken — stop and debug. Do NOT proceed to Kaizen-delta runs until both pass.
+
+**Reference status (validated 2026-04-20):** `wcwidth` reference run on WSL Ubuntu 24.04 + commit0 0.1.8 + Docker Desktop → **38 passed, 1 skipped, 0 failed in 0.76s.** Same Windows-host run requires three local source patches; do not use it.
 
 ### 2.2 Phase 1 — Decompose the spec
 
@@ -293,6 +305,18 @@ A library can fail in several ways. Each is recorded distinctly so they're not c
 | Decomposer crashes | exception in `decompose/` pipeline | library skipped, recorded in `failures.json` |
 
 Aggregate pass rate is **(sum of tests_passed) / (sum of tests_total across all 16)**, regardless of build_status. A library that fails to build contributes 0 to the numerator and its full test count to the denominator — there are no "free" exclusions.
+
+### 6.1 Host environment bugs (Windows)
+
+commit0 0.1.8's local backend has three independent bugs when run directly on a Windows host (outside WSL). These were all discovered during Phase 0 on 2026-04-20 and patched in-tree to complete the validation spike; the supported path forward is **WSL2, not Windows patches**.
+
+Documented for posterity and in case upstream PRs are warranted:
+
+1. **`docker_utils.copy_to_container` backslash handling** — uses `pathlib.WindowsPath` to build bash commands for the Linux container; `shlex.split` chokes on `\` with `ValueError: No escaped character`. Fix: render container paths with `Path.as_posix()`.
+2. **`run_pytest_ids` write mode** — `eval.sh` and `patch.diff` are written with Python's default text mode, which emits CRLF on Windows. bash inside the container then sees `set -uxo pipefail\r` as an invalid option name and bails in ~80 ms with no output. Fix: pass `newline=""` to `write_text()`.
+3. **`execution_context.exec_run_with_timeout` file-collection** — `Path("/testbed") / "test_output.txt"` serializes as `\testbed\test_output.txt` on Windows, so the `test -e` check inside the container always fails and the output file is never collected back, even though it was created. Fix: render with `as_posix()` before bash interpolation; keep the Path for `src.name` use.
+
+These only manifest when the commit0 CLI runs on a Windows-native Python interpreter. Inside WSL, stock `pip install commit0` works without any source modification.
 
 ---
 
