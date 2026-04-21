@@ -1,0 +1,70 @@
+{
+  "repo": "cachetools",
+  "branch": "reflexion_sonnet",
+  "model": "claude-sonnet-4-6",
+  "max_iters": 3,
+  "iters_run": 2,
+  "best_pass": 214,
+  "best_summary": "================= 32 failed, 183 passed, 15 warnings in 0.35s ==================",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 94.1,
+      "files_written": [
+        "src/cachetools/__init__.py",
+        "src/cachetools/func.py",
+        "src/cachetools/keys.py"
+      ],
+      "summary": "================== 1 failed, 214 passed, 15 warnings in 0.27s ==================",
+      "counts": {
+        "passed": 214,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 119,
+        "output_tokens": 9843,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 30870,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 31.5,
+      "files_written": [
+        "src/cachetools/func.py"
+      ],
+      "summary": "================= 32 failed, 183 passed, 15 warnings in 0.35s ==================",
+      "counts": {
+        "passed": 183,
+        "failed": 32,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 10710,
+        "output_tokens": 2757,
+        "cache_read_input_tokens": 30870,
+        "cache_creation_input_tokens": 0,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 10829,
+    "output_tokens": 12600,
+    "cache_read_input_tokens": 30870,
+    "cache_creation_input_tokens": 30870,
+    "elapsed_s": 125.6
+  },
+  "counts": {
+    "passed": 183,
+    "failed": 32,
+    "skipped": 0,
+    "errors": 0
+  }
+}

@@ -1,0 +1,1247 @@
+{
+  "model": "claude-sonnet-4-6",
+  "split": "lite",
+  "max_iters": 3,
+  "completed": [
+    "wcwidth",
+    "deprecated",
+    "cachetools",
+    "voluptuous",
+    "portalocker",
+    "pyjwt",
+    "chardet",
+    "tinydb",
+    "simpy",
+    "imapclient",
+    "parsel",
+    "marshmallow",
+    "cookiecutter",
+    "babel",
+    "jinja",
+    "minitorch"
+  ],
+  "per_library": {
+    "wcwidth": {
+      "repo": "wcwidth",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 3,
+      "best_pass": 36,
+      "best_summary": "=================== 37 failed, 1 passed, 1 skipped in 0.89s ====================",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 6.6,
+          "files_written": [
+            "wcwidth/unicode_versions.py"
+          ],
+          "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.68s ====================",
+          "counts": {
+            "passed": 1,
+            "failed": 37,
+            "skipped": 1,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 118,
+            "output_tokens": 325,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 46342,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 77.9,
+          "files_written": [
+            "wcwidth/unicode_versions.py",
+            "wcwidth/wcwidth.py"
+          ],
+          "summary": "=================== 2 failed, 36 passed, 1 skipped in 0.55s ====================",
+          "counts": {
+            "passed": 36,
+            "failed": 2,
+            "skipped": 1,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 7005,
+            "output_tokens": 4136,
+            "cache_read_input_tokens": 46342,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 3,
+          "elapsed_s": 77.7,
+          "files_written": [
+            "wcwidth/wcwidth.py"
+          ],
+          "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.89s ====================",
+          "counts": {
+            "passed": 1,
+            "failed": 37,
+            "skipped": 1,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 12163,
+            "output_tokens": 4247,
+            "cache_read_input_tokens": 46342,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        }
+      ],
+      "totals": {
+        "input_tokens": 19286,
+        "output_tokens": 8708,
+        "cache_read_input_tokens": 92684,
+        "cache_creation_input_tokens": 46342,
+        "elapsed_s": 162.2
+      },
+      "counts": {
+        "passed": 1,
+        "failed": 37,
+        "skipped": 1,
+        "errors": 0
+      }
+    },
+    "deprecated": {
+      "repo": "deprecated",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 2,
+      "best_pass": 89,
+      "best_summary": "============= 81 failed, 70 passed, 3 warnings, 20 errors in 0.73s =============",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 56.0,
+          "files_written": [
+            "deprecated/__init__.py",
+            "deprecated/classic.py",
+            "deprecated/sphinx.py"
+          ],
+          "summary": "============ 38 failed, 89 passed, 5 warnings, 44 errors in 38.55s =============",
+          "counts": {
+            "passed": 89,
+            "failed": 38,
+            "skipped": 0,
+            "errors": 44
+          },
+          "usage": {
+            "input_tokens": 117,
+            "output_tokens": 5459,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 33339,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 42.4,
+          "files_written": [
+            "deprecated/classic.py"
+          ],
+          "summary": "============= 81 failed, 70 passed, 3 warnings, 20 errors in 0.73s =============",
+          "counts": {
+            "passed": 70,
+            "failed": 81,
+            "skipped": 0,
+            "errors": 20
+          },
+          "usage": {
+            "input_tokens": 12046,
+            "output_tokens": 3013,
+            "cache_read_input_tokens": 33339,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        }
+      ],
+      "totals": {
+        "input_tokens": 12163,
+        "output_tokens": 8472,
+        "cache_read_input_tokens": 33339,
+        "cache_creation_input_tokens": 33339,
+        "elapsed_s": 98.4
+      },
+      "counts": {
+        "passed": 70,
+        "failed": 81,
+        "skipped": 0,
+        "errors": 20
+      }
+    },
+    "cachetools": {
+      "repo": "cachetools",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 2,
+      "best_pass": 214,
+      "best_summary": "================= 32 failed, 183 passed, 15 warnings in 0.35s ==================",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 94.1,
+          "files_written": [
+            "src/cachetools/__init__.py",
+            "src/cachetools/func.py",
+            "src/cachetools/keys.py"
+          ],
+          "summary": "================== 1 failed, 214 passed, 15 warnings in 0.27s ==================",
+          "counts": {
+            "passed": 214,
+            "failed": 1,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 119,
+            "output_tokens": 9843,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 30870,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 31.5,
+          "files_written": [
+            "src/cachetools/func.py"
+          ],
+          "summary": "================= 32 failed, 183 passed, 15 warnings in 0.35s ==================",
+          "counts": {
+            "passed": 183,
+            "failed": 32,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 10710,
+            "output_tokens": 2757,
+            "cache_read_input_tokens": 30870,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        }
+      ],
+      "totals": {
+        "input_tokens": 10829,
+        "output_tokens": 12600,
+        "cache_read_input_tokens": 30870,
+        "cache_creation_input_tokens": 30870,
+        "elapsed_s": 125.6
+      },
+      "counts": {
+        "passed": 183,
+        "failed": 32,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "voluptuous": {
+      "repo": "voluptuous",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 2,
+      "best_pass": 87,
+      "best_summary": "======================== 103 failed, 46 passed in 4.14s ========================",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 192.1,
+          "files_written": [
+            "voluptuous/error.py",
+            "voluptuous/schema_builder.py",
+            "voluptuous/humanize.py",
+            "voluptuous/util.py"
+          ],
+          "summary": "======================== 62 failed, 87 passed in 3.14s =========================",
+          "counts": {
+            "passed": 87,
+            "failed": 62,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 119,
+            "output_tokens": 16000,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 35914,
+            "stop_reason": "max_tokens"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 187.6,
+          "files_written": [
+            "voluptuous/schema_builder.py"
+          ],
+          "summary": "======================== 103 failed, 46 passed in 4.14s ========================",
+          "counts": {
+            "passed": 46,
+            "failed": 103,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 22073,
+            "output_tokens": 16000,
+            "cache_read_input_tokens": 35914,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "max_tokens"
+          },
+          "pytest_exit": 1
+        }
+      ],
+      "totals": {
+        "input_tokens": 22192,
+        "output_tokens": 32000,
+        "cache_read_input_tokens": 35914,
+        "cache_creation_input_tokens": 35914,
+        "elapsed_s": 379.7
+      },
+      "counts": {
+        "passed": 46,
+        "failed": 103,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "portalocker": {
+      "repo": "portalocker",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 2,
+      "best_pass": 30,
+      "best_summary": "============= 10 failed, 30 passed, 2 skipped, 2 warnings in 4.01s =============",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 117.8,
+          "files_written": [
+            "portalocker/utils.py",
+            "portalocker/portalocker.py",
+            "portalocker/exceptions.py",
+            "portalocker/constants.py",
+            "portalocker/__init__.py",
+            "portalocker/redis.py"
+          ],
+          "summary": "============= 10 failed, 30 passed, 2 skipped, 2 warnings in 4.01s =============",
+          "counts": {
+            "passed": 30,
+            "failed": 10,
+            "skipped": 2,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 119,
+            "output_tokens": 10370,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 31201,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 157.5,
+          "files_written": [
+            "portalocker/utils.py"
+          ],
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 21:48:36,379 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 21:48:36,418 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 17066,
+            "output_tokens": 12727,
+            "cache_read_input_tokens": 31201,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 4
+        }
+      ],
+      "totals": {
+        "input_tokens": 17185,
+        "output_tokens": 23097,
+        "cache_read_input_tokens": 31201,
+        "cache_creation_input_tokens": 31201,
+        "elapsed_s": 275.3
+      },
+      "counts": {
+        "passed": 30,
+        "failed": 10,
+        "skipped": 2,
+        "errors": 0
+      }
+    },
+    "pyjwt": {
+      "repo": "pyjwt",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 3,
+      "best_pass": 13,
+      "best_summary": "========================= 1 passed, 9 errors in 0.38s ==========================",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 56.6,
+          "files_written": [
+            "jwt/api_jwt.py",
+            "jwt/jwks_client.py",
+            "jwt/api_jwk.py",
+            "jwt/jwk_set_cache.py",
+            "jwt/help.py"
+          ],
+          "summary": "========================= 1 passed, 9 errors in 0.38s ==========================",
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 9
+          },
+          "usage": {
+            "input_tokens": 120,
+            "output_tokens": 6085,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 32017,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 17.4,
+          "files_written": [
+            "jwt/utils.py"
+          ],
+          "summary": "======== 94 failed, 13 passed, 1 skipped, 1 xfailed, 6 errors in 1.21s =========",
+          "counts": {
+            "passed": 13,
+            "failed": 94,
+            "skipped": 1,
+            "errors": 6
+          },
+          "usage": {
+            "input_tokens": 9227,
+            "output_tokens": 1376,
+            "cache_read_input_tokens": 32017,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 3,
+          "elapsed_s": 75.6,
+          "files_written": [
+            "jwt/algorithms.py"
+          ],
+          "summary": "========================= 1 passed, 9 errors in 0.38s ==========================",
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 9
+          },
+          "usage": {
+            "input_tokens": 17969,
+            "output_tokens": 8734,
+            "cache_read_input_tokens": 32017,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        }
+      ],
+      "totals": {
+        "input_tokens": 27316,
+        "output_tokens": 16195,
+        "cache_read_input_tokens": 64034,
+        "cache_creation_input_tokens": 32017,
+        "elapsed_s": 149.6
+      },
+      "counts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 9
+      }
+    },
+    "chardet": {
+      "repo": "chardet",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 2,
+      "best_pass": 1,
+      "best_summary": "=================== 375 failed, 1 passed, 7 xfailed in 6.39s ===================",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 216.6,
+          "files_written": [
+            "chardet/charsetprober.py",
+            "chardet/charsetgroupprober.py",
+            "chardet/codingstatemachine.py",
+            "chardet/enums.py",
+            "chardet/chardistribution.py"
+          ],
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.55s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 118,
+            "output_tokens": 16000,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 340724,
+            "stop_reason": "max_tokens"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 213.7,
+          "files_written": [
+            "chardet/charsetprober.py",
+            "chardet/charsetgroupprober.py",
+            "chardet/codingstatemachine.py",
+            "chardet/enums.py",
+            "chardet/chardistribution.py"
+          ],
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 6.39s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 24413,
+            "output_tokens": 16000,
+            "cache_read_input_tokens": 340724,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "max_tokens"
+          },
+          "pytest_exit": 1
+        }
+      ],
+      "totals": {
+        "input_tokens": 24531,
+        "output_tokens": 32000,
+        "cache_read_input_tokens": 340724,
+        "cache_creation_input_tokens": 340724,
+        "elapsed_s": 430.3
+      },
+      "counts": {
+        "passed": 1,
+        "failed": 375,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "tinydb": {
+      "repo": "tinydb",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 2,
+      "best_pass": 0,
+      "best_summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-20 22:01:47,858 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 72.3,
+          "files_written": [
+            "tinydb/utils.py",
+            "tinydb/table.py"
+          ],
+          "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-20 22:01:47,858 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 119,
+            "output_tokens": 5434,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 38259,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 83.1,
+          "files_written": [
+            "tinydb/storages.py",
+            "tinydb/table.py"
+          ],
+          "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-20 22:04:21,151 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 11702,
+            "output_tokens": 5838,
+            "cache_read_input_tokens": 38259,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 4
+        }
+      ],
+      "totals": {
+        "input_tokens": 11821,
+        "output_tokens": 11272,
+        "cache_read_input_tokens": 38259,
+        "cache_creation_input_tokens": 38259,
+        "elapsed_s": 155.4
+      },
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "simpy": {
+      "repo": "simpy",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 3,
+      "best_pass": 90,
+      "best_summary": "================= 50 failed, 90 passed, 10 deselected in 1.78s =================",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 7.1,
+          "files_written": [
+            "src/simpy/util.py"
+          ],
+          "summary": "================= 56 failed, 84 passed, 10 deselected in 0.61s =================",
+          "counts": {
+            "passed": 84,
+            "failed": 56,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 118,
+            "output_tokens": 546,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 67407,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 58.1,
+          "files_written": [
+            "src/simpy/core.py",
+            "src/simpy/rt.py",
+            "src/simpy/util.py"
+          ],
+          "summary": "================= 54 failed, 86 passed, 10 deselected in 1.81s =================",
+          "counts": {
+            "passed": 86,
+            "failed": 54,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 6866,
+            "output_tokens": 4116,
+            "cache_read_input_tokens": 67407,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 3,
+          "elapsed_s": 81.4,
+          "files_written": [
+            "src/simpy/core.py",
+            "src/simpy/resources/base.py",
+            "src/simpy/rt.py",
+            "src/simpy/util.py"
+          ],
+          "summary": "================= 50 failed, 90 passed, 10 deselected in 1.78s =================",
+          "counts": {
+            "passed": 90,
+            "failed": 50,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 16753,
+            "output_tokens": 6167,
+            "cache_read_input_tokens": 67407,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        }
+      ],
+      "totals": {
+        "input_tokens": 23737,
+        "output_tokens": 10829,
+        "cache_read_input_tokens": 134814,
+        "cache_creation_input_tokens": 67407,
+        "elapsed_s": 146.6
+      },
+      "counts": {
+        "passed": 90,
+        "failed": 50,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "imapclient": {
+      "repo": "imapclient",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 1,
+      "best_pass": -1,
+      "best_summary": "",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 211.7,
+          "files_written": [],
+          "summary": "(no code parsed)",
+          "counts": {},
+          "usage": {
+            "input_tokens": 120,
+            "output_tokens": 16000,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 57624,
+            "stop_reason": "max_tokens"
+          }
+        }
+      ],
+      "totals": {
+        "input_tokens": 120,
+        "output_tokens": 16000,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 57624,
+        "elapsed_s": 211.7
+      },
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "parsel": {
+      "repo": "parsel",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 2,
+      "best_pass": 96,
+      "best_summary": "=================== 4 failed, 11 passed, 11 errors in 0.24s ====================",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 132.5,
+          "files_written": [
+            "parsel/csstranslator.py",
+            "parsel/selector.py",
+            "parsel/utils.py",
+            "parsel/xpathfuncs.py"
+          ],
+          "summary": "================== 110 failed, 96 passed, 2 skipped in 2.75s ===================",
+          "counts": {
+            "passed": 96,
+            "failed": 110,
+            "skipped": 2,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 118,
+            "output_tokens": 9453,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 29468,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 114.0,
+          "files_written": [
+            "parsel/selector.py",
+            "parsel/utils.py"
+          ],
+          "summary": "=================== 4 failed, 11 passed, 11 errors in 0.24s ====================",
+          "counts": {
+            "passed": 11,
+            "failed": 4,
+            "skipped": 0,
+            "errors": 11
+          },
+          "usage": {
+            "input_tokens": 15957,
+            "output_tokens": 8058,
+            "cache_read_input_tokens": 29468,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        }
+      ],
+      "totals": {
+        "input_tokens": 16075,
+        "output_tokens": 17511,
+        "cache_read_input_tokens": 29468,
+        "cache_creation_input_tokens": 29468,
+        "elapsed_s": 246.5
+      },
+      "counts": {
+        "passed": 11,
+        "failed": 4,
+        "skipped": 0,
+        "errors": 11
+      }
+    },
+    "marshmallow": {
+      "repo": "marshmallow",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 2,
+      "best_pass": 0,
+      "best_summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-20 22:20:55,472 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 217.6,
+          "files_written": [
+            "src/marshmallow/decorators.py"
+          ],
+          "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-20 22:20:55,472 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 119,
+            "output_tokens": 16000,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 132063,
+            "stop_reason": "max_tokens"
+          },
+          "pytest_exit": 4
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 222.2,
+          "files_written": [
+            "src/marshmallow/utils.py"
+          ],
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 22:24:43,223 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 22:24:43,263 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 16349,
+            "output_tokens": 16000,
+            "cache_read_input_tokens": 132063,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "max_tokens"
+          },
+          "pytest_exit": 4
+        }
+      ],
+      "totals": {
+        "input_tokens": 16468,
+        "output_tokens": 32000,
+        "cache_read_input_tokens": 132063,
+        "cache_creation_input_tokens": 132063,
+        "elapsed_s": 439.8
+      },
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "cookiecutter": {
+      "repo": "cookiecutter",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 3,
+      "best_pass": 110,
+      "best_summary": "============ 286 failed, 65 passed, 4 skipped, 16 errors in 11.24s =============",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 91.0,
+          "files_written": [
+            "cookiecutter/cli.py",
+            "cookiecutter/main.py",
+            "cookiecutter/repository.py",
+            "cookiecutter/vcs.py",
+            "cookiecutter/zipfile.py"
+          ],
+          "summary": "============ 268 failed, 73 passed, 4 skipped, 26 errors in 12.81s =============",
+          "counts": {
+            "passed": 73,
+            "failed": 268,
+            "skipped": 4,
+            "errors": 26
+          },
+          "usage": {
+            "input_tokens": 119,
+            "output_tokens": 7950,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 69517,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 130.3,
+          "files_written": [
+            "cookiecutter/environment.py",
+            "cookiecutter/vcs.py",
+            "cookiecutter/replay.py",
+            "cookiecutter/repository.py",
+            "cookiecutter/zipfile.py",
+            "cookiecutter/hooks.py",
+            "cookiecutter/generate.py"
+          ],
+          "summary": "============ 243 failed, 110 passed, 4 skipped, 14 errors in 10.85s ============",
+          "counts": {
+            "passed": 110,
+            "failed": 243,
+            "skipped": 4,
+            "errors": 14
+          },
+          "usage": {
+            "input_tokens": 15225,
+            "output_tokens": 10788,
+            "cache_read_input_tokens": 69517,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 3,
+          "elapsed_s": 104.9,
+          "files_written": [
+            "cookiecutter/utils.py",
+            "cookiecutter/extensions.py",
+            "cookiecutter/vcs.py",
+            "cookiecutter/zipfile.py",
+            "cookiecutter/main.py"
+          ],
+          "summary": "============ 286 failed, 65 passed, 4 skipped, 16 errors in 11.24s =============",
+          "counts": {
+            "passed": 65,
+            "failed": 286,
+            "skipped": 4,
+            "errors": 16
+          },
+          "usage": {
+            "input_tokens": 33252,
+            "output_tokens": 9377,
+            "cache_read_input_tokens": 69517,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        }
+      ],
+      "totals": {
+        "input_tokens": 48596,
+        "output_tokens": 28115,
+        "cache_read_input_tokens": 139034,
+        "cache_creation_input_tokens": 69517,
+        "elapsed_s": 326.2
+      },
+      "counts": {
+        "passed": 65,
+        "failed": 286,
+        "skipped": 4,
+        "errors": 16
+      }
+    },
+    "babel": {
+      "repo": "babel",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 2,
+      "best_pass": 0,
+      "best_summary": "======================== 1 skipped, 22 errors in 2.09s =========================",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 220.4,
+          "files_written": [
+            "babel/util.py",
+            "babel/plural.py",
+            "babel/languages.py",
+            "babel/lists.py",
+            "babel/messages/plurals.py"
+          ],
+          "summary": "======================== 1 skipped, 22 errors in 1.97s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          },
+          "usage": {
+            "input_tokens": 117,
+            "output_tokens": 16000,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 135648,
+            "stop_reason": "max_tokens"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 178.3,
+          "files_written": [
+            "babel/core.py"
+          ],
+          "summary": "======================== 1 skipped, 22 errors in 2.09s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          },
+          "usage": {
+            "input_tokens": 22731,
+            "output_tokens": 13202,
+            "cache_read_input_tokens": 135648,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        }
+      ],
+      "totals": {
+        "input_tokens": 22848,
+        "output_tokens": 29202,
+        "cache_read_input_tokens": 135648,
+        "cache_creation_input_tokens": 135648,
+        "elapsed_s": 398.7
+      },
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 1,
+        "errors": 22
+      }
+    },
+    "jinja": {
+      "repo": "jinja",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 2,
+      "best_pass": 0,
+      "best_summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 22:43:08,752 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 22:43:08,791 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 210.4,
+          "files_written": [
+            "src/jinja2/utils.py",
+            "src/jinja2/bccache.py"
+          ],
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 22:43:08,752 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 22:43:08,791 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 118,
+            "output_tokens": 16000,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 90772,
+            "stop_reason": "max_tokens"
+          },
+          "pytest_exit": 4
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 121.3,
+          "files_written": [
+            "src/jinja2/nodes.py"
+          ],
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 22:45:15,609 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 22:45:15,647 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          },
+          "usage": {
+            "input_tokens": 16333,
+            "output_tokens": 9716,
+            "cache_read_input_tokens": 90772,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 4
+        }
+      ],
+      "totals": {
+        "input_tokens": 16451,
+        "output_tokens": 25716,
+        "cache_read_input_tokens": 90772,
+        "cache_creation_input_tokens": 90772,
+        "elapsed_s": 331.7
+      },
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "minitorch": {
+      "repo": "minitorch",
+      "branch": "reflexion_sonnet",
+      "model": "claude-sonnet-4-6",
+      "max_iters": 3,
+      "iters_run": 2,
+      "best_pass": 0,
+      "best_summary": "============================== 10 errors in 1.61s ==============================",
+      "iterations": [
+        {
+          "iter": 1,
+          "elapsed_s": 207.4,
+          "files_written": [
+            "minitorch/operators.py",
+            "minitorch/autodiff.py",
+            "minitorch/scalar_functions.py",
+            "minitorch/scalar.py",
+            "minitorch/module.py",
+            "minitorch/tensor_data.py",
+            "minitorch/tensor_ops.py"
+          ],
+          "summary": "============================== 10 errors in 1.85s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          },
+          "usage": {
+            "input_tokens": 119,
+            "output_tokens": 16000,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 89258,
+            "stop_reason": "max_tokens"
+          },
+          "pytest_exit": 1
+        },
+        {
+          "iter": 2,
+          "elapsed_s": 18.1,
+          "files_written": [
+            "minitorch/datasets.py"
+          ],
+          "summary": "============================== 10 errors in 1.61s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          },
+          "usage": {
+            "input_tokens": 17955,
+            "output_tokens": 1320,
+            "cache_read_input_tokens": 89258,
+            "cache_creation_input_tokens": 0,
+            "stop_reason": "end_turn"
+          },
+          "pytest_exit": 1
+        }
+      ],
+      "totals": {
+        "input_tokens": 18074,
+        "output_tokens": 17320,
+        "cache_read_input_tokens": 89258,
+        "cache_creation_input_tokens": 89258,
+        "elapsed_s": 225.5
+      },
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 10
+      }
+    }
+  },
+  "aggregate": {
+    "libraries_total": 16,
+    "tests_passed": 498,
+    "tests_failed": 978,
+    "tests_skipped": 8,
+    "tests_errored": 88,
+    "tests_attempted_total": 1564,
+    "pass_rate_attempted": 0.3184,
+    "input_tokens_total": 307692,
+    "output_tokens_total": 321037,
+    "cache_read_total": 1418082,
+    "cache_creation_total": 1260423,
+    "wall_seconds_total": 4103.2,
+    "cost_usd_estimate": 10.89
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "repo": "imapclient",
+  "branch": "reflexion_sonnet",
+  "model": "claude-sonnet-4-6",
+  "max_iters": 3,
+  "iters_run": 1,
+  "best_pass": -1,
+  "best_summary": "",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 211.7,
+      "files_written": [],
+      "summary": "(no code parsed)",
+      "counts": {},
+      "usage": {
+        "input_tokens": 120,
+        "output_tokens": 16000,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 57624,
+        "stop_reason": "max_tokens"
+      }
+    }
+  ],
+  "totals": {
+    "input_tokens": 120,
+    "output_tokens": 16000,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 57624,
+    "elapsed_s": 211.7
+  },
+  "counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0
+  }
+}

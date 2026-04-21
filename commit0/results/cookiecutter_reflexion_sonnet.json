@@ -1,0 +1,104 @@
+{
+  "repo": "cookiecutter",
+  "branch": "reflexion_sonnet",
+  "model": "claude-sonnet-4-6",
+  "max_iters": 3,
+  "iters_run": 3,
+  "best_pass": 110,
+  "best_summary": "============ 286 failed, 65 passed, 4 skipped, 16 errors in 11.24s =============",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 91.0,
+      "files_written": [
+        "cookiecutter/cli.py",
+        "cookiecutter/main.py",
+        "cookiecutter/repository.py",
+        "cookiecutter/vcs.py",
+        "cookiecutter/zipfile.py"
+      ],
+      "summary": "============ 268 failed, 73 passed, 4 skipped, 26 errors in 12.81s =============",
+      "counts": {
+        "passed": 73,
+        "failed": 268,
+        "skipped": 4,
+        "errors": 26
+      },
+      "usage": {
+        "input_tokens": 119,
+        "output_tokens": 7950,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 69517,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 130.3,
+      "files_written": [
+        "cookiecutter/environment.py",
+        "cookiecutter/vcs.py",
+        "cookiecutter/replay.py",
+        "cookiecutter/repository.py",
+        "cookiecutter/zipfile.py",
+        "cookiecutter/hooks.py",
+        "cookiecutter/generate.py"
+      ],
+      "summary": "============ 243 failed, 110 passed, 4 skipped, 14 errors in 10.85s ============",
+      "counts": {
+        "passed": 110,
+        "failed": 243,
+        "skipped": 4,
+        "errors": 14
+      },
+      "usage": {
+        "input_tokens": 15225,
+        "output_tokens": 10788,
+        "cache_read_input_tokens": 69517,
+        "cache_creation_input_tokens": 0,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 3,
+      "elapsed_s": 104.9,
+      "files_written": [
+        "cookiecutter/utils.py",
+        "cookiecutter/extensions.py",
+        "cookiecutter/vcs.py",
+        "cookiecutter/zipfile.py",
+        "cookiecutter/main.py"
+      ],
+      "summary": "============ 286 failed, 65 passed, 4 skipped, 16 errors in 11.24s =============",
+      "counts": {
+        "passed": 65,
+        "failed": 286,
+        "skipped": 4,
+        "errors": 16
+      },
+      "usage": {
+        "input_tokens": 33252,
+        "output_tokens": 9377,
+        "cache_read_input_tokens": 69517,
+        "cache_creation_input_tokens": 0,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 48596,
+    "output_tokens": 28115,
+    "cache_read_input_tokens": 139034,
+    "cache_creation_input_tokens": 69517,
+    "elapsed_s": 326.2
+  },
+  "counts": {
+    "passed": 65,
+    "failed": 286,
+    "skipped": 4,
+    "errors": 16
+  }
+}

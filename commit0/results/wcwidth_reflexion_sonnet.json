@@ -1,0 +1,91 @@
+{
+  "repo": "wcwidth",
+  "branch": "reflexion_sonnet",
+  "model": "claude-sonnet-4-6",
+  "max_iters": 3,
+  "iters_run": 3,
+  "best_pass": 36,
+  "best_summary": "=================== 37 failed, 1 passed, 1 skipped in 0.89s ====================",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 6.6,
+      "files_written": [
+        "wcwidth/unicode_versions.py"
+      ],
+      "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.68s ====================",
+      "counts": {
+        "passed": 1,
+        "failed": 37,
+        "skipped": 1,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 118,
+        "output_tokens": 325,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 46342,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 77.9,
+      "files_written": [
+        "wcwidth/unicode_versions.py",
+        "wcwidth/wcwidth.py"
+      ],
+      "summary": "=================== 2 failed, 36 passed, 1 skipped in 0.55s ====================",
+      "counts": {
+        "passed": 36,
+        "failed": 2,
+        "skipped": 1,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 7005,
+        "output_tokens": 4136,
+        "cache_read_input_tokens": 46342,
+        "cache_creation_input_tokens": 0,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 3,
+      "elapsed_s": 77.7,
+      "files_written": [
+        "wcwidth/wcwidth.py"
+      ],
+      "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.89s ====================",
+      "counts": {
+        "passed": 1,
+        "failed": 37,
+        "skipped": 1,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 12163,
+        "output_tokens": 4247,
+        "cache_read_input_tokens": 46342,
+        "cache_creation_input_tokens": 0,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 19286,
+    "output_tokens": 8708,
+    "cache_read_input_tokens": 92684,
+    "cache_creation_input_tokens": 46342,
+    "elapsed_s": 162.2
+  },
+  "counts": {
+    "passed": 1,
+    "failed": 37,
+    "skipped": 1,
+    "errors": 0
+  }
+}

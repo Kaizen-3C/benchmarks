@@ -1,0 +1,73 @@
+{
+  "repo": "portalocker",
+  "branch": "reflexion_sonnet",
+  "model": "claude-sonnet-4-6",
+  "max_iters": 3,
+  "iters_run": 2,
+  "best_pass": 30,
+  "best_summary": "============= 10 failed, 30 passed, 2 skipped, 2 warnings in 4.01s =============",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 117.8,
+      "files_written": [
+        "portalocker/utils.py",
+        "portalocker/portalocker.py",
+        "portalocker/exceptions.py",
+        "portalocker/constants.py",
+        "portalocker/__init__.py",
+        "portalocker/redis.py"
+      ],
+      "summary": "============= 10 failed, 30 passed, 2 skipped, 2 warnings in 4.01s =============",
+      "counts": {
+        "passed": 30,
+        "failed": 10,
+        "skipped": 2,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 119,
+        "output_tokens": 10370,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 31201,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 157.5,
+      "files_written": [
+        "portalocker/utils.py"
+      ],
+      "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 21:48:36,379 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 21:48:36,418 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 17066,
+        "output_tokens": 12727,
+        "cache_read_input_tokens": 31201,
+        "cache_creation_input_tokens": 0,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 4
+    }
+  ],
+  "totals": {
+    "input_tokens": 17185,
+    "output_tokens": 23097,
+    "cache_read_input_tokens": 31201,
+    "cache_creation_input_tokens": 31201,
+    "elapsed_s": 275.3
+  },
+  "counts": {
+    "passed": 30,
+    "failed": 10,
+    "skipped": 2,
+    "errors": 0
+  }
+}

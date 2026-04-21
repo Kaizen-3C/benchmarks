@@ -1,0 +1,72 @@
+{
+  "repo": "parsel",
+  "branch": "reflexion_sonnet",
+  "model": "claude-sonnet-4-6",
+  "max_iters": 3,
+  "iters_run": 2,
+  "best_pass": 96,
+  "best_summary": "=================== 4 failed, 11 passed, 11 errors in 0.24s ====================",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 132.5,
+      "files_written": [
+        "parsel/csstranslator.py",
+        "parsel/selector.py",
+        "parsel/utils.py",
+        "parsel/xpathfuncs.py"
+      ],
+      "summary": "================== 110 failed, 96 passed, 2 skipped in 2.75s ===================",
+      "counts": {
+        "passed": 96,
+        "failed": 110,
+        "skipped": 2,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 118,
+        "output_tokens": 9453,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 29468,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 114.0,
+      "files_written": [
+        "parsel/selector.py",
+        "parsel/utils.py"
+      ],
+      "summary": "=================== 4 failed, 11 passed, 11 errors in 0.24s ====================",
+      "counts": {
+        "passed": 11,
+        "failed": 4,
+        "skipped": 0,
+        "errors": 11
+      },
+      "usage": {
+        "input_tokens": 15957,
+        "output_tokens": 8058,
+        "cache_read_input_tokens": 29468,
+        "cache_creation_input_tokens": 0,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 16075,
+    "output_tokens": 17511,
+    "cache_read_input_tokens": 29468,
+    "cache_creation_input_tokens": 29468,
+    "elapsed_s": 246.5
+  },
+  "counts": {
+    "passed": 11,
+    "failed": 4,
+    "skipped": 0,
+    "errors": 11
+  }
+}

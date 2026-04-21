@@ -1,0 +1,70 @@
+{
+  "repo": "deprecated",
+  "branch": "reflexion_sonnet",
+  "model": "claude-sonnet-4-6",
+  "max_iters": 3,
+  "iters_run": 2,
+  "best_pass": 89,
+  "best_summary": "============= 81 failed, 70 passed, 3 warnings, 20 errors in 0.73s =============",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 56.0,
+      "files_written": [
+        "deprecated/__init__.py",
+        "deprecated/classic.py",
+        "deprecated/sphinx.py"
+      ],
+      "summary": "============ 38 failed, 89 passed, 5 warnings, 44 errors in 38.55s =============",
+      "counts": {
+        "passed": 89,
+        "failed": 38,
+        "skipped": 0,
+        "errors": 44
+      },
+      "usage": {
+        "input_tokens": 117,
+        "output_tokens": 5459,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 33339,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 42.4,
+      "files_written": [
+        "deprecated/classic.py"
+      ],
+      "summary": "============= 81 failed, 70 passed, 3 warnings, 20 errors in 0.73s =============",
+      "counts": {
+        "passed": 70,
+        "failed": 81,
+        "skipped": 0,
+        "errors": 20
+      },
+      "usage": {
+        "input_tokens": 12046,
+        "output_tokens": 3013,
+        "cache_read_input_tokens": 33339,
+        "cache_creation_input_tokens": 0,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 12163,
+    "output_tokens": 8472,
+    "cache_read_input_tokens": 33339,
+    "cache_creation_input_tokens": 33339,
+    "elapsed_s": 98.4
+  },
+  "counts": {
+    "passed": 70,
+    "failed": 81,
+    "skipped": 0,
+    "errors": 20
+  }
+}

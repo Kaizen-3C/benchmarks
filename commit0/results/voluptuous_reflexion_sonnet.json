@@ -1,0 +1,71 @@
+{
+  "repo": "voluptuous",
+  "branch": "reflexion_sonnet",
+  "model": "claude-sonnet-4-6",
+  "max_iters": 3,
+  "iters_run": 2,
+  "best_pass": 87,
+  "best_summary": "======================== 103 failed, 46 passed in 4.14s ========================",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 192.1,
+      "files_written": [
+        "voluptuous/error.py",
+        "voluptuous/schema_builder.py",
+        "voluptuous/humanize.py",
+        "voluptuous/util.py"
+      ],
+      "summary": "======================== 62 failed, 87 passed in 3.14s =========================",
+      "counts": {
+        "passed": 87,
+        "failed": 62,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 119,
+        "output_tokens": 16000,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 35914,
+        "stop_reason": "max_tokens"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 187.6,
+      "files_written": [
+        "voluptuous/schema_builder.py"
+      ],
+      "summary": "======================== 103 failed, 46 passed in 4.14s ========================",
+      "counts": {
+        "passed": 46,
+        "failed": 103,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 22073,
+        "output_tokens": 16000,
+        "cache_read_input_tokens": 35914,
+        "cache_creation_input_tokens": 0,
+        "stop_reason": "max_tokens"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 22192,
+    "output_tokens": 32000,
+    "cache_read_input_tokens": 35914,
+    "cache_creation_input_tokens": 35914,
+    "elapsed_s": 379.7
+  },
+  "counts": {
+    "passed": 46,
+    "failed": 103,
+    "skipped": 0,
+    "errors": 0
+  }
+}

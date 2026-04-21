@@ -1,0 +1,95 @@
+{
+  "repo": "simpy",
+  "branch": "reflexion_sonnet",
+  "model": "claude-sonnet-4-6",
+  "max_iters": 3,
+  "iters_run": 3,
+  "best_pass": 90,
+  "best_summary": "================= 50 failed, 90 passed, 10 deselected in 1.78s =================",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 7.1,
+      "files_written": [
+        "src/simpy/util.py"
+      ],
+      "summary": "================= 56 failed, 84 passed, 10 deselected in 0.61s =================",
+      "counts": {
+        "passed": 84,
+        "failed": 56,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 118,
+        "output_tokens": 546,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 67407,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 58.1,
+      "files_written": [
+        "src/simpy/core.py",
+        "src/simpy/rt.py",
+        "src/simpy/util.py"
+      ],
+      "summary": "================= 54 failed, 86 passed, 10 deselected in 1.81s =================",
+      "counts": {
+        "passed": 86,
+        "failed": 54,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 6866,
+        "output_tokens": 4116,
+        "cache_read_input_tokens": 67407,
+        "cache_creation_input_tokens": 0,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 3,
+      "elapsed_s": 81.4,
+      "files_written": [
+        "src/simpy/core.py",
+        "src/simpy/resources/base.py",
+        "src/simpy/rt.py",
+        "src/simpy/util.py"
+      ],
+      "summary": "================= 50 failed, 90 passed, 10 deselected in 1.78s =================",
+      "counts": {
+        "passed": 90,
+        "failed": 50,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 16753,
+        "output_tokens": 6167,
+        "cache_read_input_tokens": 67407,
+        "cache_creation_input_tokens": 0,
+        "stop_reason": "end_turn"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 23737,
+    "output_tokens": 10829,
+    "cache_read_input_tokens": 134814,
+    "cache_creation_input_tokens": 67407,
+    "elapsed_s": 146.6
+  },
+  "counts": {
+    "passed": 90,
+    "failed": 50,
+    "skipped": 0,
+    "errors": 0
+  }
+}
