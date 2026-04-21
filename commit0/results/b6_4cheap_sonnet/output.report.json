@@ -1,0 +1,18 @@
+{
+    "total_instances": 16,
+    "submitted_instances": 1,
+    "completed_instances": 1,
+    "resolved_instances": 0,
+    "unresolved_instances": 1,
+    "empty_patch_instances": 0,
+    "error_instances": 0,
+    "total_tests": 39,
+    "total_passed_tests": 38,
+    "completed_ids": [
+        "wcwidth"
+    ],
+    "resolved_ids": [],
+    "unresolved_ids": [
+        "wcwidth"
+    ]
+}
