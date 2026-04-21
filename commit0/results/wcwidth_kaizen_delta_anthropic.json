@@ -1,0 +1,163 @@
+{
+  "repo": "wcwidth",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "branch": "kaizen_delta",
+  "files_total": 6,
+  "files_accepted": 5,
+  "elapsed_s": 405.0,
+  "final_summary": "=================== 10 failed, 28 passed, 1 skipped in 0.81s ===================",
+  "final_counts": {
+    "passed": 28,
+    "failed": 10,
+    "skipped": 1,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 31795,
+    "output_tokens": 38058,
+    "cache_read_tokens": 82410,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.691
+  },
+  "per_file": [
+    {
+      "file": "wcwidth/__init__.py",
+      "size": 1076,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 4.6,
+          "usage": {
+            "input": 455,
+            "output": 310,
+            "cache_read": 13735,
+            "cache_write": 0
+          },
+          "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.89s ====================",
+          "counts": {
+            "passed": 1,
+            "failed": 37,
+            "skipped": 1,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "wcwidth/table_vs16.py",
+      "size": 7512,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 37.7,
+          "usage": {
+            "input": 1131,
+            "output": 3715,
+            "cache_read": 13735,
+            "cache_write": 0
+          },
+          "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.85s ====================",
+          "counts": {
+            "passed": 1,
+            "failed": 37,
+            "skipped": 1,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "wcwidth/unicode_versions.py",
+      "size": 850,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.8,
+          "usage": {
+            "input": 292,
+            "output": 320,
+            "cache_read": 13735,
+            "cache_write": 0
+          },
+          "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.82s ====================",
+          "counts": {
+            "passed": 1,
+            "failed": 37,
+            "skipped": 1,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "wcwidth/wcwidth.py",
+      "size": 12154,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 54.2,
+          "usage": {
+            "input": 2106,
+            "output": 3479,
+            "cache_read": 13735,
+            "cache_write": 0
+          },
+          "summary": "=================== 10 failed, 28 passed, 1 skipped in 0.76s ===================",
+          "counts": {
+            "passed": 28,
+            "failed": 10,
+            "skipped": 1,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "wcwidth/table_wide.py",
+      "size": 34575,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 122.1,
+          "usage": {
+            "input": 11484,
+            "output": 14235,
+            "cache_read": 13735,
+            "cache_write": 0
+          },
+          "summary": "=================== 10 failed, 28 passed, 1 skipped in 0.81s ===================",
+          "counts": {
+            "passed": 28,
+            "failed": 10,
+            "skipped": 1,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "wcwidth/table_zero.py",
+      "size": 70983,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 141.7,
+          "usage": {
+            "input": 16327,
+            "output": 15999,
+            "cache_read": 13735,
+            "cache_write": 0
+          },
+          "result": "empty_response"
+        }
+      ]
+    }
+  ]
+}

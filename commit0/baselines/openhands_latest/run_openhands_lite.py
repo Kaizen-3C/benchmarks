@@ -71,7 +71,13 @@ def sum_cost_from_jsonl_dir(output_dir: Path) -> tuple[float, int]:
                     except json.JSONDecodeError:
                         continue
                     metrics = obj.get("metrics") or {}
-                    cost = metrics.get("total_cost") or obj.get("total_cost") or 0.0
+                    # OpenHands writes 'accumulated_cost'; we previously read 'total_cost'
+                    # (silent zero from a typo cost us $85 on the first B6 run -- AAR §What didn't work).
+                    # Run test_cost_monitor.py before any expensive sweep to verify this still matches.
+                    cost = (metrics.get("accumulated_cost")
+                            or metrics.get("total_cost")
+                            or obj.get("total_cost")
+                            or 0.0)
                     try:
                         total += float(cost)
                         n += 1

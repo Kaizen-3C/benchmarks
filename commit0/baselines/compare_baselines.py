@@ -47,6 +47,11 @@ def load_b3() -> dict | None:
     return json.loads(p.read_text()) if p.exists() else None
 
 
+def load_b2_openai() -> dict | None:
+    p = RESULTS / "aggregate_lite_single_shot_openai.json"
+    return json.loads(p.read_text()) if p.exists() else None
+
+
 def load_b6(path: Path | None) -> dict | None:
     if path is None:
         return None
@@ -143,14 +148,15 @@ def cost_usd(p: dict, *, cache_aware: bool = True) -> float:
     )
 
 
-def aggregate(per_lib: dict[str, dict]) -> dict:
+def aggregate(per_lib: dict[str, dict], precomputed_cost_usd: float | None = None) -> dict:
     libs = list(per_lib.values())
     p = sum(l.get("passed", 0) for l in libs)
     a = sum(l.get("attempted", 0) for l in libs)
     instances = sum(1 for l in libs if l.get("instance_solved"))
-    cost = sum(cost_usd(l) for l in libs) + sum(l.get("cost_usd", 0) for l in libs if "cost_usd" in l)
-    # Avoid double-counting: if cost_usd present, prefer it; else compute from tokens.
-    cost = sum(l["cost_usd"] if l.get("cost_usd") else cost_usd(l) for l in libs)
+    if precomputed_cost_usd is not None:
+        cost = precomputed_cost_usd
+    else:
+        cost = sum(l["cost_usd"] if l.get("cost_usd") else cost_usd(l) for l in libs)
     return {
         "instances_solved": instances,
         "instances_total": len(libs),
@@ -197,23 +203,94 @@ def fmt_delta(label: str, ref: dict, cmp: dict) -> str:
     )
 
 
+def load_b6_partial_path(path: Path) -> dict | None:
+    """Load a B6 partial directory containing output.jsonl + output.report.json."""
+    if not path.is_dir():
+        return None
+    jsonl = path / "output.jsonl"
+    report = path / "output.report.json"
+    if not jsonl.exists() or not report.exists():
+        return None
+    rows = [json.loads(l) for l in jsonl.read_text(encoding="utf-8", errors="replace").splitlines() if l.strip()]
+    rep = json.loads(report.read_text(encoding="utf-8", errors="replace"))
+    return {"rows": rows, "report": rep}
+
+
+def b6_partial_aggregate(data: dict, label_suffix: str = "") -> dict:
+    rows = data["rows"]
+    rep = data["report"]
+    fresh_in = sum(((r.get("metrics") or {}).get("accumulated_token_usage") or {}).get("prompt_tokens", 0)
+                   for r in rows)
+    out = sum(((r.get("metrics") or {}).get("accumulated_token_usage") or {}).get("completion_tokens", 0)
+              for r in rows)
+    cost = sum((r.get("metrics") or {}).get("accumulated_cost", 0) for r in rows)
+    return {
+        "instances_solved": rep.get("resolved_instances", 0),
+        "instances_total": 16,  # original cohort
+        "instance_rate": rep.get("resolved_instances", 0) / 16,
+        "tests_passed": rep.get("total_passed_tests", 0),
+        "tests_attempted": rep.get("total_tests", 0),
+        "aggregate_pass_rate": (rep.get("total_passed_tests", 0) / rep.get("total_tests", 1))
+                               if rep.get("total_tests", 0) else 0,
+        "input_tokens": fresh_in,
+        "output_tokens": out,
+        "cache_read": 0, "cache_write": 0,
+        "wall_seconds": 0,
+        "cost_usd_estimate": round(cost, 2),
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--openhands-aggregate", type=str, default=None,
-                        help="Path to OpenHands B6 aggregate.json (in WSL workspace or repo).")
+                        help="Path to OpenHands B6 aggregate.json (legacy; prefer auto-discovery)")
     args = parser.parse_args()
 
-    b2 = load_b2()
-    b3 = load_b3()
-    b6 = load_b6(args.openhands_aggregate)
-
     rows: list[tuple[str, dict]] = []
-    if b2:
-        rows.append(("B2 single-shot Sonnet 4.6", aggregate(b2_per_lib_passrate(b2))))
-    if b3:
-        rows.append(("B3 Reflexion-on-Sonnet 4.6", aggregate(b3_per_lib_passrate(b3))))
-    if b6:
-        rows.append(("B6 OpenHands V1 + Sonnet 4.6", aggregate(b6_per_lib_passrate(b6))))
+
+    # B2 Sonnet -- use pre-computed cost from aggregate JSON (correct provider pricing)
+    b2s = load_b2()
+    if b2s:
+        rows.append(("B2 single-shot Sonnet 4.6",
+                     aggregate(b2_per_lib_passrate(b2s),
+                               precomputed_cost_usd=b2s["aggregate"]["cost_usd_estimate"])))
+
+    # B2 GPT-5.4
+    b2g = load_b2_openai()
+    if b2g:
+        rows.append(("B2 single-shot GPT-5.4",
+                     aggregate(b2_per_lib_passrate(b2g),
+                               precomputed_cost_usd=b2g["aggregate"]["cost_usd_estimate"])))
+
+    # B3 Sonnet
+    b3s = load_b3()
+    if b3s:
+        rows.append(("B3 Reflexion Sonnet 4.6",
+                     aggregate(b3_per_lib_passrate(b3s),
+                               precomputed_cost_usd=b3s["aggregate"]["cost_usd_estimate"])))
+
+    # B3 GPT-5.4
+    b3g_path = RESULTS / "aggregate_lite_reflexion_openai.json"
+    if b3g_path.exists():
+        d = json.loads(b3g_path.read_text())
+        rows.append(("B3 Reflexion GPT-5.4",
+                     aggregate(b3_per_lib_passrate(d),
+                               precomputed_cost_usd=d["aggregate"]["cost_usd_estimate"])))
+
+    # B6 partials -- auto-discover both Sonnet and GPT-5.4 partial dirs
+    for partial_name, label in [
+        ("b6_partial_pass1", "B6 OpenHands V1 + Sonnet 4.6 (3/16 partial)"),
+        ("b6_partial_gpt54_3libs", "B6 OpenHands V1 + GPT-5.4 (3/16 paired)"),
+    ]:
+        p = load_b6_partial_path(RESULTS / partial_name)
+        if p:
+            rows.append((label, b6_partial_aggregate(p)))
+
+    # Backward-compat: explicit OpenHands aggregate path (kept for reference)
+    if args.openhands_aggregate:
+        b6 = load_b6(args.openhands_aggregate)
+        if b6:
+            rows.append(("B6 OpenHands V1 (--explicit)", aggregate(b6_per_lib_passrate(b6))))
 
     if not rows:
         print("No baseline data found. Run B2/B3/B6 first.", file=sys.stderr)
