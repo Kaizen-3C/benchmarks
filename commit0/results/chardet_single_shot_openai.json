@@ -1,0 +1,24 @@
+{
+  "repo": "chardet",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 187.33,
+  "input_tokens": 332545,
+  "cached_input_tokens": 0,
+  "output_tokens": 16000,
+  "finish_reason": "length",
+  "files_written": [
+    "chardet/charsetprober.py",
+    "chardet/cli/chardetect.py",
+    "chardet/escprober.py",
+    "chardet/hebrewprober.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.76s ===================",
+  "counts": {
+    "passed": 1,
+    "failed": 375,
+    "skipped": 0,
+    "errors": 0
+  }
+}

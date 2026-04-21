@@ -1,0 +1,89 @@
+{
+  "repo": "deprecated",
+  "branch": "reflexion_openai",
+  "model": "gpt-5.4",
+  "max_iters": 3,
+  "iters_run": 3,
+  "best_pass": 147,
+  "best_summary": "================== 24 failed, 147 passed, 5 warnings in 0.50s ==================",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 54.9,
+      "files_written": [
+        "deprecated/classic.py",
+        "deprecated/sphinx.py"
+      ],
+      "summary": "============ 47 failed, 80 passed, 5 warnings, 44 errors in 40.07s =============",
+      "counts": {
+        "passed": 80,
+        "failed": 47,
+        "skipped": 0,
+        "errors": 44
+      },
+      "usage": {
+        "input_tokens": 28539,
+        "cached_input_tokens": 0,
+        "output_tokens": 4473,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 50.1,
+      "files_written": [
+        "deprecated/classic.py",
+        "deprecated/sphinx.py"
+      ],
+      "summary": "============ 30 failed, 97 passed, 5 warnings, 44 errors in 38.26s =============",
+      "counts": {
+        "passed": 97,
+        "failed": 30,
+        "skipped": 0,
+        "errors": 44
+      },
+      "usage": {
+        "input_tokens": 38330,
+        "cached_input_tokens": 32896,
+        "output_tokens": 4163,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 3,
+      "elapsed_s": 48.7,
+      "files_written": [
+        "deprecated/classic.py",
+        "deprecated/sphinx.py"
+      ],
+      "summary": "================== 24 failed, 147 passed, 5 warnings in 0.50s ==================",
+      "counts": {
+        "passed": 147,
+        "failed": 24,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 47841,
+        "cached_input_tokens": 42368,
+        "output_tokens": 4167,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 114710,
+    "cached_input_tokens": 75264,
+    "output_tokens": 12803,
+    "elapsed_s": 153.7
+  },
+  "counts": {
+    "passed": 147,
+    "failed": 24,
+    "skipped": 0,
+    "errors": 0
+  }
+}

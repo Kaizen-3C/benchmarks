@@ -1,0 +1,26 @@
+{
+  "repo": "marshmallow",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 133.55,
+  "input_tokens": 107556,
+  "cached_input_tokens": 0,
+  "output_tokens": 11583,
+  "finish_reason": "stop",
+  "files_written": [
+    "src/marshmallow/class_registry.py",
+    "src/marshmallow/decorators.py",
+    "src/marshmallow/error_store.py",
+    "src/marshmallow/orderedset.py",
+    "src/marshmallow/utils.py",
+    "src/marshmallow/validate.py"
+  ],
+  "pytest_exit": 4,
+  "pytest_summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-21 09:07:36,153 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n",
+  "counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0
+  }
+}

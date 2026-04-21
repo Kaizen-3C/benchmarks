@@ -1,0 +1,22 @@
+{
+  "repo": "wcwidth",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 37.58,
+  "input_tokens": 44438,
+  "cached_input_tokens": 0,
+  "output_tokens": 3064,
+  "finish_reason": "stop",
+  "files_written": [
+    "wcwidth/unicode_versions.py",
+    "wcwidth/wcwidth.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "=================== 6 failed, 32 passed, 1 skipped in 0.72s ====================",
+  "counts": {
+    "passed": 32,
+    "failed": 6,
+    "skipped": 1,
+    "errors": 0
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "repo": "cookiecutter",
+  "branch": "reflexion_openai",
+  "model": "gpt-5.4",
+  "max_iters": 3,
+  "iters_run": 3,
+  "best_pass": 103,
+  "best_summary": "============= 259 failed, 92 passed, 4 skipped, 16 errors in 7.78s =============",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 69.3,
+      "files_written": [
+        "cookiecutter/extensions.py",
+        "cookiecutter/main.py",
+        "cookiecutter/utils.py",
+        "cookiecutter/vcs.py",
+        "cookiecutter/zipfile.py"
+      ],
+      "summary": "============= 308 failed, 43 passed, 4 skipped, 16 errors in 7.17s =============",
+      "counts": {
+        "passed": 43,
+        "failed": 308,
+        "skipped": 4,
+        "errors": 16
+      },
+      "usage": {
+        "input_tokens": 56466,
+        "cached_input_tokens": 0,
+        "output_tokens": 4297,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 53.0,
+      "files_written": [
+        "cookiecutter/environment.py",
+        "cookiecutter/replay.py",
+        "cookiecutter/repository.py",
+        "cookiecutter/utils.py",
+        "cookiecutter/vcs.py",
+        "cookiecutter/zipfile.py"
+      ],
+      "summary": "================== 264 failed, 103 passed, 4 skipped in 7.14s ==================",
+      "counts": {
+        "passed": 103,
+        "failed": 264,
+        "skipped": 4,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 66124,
+        "cached_input_tokens": 60544,
+        "output_tokens": 4046,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 3,
+      "elapsed_s": 79.0,
+      "files_written": [
+        "cookiecutter/extensions.py",
+        "cookiecutter/main.py",
+        "cookiecutter/repository.py",
+        "cookiecutter/utils.py",
+        "cookiecutter/vcs.py",
+        "cookiecutter/zipfile.py"
+      ],
+      "summary": "============= 259 failed, 92 passed, 4 skipped, 16 errors in 7.78s =============",
+      "counts": {
+        "passed": 92,
+        "failed": 259,
+        "skipped": 4,
+        "errors": 16
+      },
+      "usage": {
+        "input_tokens": 75819,
+        "cached_input_tokens": 70016,
+        "output_tokens": 5230,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 198409,
+    "cached_input_tokens": 130560,
+    "output_tokens": 13573,
+    "elapsed_s": 201.3
+  },
+  "counts": {
+    "passed": 92,
+    "failed": 259,
+    "skipped": 4,
+    "errors": 16
+  }
+}

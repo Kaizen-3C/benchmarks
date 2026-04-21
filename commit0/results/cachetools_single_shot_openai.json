@@ -1,0 +1,21 @@
+{
+  "repo": "cachetools",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 8.49,
+  "input_tokens": 25675,
+  "cached_input_tokens": 0,
+  "output_tokens": 425,
+  "finish_reason": "stop",
+  "files_written": [
+    "src/cachetools/keys.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "================= 42 failed, 173 passed, 15 warnings in 0.43s ==================",
+  "counts": {
+    "passed": 173,
+    "failed": 42,
+    "skipped": 0,
+    "errors": 0
+  }
+}

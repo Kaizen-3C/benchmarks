@@ -1,0 +1,22 @@
+{
+  "repo": "imapclient",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 147.73,
+  "input_tokens": 49634,
+  "cached_input_tokens": 0,
+  "output_tokens": 12795,
+  "finish_reason": "stop",
+  "files_written": [
+    "imapclient/interact.py",
+    "imapclient/imapclient.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "============================== 18 errors in 0.51s ==============================",
+  "counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 18
+  }
+}

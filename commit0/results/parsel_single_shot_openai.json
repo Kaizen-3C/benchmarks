@@ -1,0 +1,23 @@
+{
+  "repo": "parsel",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 82.43,
+  "input_tokens": 23808,
+  "cached_input_tokens": 0,
+  "output_tokens": 6875,
+  "finish_reason": "stop",
+  "files_written": [
+    "parsel/csstranslator.py",
+    "parsel/selector.py",
+    "parsel/xpathfuncs.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "================== 113 failed, 93 passed, 2 skipped in 2.66s ===================",
+  "counts": {
+    "passed": 93,
+    "failed": 113,
+    "skipped": 2,
+    "errors": 0
+  }
+}

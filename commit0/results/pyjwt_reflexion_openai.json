@@ -1,0 +1,89 @@
+{
+  "repo": "pyjwt",
+  "branch": "reflexion_openai",
+  "model": "gpt-5.4",
+  "max_iters": 3,
+  "iters_run": 3,
+  "best_pass": 152,
+  "best_summary": "======== 25 failed, 152 passed, 2 skipped, 1 xfailed, 5 errors in 1.41s ========",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 97.2,
+      "files_written": [
+        "jwt/algorithms.py",
+        "jwt/api_jwt.py"
+      ],
+      "summary": "========================= 1 passed, 9 errors in 0.51s ==========================",
+      "counts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 9
+      },
+      "usage": {
+        "input_tokens": 28822,
+        "cached_input_tokens": 0,
+        "output_tokens": 8491,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 12.9,
+      "files_written": [
+        "jwt/utils.py"
+      ],
+      "summary": "======== 94 failed, 13 passed, 1 skipped, 1 xfailed, 6 errors in 1.60s =========",
+      "counts": {
+        "passed": 13,
+        "failed": 94,
+        "skipped": 1,
+        "errors": 6
+      },
+      "usage": {
+        "input_tokens": 39386,
+        "cached_input_tokens": 37120,
+        "output_tokens": 922,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 3,
+      "elapsed_s": 151.7,
+      "files_written": [
+        "jwt/algorithms.py",
+        "jwt/api_jws.py",
+        "jwt/utils.py"
+      ],
+      "summary": "======== 25 failed, 152 passed, 2 skipped, 1 xfailed, 5 errors in 1.41s ========",
+      "counts": {
+        "passed": 152,
+        "failed": 25,
+        "skipped": 2,
+        "errors": 5
+      },
+      "usage": {
+        "input_tokens": 45328,
+        "cached_input_tokens": 40192,
+        "output_tokens": 8797,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 113536,
+    "cached_input_tokens": 77312,
+    "output_tokens": 18210,
+    "elapsed_s": 261.8
+  },
+  "counts": {
+    "passed": 152,
+    "failed": 25,
+    "skipped": 2,
+    "errors": 5
+  }
+}

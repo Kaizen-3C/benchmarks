@@ -1,0 +1,87 @@
+{
+  "repo": "parsel",
+  "branch": "reflexion_openai",
+  "model": "gpt-5.4",
+  "max_iters": 3,
+  "iters_run": 3,
+  "best_pass": 28,
+  "best_summary": "======================== 15 failed, 11 errors in 0.27s =========================",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 11.3,
+      "files_written": [
+        "parsel/utils.py"
+      ],
+      "summary": "=================== 1 failed, 14 passed, 11 errors in 0.23s ====================",
+      "counts": {
+        "passed": 14,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 11
+      },
+      "usage": {
+        "input_tokens": 24173,
+        "cached_input_tokens": 0,
+        "output_tokens": 795,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 17.7,
+      "files_written": [
+        "parsel/xpathfuncs.py",
+        "parsel/utils.py"
+      ],
+      "summary": "================== 178 failed, 28 passed, 2 skipped in 3.57s ===================",
+      "counts": {
+        "passed": 28,
+        "failed": 178,
+        "skipped": 2,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 26300,
+        "cached_input_tokens": 24832,
+        "output_tokens": 1201,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 3,
+      "elapsed_s": 77.7,
+      "files_written": [
+        "parsel/selector.py"
+      ],
+      "summary": "======================== 15 failed, 11 errors in 0.27s =========================",
+      "counts": {
+        "passed": 0,
+        "failed": 15,
+        "skipped": 0,
+        "errors": 11
+      },
+      "usage": {
+        "input_tokens": 32458,
+        "cached_input_tokens": 27392,
+        "output_tokens": 5580,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 82931,
+    "cached_input_tokens": 52224,
+    "output_tokens": 7576,
+    "elapsed_s": 106.7
+  },
+  "counts": {
+    "passed": 0,
+    "failed": 15,
+    "skipped": 0,
+    "errors": 11
+  }
+}

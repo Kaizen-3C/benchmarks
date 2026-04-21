@@ -1,0 +1,88 @@
+{
+  "repo": "portalocker",
+  "branch": "reflexion_openai",
+  "model": "gpt-5.4",
+  "max_iters": 3,
+  "iters_run": 3,
+  "best_pass": 13,
+  "best_summary": "=================== 27 failed, 13 passed, 2 skipped in 2.22s ===================",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 57.0,
+      "files_written": [
+        "portalocker/redis.py",
+        "portalocker_tests/tests.py"
+      ],
+      "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 10:08:43,397 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 10:08:43,432 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 22595,
+        "cached_input_tokens": 0,
+        "output_tokens": 4616,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 4
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 9.7,
+      "files_written": [
+        "portalocker/portalocker.py"
+      ],
+      "summary": "=================== 27 failed, 13 passed, 2 skipped in 2.22s ===================",
+      "counts": {
+        "passed": 13,
+        "failed": 27,
+        "skipped": 2,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 27338,
+        "cached_input_tokens": 27008,
+        "output_tokens": 747,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 3,
+      "elapsed_s": 55.1,
+      "files_written": [
+        "portalocker/utils.py",
+        "portalocker/__main__.py"
+      ],
+      "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 10:10:01,619 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 10:10:01,653 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 32791,
+        "cached_input_tokens": 27904,
+        "output_tokens": 4582,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 4
+    }
+  ],
+  "totals": {
+    "input_tokens": 82724,
+    "cached_input_tokens": 54912,
+    "output_tokens": 9945,
+    "elapsed_s": 121.8
+  },
+  "counts": {
+    "passed": 13,
+    "failed": 27,
+    "skipped": 2,
+    "errors": 0
+  }
+}

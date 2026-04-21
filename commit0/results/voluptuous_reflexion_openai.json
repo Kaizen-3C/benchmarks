@@ -1,0 +1,70 @@
+{
+  "repo": "voluptuous",
+  "branch": "reflexion_openai",
+  "model": "gpt-5.4",
+  "max_iters": 3,
+  "iters_run": 2,
+  "best_pass": 111,
+  "best_summary": "======================== 87 failed, 62 passed in 4.30s =========================",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 189.9,
+      "files_written": [
+        "voluptuous/error.py",
+        "voluptuous/humanize.py",
+        "voluptuous/schema_builder.py",
+        "voluptuous/validators.py"
+      ],
+      "summary": "======================== 38 failed, 111 passed in 2.72s ========================",
+      "counts": {
+        "passed": 111,
+        "failed": 38,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 29259,
+        "cached_input_tokens": 0,
+        "output_tokens": 14538,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 158.0,
+      "files_written": [
+        "voluptuous/util.py",
+        "voluptuous/schema_builder.py",
+        "voluptuous/validators.py"
+      ],
+      "summary": "======================== 87 failed, 62 passed in 4.30s =========================",
+      "counts": {
+        "passed": 62,
+        "failed": 87,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 48549,
+        "cached_input_tokens": 43648,
+        "output_tokens": 14193,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 77808,
+    "cached_input_tokens": 43648,
+    "output_tokens": 28731,
+    "elapsed_s": 347.9
+  },
+  "counts": {
+    "passed": 62,
+    "failed": 87,
+    "skipped": 0,
+    "errors": 0
+  }
+}

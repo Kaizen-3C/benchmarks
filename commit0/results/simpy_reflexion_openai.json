@@ -1,0 +1,77 @@
+{
+  "repo": "simpy",
+  "branch": "reflexion_openai",
+  "model": "gpt-5.4",
+  "max_iters": 3,
+  "iters_run": 2,
+  "best_pass": 118,
+  "best_summary": "================ 37 failed, 103 passed, 10 deselected in 2.46s =================",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 202.7,
+      "files_written": [
+        "src/simpy/__init__.py",
+        "src/simpy/core.py",
+        "src/simpy/events.py",
+        "src/simpy/exceptions.py",
+        "src/simpy/resources/base.py",
+        "src/simpy/resources/container.py",
+        "src/simpy/resources/resource.py",
+        "src/simpy/resources/store.py",
+        "src/simpy/rt.py",
+        "src/simpy/util.py"
+      ],
+      "summary": "================ 22 failed, 118 passed, 10 deselected in 2.46s =================",
+      "counts": {
+        "passed": 118,
+        "failed": 22,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 58518,
+        "cached_input_tokens": 0,
+        "output_tokens": 13974,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 89.8,
+      "files_written": [
+        "src/simpy/core.py",
+        "src/simpy/events.py",
+        "src/simpy/rt.py",
+        "src/simpy/util.py"
+      ],
+      "summary": "================ 37 failed, 103 passed, 10 deselected in 2.46s =================",
+      "counts": {
+        "passed": 103,
+        "failed": 37,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 77768,
+        "cached_input_tokens": 72320,
+        "output_tokens": 7114,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 136286,
+    "cached_input_tokens": 72320,
+    "output_tokens": 21088,
+    "elapsed_s": 292.5
+  },
+  "counts": {
+    "passed": 103,
+    "failed": 37,
+    "skipped": 0,
+    "errors": 0
+  }
+}

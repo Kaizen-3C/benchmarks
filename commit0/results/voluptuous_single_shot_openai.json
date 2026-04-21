@@ -1,0 +1,24 @@
+{
+  "repo": "voluptuous",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 180.97,
+  "input_tokens": 34874,
+  "cached_input_tokens": 0,
+  "output_tokens": 16000,
+  "finish_reason": "length",
+  "files_written": [
+    "voluptuous/error.py",
+    "voluptuous/humanize.py",
+    "voluptuous/util.py",
+    "voluptuous/validators.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "============================== 2 errors in 0.20s ===============================",
+  "counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 2
+  }
+}

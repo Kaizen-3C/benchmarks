@@ -1,0 +1,87 @@
+{
+  "repo": "wcwidth",
+  "branch": "reflexion_openai",
+  "model": "gpt-5.4",
+  "max_iters": 3,
+  "iters_run": 3,
+  "best_pass": 32,
+  "best_summary": "=================== 36 failed, 2 passed, 1 skipped in 1.09s ====================",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 38.7,
+      "files_written": [
+        "wcwidth/wcwidth.py"
+      ],
+      "summary": "=================== 37 failed, 1 passed, 1 skipped in 1.19s ====================",
+      "counts": {
+        "passed": 1,
+        "failed": 37,
+        "skipped": 1,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 43945,
+        "cached_input_tokens": 0,
+        "output_tokens": 2854,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 36.2,
+      "files_written": [
+        "wcwidth/unicode_versions.py",
+        "wcwidth/wcwidth.py"
+      ],
+      "summary": "=================== 6 failed, 32 passed, 1 skipped in 0.69s ====================",
+      "counts": {
+        "passed": 32,
+        "failed": 6,
+        "skipped": 1,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 52171,
+        "cached_input_tokens": 46592,
+        "output_tokens": 3135,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 3,
+      "elapsed_s": 34.4,
+      "files_written": [
+        "wcwidth/wcwidth.py"
+      ],
+      "summary": "=================== 36 failed, 2 passed, 1 skipped in 1.09s ====================",
+      "counts": {
+        "passed": 2,
+        "failed": 36,
+        "skipped": 1,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 59523,
+        "cached_input_tokens": 55168,
+        "output_tokens": 2812,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    }
+  ],
+  "totals": {
+    "input_tokens": 155639,
+    "cached_input_tokens": 101760,
+    "output_tokens": 8801,
+    "elapsed_s": 109.3
+  },
+  "counts": {
+    "passed": 2,
+    "failed": 36,
+    "skipped": 1,
+    "errors": 0
+  }
+}

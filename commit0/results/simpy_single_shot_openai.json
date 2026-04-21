@@ -1,0 +1,28 @@
+{
+  "repo": "simpy",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 147.13,
+  "input_tokens": 57482,
+  "cached_input_tokens": 0,
+  "output_tokens": 12874,
+  "finish_reason": "stop",
+  "files_written": [
+    "src/simpy/__init__.py",
+    "src/simpy/core.py",
+    "src/simpy/events.py",
+    "src/simpy/exceptions.py",
+    "src/simpy/resources/base.py",
+    "src/simpy/resources/container.py",
+    "src/simpy/resources/resource.py",
+    "src/simpy/resources/store.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "seconds.\nCheck () for more information.\nTraceback (most recent call last):\n  File \n\"/home/aadame/kaizen-commit0/.venv/lib/python3.12/site-packages/commit0/harness/\nrun_pytest_ids.py\", line 164, in main\n    raise EvaluationError(\ncommit0.harness.utils.EvaluationError: Evaluation error for simpy: Test timed \nout after 600 seconds.\nCheck () for more information.\n\nCheck \n(logs/pytest/simpy/single_shot_openai/59830ebc3a4184110566bf/run_pytest.log) for\nmore information.\nCheck () for more information.\n",
+  "counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0
+  }
+}

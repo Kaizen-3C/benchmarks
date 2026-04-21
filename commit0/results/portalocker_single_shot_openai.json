@@ -1,0 +1,23 @@
+{
+  "repo": "portalocker",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 57.72,
+  "input_tokens": 21573,
+  "cached_input_tokens": 0,
+  "output_tokens": 5738,
+  "finish_reason": "stop",
+  "files_written": [
+    "portalocker/portalocker.py",
+    "portalocker/redis.py",
+    "portalocker/utils.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "============= 7 failed, 33 passed, 2 skipped, 2 warnings in 44.00s =============",
+  "counts": {
+    "passed": 33,
+    "failed": 7,
+    "skipped": 2,
+    "errors": 0
+  }
+}

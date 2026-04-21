@@ -1,0 +1,21 @@
+{
+  "repo": "deprecated",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 26.62,
+  "input_tokens": 28901,
+  "cached_input_tokens": 0,
+  "output_tokens": 2138,
+  "finish_reason": "stop",
+  "files_written": [
+    "deprecated/sphinx.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "============= 67 failed, 54 passed, 2 warnings, 50 errors in 0.84s =============",
+  "counts": {
+    "passed": 54,
+    "failed": 67,
+    "skipped": 0,
+    "errors": 50
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "directory": "/home/aadame/openhands-latest/runs/gpt-5.4/3libs/wentingzhao__commit0_combined-lite/openai/gpt-5.4_sdk_3e0a3a0_maxiter_100",
+  "timestamp": "2026-04-21T10:06:06.808897",
+  "main_output": {
+    "filename": "output.jsonl",
+    "lines": 3,
+    "cost": 11.659081250000002,
+    "time_statistics": {
+      "average_duration": 503.3707253333334,
+      "total_duration": 1510.112176,
+      "total_lines": 3,
+      "lines_with_duration": 3
+    }
+  },
+  "critic_files": [
+    {
+      "filename": "output.critic_attempt_1.jsonl",
+      "lines": 3,
+      "cost": 11.659081250000002,
+      "time_statistics": {
+        "average_duration": 503.3707253333334,
+        "total_duration": 1510.112176,
+        "total_lines": 3,
+        "lines_with_duration": 3
+      }
+    }
+  ],
+  "summary": {
+    "total_cost": 11.659081250000002,
+    "total_duration": 1510.112176,
+    "only_main_output_cost": 11.659081250000002,
+    "sum_critic_files": 11.659081250000002
+  },
+  "proxy_cost_summary": {
+    "total_proxy_cost": 0.0,
+    "zero_proxy_cost_instances": 0,
+    "only_main_output_proxy_cost": 0.0,
+    "sum_critic_files_proxy_cost": 0.0
+  }
+}

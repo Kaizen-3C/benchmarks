@@ -1,0 +1,439 @@
+{
+  "model": "gpt-5.4",
+  "split": "lite",
+  "completed": [
+    "wcwidth",
+    "deprecated",
+    "cachetools",
+    "voluptuous",
+    "portalocker",
+    "pyjwt",
+    "chardet",
+    "tinydb",
+    "simpy",
+    "imapclient",
+    "parsel",
+    "marshmallow",
+    "cookiecutter",
+    "babel",
+    "jinja",
+    "minitorch"
+  ],
+  "per_library": {
+    "wcwidth": {
+      "repo": "wcwidth",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 37.58,
+      "input_tokens": 44438,
+      "cached_input_tokens": 0,
+      "output_tokens": 3064,
+      "finish_reason": "stop",
+      "files_written": [
+        "wcwidth/unicode_versions.py",
+        "wcwidth/wcwidth.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "=================== 6 failed, 32 passed, 1 skipped in 0.72s ====================",
+      "counts": {
+        "passed": 32,
+        "failed": 6,
+        "skipped": 1,
+        "errors": 0
+      }
+    },
+    "deprecated": {
+      "repo": "deprecated",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 26.62,
+      "input_tokens": 28901,
+      "cached_input_tokens": 0,
+      "output_tokens": 2138,
+      "finish_reason": "stop",
+      "files_written": [
+        "deprecated/sphinx.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "============= 67 failed, 54 passed, 2 warnings, 50 errors in 0.84s =============",
+      "counts": {
+        "passed": 54,
+        "failed": 67,
+        "skipped": 0,
+        "errors": 50
+      }
+    },
+    "cachetools": {
+      "repo": "cachetools",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 8.49,
+      "input_tokens": 25675,
+      "cached_input_tokens": 0,
+      "output_tokens": 425,
+      "finish_reason": "stop",
+      "files_written": [
+        "src/cachetools/keys.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "================= 42 failed, 173 passed, 15 warnings in 0.43s ==================",
+      "counts": {
+        "passed": 173,
+        "failed": 42,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "voluptuous": {
+      "repo": "voluptuous",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 180.97,
+      "input_tokens": 34874,
+      "cached_input_tokens": 0,
+      "output_tokens": 16000,
+      "finish_reason": "length",
+      "files_written": [
+        "voluptuous/error.py",
+        "voluptuous/humanize.py",
+        "voluptuous/util.py",
+        "voluptuous/validators.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "============================== 2 errors in 0.20s ===============================",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 2
+      }
+    },
+    "portalocker": {
+      "repo": "portalocker",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 57.72,
+      "input_tokens": 21573,
+      "cached_input_tokens": 0,
+      "output_tokens": 5738,
+      "finish_reason": "stop",
+      "files_written": [
+        "portalocker/portalocker.py",
+        "portalocker/redis.py",
+        "portalocker/utils.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "============= 7 failed, 33 passed, 2 skipped, 2 warnings in 44.00s =============",
+      "counts": {
+        "passed": 33,
+        "failed": 7,
+        "skipped": 2,
+        "errors": 0
+      }
+    },
+    "pyjwt": {
+      "repo": "pyjwt",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 152.58,
+      "input_tokens": 23842,
+      "cached_input_tokens": 0,
+      "output_tokens": 13853,
+      "finish_reason": "stop",
+      "files_written": [
+        "jwt/api_jws.py",
+        "jwt/api_jwt.py",
+        "jwt/api_jwk.py",
+        "jwt/jwk_set_cache.py",
+        "jwt/jwks_client.py",
+        "jwt/help.py",
+        "jwt/utils.py",
+        "jwt/algorithms.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "============= 24 failed, 235 passed, 2 skipped, 1 xfailed in 6.00s =============",
+      "counts": {
+        "passed": 235,
+        "failed": 24,
+        "skipped": 2,
+        "errors": 0
+      }
+    },
+    "chardet": {
+      "repo": "chardet",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 187.33,
+      "input_tokens": 332545,
+      "cached_input_tokens": 0,
+      "output_tokens": 16000,
+      "finish_reason": "length",
+      "files_written": [
+        "chardet/charsetprober.py",
+        "chardet/cli/chardetect.py",
+        "chardet/escprober.py",
+        "chardet/hebrewprober.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.76s ===================",
+      "counts": {
+        "passed": 1,
+        "failed": 375,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "tinydb": {
+      "repo": "tinydb",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 71.82,
+      "input_tokens": 30231,
+      "cached_input_tokens": 0,
+      "output_tokens": 6618,
+      "finish_reason": "stop",
+      "files_written": [
+        "tinydb/database.py",
+        "tinydb/middlewares.py",
+        "tinydb/operations.py",
+        "tinydb/queries.py",
+        "tinydb/utils.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "================== 41 failed, 35 passed, 125 errors in 2.39s ===================",
+      "counts": {
+        "passed": 35,
+        "failed": 41,
+        "skipped": 0,
+        "errors": 125
+      }
+    },
+    "simpy": {
+      "repo": "simpy",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 147.13,
+      "input_tokens": 57482,
+      "cached_input_tokens": 0,
+      "output_tokens": 12874,
+      "finish_reason": "stop",
+      "files_written": [
+        "src/simpy/__init__.py",
+        "src/simpy/core.py",
+        "src/simpy/events.py",
+        "src/simpy/exceptions.py",
+        "src/simpy/resources/base.py",
+        "src/simpy/resources/container.py",
+        "src/simpy/resources/resource.py",
+        "src/simpy/resources/store.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "seconds.\nCheck () for more information.\nTraceback (most recent call last):\n  File \n\"/home/aadame/kaizen-commit0/.venv/lib/python3.12/site-packages/commit0/harness/\nrun_pytest_ids.py\", line 164, in main\n    raise EvaluationError(\ncommit0.harness.utils.EvaluationError: Evaluation error for simpy: Test timed \nout after 600 seconds.\nCheck () for more information.\n\nCheck \n(logs/pytest/simpy/single_shot_openai/59830ebc3a4184110566bf/run_pytest.log) for\nmore information.\nCheck () for more information.\n",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "imapclient": {
+      "repo": "imapclient",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 147.73,
+      "input_tokens": 49634,
+      "cached_input_tokens": 0,
+      "output_tokens": 12795,
+      "finish_reason": "stop",
+      "files_written": [
+        "imapclient/interact.py",
+        "imapclient/imapclient.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "============================== 18 errors in 0.51s ==============================",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 18
+      }
+    },
+    "parsel": {
+      "repo": "parsel",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 82.43,
+      "input_tokens": 23808,
+      "cached_input_tokens": 0,
+      "output_tokens": 6875,
+      "finish_reason": "stop",
+      "files_written": [
+        "parsel/csstranslator.py",
+        "parsel/selector.py",
+        "parsel/xpathfuncs.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "================== 113 failed, 93 passed, 2 skipped in 2.66s ===================",
+      "counts": {
+        "passed": 93,
+        "failed": 113,
+        "skipped": 2,
+        "errors": 0
+      }
+    },
+    "marshmallow": {
+      "repo": "marshmallow",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 133.55,
+      "input_tokens": 107556,
+      "cached_input_tokens": 0,
+      "output_tokens": 11583,
+      "finish_reason": "stop",
+      "files_written": [
+        "src/marshmallow/class_registry.py",
+        "src/marshmallow/decorators.py",
+        "src/marshmallow/error_store.py",
+        "src/marshmallow/orderedset.py",
+        "src/marshmallow/utils.py",
+        "src/marshmallow/validate.py"
+      ],
+      "pytest_exit": 4,
+      "pytest_summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-21 09:07:36,153 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "cookiecutter": {
+      "repo": "cookiecutter",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 115.6,
+      "input_tokens": 54848,
+      "cached_input_tokens": 0,
+      "output_tokens": 10094,
+      "finish_reason": "stop",
+      "files_written": [
+        "cookiecutter/cli.py",
+        "cookiecutter/config.py",
+        "cookiecutter/environment.py",
+        "cookiecutter/find.py",
+        "cookiecutter/generate.py",
+        "cookiecutter/hooks.py",
+        "cookiecutter/log.py",
+        "cookiecutter/prompt.py",
+        "cookiecutter/replay.py",
+        "cookiecutter/repository.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "============ 242 failed, 111 passed, 4 skipped, 14 errors in 8.10s =============",
+      "counts": {
+        "passed": 111,
+        "failed": 242,
+        "skipped": 4,
+        "errors": 14
+      }
+    },
+    "babel": {
+      "repo": "babel",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 239.85,
+      "input_tokens": 114011,
+      "cached_input_tokens": 0,
+      "output_tokens": 16000,
+      "finish_reason": "length",
+      "files_written": [
+        "babel/languages.py",
+        "babel/lists.py",
+        "babel/localedata.py",
+        "babel/localtime/_fallback.py",
+        "babel/localtime/_helpers.py",
+        "babel/localtime/_unix.py",
+        "babel/localtime/_win32.py",
+        "babel/messages/catalog.py",
+        "babel/messages/checkers.py",
+        "babel/messages/mofile.py",
+        "babel/messages/plurals.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "======================== 1 skipped, 22 errors in 1.79s =========================",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 1,
+        "errors": 22
+      }
+    },
+    "jinja": {
+      "repo": "jinja",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 33.48,
+      "input_tokens": 75559,
+      "cached_input_tokens": 0,
+      "output_tokens": 2215,
+      "finish_reason": "stop",
+      "files_written": [
+        "src/jinja2/tests.py",
+        "src/jinja2/visitor.py"
+      ],
+      "pytest_exit": 4,
+      "pytest_summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 09:16:11,805 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 09:16:11,843 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\n",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      }
+    },
+    "minitorch": {
+      "repo": "minitorch",
+      "branch": "single_shot_openai",
+      "model": "gpt-5.4",
+      "elapsed_s": 223.71,
+      "input_tokens": 70603,
+      "cached_input_tokens": 0,
+      "output_tokens": 15210,
+      "finish_reason": "stop",
+      "files_written": [
+        "minitorch/operators.py",
+        "minitorch/autodiff.py",
+        "minitorch/module.py",
+        "minitorch/scalar_functions.py",
+        "minitorch/scalar.py",
+        "minitorch/tensor_data.py",
+        "minitorch/tensor_ops.py",
+        "minitorch/tensor_functions.py",
+        "minitorch/tensor.py",
+        "minitorch/testing.py",
+        "minitorch/optim.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "============================== 10 errors in 1.88s ==============================",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 10
+      }
+    }
+  },
+  "aggregate": {
+    "libraries_total": 16,
+    "tests_passed": 767,
+    "tests_failed": 917,
+    "tests_skipped": 12,
+    "tests_errored": 241,
+    "tests_attempted_total": 1925,
+    "pass_rate_attempted": 0.3984,
+    "input_tokens_total": 1095580,
+    "cached_input_tokens_total": 0,
+    "output_tokens_total": 151482,
+    "wall_seconds_total": 1846.6,
+    "cost_usd_estimate": 2.88
+  }
+}

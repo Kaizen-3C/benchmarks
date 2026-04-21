@@ -1,0 +1,28 @@
+{
+  "repo": "pyjwt",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 152.58,
+  "input_tokens": 23842,
+  "cached_input_tokens": 0,
+  "output_tokens": 13853,
+  "finish_reason": "stop",
+  "files_written": [
+    "jwt/api_jws.py",
+    "jwt/api_jwt.py",
+    "jwt/api_jwk.py",
+    "jwt/jwk_set_cache.py",
+    "jwt/jwks_client.py",
+    "jwt/help.py",
+    "jwt/utils.py",
+    "jwt/algorithms.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "============= 24 failed, 235 passed, 2 skipped, 1 xfailed in 6.00s =============",
+  "counts": {
+    "passed": 235,
+    "failed": 24,
+    "skipped": 2,
+    "errors": 0
+  }
+}

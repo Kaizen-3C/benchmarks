@@ -1,0 +1,25 @@
+{
+  "repo": "tinydb",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 71.82,
+  "input_tokens": 30231,
+  "cached_input_tokens": 0,
+  "output_tokens": 6618,
+  "finish_reason": "stop",
+  "files_written": [
+    "tinydb/database.py",
+    "tinydb/middlewares.py",
+    "tinydb/operations.py",
+    "tinydb/queries.py",
+    "tinydb/utils.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "================== 41 failed, 35 passed, 125 errors in 2.39s ===================",
+  "counts": {
+    "passed": 35,
+    "failed": 41,
+    "skipped": 0,
+    "errors": 125
+  }
+}

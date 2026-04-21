@@ -1,0 +1,22 @@
+{
+  "repo": "jinja",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 33.48,
+  "input_tokens": 75559,
+  "cached_input_tokens": 0,
+  "output_tokens": 2215,
+  "finish_reason": "stop",
+  "files_written": [
+    "src/jinja2/tests.py",
+    "src/jinja2/visitor.py"
+  ],
+  "pytest_exit": 4,
+  "pytest_summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 09:16:11,805 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 09:16:11,843 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\n",
+  "counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0
+  }
+}

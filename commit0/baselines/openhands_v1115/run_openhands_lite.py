@@ -153,21 +153,31 @@ def run_one_pass(
     output_jsonl = output_dir / "output.jsonl"
 
     cmd = [
-        "uv", "run", "commit0-infer",
+        sys.executable, "-m", "benchmarks.commit0.run_infer",
         str(LLM_CONFIG),
         "--dataset", "wentingzhao/commit0_combined",
         "--split", "test",
         "--repo-split", "lite",
+        "--workspace", "docker",  # local Docker runtime; OpenHands' published runs used "remote" (needs RUNTIME_API_KEY for their hosted service)
         "--max-iterations", str(max_iterations),
         "--num-workers", str(num_workers),
         "--output-dir", str(output_dir),
     ]
+    # Required to bypass the SDK's strict workspace-root detection when running
+    # from a pip-installed venv rather than a sibling-source uv workspace. The
+    # env var was added by our local patch to build.py — see SETUP.md §6.1.
+    env = os.environ.copy()
+    env.setdefault(
+        "OH_SDK_PROJECT_ROOT",
+        str(BENCHMARKS_DIR / "vendor" / "software-agent-sdk"),
+    )
     print(f"\n=== Pass {pass_n} → {output_dir} ===")
     print(f"  cmd: {' '.join(cmd)}")
     print(f"  cost cap: ${cost_cap_usd:.2f}")
+    print(f"  OH_SDK_PROJECT_ROOT={env['OH_SDK_PROJECT_ROOT']}")
 
     t0 = time.time()
-    proc = subprocess.Popen(cmd, cwd=BENCHMARKS_DIR)
+    proc = subprocess.Popen(cmd, cwd=BENCHMARKS_DIR, env=env)
     monitor = CostMonitor(output_jsonl, cost_cap_usd, proc)
     monitor.start()
     proc.wait()
@@ -175,6 +185,14 @@ def run_one_pass(
     elapsed = time.time() - t0
 
     final_cost, final_n = sum_cost_from_jsonl(output_jsonl)
+    # If the inner process bailed quickly without producing any instances and
+    # we DIDN'T kill it for cap, that's an install/import error — surface it.
+    suspicious = (
+        not monitor.killed_for_cap
+        and final_n == 0
+        and elapsed < 30
+        and proc.returncode != 0
+    )
     return {
         "pass": pass_n,
         "exit_code": proc.returncode,
@@ -182,6 +200,7 @@ def run_one_pass(
         "instances_completed": final_n,
         "total_cost_usd": round(final_cost, 4),
         "killed_for_cap": monitor.killed_for_cap,
+        "suspicious_early_exit": suspicious,
         "output_jsonl": str(output_jsonl),
     }
 

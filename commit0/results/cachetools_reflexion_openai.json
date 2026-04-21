@@ -1,0 +1,66 @@
+{
+  "repo": "cachetools",
+  "branch": "reflexion_openai",
+  "model": "gpt-5.4",
+  "max_iters": 3,
+  "iters_run": 2,
+  "best_pass": 215,
+  "best_summary": "======================= 215 passed, 15 warnings in 0.30s =======================",
+  "iterations": [
+    {
+      "iter": 1,
+      "elapsed_s": 13.4,
+      "files_written": [
+        "src/cachetools/func.py"
+      ],
+      "summary": "================= 38 failed, 177 passed, 15 warnings in 0.45s ==================",
+      "counts": {
+        "passed": 177,
+        "failed": 38,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 24243,
+        "cached_input_tokens": 0,
+        "output_tokens": 910,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 1
+    },
+    {
+      "iter": 2,
+      "elapsed_s": 18.7,
+      "files_written": [
+        "src/cachetools/keys.py",
+        "src/cachetools/func.py"
+      ],
+      "summary": "======================= 215 passed, 15 warnings in 0.30s =======================",
+      "counts": {
+        "passed": 215,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "usage": {
+        "input_tokens": 30294,
+        "cached_input_tokens": 24960,
+        "output_tokens": 1389,
+        "stop_reason": "stop"
+      },
+      "pytest_exit": 0
+    }
+  ],
+  "totals": {
+    "input_tokens": 54537,
+    "cached_input_tokens": 24960,
+    "output_tokens": 2299,
+    "elapsed_s": 32.1
+  },
+  "counts": {
+    "passed": 215,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0
+  }
+}

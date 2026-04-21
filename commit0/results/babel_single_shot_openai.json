@@ -1,0 +1,31 @@
+{
+  "repo": "babel",
+  "branch": "single_shot_openai",
+  "model": "gpt-5.4",
+  "elapsed_s": 239.85,
+  "input_tokens": 114011,
+  "cached_input_tokens": 0,
+  "output_tokens": 16000,
+  "finish_reason": "length",
+  "files_written": [
+    "babel/languages.py",
+    "babel/lists.py",
+    "babel/localedata.py",
+    "babel/localtime/_fallback.py",
+    "babel/localtime/_helpers.py",
+    "babel/localtime/_unix.py",
+    "babel/localtime/_win32.py",
+    "babel/messages/catalog.py",
+    "babel/messages/checkers.py",
+    "babel/messages/mofile.py",
+    "babel/messages/plurals.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "======================== 1 skipped, 22 errors in 1.79s =========================",
+  "counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 1,
+    "errors": 22
+  }
+}
