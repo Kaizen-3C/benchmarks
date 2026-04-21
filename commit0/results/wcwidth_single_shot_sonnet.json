@@ -1,0 +1,24 @@
+{
+  "repo": "wcwidth",
+  "branch": "single_shot_sonnet",
+  "model": "claude-sonnet-4-6",
+  "elapsed_s": 49.09,
+  "input_tokens": 110808,
+  "output_tokens": 3339,
+  "stop_reason": "end_turn",
+  "files_written": [
+    "wcwidth/wcwidth.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "=================== 9 failed, 29 passed, 1 skipped in 0.61s ====================",
+  "pytest_summary_clean": "=================== 9 failed, 29 passed, 1 skipped in 0.61s ====================",
+  "counts": {
+    "passed": 29,
+    "failed": 9,
+    "skipped": 1,
+    "errors": 0,
+    "warnings": 0,
+    "xfailed": 0,
+    "deselected": 0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "repo": "babel",
+  "branch": "single_shot_sonnet",
+  "model": "claude-sonnet-4-6",
+  "elapsed_s": 184.44,
+  "input_tokens": 135042,
+  "output_tokens": 16000,
+  "stop_reason": "max_tokens",
+  "files_written": [
+    "babel/localedata.py",
+    "babel/core.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "======================== 1 skipped, 22 errors in 1.56s =========================",
+  "pytest_summary_clean": "======================== 1 skipped, 22 errors in 1.56s =========================",
+  "counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 1,
+    "errors": 22,
+    "warnings": 0,
+    "xfailed": 0,
+    "deselected": 0
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "repo": "cookiecutter",
+  "branch": "single_shot_sonnet",
+  "model": "claude-sonnet-4-6",
+  "elapsed_s": 192.24,
+  "input_tokens": 61336,
+  "output_tokens": 16000,
+  "stop_reason": "max_tokens",
+  "files_written": [
+    "cookiecutter/__init__.py",
+    "cookiecutter/__main__.py",
+    "cookiecutter/exceptions.py",
+    "cookiecutter/log.py",
+    "cookiecutter/utils.py",
+    "cookiecutter/environment.py",
+    "cookiecutter/extensions.py",
+    "cookiecutter/config.py",
+    "cookiecutter/find.py",
+    "cookiecutter/replay.py",
+    "cookiecutter/hooks.py",
+    "cookiecutter/prompt.py",
+    "cookiecutter/generate.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "================== 248 failed, 119 passed, 4 skipped in 7.14s ==================",
+  "pytest_summary_clean": "================== 248 failed, 119 passed, 4 skipped in 7.14s ==================",
+  "counts": {
+    "passed": 119,
+    "failed": 248,
+    "skipped": 4,
+    "errors": 0,
+    "warnings": 0,
+    "xfailed": 0,
+    "deselected": 0
+  }
+}

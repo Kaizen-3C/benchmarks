@@ -1,0 +1,492 @@
+{
+  "model": "claude-sonnet-4-6",
+  "split": "lite",
+  "completed": [
+    "wcwidth",
+    "deprecated",
+    "cachetools",
+    "voluptuous",
+    "portalocker",
+    "pyjwt",
+    "chardet",
+    "tinydb",
+    "simpy",
+    "imapclient",
+    "parsel",
+    "marshmallow",
+    "cookiecutter",
+    "babel",
+    "jinja",
+    "minitorch"
+  ],
+  "per_library": {
+    "wcwidth": {
+      "repo": "wcwidth",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 49.09,
+      "input_tokens": 110808,
+      "output_tokens": 3339,
+      "stop_reason": "end_turn",
+      "files_written": [
+        "wcwidth/wcwidth.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "=================== 9 failed, 29 passed, 1 skipped in 0.61s ====================",
+      "pytest_summary_clean": "=================== 9 failed, 29 passed, 1 skipped in 0.61s ====================",
+      "counts": {
+        "passed": 29,
+        "failed": 9,
+        "skipped": 1,
+        "errors": 0,
+        "warnings": 0,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    },
+    "deprecated": {
+      "repo": "deprecated",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 173.69,
+      "input_tokens": 132734,
+      "output_tokens": 5323,
+      "stop_reason": "end_turn",
+      "files_written": [
+        "deprecated/__init__.py",
+        "deprecated/classic.py",
+        "deprecated/sphinx.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "============ 38 failed, 89 passed, 5 warnings, 44 errors in 37.93s =============",
+      "pytest_summary_clean": "============ 38 failed, 89 passed, 5 warnings, 44 errors in 37.93s =============",
+      "counts": {
+        "passed": 89,
+        "failed": 38,
+        "skipped": 0,
+        "errors": 44,
+        "warnings": 5,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    },
+    "cachetools": {
+      "repo": "cachetools",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 30.41,
+      "input_tokens": 28614,
+      "output_tokens": 3483,
+      "stop_reason": "end_turn",
+      "files_written": [
+        "src/cachetools/keys.py",
+        "src/cachetools/func.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "================== 1 failed, 214 passed, 15 warnings in 0.25s ==================",
+      "pytest_summary_clean": "================== 1 failed, 214 passed, 15 warnings in 0.25s ==================",
+      "counts": {
+        "passed": 214,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0,
+        "warnings": 15,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    },
+    "voluptuous": {
+      "repo": "voluptuous",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 213.96,
+      "input_tokens": 44683,
+      "output_tokens": 16000,
+      "stop_reason": "max_tokens",
+      "files_written": [
+        "voluptuous/validators.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "============================== 2 errors in 0.17s ===============================",
+      "pytest_summary_clean": "============================== 2 errors in 0.17s ===============================",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 2,
+        "warnings": 0,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    },
+    "portalocker": {
+      "repo": "portalocker",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 195.69,
+      "input_tokens": 31446,
+      "output_tokens": 14298,
+      "stop_reason": "end_turn",
+      "files_written": [
+        "portalocker/__about__.py",
+        "portalocker/__init__.py",
+        "portalocker/constants.py",
+        "portalocker/exceptions.py",
+        "portalocker/portalocker.py",
+        "portalocker/utils.py",
+        "portalocker/redis.py",
+        "portalocker_tests/tests.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "============= 11 failed, 29 passed, 2 skipped, 2 warnings in 4.14s =============",
+      "pytest_summary_clean": "============= 11 failed, 29 passed, 2 skipped, 2 warnings in 4.14s =============",
+      "counts": {
+        "passed": 29,
+        "failed": 11,
+        "skipped": 2,
+        "errors": 0,
+        "warnings": 2,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    },
+    "pyjwt": {
+      "repo": "pyjwt",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 170.16,
+      "input_tokens": 23218,
+      "output_tokens": 16000,
+      "stop_reason": "max_tokens",
+      "files_written": [
+        "jwt/exceptions.py",
+        "jwt/warnings.py",
+        "jwt/types.py",
+        "jwt/utils.py",
+        "jwt/algorithms.py",
+        "jwt/api_jws.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "======== 44 failed, 133 passed, 2 skipped, 1 xfailed, 5 errors in 1.46s ========",
+      "pytest_summary_clean": "======== 44 failed, 133 passed, 2 skipped, 1 xfailed, 5 errors in 1.46s ========",
+      "counts": {
+        "passed": 133,
+        "failed": 44,
+        "skipped": 2,
+        "errors": 5,
+        "warnings": 0,
+        "xfailed": 1,
+        "deselected": 0
+      }
+    },
+    "chardet": {
+      "repo": "chardet",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 179.46,
+      "input_tokens": 341648,
+      "output_tokens": 16000,
+      "stop_reason": "max_tokens",
+      "files_written": [
+        "chardet/cli/chardetect.py",
+        "chardet/escprober.py",
+        "chardet/hebrewprober.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.04s ===================",
+      "pytest_summary_clean": "=================== 375 failed, 1 passed, 7 xfailed in 5.04s ===================",
+      "counts": {
+        "passed": 1,
+        "failed": 375,
+        "skipped": 0,
+        "errors": 0,
+        "warnings": 0,
+        "xfailed": 7,
+        "deselected": 0
+      }
+    },
+    "tinydb": {
+      "repo": "tinydb",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 165.04,
+      "input_tokens": 33817,
+      "output_tokens": 14123,
+      "stop_reason": "end_turn",
+      "files_written": [
+        "tinydb/utils.py",
+        "tinydb/storages.py",
+        "tinydb/queries.py",
+        "tinydb/operations.py",
+        "tinydb/table.py",
+        "tinydb/database.py",
+        "tinydb/middlewares.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "======================== 24 failed, 177 passed in 2.24s ========================",
+      "pytest_summary_clean": "======================== 24 failed, 177 passed in 2.24s ========================",
+      "counts": {
+        "passed": 177,
+        "failed": 24,
+        "skipped": 0,
+        "errors": 0,
+        "warnings": 0,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    },
+    "simpy": {
+      "repo": "simpy",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 242.81,
+      "input_tokens": 64345,
+      "output_tokens": 15999,
+      "stop_reason": "max_tokens",
+      "files_written": [
+        "src/simpy/exceptions.py",
+        "src/simpy/events.py",
+        "src/simpy/core.py",
+        "src/simpy/resources/__init__.py",
+        "src/simpy/resources/base.py",
+        "src/simpy/resources/container.py",
+        "src/simpy/resources/resource.py",
+        "src/simpy/resources/store.py",
+        "src/simpy/rt.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "================ 24 failed, 116 passed, 10 deselected in 2.12s =================",
+      "pytest_summary_clean": "================ 24 failed, 116 passed, 10 deselected in 2.12s =================",
+      "counts": {
+        "passed": 116,
+        "failed": 24,
+        "skipped": 0,
+        "errors": 0,
+        "warnings": 0,
+        "xfailed": 0,
+        "deselected": 10
+      }
+    },
+    "imapclient": {
+      "repo": "imapclient",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 229.18,
+      "input_tokens": 50865,
+      "output_tokens": 15999,
+      "stop_reason": "max_tokens",
+      "files_written": [
+        "imapclient/version.py",
+        "imapclient/exceptions.py",
+        "imapclient/typing_imapclient.py",
+        "imapclient/fixed_offset.py",
+        "imapclient/util.py",
+        "imapclient/datetime_util.py",
+        "imapclient/imap_utf7.py",
+        "imapclient/response_types.py",
+        "imapclient/response_lexer.py",
+        "imapclient/response_parser.py",
+        "imapclient/imap4.py",
+        "imapclient/tls.py",
+        "imapclient/testable_imapclient.py",
+        "imapclient/config.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "=================== 7 failed, 16 passed, 15 errors in 0.49s ====================",
+      "pytest_summary_clean": "=================== 7 failed, 16 passed, 15 errors in 0.49s ====================",
+      "counts": {
+        "passed": 16,
+        "failed": 7,
+        "skipped": 0,
+        "errors": 15,
+        "warnings": 0,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    },
+    "parsel": {
+      "repo": "parsel",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 124.23,
+      "input_tokens": 26177,
+      "output_tokens": 9361,
+      "stop_reason": "end_turn",
+      "files_written": [
+        "parsel/utils.py",
+        "parsel/xpathfuncs.py",
+        "parsel/csstranslator.py",
+        "parsel/selector.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "================== 110 failed, 96 passed, 2 skipped in 2.42s ===================",
+      "pytest_summary_clean": "================== 110 failed, 96 passed, 2 skipped in 2.42s ===================",
+      "counts": {
+        "passed": 96,
+        "failed": 110,
+        "skipped": 2,
+        "errors": 0,
+        "warnings": 0,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    },
+    "marshmallow": {
+      "repo": "marshmallow",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 210.86,
+      "input_tokens": 128397,
+      "output_tokens": 16000,
+      "stop_reason": "max_tokens",
+      "files_written": [
+        "src/marshmallow/utils.py",
+        "src/marshmallow/exceptions.py",
+        "src/marshmallow/error_store.py",
+        "src/marshmallow/class_registry.py",
+        "src/marshmallow/decorators.py",
+        "src/marshmallow/orderedset.py",
+        "src/marshmallow/base.py"
+      ],
+      "pytest_exit": 4,
+      "pytest_summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 16:38:24,132 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 16:38:24,172 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\n",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0,
+        "warnings": 0,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    },
+    "cookiecutter": {
+      "repo": "cookiecutter",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 192.24,
+      "input_tokens": 61336,
+      "output_tokens": 16000,
+      "stop_reason": "max_tokens",
+      "files_written": [
+        "cookiecutter/__init__.py",
+        "cookiecutter/__main__.py",
+        "cookiecutter/exceptions.py",
+        "cookiecutter/log.py",
+        "cookiecutter/utils.py",
+        "cookiecutter/environment.py",
+        "cookiecutter/extensions.py",
+        "cookiecutter/config.py",
+        "cookiecutter/find.py",
+        "cookiecutter/replay.py",
+        "cookiecutter/hooks.py",
+        "cookiecutter/prompt.py",
+        "cookiecutter/generate.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "================== 248 failed, 119 passed, 4 skipped in 7.14s ==================",
+      "pytest_summary_clean": "================== 248 failed, 119 passed, 4 skipped in 7.14s ==================",
+      "counts": {
+        "passed": 119,
+        "failed": 248,
+        "skipped": 4,
+        "errors": 0,
+        "warnings": 0,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    },
+    "babel": {
+      "repo": "babel",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 184.44,
+      "input_tokens": 135042,
+      "output_tokens": 16000,
+      "stop_reason": "max_tokens",
+      "files_written": [
+        "babel/localedata.py",
+        "babel/core.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "======================== 1 skipped, 22 errors in 1.56s =========================",
+      "pytest_summary_clean": "======================== 1 skipped, 22 errors in 1.56s =========================",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 1,
+        "errors": 22,
+        "warnings": 0,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    },
+    "jinja": {
+      "repo": "jinja",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 237.78,
+      "input_tokens": 88798,
+      "output_tokens": 15999,
+      "stop_reason": "max_tokens",
+      "files_written": [
+        "src/jinja2/utils.py",
+        "src/jinja2/visitor.py"
+      ],
+      "pytest_exit": 4,
+      "pytest_summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 16:50:54,337 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 16:50:54,388 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\n",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0,
+        "warnings": 0,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    },
+    "minitorch": {
+      "repo": "minitorch",
+      "branch": "single_shot_sonnet",
+      "model": "claude-sonnet-4-6",
+      "elapsed_s": 172.01,
+      "input_tokens": 83680,
+      "output_tokens": 16000,
+      "stop_reason": "max_tokens",
+      "files_written": [
+        "minitorch/operators.py",
+        "minitorch/module.py",
+        "minitorch/autodiff.py",
+        "minitorch/scalar_functions.py",
+        "minitorch/scalar.py",
+        "minitorch/tensor_data.py",
+        "minitorch/tensor_ops.py"
+      ],
+      "pytest_exit": 1,
+      "pytest_summary": "============================== 10 errors in 1.16s ==============================",
+      "pytest_summary_clean": "============================== 10 errors in 1.16s ==============================",
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 10,
+        "warnings": 0,
+        "xfailed": 0,
+        "deselected": 0
+      }
+    }
+  },
+  "aggregate": {
+    "libraries_total": 16,
+    "tests_passed": 1019,
+    "tests_failed": 891,
+    "tests_skipped": 12,
+    "tests_errored": 98,
+    "tests_attempted_total": 2008,
+    "pass_rate_attempted": 0.5075,
+    "input_tokens_total": 1385608,
+    "output_tokens_total": 209924,
+    "wall_seconds_total": 2771.1,
+    "cost_usd_estimate": 7.31
+  }
+}

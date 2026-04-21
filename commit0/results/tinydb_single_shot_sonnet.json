@@ -1,0 +1,30 @@
+{
+  "repo": "tinydb",
+  "branch": "single_shot_sonnet",
+  "model": "claude-sonnet-4-6",
+  "elapsed_s": 165.04,
+  "input_tokens": 33817,
+  "output_tokens": 14123,
+  "stop_reason": "end_turn",
+  "files_written": [
+    "tinydb/utils.py",
+    "tinydb/storages.py",
+    "tinydb/queries.py",
+    "tinydb/operations.py",
+    "tinydb/table.py",
+    "tinydb/database.py",
+    "tinydb/middlewares.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "======================== 24 failed, 177 passed in 2.24s ========================",
+  "pytest_summary_clean": "======================== 24 failed, 177 passed in 2.24s ========================",
+  "counts": {
+    "passed": 177,
+    "failed": 24,
+    "skipped": 0,
+    "errors": 0,
+    "warnings": 0,
+    "xfailed": 0,
+    "deselected": 0
+  }
+}

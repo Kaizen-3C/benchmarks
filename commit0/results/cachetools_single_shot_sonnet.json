@@ -1,0 +1,25 @@
+{
+  "repo": "cachetools",
+  "branch": "single_shot_sonnet",
+  "model": "claude-sonnet-4-6",
+  "elapsed_s": 30.41,
+  "input_tokens": 28614,
+  "output_tokens": 3483,
+  "stop_reason": "end_turn",
+  "files_written": [
+    "src/cachetools/keys.py",
+    "src/cachetools/func.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "================== 1 failed, 214 passed, 15 warnings in 0.25s ==================",
+  "pytest_summary_clean": "================== 1 failed, 214 passed, 15 warnings in 0.25s ==================",
+  "counts": {
+    "passed": 214,
+    "failed": 1,
+    "skipped": 0,
+    "errors": 0,
+    "warnings": 15,
+    "xfailed": 0,
+    "deselected": 0
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "repo": "chardet",
+  "branch": "single_shot_sonnet",
+  "model": "claude-sonnet-4-6",
+  "elapsed_s": 179.46,
+  "input_tokens": 341648,
+  "output_tokens": 16000,
+  "stop_reason": "max_tokens",
+  "files_written": [
+    "chardet/cli/chardetect.py",
+    "chardet/escprober.py",
+    "chardet/hebrewprober.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.04s ===================",
+  "pytest_summary_clean": "=================== 375 failed, 1 passed, 7 xfailed in 5.04s ===================",
+  "counts": {
+    "passed": 1,
+    "failed": 375,
+    "skipped": 0,
+    "errors": 0,
+    "warnings": 0,
+    "xfailed": 7,
+    "deselected": 0
+  }
+}

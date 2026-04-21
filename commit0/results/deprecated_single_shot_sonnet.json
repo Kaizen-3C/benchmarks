@@ -1,0 +1,26 @@
+{
+  "repo": "deprecated",
+  "branch": "single_shot_sonnet",
+  "model": "claude-sonnet-4-6",
+  "elapsed_s": 173.69,
+  "input_tokens": 132734,
+  "output_tokens": 5323,
+  "stop_reason": "end_turn",
+  "files_written": [
+    "deprecated/__init__.py",
+    "deprecated/classic.py",
+    "deprecated/sphinx.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "============ 38 failed, 89 passed, 5 warnings, 44 errors in 37.93s =============",
+  "pytest_summary_clean": "============ 38 failed, 89 passed, 5 warnings, 44 errors in 37.93s =============",
+  "counts": {
+    "passed": 89,
+    "failed": 38,
+    "skipped": 0,
+    "errors": 44,
+    "warnings": 5,
+    "xfailed": 0,
+    "deselected": 0
+  }
+}

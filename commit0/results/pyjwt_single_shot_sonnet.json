@@ -1,0 +1,29 @@
+{
+  "repo": "pyjwt",
+  "branch": "single_shot_sonnet",
+  "model": "claude-sonnet-4-6",
+  "elapsed_s": 170.16,
+  "input_tokens": 23218,
+  "output_tokens": 16000,
+  "stop_reason": "max_tokens",
+  "files_written": [
+    "jwt/exceptions.py",
+    "jwt/warnings.py",
+    "jwt/types.py",
+    "jwt/utils.py",
+    "jwt/algorithms.py",
+    "jwt/api_jws.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "======== 44 failed, 133 passed, 2 skipped, 1 xfailed, 5 errors in 1.46s ========",
+  "pytest_summary_clean": "======== 44 failed, 133 passed, 2 skipped, 1 xfailed, 5 errors in 1.46s ========",
+  "counts": {
+    "passed": 133,
+    "failed": 44,
+    "skipped": 2,
+    "errors": 5,
+    "warnings": 0,
+    "xfailed": 1,
+    "deselected": 0
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "repo": "portalocker",
+  "branch": "single_shot_sonnet",
+  "model": "claude-sonnet-4-6",
+  "elapsed_s": 195.69,
+  "input_tokens": 31446,
+  "output_tokens": 14298,
+  "stop_reason": "end_turn",
+  "files_written": [
+    "portalocker/__about__.py",
+    "portalocker/__init__.py",
+    "portalocker/constants.py",
+    "portalocker/exceptions.py",
+    "portalocker/portalocker.py",
+    "portalocker/utils.py",
+    "portalocker/redis.py",
+    "portalocker_tests/tests.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "============= 11 failed, 29 passed, 2 skipped, 2 warnings in 4.14s =============",
+  "pytest_summary_clean": "============= 11 failed, 29 passed, 2 skipped, 2 warnings in 4.14s =============",
+  "counts": {
+    "passed": 29,
+    "failed": 11,
+    "skipped": 2,
+    "errors": 0,
+    "warnings": 2,
+    "xfailed": 0,
+    "deselected": 0
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "repo": "simpy",
+  "branch": "single_shot_sonnet",
+  "model": "claude-sonnet-4-6",
+  "elapsed_s": 242.81,
+  "input_tokens": 64345,
+  "output_tokens": 15999,
+  "stop_reason": "max_tokens",
+  "files_written": [
+    "src/simpy/exceptions.py",
+    "src/simpy/events.py",
+    "src/simpy/core.py",
+    "src/simpy/resources/__init__.py",
+    "src/simpy/resources/base.py",
+    "src/simpy/resources/container.py",
+    "src/simpy/resources/resource.py",
+    "src/simpy/resources/store.py",
+    "src/simpy/rt.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "================ 24 failed, 116 passed, 10 deselected in 2.12s =================",
+  "pytest_summary_clean": "================ 24 failed, 116 passed, 10 deselected in 2.12s =================",
+  "counts": {
+    "passed": 116,
+    "failed": 24,
+    "skipped": 0,
+    "errors": 0,
+    "warnings": 0,
+    "xfailed": 0,
+    "deselected": 10
+  }
+}

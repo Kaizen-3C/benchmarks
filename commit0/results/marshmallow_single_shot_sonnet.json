@@ -1,0 +1,29 @@
+{
+  "repo": "marshmallow",
+  "branch": "single_shot_sonnet",
+  "model": "claude-sonnet-4-6",
+  "elapsed_s": 210.86,
+  "input_tokens": 128397,
+  "output_tokens": 16000,
+  "stop_reason": "max_tokens",
+  "files_written": [
+    "src/marshmallow/utils.py",
+    "src/marshmallow/exceptions.py",
+    "src/marshmallow/error_store.py",
+    "src/marshmallow/class_registry.py",
+    "src/marshmallow/decorators.py",
+    "src/marshmallow/orderedset.py",
+    "src/marshmallow/base.py"
+  ],
+  "pytest_exit": 4,
+  "pytest_summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 16:38:24,132 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-20 16:38:24,172 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\n",
+  "counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0,
+    "warnings": 0,
+    "xfailed": 0,
+    "deselected": 0
+  }
+}

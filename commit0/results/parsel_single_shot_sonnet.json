@@ -1,0 +1,27 @@
+{
+  "repo": "parsel",
+  "branch": "single_shot_sonnet",
+  "model": "claude-sonnet-4-6",
+  "elapsed_s": 124.23,
+  "input_tokens": 26177,
+  "output_tokens": 9361,
+  "stop_reason": "end_turn",
+  "files_written": [
+    "parsel/utils.py",
+    "parsel/xpathfuncs.py",
+    "parsel/csstranslator.py",
+    "parsel/selector.py"
+  ],
+  "pytest_exit": 1,
+  "pytest_summary": "================== 110 failed, 96 passed, 2 skipped in 2.42s ===================",
+  "pytest_summary_clean": "================== 110 failed, 96 passed, 2 skipped in 2.42s ===================",
+  "counts": {
+    "passed": 96,
+    "failed": 110,
+    "skipped": 2,
+    "errors": 0,
+    "warnings": 0,
+    "xfailed": 0,
+    "deselected": 0
+  }
+}
