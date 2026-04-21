@@ -1,0 +1,1402 @@
+{
+  "repo": "chardet",
+  "provider": "openai",
+  "model": "gpt-5.4",
+  "branch": "kaizen_delta",
+  "files_total": 45,
+  "files_accepted": 14,
+  "elapsed_s": 3693.5,
+  "final_summary": "=============================== 1 error in 0.69s ===============================",
+  "final_counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 1
+  },
+  "totals": {
+    "input_tokens": 1262592,
+    "output_tokens": 306323,
+    "cache_read_tokens": 880384,
+    "cache_write_tokens": 0,
+    "cost_usd": 3.651
+  },
+  "per_file": [
+    {
+      "file": "chardet/cli/__init__.py",
+      "size": 52,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 1.5,
+          "usage": {
+            "input": 12859,
+            "output": 21,
+            "cache_read": 0,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.24s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/metadata/__init__.py",
+      "size": 206,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 2.3,
+          "usage": {
+            "input": 12859,
+            "output": 73,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.06s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/version.py",
+      "size": 242,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 1.6,
+          "usage": {
+            "input": 12918,
+            "output": 73,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 4.88s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/big5prober.py",
+      "size": 1786,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.4,
+          "usage": {
+            "input": 12963,
+            "output": 409,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.15s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/cp949prober.py",
+      "size": 565,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 2.2,
+          "usage": {
+            "input": 12965,
+            "output": 147,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.10s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/johabprober.py",
+      "size": 1823,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.2,
+          "usage": {
+            "input": 12963,
+            "output": 421,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.02s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/euckrprober.py",
+      "size": 566,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 2.1,
+          "usage": {
+            "input": 12967,
+            "output": 151,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.42s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/euctwprober.py",
+      "size": 566,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.8,
+          "usage": {
+            "input": 12967,
+            "output": 151,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.38s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/gb2312prober.py",
+      "size": 572,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 2.6,
+          "usage": {
+            "input": 12969,
+            "output": 150,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.21s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/mbcsgroupprober.py",
+      "size": 856,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.3,
+          "usage": {
+            "input": 13089,
+            "output": 257,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.21s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/enums.py",
+      "size": 1603,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 4.9,
+          "usage": {
+            "input": 13284,
+            "output": 440,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.35s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/utf8prober.py",
+      "size": 1546,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 5.2,
+          "usage": {
+            "input": 12965,
+            "output": 380,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 4.98s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/charsetgroupprober.py",
+      "size": 2343,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.1,
+          "usage": {
+            "input": 12939,
+            "output": 545,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.06s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/mbcharsetprober.py",
+      "size": 2102,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.0,
+          "usage": {
+            "input": 12957,
+            "output": 483,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=================== 375 failed, 1 passed, 7 xfailed in 5.38s ===================",
+          "counts": {
+            "passed": 1,
+            "failed": 375,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/sbcsgroupprober.py",
+      "size": 2292,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.2,
+          "usage": {
+            "input": 13444,
+            "output": 655,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.71s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 7.2,
+          "usage": {
+            "input": 13489,
+            "output": 665,
+            "cache_read": 13056,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.65s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/cli/chardetect.py",
+      "size": 2090,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.3,
+          "usage": {
+            "input": 13104,
+            "output": 486,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.73s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 6.7,
+          "usage": {
+            "input": 13149,
+            "output": 492,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.67s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/eucjpprober.py",
+      "size": 3420,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.4,
+          "usage": {
+            "input": 13005,
+            "output": 512,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.65s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 10.7,
+          "usage": {
+            "input": 13050,
+            "output": 734,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.70s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/escprober.py",
+      "size": 2778,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.3,
+          "usage": {
+            "input": 13152,
+            "output": 637,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.63s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 8.0,
+          "usage": {
+            "input": 13197,
+            "output": 641,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.61s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/sjisprober.py",
+      "size": 2241,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.1,
+          "usage": {
+            "input": 12997,
+            "output": 501,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.63s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 6.7,
+          "usage": {
+            "input": 13042,
+            "output": 506,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.68s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/charsetprober.py",
+      "size": 3180,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 12.7,
+          "usage": {
+            "input": 13181,
+            "output": 691,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.62s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 8.9,
+          "usage": {
+            "input": 13226,
+            "output": 756,
+            "cache_read": 13056,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.62s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/codingstatemachine.py",
+      "size": 2634,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 9.4,
+          "usage": {
+            "input": 13162,
+            "output": 633,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.89s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 7.6,
+          "usage": {
+            "input": 13207,
+            "output": 582,
+            "cache_read": 13056,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.65s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/__init__.py",
+      "size": 3674,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 8.4,
+          "usage": {
+            "input": 13612,
+            "output": 775,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.75s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 8.8,
+          "usage": {
+            "input": 13657,
+            "output": 780,
+            "cache_read": 13056,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.66s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/latin1prober.py",
+      "size": 4309,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 18.4,
+          "usage": {
+            "input": 13900,
+            "output": 1663,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.70s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 18.0,
+          "usage": {
+            "input": 13945,
+            "output": 1658,
+            "cache_read": 13056,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.62s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/sbcharsetprober.py",
+      "size": 3409,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 10.0,
+          "usage": {
+            "input": 13097,
+            "output": 843,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.63s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 9.6,
+          "usage": {
+            "input": 13142,
+            "output": 800,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.62s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/hebrewprober.py",
+      "size": 3601,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 10.7,
+          "usage": {
+            "input": 13082,
+            "output": 896,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.64s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 10.7,
+          "usage": {
+            "input": 13127,
+            "output": 885,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.64s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/chardistribution.py",
+      "size": 7051,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 19.5,
+          "usage": {
+            "input": 13653,
+            "output": 1757,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.65s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 22.8,
+          "usage": {
+            "input": 13698,
+            "output": 1965,
+            "cache_read": 13056,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.62s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/utf1632prober.py",
+      "size": 9747,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 20.9,
+          "usage": {
+            "input": 13361,
+            "output": 1902,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.62s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 27.7,
+          "usage": {
+            "input": 13406,
+            "output": 2661,
+            "cache_read": 13056,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.65s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/universaldetector.py",
+      "size": 10525,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 28.5,
+          "usage": {
+            "input": 13660,
+            "output": 2429,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.62s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 24.7,
+          "usage": {
+            "input": 13705,
+            "output": 2307,
+            "cache_read": 13056,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.67s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/metadata/languages.py",
+      "size": 11661,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 39.1,
+          "usage": {
+            "input": 16021,
+            "output": 3499,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.63s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 36.0,
+          "usage": {
+            "input": 16066,
+            "output": 3516,
+            "cache_read": 15104,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.64s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/escsm.py",
+      "size": 8981,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 42.3,
+          "usage": {
+            "input": 17317,
+            "output": 4444,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.70s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 44.7,
+          "usage": {
+            "input": 17362,
+            "output": 4666,
+            "cache_read": 17152,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.64s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/euckrfreq.py",
+      "size": 13934,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 91.9,
+          "usage": {
+            "input": 21303,
+            "output": 8455,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.65s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 94.8,
+          "usage": {
+            "input": 21348,
+            "output": 8664,
+            "cache_read": 20224,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.60s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/jpcntx.py",
+      "size": 21442,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 158.5,
+          "usage": {
+            "input": 33680,
+            "output": 16000,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "result": "empty_response"
+        }
+      ]
+    },
+    {
+      "file": "chardet/mbcssm.py",
+      "size": 23256,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 149.2,
+          "usage": {
+            "input": 24928,
+            "output": 15017,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.64s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 123.1,
+          "usage": {
+            "input": 24973,
+            "output": 12397,
+            "cache_read": 24320,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.63s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/gb2312freq.py",
+      "size": 21545,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 148.5,
+          "usage": {
+            "input": 26934,
+            "output": 14085,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.65s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 155.1,
+          "usage": {
+            "input": 26979,
+            "output": 14085,
+            "cache_read": 26368,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.63s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/jisfreq.py",
+      "size": 25182,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 168.7,
+          "usage": {
+            "input": 29360,
+            "output": 16000,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "result": "empty_response"
+        }
+      ]
+    },
+    {
+      "file": "chardet/johabfreq.py",
+      "size": 29469,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 168.5,
+          "usage": {
+            "input": 30668,
+            "output": 16000,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "result": "empty_response"
+        }
+      ]
+    },
+    {
+      "file": "chardet/langhebrewmodel.py",
+      "size": 30361,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 171.9,
+          "usage": {
+            "input": 38256,
+            "output": 16000,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "result": "empty_response"
+        }
+      ]
+    },
+    {
+      "file": "chardet/langturkishmodel.py",
+      "size": 30379,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 161.6,
+          "usage": {
+            "input": 38244,
+            "output": 16000,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "result": "empty_response"
+        }
+      ]
+    },
+    {
+      "file": "chardet/langthaimodel.py",
+      "size": 30530,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 169.2,
+          "usage": {
+            "input": 38312,
+            "output": 16000,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "result": "empty_response"
+        }
+      ]
+    },
+    {
+      "file": "chardet/big5freq.py",
+      "size": 31234,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 165.9,
+          "usage": {
+            "input": 32601,
+            "output": 16000,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "result": "empty_response"
+        }
+      ]
+    },
+    {
+      "file": "chardet/euctwfreq.py",
+      "size": 31237,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 160.5,
+          "usage": {
+            "input": 32601,
+            "output": 16000,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "result": "empty_response"
+        }
+      ]
+    },
+    {
+      "file": "chardet/langgreekmodel.py",
+      "size": 31446,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 165.8,
+          "usage": {
+            "input": 37624,
+            "output": 16000,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "result": "empty_response"
+        }
+      ]
+    },
+    {
+      "file": "chardet/langhungarianmodel.py",
+      "size": 33147,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 172.4,
+          "usage": {
+            "input": 37505,
+            "output": 16000,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "result": "empty_response"
+        }
+      ]
+    },
+    {
+      "file": "chardet/langbulgarianmodel.py",
+      "size": 9817,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 46.8,
+          "usage": {
+            "input": 37574,
+            "output": 4092,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.80s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 52.6,
+          "usage": {
+            "input": 37619,
+            "output": 4574,
+            "cache_read": 36608,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.71s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "chardet/langrussianmodel.py",
+      "size": 9785,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 117.2,
+          "usage": {
+            "input": 35079,
+            "output": 11515,
+            "cache_read": 12032,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.63s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 42.4,
+          "usage": {
+            "input": 35124,
+            "output": 3801,
+            "cache_read": 34560,
+            "cache_write": 0
+          },
+          "summary": "=============================== 1 error in 0.64s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 1
+          }
+        }
+      ]
+    }
+  ]
+}

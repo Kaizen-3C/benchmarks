@@ -1,0 +1,385 @@
+{
+  "repo": "portalocker",
+  "provider": "openai",
+  "model": "gpt-5.4",
+  "branch": "kaizen_delta",
+  "files_total": 15,
+  "files_accepted": 15,
+  "elapsed_s": 281.9,
+  "final_summary": "=================== 19 failed, 21 passed, 2 skipped in 5.09s ===================",
+  "final_counts": {
+    "passed": 21,
+    "failed": 19,
+    "skipped": 2,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 170160,
+    "output_tokens": 12249,
+    "cache_read_tokens": 139776,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.1779
+  },
+  "per_file": [
+    {
+      "file": "portalocker_tests/__init__.py",
+      "size": 36,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 1.6,
+          "usage": {
+            "input": 10738,
+            "output": 17,
+            "cache_read": 0,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:34:22,865 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:34:22,909 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker/__about__.py",
+      "size": 227,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 2.4,
+          "usage": {
+            "input": 10810,
+            "output": 83,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:34:32,244 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:34:32,289 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker_tests/temporary_file_lock.py",
+      "size": 296,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 1.6,
+          "usage": {
+            "input": 10798,
+            "output": 78,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-21 16:34:40,686 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker/exceptions.py",
+      "size": 823,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.7,
+          "usage": {
+            "input": 10837,
+            "output": 183,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:34:51,798 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:34:51,860 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker_tests/test_combined.py",
+      "size": 612,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 2.2,
+          "usage": {
+            "input": 10870,
+            "output": 156,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:35:00,909 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:35:00,952 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker/constants.py",
+      "size": 1038,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 4.6,
+          "usage": {
+            "input": 10958,
+            "output": 286,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:35:12,889 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:35:12,926 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker_tests/conftest.py",
+      "size": 938,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.0,
+          "usage": {
+            "input": 10927,
+            "output": 208,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:35:23,218 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:35:23,268 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker_tests/test_semaphore.py",
+      "size": 991,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.0,
+          "usage": {
+            "input": 10971,
+            "output": 243,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:35:33,583 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:35:33,625 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker/__init__.py",
+      "size": 1960,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 5.4,
+          "usage": {
+            "input": 11235,
+            "output": 490,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:35:46,075 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 16:35:46,122 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker/portalocker.py",
+      "size": 2577,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.6,
+          "usage": {
+            "input": 10894,
+            "output": 669,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "=================== 29 failed, 11 passed, 2 skipped in 2.40s ===================",
+          "counts": {
+            "passed": 11,
+            "failed": 29,
+            "skipped": 2,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker/__main__.py",
+      "size": 3331,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 8.2,
+          "usage": {
+            "input": 11535,
+            "output": 808,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "=================== 29 failed, 11 passed, 2 skipped in 2.36s ===================",
+          "counts": {
+            "passed": 11,
+            "failed": 29,
+            "skipped": 2,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker_tests/test_redis.py",
+      "size": 2569,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.7,
+          "usage": {
+            "input": 11319,
+            "output": 595,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "=================== 29 failed, 11 passed, 2 skipped in 2.31s ===================",
+          "counts": {
+            "passed": 11,
+            "failed": 29,
+            "skipped": 2,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker/redis.py",
+      "size": 10618,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 22.4,
+          "usage": {
+            "input": 11474,
+            "output": 1938,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "=================== 29 failed, 11 passed, 2 skipped in 2.45s ===================",
+          "counts": {
+            "passed": 11,
+            "failed": 29,
+            "skipped": 2,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker_tests/tests.py",
+      "size": 13229,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 34.7,
+          "usage": {
+            "input": 13830,
+            "output": 3109,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "=================== 29 failed, 11 passed, 2 skipped in 2.38s ===================",
+          "counts": {
+            "passed": 11,
+            "failed": 29,
+            "skipped": 2,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "portalocker/utils.py",
+      "size": 15670,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 36.4,
+          "usage": {
+            "input": 12964,
+            "output": 3386,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "=================== 21 failed, 19 passed, 2 skipped in 5.29s ===================",
+          "counts": {
+            "passed": 19,
+            "failed": 21,
+            "skipped": 2,
+            "errors": 0
+          }
+        }
+      ]
+    }
+  ]
+}

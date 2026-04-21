@@ -1,0 +1,353 @@
+{
+  "repo": "voluptuous",
+  "provider": "openai",
+  "model": "gpt-5.4",
+  "branch": "kaizen_delta",
+  "files_total": 8,
+  "files_accepted": 0,
+  "elapsed_s": 657.7,
+  "final_summary": "============================== 2 errors in 0.14s ===============================",
+  "final_counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 2
+  },
+  "totals": {
+    "input_tokens": 224058,
+    "output_tokens": 54141,
+    "cache_read_tokens": 177408,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.6219
+  },
+  "per_file": [
+    {
+      "file": "voluptuous/tests/__init__.py",
+      "size": 35,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 1.4,
+          "usage": {
+            "input": 11195,
+            "output": 29,
+            "cache_read": 0,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.17s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 0.8,
+          "usage": {
+            "input": 11240,
+            "output": 17,
+            "cache_read": 11008,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.19s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "voluptuous/humanize.py",
+      "size": 2028,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.9,
+          "usage": {
+            "input": 11296,
+            "output": 642,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.17s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 6.3,
+          "usage": {
+            "input": 11341,
+            "output": 451,
+            "cache_read": 11008,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.20s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "voluptuous/util.py",
+      "size": 2988,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 8.3,
+          "usage": {
+            "input": 11978,
+            "output": 812,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.18s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 8.5,
+          "usage": {
+            "input": 12023,
+            "output": 812,
+            "cache_read": 11008,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.22s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "voluptuous/__init__.py",
+      "size": 2274,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.6,
+          "usage": {
+            "input": 11759,
+            "output": 587,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.21s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 6.5,
+          "usage": {
+            "input": 11804,
+            "output": 600,
+            "cache_read": 11008,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.19s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "voluptuous/error.py",
+      "size": 4757,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 11.0,
+          "usage": {
+            "input": 11988,
+            "output": 1078,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.18s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 11.4,
+          "usage": {
+            "input": 12033,
+            "output": 1098,
+            "cache_read": 11008,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.19s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "voluptuous/validators.py",
+      "size": 8949,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 79.6,
+          "usage": {
+            "input": 18316,
+            "output": 8190,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.24s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 79.8,
+          "usage": {
+            "input": 18361,
+            "output": 8326,
+            "cache_read": 18176,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.23s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "voluptuous/schema_builder.py",
+      "size": 26098,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 78.8,
+          "usage": {
+            "input": 16348,
+            "output": 8097,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.25s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 56.7,
+          "usage": {
+            "input": 16393,
+            "output": 5364,
+            "cache_read": 16128,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.17s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "voluptuous/tests/tests.py",
+      "size": 34413,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 84.7,
+          "usage": {
+            "input": 18969,
+            "output": 8816,
+            "cache_read": 9984,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.19s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 89.5,
+          "usage": {
+            "input": 19014,
+            "output": 9222,
+            "cache_read": 18176,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.17s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        }
+      ]
+    }
+  ]
+}

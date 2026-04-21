@@ -1,24 +1,24 @@
 {
   "repo": "wcwidth",
-  "provider": "anthropic",
-  "model": "claude-sonnet-4-6",
+  "provider": "openai",
+  "model": "gpt-5.4",
   "branch": "kaizen_delta",
   "files_total": 6,
   "files_accepted": 5,
-  "elapsed_s": 308.7,
-  "final_summary": "=================== 10 failed, 28 passed, 1 skipped in 0.76s ===================",
+  "elapsed_s": 414.8,
+  "final_summary": "=================== 14 failed, 24 passed, 1 skipped in 0.83s ===================",
   "final_counts": {
-    "passed": 28,
-    "failed": 10,
+    "passed": 24,
+    "failed": 14,
     "skipped": 1,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 31795,
-    "output_tokens": 38128,
-    "cache_read_tokens": 68675,
-    "cache_write_tokens": 13735,
-    "cost_usd": 0.7394
+    "input_tokens": 103333,
+    "output_tokens": 33788,
+    "cache_read_tokens": 55040,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.4051
   },
   "per_file": [
     {
@@ -28,14 +28,14 @@
       "attempts": [
         {
           "attempt": 1,
-          "elapsed_s": 3.9,
+          "elapsed_s": 5.2,
           "usage": {
-            "input": 292,
-            "output": 320,
+            "input": 12249,
+            "output": 276,
             "cache_read": 0,
-            "cache_write": 13735
+            "cache_write": 0
           },
-          "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.84s ====================",
+          "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.83s ====================",
           "counts": {
             "passed": 1,
             "failed": 37,
@@ -52,14 +52,14 @@
       "attempts": [
         {
           "attempt": 1,
-          "elapsed_s": 3.8,
+          "elapsed_s": 4.5,
           "usage": {
-            "input": 455,
-            "output": 310,
-            "cache_read": 13735,
+            "input": 12384,
+            "output": 269,
+            "cache_read": 11008,
             "cache_write": 0
           },
-          "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.97s ====================",
+          "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.85s ====================",
           "counts": {
             "passed": 1,
             "failed": 37,
@@ -71,19 +71,19 @@
     },
     {
       "file": "wcwidth/table_vs16.py",
-      "size": 8184,
+      "size": 7298,
       "accepted": true,
       "attempts": [
         {
           "attempt": 1,
-          "elapsed_s": 31.2,
+          "elapsed_s": 39.7,
           "usage": {
-            "input": 1131,
-            "output": 4057,
-            "cache_read": 13735,
+            "input": 13093,
+            "output": 3297,
+            "cache_read": 11008,
             "cache_write": 0
           },
-          "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.84s ====================",
+          "summary": "=================== 37 failed, 1 passed, 1 skipped in 0.85s ====================",
           "counts": {
             "passed": 1,
             "failed": 37,
@@ -95,22 +95,22 @@
     },
     {
       "file": "wcwidth/wcwidth.py",
-      "size": 11234,
+      "size": 10601,
       "accepted": true,
       "attempts": [
         {
           "attempt": 1,
-          "elapsed_s": 28.9,
+          "elapsed_s": 32.6,
           "usage": {
-            "input": 2106,
-            "output": 3206,
-            "cache_read": 13735,
+            "input": 13871,
+            "output": 2624,
+            "cache_read": 11008,
             "cache_write": 0
           },
-          "summary": "=================== 10 failed, 28 passed, 1 skipped in 0.79s ===================",
+          "summary": "=================== 14 failed, 24 passed, 1 skipped in 0.82s ===================",
           "counts": {
-            "passed": 28,
-            "failed": 10,
+            "passed": 24,
+            "failed": 14,
             "skipped": 1,
             "errors": 0
           }
@@ -119,22 +119,22 @@
     },
     {
       "file": "wcwidth/table_wide.py",
-      "size": 34575,
+      "size": 23235,
       "accepted": true,
       "attempts": [
         {
           "attempt": 1,
-          "elapsed_s": 93.5,
+          "elapsed_s": 119.3,
           "usage": {
-            "input": 11484,
-            "output": 14235,
-            "cache_read": 13735,
+            "input": 23449,
+            "output": 11322,
+            "cache_read": 11008,
             "cache_write": 0
           },
-          "summary": "=================== 10 failed, 28 passed, 1 skipped in 0.82s ===================",
+          "summary": "=================== 14 failed, 24 passed, 1 skipped in 0.77s ===================",
           "counts": {
-            "passed": 28,
-            "failed": 10,
+            "passed": 24,
+            "failed": 14,
             "skipped": 1,
             "errors": 0
           }
@@ -148,11 +148,11 @@
       "attempts": [
         {
           "attempt": 1,
-          "elapsed_s": 105.7,
+          "elapsed_s": 165.5,
           "usage": {
-            "input": 16327,
+            "input": 28287,
             "output": 16000,
-            "cache_read": 13735,
+            "cache_read": 11008,
             "cache_write": 0
           },
           "result": "empty_response"
