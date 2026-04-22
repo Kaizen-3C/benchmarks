@@ -1,0 +1,97 @@
+{
+  "repo": "deprecated",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "branch": "kaizen_delta",
+  "files_total": 3,
+  "files_accepted": 3,
+  "elapsed_s": 77.1,
+  "final_summary": "================== 17 failed, 154 passed, 5 warnings in 0.41s ==================",
+  "final_counts": {
+    "passed": 154,
+    "failed": 17,
+    "skipped": 0,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 4632,
+    "output_tokens": 5514,
+    "cache_read_tokens": 56044,
+    "cache_write_tokens": 28022,
+    "cost_usd": 0.2185
+  },
+  "per_file": [
+    {
+      "file": "deprecated/__init__.py",
+      "size": 349,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.5,
+          "usage": {
+            "input": 256,
+            "output": 112,
+            "cache_read": 0,
+            "cache_write": 28022
+          },
+          "summary": "============ 104 failed, 17 passed, 2 warnings, 50 errors in 0.90s =============",
+          "counts": {
+            "passed": 17,
+            "failed": 104,
+            "skipped": 0,
+            "errors": 50
+          }
+        }
+      ]
+    },
+    {
+      "file": "deprecated/classic.py",
+      "size": 10837,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 20.6,
+          "usage": {
+            "input": 2040,
+            "output": 2684,
+            "cache_read": 28022,
+            "cache_write": 0
+          },
+          "summary": "============= 81 failed, 70 passed, 3 warnings, 20 errors in 0.72s =============",
+          "counts": {
+            "passed": 70,
+            "failed": 81,
+            "skipped": 0,
+            "errors": 20
+          }
+        }
+      ]
+    },
+    {
+      "file": "deprecated/sphinx.py",
+      "size": 10521,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 22.5,
+          "usage": {
+            "input": 2336,
+            "output": 2718,
+            "cache_read": 28022,
+            "cache_write": 0
+          },
+          "summary": "================== 17 failed, 154 passed, 5 warnings in 0.41s ==================",
+          "counts": {
+            "passed": 154,
+            "failed": 17,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    }
+  ]
+}

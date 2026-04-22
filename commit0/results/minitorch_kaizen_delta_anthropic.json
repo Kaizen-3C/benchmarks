@@ -1,0 +1,1153 @@
+{
+  "repo": "minitorch",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "branch": "kaizen_delta",
+  "files_total": 47,
+  "files_accepted": 47,
+  "elapsed_s": 1118.8,
+  "final_summary": "============================== 10 errors in 1.46s ==============================",
+  "final_counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 10
+  },
+  "totals": {
+    "input_tokens": 57884,
+    "output_tokens": 89532,
+    "cache_read_tokens": 1494356,
+    "cache_write_tokens": 32486,
+    "cost_usd": 2.0868
+  },
+  "per_file": [
+    {
+      "file": "minitorch/cuda_conv.py",
+      "size": 14847,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 41.5,
+          "usage": {
+            "input": 159,
+            "output": 4575,
+            "cache_read": 0,
+            "cache_write": 32486
+          },
+          "summary": "============================== 10 errors in 1.34s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/modules.py",
+      "size": 5634,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 17.8,
+          "usage": {
+            "input": 157,
+            "output": 1517,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.34s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/scalar_modules.py",
+      "size": 2761,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 9.4,
+          "usage": {
+            "input": 159,
+            "output": 787,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.37s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/__init__.py",
+      "size": 102,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 1.5,
+          "usage": {
+            "input": 191,
+            "output": 47,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.31s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/train_utils.py",
+      "size": 1141,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 4.5,
+          "usage": {
+            "input": 211,
+            "output": 314,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.33s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/datasets.py",
+      "size": 3823,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 14.4,
+          "usage": {
+            "input": 258,
+            "output": 1422,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.47s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/optim.py",
+      "size": 1549,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 5.0,
+          "usage": {
+            "input": 251,
+            "output": 413,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.38s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/interface/streamlit_utils.py",
+      "size": 1079,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 5.4,
+          "usage": {
+            "input": 394,
+            "output": 367,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.36s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/show_expression_interface.py",
+      "size": 938,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.6,
+          "usage": {
+            "input": 400,
+            "output": 298,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.29s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/minitorch_datasets.py",
+      "size": 4597,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 17.2,
+          "usage": {
+            "input": 536,
+            "output": 1814,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.63s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/__init__.py",
+      "size": 898,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.2,
+          "usage": {
+            "input": 491,
+            "output": 345,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.47s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/parallel_check.py",
+      "size": 1065,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.8,
+          "usage": {
+            "input": 582,
+            "output": 436,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.43s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/module_interface.py",
+      "size": 1215,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.6,
+          "usage": {
+            "input": 559,
+            "output": 413,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.34s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/scalar_functions.py",
+      "size": 9676,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 20.8,
+          "usage": {
+            "input": 555,
+            "output": 2696,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.63s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/run_manual.py",
+      "size": 2365,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.4,
+          "usage": {
+            "input": 581,
+            "output": 679,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.38s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/autodiff.py",
+      "size": 3992,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 10.8,
+          "usage": {
+            "input": 673,
+            "output": 1124,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.46s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/testing.py",
+      "size": 3886,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 10.9,
+          "usage": {
+            "input": 743,
+            "output": 1296,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.40s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/show_expression.py",
+      "size": 2403,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 5.9,
+          "usage": {
+            "input": 836,
+            "output": 754,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.41s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/graph_builder.py",
+      "size": 3765,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 9.9,
+          "usage": {
+            "input": 924,
+            "output": 1105,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.37s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/tensor_functions.py",
+      "size": 19643,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 44.6,
+          "usage": {
+            "input": 833,
+            "output": 5447,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.56s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/run_torch.py",
+      "size": 2518,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.0,
+          "usage": {
+            "input": 979,
+            "output": 833,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.44s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/run_mnist_interface.py",
+      "size": 3228,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.7,
+          "usage": {
+            "input": 1067,
+            "output": 1006,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.34s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/nn.py",
+      "size": 4688,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 12.7,
+          "usage": {
+            "input": 1023,
+            "output": 1505,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.33s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/run_tensor.py",
+      "size": 2836,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.1,
+          "usage": {
+            "input": 1135,
+            "output": 955,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.43s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/operators.py",
+      "size": 4340,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 11.9,
+          "usage": {
+            "input": 1467,
+            "output": 1681,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.42s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/run_scalar.py",
+      "size": 3433,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.8,
+          "usage": {
+            "input": 1264,
+            "output": 1089,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.48s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/app.py",
+      "size": 3613,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 9.2,
+          "usage": {
+            "input": 1272,
+            "output": 1128,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.41s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/fast_conv.py",
+      "size": 11816,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 27.0,
+          "usage": {
+            "input": 1318,
+            "output": 3434,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.49s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/module.py",
+      "size": 4789,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 11.0,
+          "usage": {
+            "input": 1218,
+            "output": 1311,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.40s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/cuda_ops.py",
+      "size": 10865,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 49.0,
+          "usage": {
+            "input": 1382,
+            "output": 5193,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.44s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/tensor_data.py",
+      "size": 9545,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 25.6,
+          "usage": {
+            "input": 1281,
+            "output": 2761,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.56s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/scalar.py",
+      "size": 6625,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 17.8,
+          "usage": {
+            "input": 1328,
+            "output": 1918,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.43s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/fast_ops.py",
+      "size": 8460,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 26.9,
+          "usage": {
+            "input": 1424,
+            "output": 3323,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.45s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/run_fast_tensor.py",
+      "size": 4535,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 10.8,
+          "usage": {
+            "input": 1592,
+            "output": 1467,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.48s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/interface/train.py",
+      "size": 5207,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 11.8,
+          "usage": {
+            "input": 1589,
+            "output": 1599,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.49s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/interface/plots.py",
+      "size": 7082,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 18.7,
+          "usage": {
+            "input": 1937,
+            "output": 2240,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.41s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/run_mnist.py",
+      "size": 6493,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 16.1,
+          "usage": {
+            "input": 2071,
+            "output": 2215,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.40s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/math_interface.py",
+      "size": 5603,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 12.4,
+          "usage": {
+            "input": 1912,
+            "output": 1819,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.43s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/run_torch_sentiment.py",
+      "size": 6889,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 15.2,
+          "usage": {
+            "input": 1886,
+            "output": 2066,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.48s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/tensor.py",
+      "size": 11533,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 30.9,
+          "usage": {
+            "input": 1916,
+            "output": 3355,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.42s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/run_mnist_multiclass.py",
+      "size": 6476,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 14.6,
+          "usage": {
+            "input": 2108,
+            "output": 2068,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.50s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/interface/mlprimer.py",
+      "size": 8948,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 31.3,
+          "usage": {
+            "input": 2656,
+            "output": 3256,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.42s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/sentiment_interface.py",
+      "size": 8213,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 17.0,
+          "usage": {
+            "input": 2171,
+            "output": 2315,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.43s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "minitorch/tensor_ops.py",
+      "size": 12432,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 32.6,
+          "usage": {
+            "input": 1977,
+            "output": 3846,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.45s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/run_sentiment.py",
+      "size": 9345,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 25.8,
+          "usage": {
+            "input": 2996,
+            "output": 2844,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.52s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/tensor_interface.py",
+      "size": 11677,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 31.2,
+          "usage": {
+            "input": 3126,
+            "output": 3537,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.45s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    },
+    {
+      "file": "project/show_tensor.py",
+      "size": 15211,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 40.7,
+          "usage": {
+            "input": 4296,
+            "output": 4919,
+            "cache_read": 32486,
+            "cache_write": 0
+          },
+          "summary": "============================== 10 errors in 1.49s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 10
+          }
+        }
+      ]
+    }
+  ]
+}
