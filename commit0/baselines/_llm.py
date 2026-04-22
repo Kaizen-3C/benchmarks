@@ -1,5 +1,14 @@
 """Provider-agnostic LLM client + pricing.
 
+⚠️ DUAL-REPO FILE — sync manually on changes.
+This file is duplicated between:
+  - Kaizen-3C/benchmarks/commit0/baselines/_llm.py   (public, MIT)
+  - kaizen-delta/benchmarks/commit0/baselines/_llm.py (private dev mirror)
+Per `benchmarks/MIGRATION_PLAN.md` §"The dependency question" Option A:
+~110 lines, low churn (twice in the entire 2026-04 campaign), so we accept
+the duplication cost over a shared package. If this file grows past ~500
+lines or sees frequent churn, escalate to a published `kaizen-llm` PyPI pkg.
+
 Extracted from kaizen_delta.py so any new baseline script can do:
 
     from _llm import LLMClient, cost

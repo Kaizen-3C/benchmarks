@@ -1,0 +1,68 @@
+{
+  "lib": "wcwidth",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "decompose": {
+    "cost_usd": 0.0,
+    "elapsed_s": 0.003,
+    "files_in_spec": 1
+  },
+  "gates": {
+    "coverage": {
+      "pass": null,
+      "failures": []
+    },
+    "specificity": {
+      "pass": null,
+      "failures": []
+    },
+    "consistency": {
+      "pass": null,
+      "failures": []
+    },
+    "test_oracle_alignment": {
+      "pass": null,
+      "failures": []
+    },
+    "implementation_leak": {
+      "pass": null,
+      "failures": []
+    }
+  },
+  "recompose": {
+    "cost_usd": 0.0,
+    "elapsed_s": 0.001,
+    "files_emitted": 1
+  },
+  "metrics": {
+    "q1_test_parity": {
+      "value": null,
+      "detail": {
+        "todo": "phase 2: run canonical pytest against recomposed_dir"
+      }
+    },
+    "q2_behavioral_parity": {
+      "value": null,
+      "detail": {
+        "todo": "phase 2: execute curated (input,output) pairs on both impls"
+      }
+    },
+    "q3_structural_parity": {
+      "value": null,
+      "detail": {
+        "todo": "phase 2: AST walk + node-level diff count"
+      }
+    },
+    "q4_information_loss": {
+      "value": null,
+      "detail": {
+        "todo": "phase 2: public-symbol coverage in ADR text",
+        "spec_dir": "C:\\RepoEx\\Kaizen-delta\\benchmarks\\round_trip\\spec\\wcwidth"
+      }
+    }
+  },
+  "totals": {
+    "cost_usd": 0.0,
+    "elapsed_s": 0.004
+  }
+}
