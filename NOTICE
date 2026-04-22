@@ -1,0 +1,69 @@
+Kaizen-3C / benchmarks
+======================
+
+This software is published as part of the Kaizen-3C project
+(https://kaizen-3c.dev), a software-industry reframe of the original
+Kaizen 3C method (Concern, Cause, Countermeasure) as Code, Compose,
+and Compliance.
+
+
+Copyright and authorship
+------------------------
+
+All source files and documents in this repository are copyright their
+respective authors as identified in each file's LICENSE notice. The
+primary author is Anthony Adame.
+
+"Kaizen-3C" is the project brand and the GitHub organization name. It
+is NOT, as of this NOTICE's date, a registered legal entity. Copyright
+in the work published here is held by the named human author(s), not
+by the brand. When a successor legal entity is formed to receive the
+project's intellectual property, copyrights will be assigned to that
+entity by written instrument, and updated NOTICE language will reflect
+the new chain of title.
+
+
+License
+-------
+
+This work is licensed under the MIT License (see LICENSE).
+
+
+Upstream acknowledgments
+------------------------
+
+This benchmark suite measures and references several upstream projects.
+We are grateful to the maintainers and contributors of:
+
+- commit0 (https://github.com/wentingzhao/commit0) -- the underlying
+  greenfield code-generation benchmark and its 16-library lite split.
+  MIT-licensed.
+- OpenHands (https://github.com/All-Hands-AI/OpenHands) -- included as
+  a reference architecture in the matrix. MIT-licensed.
+- HuggingFace Datasets (https://huggingface.co/datasets) -- hosts the
+  pinned commit0 dataset revision used in the campaign.
+
+These projects retain their own copyrights and licenses; this NOTICE
+does not modify them.
+
+
+Trademarks
+----------
+
+"Kaizen-3C" and the Kaizen-3C logo (when published) are trademarks of
+Anthony Adame, used in connection with the Kaizen-3C project. All
+other trademarks are the property of their respective owners.
+
+
+Commercial inquiries
+--------------------
+
+For commercial licensing, partnership, or enterprise-tier conversations,
+contact hello@kaizen-3c.dev or see https://kaizen-3c.dev.
+
+
+Security disclosures
+--------------------
+
+For security vulnerability reports, see SECURITY.md or contact
+security@kaizen-3c.dev directly.

@@ -137,7 +137,7 @@ We welcome:
 - **New metrics** that surface different architectural dimensions. Open an issue with the proposed metric and a sketch of how it would be computed from the existing JSON output.
 - **Reproductions** of our published numbers. If your numbers diverge significantly from `CAMPAIGN_README.md`'s "Expected aggregate numbers" table, open an issue with your run details — we'll help debug and update the doc.
 
-Open an issue or a PR. Tag `@Kaizen-3C/benchmarks-maintainers`.
+Open an issue or a PR. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the full contributor guide, including the DCO sign-off requirement. Security disclosures: see [`SECURITY.md`](SECURITY.md). General contact: hello@kaizen-3c.dev.
 
 ---
 
@@ -146,12 +146,13 @@ Open an issue or a PR. Tag `@Kaizen-3C/benchmarks-maintainers`.
 If you use this benchmark methodology in research:
 
 ```
-@misc{kaizen3c2026benchmarks,
-  title  = {Architectural-weakness fingerprinting for AI software-engineering agents:
-            an 8-architecture {\texttimes} 16-library commit0 evaluation},
-  author = {Adame, Anthony and {Kaizen-3C}},
-  year   = {2026},
-  url    = {https://github.com/Kaizen-3C/benchmarks}
+@misc{adame2026kaizen3cbenchmarks,
+  title        = {Architectural-weakness fingerprinting for AI software-engineering agents:
+                  an 8-architecture {\texttimes} 16-library commit0 evaluation},
+  author       = {Adame, Anthony},
+  year         = {2026},
+  howpublished = {Kaizen-3C project, \url{https://kaizen-3c.dev}},
+  url          = {https://github.com/Kaizen-3C/benchmarks}
 }
 ```
 
