@@ -1,7 +1,8 @@
 # Round-Trip (Code→ADR→Code) Benchmark — Implementation Plan
 
 **Governed by:** [ADR-0063](../../.architecture/decisions/ADR-0063-round-trip-fidelity-benchmark.md)
-**Status:** Pre-implementation. Scaffolding begins next session.
+**Status:** Phase 1 (Scaffolding) complete 2026-04-21. Phase 2 next.
+**Next session's job:** Phase 2 — implement the real Decompose prompt + Q1 test_parity metric. Smallest valuable next step (one prompt + one metric).
 **Estimated to first publishable result:** 3–4 weeks of focused work.
 
 ## What this benchmark is for
@@ -19,15 +20,29 @@ The campaign's job is to find every "not a true EN→FR" gap and ship tools that
 
 ## Phases (matches ADR-0063 §Implementation roadmap)
 
-### Phase 1 — Scaffolding (next session — see SESSION_PROMPT.md)
-- Directory layout under `benchmarks/round_trip/`
-- Stubs for the four metrics (Q1–Q4) and five gates
-- A `decompose_from_reference.py` entry point that takes a working commit0 lib and emits `spec/<lib>/{adrs,contracts,oracles}/`
-- One pilot lib (wcwidth — small, well-understood) round-tripped end-to-end with all stubs returning placeholder data
-- **Deliverable:** runnable `python benchmarks/round_trip/run_one.py wcwidth` that produces a stub report. No real fidelity yet; just the skeleton.
-- **Estimated time:** 3 working days. **Cost:** ~$2 (mostly LLM calls for one pilot Decompose).
+### Phase 1 — Scaffolding (COMPLETE — 2026-04-21)
+- [x] Directory layout under `benchmarks/round_trip/`
+- [x] Stubs for the four metrics (Q1–Q4) and five gates
+- [x] `decompose_from_reference.py` entry point (phase-1 stub: writes one placeholder ADR; no LLM calls)
+- [x] `recompose_from_adrs.py` entry point (phase-1 stub: writes one placeholder `__init__.py`; no LLM calls)
+- [x] `run_one.py` orchestrator — 5-line progress log, schema-matching result JSON
+- [x] `remediation.py` stub
+- [x] `PROTOCOL.md`, `README.md`
+- [x] Pilot (wcwidth) round-tripped end-to-end with placeholder data
+- **Delivered:** `python benchmarks/round_trip/run_one.py wcwidth` exits 0, writes `results/wcwidth_round_trip.json` matching the documented schema, costs $0 (zero LLM calls).
+- **Actual time:** 1 session. **Actual cost:** $0 (vs. $2 budget — no Decompose ran, that's phase 2).
 
-### Phase 2 — Real metrics (Q1–Q4)
+### Phase 2 — Real Decompose prompt + Q1 test_parity (NEXT SESSION)
+
+Smallest-valuable-next-step per SESSION_PROMPT.md: one real prompt + one real metric, end-to-end on wcwidth, before branching further.
+
+- Replace the phase-1 stub in `decompose_from_reference.py` with a real LLM call that walks the wcwidth source tree and emits actual ADRs/contracts/oracles under `spec/wcwidth/`. Use `_llm.LLMClient` with ephemeral caching on the source-tree block.
+- Replace the phase-1 stub in `recompose_from_adrs.py` with a real LLM call that reads ONLY `spec/wcwidth/` (no source peeking) and emits a source tree to `recomposed/wcwidth/`.
+- Implement `metrics/q1_test_parity.py` for real: run the canonical pytest suite against `recomposed_dir` (via commit0 or local pytest) and report passed/total.
+- **Gate to pass:** wcwidth `q1_test_parity.value >= 0.9`. Budget: ~$3.
+- Q2–Q4 follow in a subsequent session (per the table below).
+
+### Phase 2b — Remaining metrics (Q2–Q4)
 | Metric | What it measures | How to compute |
 |---|---|---|
 | **Q1 test parity** | % of canonical tests passing on recomposed code | run pytest, count passed/total |
