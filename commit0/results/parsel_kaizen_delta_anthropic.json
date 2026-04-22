@@ -1,0 +1,145 @@
+{
+  "repo": "parsel",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "branch": "kaizen_delta",
+  "files_total": 5,
+  "files_accepted": 5,
+  "elapsed_s": 175.4,
+  "final_summary": "================== 73 failed, 133 passed, 2 skipped in 1.31s ===================",
+  "final_counts": {
+    "passed": 133,
+    "failed": 73,
+    "skipped": 2,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 6720,
+    "output_tokens": 9715,
+    "cache_read_tokens": 79892,
+    "cache_write_tokens": 19973,
+    "cost_usd": 0.2648
+  },
+  "per_file": [
+    {
+      "file": "parsel/__init__.py",
+      "size": 427,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 4.3,
+          "usage": {
+            "input": 318,
+            "output": 173,
+            "cache_read": 0,
+            "cache_write": 19973
+          },
+          "summary": "======================== 15 failed, 11 errors in 0.23s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 15,
+            "skipped": 0,
+            "errors": 11
+          }
+        }
+      ]
+    },
+    {
+      "file": "parsel/xpathfuncs.py",
+      "size": 1330,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 4.9,
+          "usage": {
+            "input": 422,
+            "output": 393,
+            "cache_read": 19973,
+            "cache_write": 0
+          },
+          "summary": "================== 193 failed, 13 passed, 2 skipped in 2.48s ===================",
+          "counts": {
+            "passed": 13,
+            "failed": 193,
+            "skipped": 2,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "parsel/utils.py",
+      "size": 3318,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 11.2,
+          "usage": {
+            "input": 801,
+            "output": 1053,
+            "cache_read": 19973,
+            "cache_write": 0
+          },
+          "summary": "================== 183 failed, 23 passed, 2 skipped in 2.42s ===================",
+          "counts": {
+            "passed": 23,
+            "failed": 183,
+            "skipped": 2,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "parsel/csstranslator.py",
+      "size": 4176,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 13.1,
+          "usage": {
+            "input": 782,
+            "output": 1197,
+            "cache_read": 19973,
+            "cache_write": 0
+          },
+          "summary": "================== 176 failed, 30 passed, 2 skipped in 2.44s ===================",
+          "counts": {
+            "passed": 30,
+            "failed": 176,
+            "skipped": 2,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "parsel/selector.py",
+      "size": 24773,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 92.5,
+          "usage": {
+            "input": 4397,
+            "output": 6899,
+            "cache_read": 19973,
+            "cache_write": 0
+          },
+          "summary": "================== 73 failed, 133 passed, 2 skipped in 1.33s ===================",
+          "counts": {
+            "passed": 133,
+            "failed": 73,
+            "skipped": 2,
+            "errors": 0
+          }
+        }
+      ]
+    }
+  ]
+}

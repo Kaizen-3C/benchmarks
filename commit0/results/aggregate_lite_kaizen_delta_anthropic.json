@@ -12,7 +12,13 @@
     "jinja",
     "minitorch",
     "deprecated",
-    "cachetools"
+    "cachetools",
+    "pyjwt",
+    "tinydb",
+    "simpy",
+    "parsel",
+    "imapclient",
+    "cookiecutter"
   ],
   "per_library": {
     "wcwidth": {
@@ -4931,21 +4937,2050 @@
         "errors": 0
       },
       "pytest_summary": "================== 9 failed, 206 passed, 15 warnings in 0.31s =================="
+    },
+    "pyjwt": {
+      "repo": "pyjwt",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "branch": "kaizen_delta",
+      "files_total": 12,
+      "files_accepted": 12,
+      "elapsed_s": 317.1,
+      "final_summary": "======= 128 failed, 108 passed, 2 skipped, 1 xfailed, 4 errors in 3.44s ========",
+      "final_counts": {
+        "passed": 108,
+        "failed": 128,
+        "skipped": 2,
+        "errors": 4
+      },
+      "totals": {
+        "input_tokens": 8137,
+        "output_tokens": 20458,
+        "cache_read_tokens": 182886,
+        "cache_write_tokens": 16626,
+        "cost_usd": 0.4485
+      },
+      "per_file": [
+        {
+          "file": "jwt/warnings.py",
+          "size": 59,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.2,
+              "usage": {
+                "input": 178,
+                "output": 34,
+                "cache_read": 0,
+                "cache_write": 16626
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.42s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/types.py",
+          "size": 98,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 1.2,
+              "usage": {
+                "input": 190,
+                "output": 46,
+                "cache_read": 16626,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.52s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/jwk_set_cache.py",
+          "size": 1155,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.5,
+              "usage": {
+                "input": 252,
+                "output": 366,
+                "cache_read": 16626,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.40s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/help.py",
+          "size": 917,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.2,
+              "usage": {
+                "input": 300,
+                "output": 261,
+                "cache_read": 16626,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.42s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/exceptions.py",
+          "size": 1031,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.3,
+              "usage": {
+                "input": 468,
+                "output": 324,
+                "cache_read": 16626,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.38s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/jwks_client.py",
+          "size": 4089,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 14.4,
+              "usage": {
+                "input": 548,
+                "output": 1223,
+                "cache_read": 16626,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.37s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/api_jwt.py",
+          "size": 11754,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 34.6,
+              "usage": {
+                "input": 621,
+                "output": 3215,
+                "cache_read": 16626,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.38s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/__init__.py",
+          "size": 1670,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 5.9,
+              "usage": {
+                "input": 773,
+                "output": 629,
+                "cache_read": 16626,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.36s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/api_jwk.py",
+          "size": 3801,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 14.0,
+              "usage": {
+                "input": 1096,
+                "output": 1299,
+                "cache_read": 16626,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.37s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/utils.py",
+          "size": 3302,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 14.3,
+              "usage": {
+                "input": 561,
+                "output": 1295,
+                "cache_read": 16626,
+                "cache_write": 0
+              },
+              "summary": "======== 94 failed, 13 passed, 1 skipped, 1 xfailed, 6 errors in 1.36s =========",
+              "counts": {
+                "passed": 13,
+                "failed": 94,
+                "skipped": 1,
+                "errors": 6
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/api_jws.py",
+          "size": 11489,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 36.5,
+              "usage": {
+                "input": 870,
+                "output": 3170,
+                "cache_read": 16626,
+                "cache_write": 0
+              },
+              "summary": "======== 94 failed, 13 passed, 1 skipped, 1 xfailed, 6 errors in 1.29s =========",
+              "counts": {
+                "passed": 13,
+                "failed": 94,
+                "skipped": 1,
+                "errors": 6
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/algorithms.py",
+          "size": 29675,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 87.3,
+              "usage": {
+                "input": 2280,
+                "output": 8596,
+                "cache_read": 16626,
+                "cache_write": 0
+              },
+              "summary": "======= 128 failed, 108 passed, 2 skipped, 1 xfailed, 4 errors in 3.50s ========",
+              "counts": {
+                "passed": 108,
+                "failed": 128,
+                "skipped": 2,
+                "errors": 4
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 108,
+        "failed": 128,
+        "skipped": 2,
+        "errors": 4
+      },
+      "pytest_summary": "======= 128 failed, 108 passed, 2 skipped, 1 xfailed, 4 errors in 3.44s ========"
+    },
+    "tinydb": {
+      "repo": "tinydb",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "branch": "kaizen_delta",
+      "files_total": 10,
+      "files_accepted": 10,
+      "elapsed_s": 452.8,
+      "final_summary": "======================== 37 failed, 164 passed in 2.41s ========================",
+      "final_counts": {
+        "passed": 164,
+        "failed": 37,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 11355,
+        "output_tokens": 14735,
+        "cache_read_tokens": 213417,
+        "cache_write_tokens": 23713,
+        "cost_usd": 0.408
+      },
+      "per_file": [
+        {
+          "file": "tinydb/version.py",
+          "size": 22,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 2.0,
+              "usage": {
+                "input": 169,
+                "output": 23,
+                "cache_read": 0,
+                "cache_write": 23713
+              },
+              "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-21 20:56:20,246 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/mypy_plugin.py",
+          "size": 961,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 5.2,
+              "usage": {
+                "input": 288,
+                "output": 303,
+                "cache_read": 23713,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 20:56:30,803 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 20:56:30,837 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/operations.py",
+          "size": 1191,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.9,
+              "usage": {
+                "input": 395,
+                "output": 366,
+                "cache_read": 23713,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 20:56:40,055 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 20:56:40,091 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/__init__.py",
+          "size": 939,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.7,
+              "usage": {
+                "input": 460,
+                "output": 314,
+                "cache_read": 23713,
+                "cache_write": 0
+              },
+              "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-21 20:56:49,454 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/storages.py",
+          "size": 4852,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 13.1,
+              "usage": {
+                "input": 903,
+                "output": 1331,
+                "cache_read": 23713,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 20:57:07,851 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 20:57:07,884 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/middlewares.py",
+          "size": 4131,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.6,
+              "usage": {
+                "input": 900,
+                "output": 1061,
+                "cache_read": 23713,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 20:57:23,797 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 20:57:23,833 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/utils.py",
+          "size": 3593,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.6,
+              "usage": {
+                "input": 911,
+                "output": 1060,
+                "cache_read": 23713,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 20:57:39,682 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 20:57:39,717 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/database.py",
+          "size": 6984,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 23.8,
+              "usage": {
+                "input": 1697,
+                "output": 1752,
+                "cache_read": 23713,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 20:59:14,851 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 20:59:14,885 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/table.py",
+          "size": 15179,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 47.9,
+              "usage": {
+                "input": 2341,
+                "output": 4018,
+                "cache_read": 23713,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 21:01:18,106 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 21:01:18,150 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/queries.py",
+          "size": 16646,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 55.9,
+              "usage": {
+                "input": 3291,
+                "output": 4507,
+                "cache_read": 23713,
+                "cache_write": 0
+              },
+              "summary": "======================== 37 failed, 164 passed in 2.49s ========================",
+              "counts": {
+                "passed": 164,
+                "failed": 37,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 164,
+        "failed": 37,
+        "skipped": 0,
+        "errors": 0
+      },
+      "pytest_summary": "======================== 37 failed, 164 passed in 2.41s ========================"
+    },
+    "simpy": {
+      "repo": "simpy",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "branch": "kaizen_delta",
+      "files_total": 11,
+      "files_accepted": 7,
+      "elapsed_s": 405.8,
+      "final_summary": "================= 64 failed, 76 passed, 10 deselected in 1.02s =================",
+      "final_counts": {
+        "passed": 76,
+        "failed": 64,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 25771,
+        "output_tokens": 30519,
+        "cache_read_tokens": 704480,
+        "cache_write_tokens": 50320,
+        "cost_usd": 0.9351
+      },
+      "per_file": [
+        {
+          "file": "src/simpy/resources/__init__.py",
+          "size": 390,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 2.5,
+              "usage": {
+                "input": 255,
+                "output": 106,
+                "cache_read": 0,
+                "cache_write": 50320
+              },
+              "summary": "================= 57 failed, 83 passed, 10 deselected in 0.57s =================",
+              "counts": {
+                "passed": 83,
+                "failed": 57,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/exceptions.py",
+          "size": 881,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.0,
+              "usage": {
+                "input": 388,
+                "output": 247,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================= 57 failed, 83 passed, 10 deselected in 0.53s =================",
+              "counts": {
+                "passed": 83,
+                "failed": 57,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/util.py",
+          "size": 1949,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 5.8,
+              "usage": {
+                "input": 524,
+                "output": 543,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================= 56 failed, 84 passed, 10 deselected in 0.52s =================",
+              "counts": {
+                "passed": 84,
+                "failed": 56,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/__init__.py",
+          "size": 2600,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 6.2,
+              "usage": {
+                "input": 941,
+                "output": 794,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================= 56 failed, 84 passed, 10 deselected in 0.53s =================",
+              "counts": {
+                "passed": 84,
+                "failed": 56,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/rt.py",
+          "size": 2897,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 7.8,
+              "usage": {
+                "input": 712,
+                "output": 780,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================= 56 failed, 84 passed, 10 deselected in 0.52s =================",
+              "counts": {
+                "passed": 84,
+                "failed": 56,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/resources/container.py",
+          "size": 3795,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 11.5,
+              "usage": {
+                "input": 988,
+                "output": 1157,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================= 56 failed, 84 passed, 10 deselected in 0.58s =================",
+              "counts": {
+                "passed": 84,
+                "failed": 56,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/resources/store.py",
+          "size": 6311,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 13.7,
+              "usage": {
+                "input": 1475,
+                "output": 1772,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================= 56 failed, 84 passed, 10 deselected in 0.54s =================",
+              "counts": {
+                "passed": 84,
+                "failed": 56,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/core.py",
+          "size": 7132,
+          "accepted": false,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 16.6,
+              "usage": {
+                "input": 1504,
+                "output": 1806,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================= 58 failed, 82 passed, 10 deselected in 0.66s =================",
+              "counts": {
+                "passed": 82,
+                "failed": 58,
+                "skipped": 0,
+                "errors": 0
+              }
+            },
+            {
+              "attempt": 2,
+              "elapsed_s": 17.3,
+              "usage": {
+                "input": 1559,
+                "output": 1924,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================ 126 failed, 14 passed, 10 deselected in 1.11s =================",
+              "counts": {
+                "passed": 14,
+                "failed": 126,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/resources/base.py",
+          "size": 8633,
+          "accepted": false,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 19.6,
+              "usage": {
+                "input": 2278,
+                "output": 2505,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================ 123 failed, 17 passed, 10 deselected in 1.08s =================",
+              "counts": {
+                "passed": 17,
+                "failed": 123,
+                "skipped": 0,
+                "errors": 0
+              }
+            },
+            {
+              "attempt": 2,
+              "elapsed_s": 19.9,
+              "usage": {
+                "input": 2328,
+                "output": 2446,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================ 123 failed, 17 passed, 10 deselected in 1.09s =================",
+              "counts": {
+                "passed": 17,
+                "failed": 123,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/resources/resource.py",
+          "size": 10842,
+          "accepted": false,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 31.6,
+              "usage": {
+                "input": 2299,
+                "output": 3186,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================ 123 failed, 17 passed, 10 deselected in 1.07s =================",
+              "counts": {
+                "passed": 17,
+                "failed": 123,
+                "skipped": 0,
+                "errors": 0
+              }
+            },
+            {
+              "attempt": 2,
+              "elapsed_s": 28.8,
+              "usage": {
+                "input": 2349,
+                "output": 2998,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================ 123 failed, 17 passed, 10 deselected in 1.06s =================",
+              "counts": {
+                "passed": 17,
+                "failed": 123,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/events.py",
+          "size": 20306,
+          "accepted": false,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 53.8,
+              "usage": {
+                "input": 4059,
+                "output": 4990,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================= 64 failed, 76 passed, 10 deselected in 1.01s =================",
+              "counts": {
+                "passed": 76,
+                "failed": 64,
+                "skipped": 0,
+                "errors": 0
+              }
+            },
+            {
+              "attempt": 2,
+              "elapsed_s": 60.3,
+              "usage": {
+                "input": 4112,
+                "output": 5265,
+                "cache_read": 50320,
+                "cache_write": 0
+              },
+              "summary": "================= 64 failed, 76 passed, 10 deselected in 1.02s =================",
+              "counts": {
+                "passed": 76,
+                "failed": 64,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 76,
+        "failed": 64,
+        "skipped": 0,
+        "errors": 0
+      },
+      "pytest_summary": "================= 64 failed, 76 passed, 10 deselected in 1.02s ================="
+    },
+    "parsel": {
+      "repo": "parsel",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "branch": "kaizen_delta",
+      "files_total": 5,
+      "files_accepted": 5,
+      "elapsed_s": 175.4,
+      "final_summary": "================== 73 failed, 133 passed, 2 skipped in 1.31s ===================",
+      "final_counts": {
+        "passed": 133,
+        "failed": 73,
+        "skipped": 2,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 6720,
+        "output_tokens": 9715,
+        "cache_read_tokens": 79892,
+        "cache_write_tokens": 19973,
+        "cost_usd": 0.2648
+      },
+      "per_file": [
+        {
+          "file": "parsel/__init__.py",
+          "size": 427,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.3,
+              "usage": {
+                "input": 318,
+                "output": 173,
+                "cache_read": 0,
+                "cache_write": 19973
+              },
+              "summary": "======================== 15 failed, 11 errors in 0.23s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 15,
+                "skipped": 0,
+                "errors": 11
+              }
+            }
+          ]
+        },
+        {
+          "file": "parsel/xpathfuncs.py",
+          "size": 1330,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.9,
+              "usage": {
+                "input": 422,
+                "output": 393,
+                "cache_read": 19973,
+                "cache_write": 0
+              },
+              "summary": "================== 193 failed, 13 passed, 2 skipped in 2.48s ===================",
+              "counts": {
+                "passed": 13,
+                "failed": 193,
+                "skipped": 2,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "parsel/utils.py",
+          "size": 3318,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 11.2,
+              "usage": {
+                "input": 801,
+                "output": 1053,
+                "cache_read": 19973,
+                "cache_write": 0
+              },
+              "summary": "================== 183 failed, 23 passed, 2 skipped in 2.42s ===================",
+              "counts": {
+                "passed": 23,
+                "failed": 183,
+                "skipped": 2,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "parsel/csstranslator.py",
+          "size": 4176,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 13.1,
+              "usage": {
+                "input": 782,
+                "output": 1197,
+                "cache_read": 19973,
+                "cache_write": 0
+              },
+              "summary": "================== 176 failed, 30 passed, 2 skipped in 2.44s ===================",
+              "counts": {
+                "passed": 30,
+                "failed": 176,
+                "skipped": 2,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "parsel/selector.py",
+          "size": 24773,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 92.5,
+              "usage": {
+                "input": 4397,
+                "output": 6899,
+                "cache_read": 19973,
+                "cache_write": 0
+              },
+              "summary": "================== 73 failed, 133 passed, 2 skipped in 1.33s ===================",
+              "counts": {
+                "passed": 133,
+                "failed": 73,
+                "skipped": 2,
+                "errors": 0
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 133,
+        "failed": 73,
+        "skipped": 2,
+        "errors": 0
+      },
+      "pytest_summary": "================== 73 failed, 133 passed, 2 skipped in 1.31s ==================="
+    },
+    "imapclient": {
+      "repo": "imapclient",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "branch": "kaizen_delta",
+      "files_total": 17,
+      "files_accepted": 16,
+      "elapsed_s": 515.7,
+      "final_summary": "=================== 7 failed, 16 passed, 15 errors in 0.53s ====================",
+      "final_counts": {
+        "passed": 16,
+        "failed": 7,
+        "skipped": 0,
+        "errors": 15
+      },
+      "totals": {
+        "input_tokens": 15287,
+        "output_tokens": 35307,
+        "cache_read_tokens": 605728,
+        "cache_write_tokens": 37858,
+        "cost_usd": 0.8992
+      },
+      "per_file": [
+        {
+          "file": "imapclient/typing_imapclient.py",
+          "size": 696,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 6.5,
+              "usage": {
+                "input": 208,
+                "output": 344,
+                "cache_read": 0,
+                "cache_write": 37858
+              },
+              "summary": "============================== 18 errors in 0.24s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/interact.py",
+          "size": 3989,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 13.7,
+              "usage": {
+                "input": 215,
+                "output": 1237,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "============================== 18 errors in 0.23s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/util.py",
+          "size": 4300,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 16.0,
+              "usage": {
+                "input": 237,
+                "output": 1325,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "======================== 23 failed, 15 errors in 0.60s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 23,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/version.py",
+          "size": 692,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.8,
+              "usage": {
+                "input": 260,
+                "output": 298,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "======================== 23 failed, 15 errors in 0.55s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 23,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/imap4.py",
+          "size": 1427,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 7.0,
+              "usage": {
+                "input": 242,
+                "output": 466,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "======================== 23 failed, 15 errors in 0.59s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 23,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/__init__.py",
+          "size": 551,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 2.1,
+              "usage": {
+                "input": 333,
+                "output": 186,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "======================== 23 failed, 15 errors in 0.61s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 23,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/config.py",
+          "size": 5067,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 17.4,
+              "usage": {
+                "input": 364,
+                "output": 1788,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "======================== 23 failed, 15 errors in 0.57s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 23,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/imap_utf7.py",
+          "size": 2616,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.0,
+              "usage": {
+                "input": 360,
+                "output": 837,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "=================== 20 failed, 3 passed, 15 errors in 0.57s ====================",
+              "counts": {
+                "passed": 3,
+                "failed": 20,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/tls.py",
+          "size": 2027,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 6.9,
+              "usage": {
+                "input": 367,
+                "output": 594,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "=================== 20 failed, 3 passed, 15 errors in 0.56s ====================",
+              "counts": {
+                "passed": 3,
+                "failed": 20,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/testable_imapclient.py",
+          "size": 1092,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.1,
+              "usage": {
+                "input": 381,
+                "output": 343,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "=================== 20 failed, 3 passed, 15 errors in 0.57s ====================",
+              "counts": {
+                "passed": 3,
+                "failed": 20,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/exceptions.py",
+          "size": 953,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 2.8,
+              "usage": {
+                "input": 417,
+                "output": 270,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "=================== 20 failed, 3 passed, 15 errors in 0.65s ====================",
+              "counts": {
+                "passed": 3,
+                "failed": 20,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/fixed_offset.py",
+          "size": 1284,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.9,
+              "usage": {
+                "input": 361,
+                "output": 372,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "=================== 17 failed, 6 passed, 15 errors in 0.59s ====================",
+              "counts": {
+                "passed": 6,
+                "failed": 17,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/datetime_util.py",
+          "size": 3878,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 15.2,
+              "usage": {
+                "input": 473,
+                "output": 1164,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "=================== 17 failed, 6 passed, 15 errors in 0.57s ====================",
+              "counts": {
+                "passed": 6,
+                "failed": 17,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/response_types.py",
+          "size": 4462,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.9,
+              "usage": {
+                "input": 1368,
+                "output": 1328,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "=================== 17 failed, 6 passed, 15 errors in 0.59s ====================",
+              "counts": {
+                "passed": 6,
+                "failed": 17,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/response_lexer.py",
+          "size": 5297,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 15.2,
+              "usage": {
+                "input": 886,
+                "output": 1559,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "=================== 7 failed, 16 passed, 15 errors in 0.55s ====================",
+              "counts": {
+                "passed": 16,
+                "failed": 7,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/response_parser.py",
+          "size": 13052,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 67.2,
+              "usage": {
+                "input": 663,
+                "output": 7196,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "summary": "=================== 7 failed, 16 passed, 15 errors in 0.53s ====================",
+              "counts": {
+                "passed": 16,
+                "failed": 7,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/imapclient.py",
+          "size": 40439,
+          "accepted": false,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 207.2,
+              "usage": {
+                "input": 8152,
+                "output": 16000,
+                "cache_read": 37858,
+                "cache_write": 0
+              },
+              "result": "empty_response"
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 16,
+        "failed": 7,
+        "skipped": 0,
+        "errors": 15
+      },
+      "pytest_summary": "=================== 7 failed, 16 passed, 15 errors in 0.53s ===================="
+    },
+    "cookiecutter": {
+      "repo": "cookiecutter",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "branch": "kaizen_delta",
+      "files_total": 18,
+      "files_accepted": 18,
+      "elapsed_s": 612.2,
+      "final_summary": "============ 182 failed, 185 passed, 4 skipped, 1 warning in 8.20s =============",
+      "final_counts": {
+        "passed": 185,
+        "failed": 182,
+        "skipped": 4,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 14728,
+        "output_tokens": 28899,
+        "cache_read_tokens": 914130,
+        "cache_write_tokens": 50785,
+        "cost_usd": 0.9424
+      },
+      "per_file": [
+        {
+          "file": "cookiecutter/__main__.py",
+          "size": 194,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.1,
+              "usage": {
+                "input": 213,
+                "output": 67,
+                "cache_read": 0,
+                "cache_write": 50785
+              },
+              "summary": "============= 325 failed, 16 passed, 4 skipped, 26 errors in 6.35s =============",
+              "counts": {
+                "passed": 16,
+                "failed": 325,
+                "skipped": 4,
+                "errors": 26
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/__init__.py",
+          "size": 318,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.0,
+              "usage": {
+                "input": 250,
+                "output": 104,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "============= 325 failed, 16 passed, 4 skipped, 26 errors in 6.28s =============",
+              "counts": {
+                "passed": 16,
+                "failed": 325,
+                "skipped": 4,
+                "errors": 26
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/replay.py",
+          "size": 906,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 5.6,
+              "usage": {
+                "input": 285,
+                "output": 303,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "============= 319 failed, 22 passed, 4 skipped, 26 errors in 6.31s =============",
+              "counts": {
+                "passed": 22,
+                "failed": 319,
+                "skipped": 4,
+                "errors": 26
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/find.py",
+          "size": 1270,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 6.4,
+              "usage": {
+                "input": 297,
+                "output": 356,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "============= 317 failed, 24 passed, 4 skipped, 26 errors in 6.41s =============",
+              "counts": {
+                "passed": 24,
+                "failed": 317,
+                "skipped": 4,
+                "errors": 26
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/log.py",
+          "size": 1706,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.5,
+              "usage": {
+                "input": 323,
+                "output": 508,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "============= 317 failed, 24 passed, 4 skipped, 26 errors in 6.28s =============",
+              "counts": {
+                "passed": 24,
+                "failed": 317,
+                "skipped": 4,
+                "errors": 26
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/config.py",
+          "size": 4705,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 13.6,
+              "usage": {
+                "input": 675,
+                "output": 1333,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "============= 301 failed, 40 passed, 4 skipped, 26 errors in 6.16s =============",
+              "counts": {
+                "passed": 40,
+                "failed": 301,
+                "skipped": 4,
+                "errors": 26
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/environment.py",
+          "size": 2283,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 5.7,
+              "usage": {
+                "input": 666,
+                "output": 577,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "============= 308 failed, 45 passed, 4 skipped, 14 errors in 6.08s =============",
+              "counts": {
+                "passed": 45,
+                "failed": 308,
+                "skipped": 4,
+                "errors": 14
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/hooks.py",
+          "size": 6141,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 19.1,
+              "usage": {
+                "input": 926,
+                "output": 1765,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "============= 308 failed, 45 passed, 4 skipped, 14 errors in 6.18s =============",
+              "counts": {
+                "passed": 45,
+                "failed": 308,
+                "skipped": 4,
+                "errors": 14
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/utils.py",
+          "size": 2734,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.2,
+              "usage": {
+                "input": 619,
+                "output": 839,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "================== 305 failed, 62 passed, 4 skipped in 6.62s ===================",
+              "counts": {
+                "passed": 62,
+                "failed": 305,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/zipfile.py",
+          "size": 3703,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 12.5,
+              "usage": {
+                "input": 451,
+                "output": 1050,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "================== 295 failed, 72 passed, 4 skipped in 6.52s ===================",
+              "counts": {
+                "passed": 72,
+                "failed": 295,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/extensions.py",
+          "size": 3660,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 11.8,
+              "usage": {
+                "input": 744,
+                "output": 1045,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "================== 293 failed, 74 passed, 4 skipped in 6.54s ===================",
+              "counts": {
+                "passed": 74,
+                "failed": 293,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/cli.py",
+          "size": 7304,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 24.1,
+              "usage": {
+                "input": 1155,
+                "output": 2161,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "================== 288 failed, 79 passed, 4 skipped in 6.80s ===================",
+              "counts": {
+                "passed": 79,
+                "failed": 288,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/exceptions.py",
+          "size": 3826,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.8,
+              "usage": {
+                "input": 1140,
+                "output": 1005,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "================== 288 failed, 79 passed, 4 skipped in 6.81s ===================",
+              "counts": {
+                "passed": 79,
+                "failed": 288,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/repository.py",
+          "size": 4261,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 12.8,
+              "usage": {
+                "input": 764,
+                "output": 1144,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "================== 257 failed, 110 passed, 4 skipped in 6.74s ==================",
+              "counts": {
+                "passed": 110,
+                "failed": 257,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/generate.py",
+          "size": 16300,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 53.1,
+              "usage": {
+                "input": 1272,
+                "output": 4396,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "================== 236 failed, 131 passed, 4 skipped in 6.76s ==================",
+              "counts": {
+                "passed": 131,
+                "failed": 236,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/vcs.py",
+          "size": 5113,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 16.7,
+              "usage": {
+                "input": 595,
+                "output": 1505,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "================== 217 failed, 150 passed, 4 skipped in 7.26s ==================",
+              "counts": {
+                "passed": 150,
+                "failed": 217,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/prompt.py",
+          "size": 15955,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 59.4,
+              "usage": {
+                "input": 1688,
+                "output": 4688,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "============= 65 failed, 71 passed, 1 skipped, 30 errors in 4.97s ==============",
+              "counts": {
+                "passed": 71,
+                "failed": 65,
+                "skipped": 1,
+                "errors": 30
+              }
+            },
+            {
+              "attempt": 2,
+              "elapsed_s": 56.8,
+              "usage": {
+                "input": 1750,
+                "output": 4535,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "============ 186 failed, 181 passed, 4 skipped, 1 warning in 8.04s =============",
+              "counts": {
+                "passed": 181,
+                "failed": 186,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/main.py",
+          "size": 5638,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 17.8,
+              "usage": {
+                "input": 915,
+                "output": 1518,
+                "cache_read": 50785,
+                "cache_write": 0
+              },
+              "summary": "============ 182 failed, 185 passed, 4 skipped, 1 warning in 8.25s =============",
+              "counts": {
+                "passed": 185,
+                "failed": 182,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 185,
+        "failed": 182,
+        "skipped": 4,
+        "errors": 0
+      },
+      "pytest_summary": "============ 182 failed, 185 passed, 4 skipped, 1 warning in 8.20s ============="
     }
   },
   "aggregate": {
-    "libraries_total": 10,
-    "tests_passed": 485,
-    "tests_failed": 1620,
-    "tests_skipped": 5,
-    "tests_errored": 28,
-    "tests_attempted_total": 2133,
-    "pass_rate_attempted": 0.2274,
-    "input_tokens_total": 652641,
-    "cache_read_input_tokens_total": 6171504,
-    "cache_creation_input_tokens_total": 375849,
-    "output_tokens_total": 855305,
-    "wall_seconds_total": 13543.6,
-    "cost_usd_estimate": 18.05
+    "libraries_total": 16,
+    "tests_passed": 1167,
+    "tests_failed": 2111,
+    "tests_skipped": 13,
+    "tests_errored": 47,
+    "tests_attempted_total": 3325,
+    "pass_rate_attempted": 0.351,
+    "input_tokens_total": 734639,
+    "cache_read_input_tokens_total": 8872037,
+    "cache_creation_input_tokens_total": 575124,
+    "output_tokens_total": 994938,
+    "wall_seconds_total": 16022.6,
+    "cost_usd_estimate": 21.95
   }
 }

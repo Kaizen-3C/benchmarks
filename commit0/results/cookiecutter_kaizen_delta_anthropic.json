@@ -1,0 +1,474 @@
+{
+  "repo": "cookiecutter",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "branch": "kaizen_delta",
+  "files_total": 18,
+  "files_accepted": 18,
+  "elapsed_s": 612.2,
+  "final_summary": "============ 182 failed, 185 passed, 4 skipped, 1 warning in 8.20s =============",
+  "final_counts": {
+    "passed": 185,
+    "failed": 182,
+    "skipped": 4,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 14728,
+    "output_tokens": 28899,
+    "cache_read_tokens": 914130,
+    "cache_write_tokens": 50785,
+    "cost_usd": 0.9424
+  },
+  "per_file": [
+    {
+      "file": "cookiecutter/__main__.py",
+      "size": 194,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.1,
+          "usage": {
+            "input": 213,
+            "output": 67,
+            "cache_read": 0,
+            "cache_write": 50785
+          },
+          "summary": "============= 325 failed, 16 passed, 4 skipped, 26 errors in 6.35s =============",
+          "counts": {
+            "passed": 16,
+            "failed": 325,
+            "skipped": 4,
+            "errors": 26
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/__init__.py",
+      "size": 318,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.0,
+          "usage": {
+            "input": 250,
+            "output": 104,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "============= 325 failed, 16 passed, 4 skipped, 26 errors in 6.28s =============",
+          "counts": {
+            "passed": 16,
+            "failed": 325,
+            "skipped": 4,
+            "errors": 26
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/replay.py",
+      "size": 906,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 5.6,
+          "usage": {
+            "input": 285,
+            "output": 303,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "============= 319 failed, 22 passed, 4 skipped, 26 errors in 6.31s =============",
+          "counts": {
+            "passed": 22,
+            "failed": 319,
+            "skipped": 4,
+            "errors": 26
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/find.py",
+      "size": 1270,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.4,
+          "usage": {
+            "input": 297,
+            "output": 356,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "============= 317 failed, 24 passed, 4 skipped, 26 errors in 6.41s =============",
+          "counts": {
+            "passed": 24,
+            "failed": 317,
+            "skipped": 4,
+            "errors": 26
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/log.py",
+      "size": 1706,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 9.5,
+          "usage": {
+            "input": 323,
+            "output": 508,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "============= 317 failed, 24 passed, 4 skipped, 26 errors in 6.28s =============",
+          "counts": {
+            "passed": 24,
+            "failed": 317,
+            "skipped": 4,
+            "errors": 26
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/config.py",
+      "size": 4705,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 13.6,
+          "usage": {
+            "input": 675,
+            "output": 1333,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "============= 301 failed, 40 passed, 4 skipped, 26 errors in 6.16s =============",
+          "counts": {
+            "passed": 40,
+            "failed": 301,
+            "skipped": 4,
+            "errors": 26
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/environment.py",
+      "size": 2283,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 5.7,
+          "usage": {
+            "input": 666,
+            "output": 577,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "============= 308 failed, 45 passed, 4 skipped, 14 errors in 6.08s =============",
+          "counts": {
+            "passed": 45,
+            "failed": 308,
+            "skipped": 4,
+            "errors": 14
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/hooks.py",
+      "size": 6141,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 19.1,
+          "usage": {
+            "input": 926,
+            "output": 1765,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "============= 308 failed, 45 passed, 4 skipped, 14 errors in 6.18s =============",
+          "counts": {
+            "passed": 45,
+            "failed": 308,
+            "skipped": 4,
+            "errors": 14
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/utils.py",
+      "size": 2734,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 9.2,
+          "usage": {
+            "input": 619,
+            "output": 839,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "================== 305 failed, 62 passed, 4 skipped in 6.62s ===================",
+          "counts": {
+            "passed": 62,
+            "failed": 305,
+            "skipped": 4,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/zipfile.py",
+      "size": 3703,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 12.5,
+          "usage": {
+            "input": 451,
+            "output": 1050,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "================== 295 failed, 72 passed, 4 skipped in 6.52s ===================",
+          "counts": {
+            "passed": 72,
+            "failed": 295,
+            "skipped": 4,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/extensions.py",
+      "size": 3660,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 11.8,
+          "usage": {
+            "input": 744,
+            "output": 1045,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "================== 293 failed, 74 passed, 4 skipped in 6.54s ===================",
+          "counts": {
+            "passed": 74,
+            "failed": 293,
+            "skipped": 4,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/cli.py",
+      "size": 7304,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 24.1,
+          "usage": {
+            "input": 1155,
+            "output": 2161,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "================== 288 failed, 79 passed, 4 skipped in 6.80s ===================",
+          "counts": {
+            "passed": 79,
+            "failed": 288,
+            "skipped": 4,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/exceptions.py",
+      "size": 3826,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 9.8,
+          "usage": {
+            "input": 1140,
+            "output": 1005,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "================== 288 failed, 79 passed, 4 skipped in 6.81s ===================",
+          "counts": {
+            "passed": 79,
+            "failed": 288,
+            "skipped": 4,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/repository.py",
+      "size": 4261,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 12.8,
+          "usage": {
+            "input": 764,
+            "output": 1144,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "================== 257 failed, 110 passed, 4 skipped in 6.74s ==================",
+          "counts": {
+            "passed": 110,
+            "failed": 257,
+            "skipped": 4,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/generate.py",
+      "size": 16300,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 53.1,
+          "usage": {
+            "input": 1272,
+            "output": 4396,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "================== 236 failed, 131 passed, 4 skipped in 6.76s ==================",
+          "counts": {
+            "passed": 131,
+            "failed": 236,
+            "skipped": 4,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/vcs.py",
+      "size": 5113,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 16.7,
+          "usage": {
+            "input": 595,
+            "output": 1505,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "================== 217 failed, 150 passed, 4 skipped in 7.26s ==================",
+          "counts": {
+            "passed": 150,
+            "failed": 217,
+            "skipped": 4,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/prompt.py",
+      "size": 15955,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 59.4,
+          "usage": {
+            "input": 1688,
+            "output": 4688,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "============= 65 failed, 71 passed, 1 skipped, 30 errors in 4.97s ==============",
+          "counts": {
+            "passed": 71,
+            "failed": 65,
+            "skipped": 1,
+            "errors": 30
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 56.8,
+          "usage": {
+            "input": 1750,
+            "output": 4535,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "============ 186 failed, 181 passed, 4 skipped, 1 warning in 8.04s =============",
+          "counts": {
+            "passed": 181,
+            "failed": 186,
+            "skipped": 4,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "cookiecutter/main.py",
+      "size": 5638,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 17.8,
+          "usage": {
+            "input": 915,
+            "output": 1518,
+            "cache_read": 50785,
+            "cache_write": 0
+          },
+          "summary": "============ 182 failed, 185 passed, 4 skipped, 1 warning in 8.25s =============",
+          "counts": {
+            "passed": 185,
+            "failed": 182,
+            "skipped": 4,
+            "errors": 0
+          }
+        }
+      ]
+    }
+  ]
+}

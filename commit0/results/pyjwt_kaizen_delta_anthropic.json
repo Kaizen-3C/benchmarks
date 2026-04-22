@@ -1,0 +1,313 @@
+{
+  "repo": "pyjwt",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "branch": "kaizen_delta",
+  "files_total": 12,
+  "files_accepted": 12,
+  "elapsed_s": 317.1,
+  "final_summary": "======= 128 failed, 108 passed, 2 skipped, 1 xfailed, 4 errors in 3.44s ========",
+  "final_counts": {
+    "passed": 108,
+    "failed": 128,
+    "skipped": 2,
+    "errors": 4
+  },
+  "totals": {
+    "input_tokens": 8137,
+    "output_tokens": 20458,
+    "cache_read_tokens": 182886,
+    "cache_write_tokens": 16626,
+    "cost_usd": 0.4485
+  },
+  "per_file": [
+    {
+      "file": "jwt/warnings.py",
+      "size": 59,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.2,
+          "usage": {
+            "input": 178,
+            "output": 34,
+            "cache_read": 0,
+            "cache_write": 16626
+          },
+          "summary": "========================= 1 passed, 9 errors in 0.42s ==========================",
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 9
+          }
+        }
+      ]
+    },
+    {
+      "file": "jwt/types.py",
+      "size": 98,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 1.2,
+          "usage": {
+            "input": 190,
+            "output": 46,
+            "cache_read": 16626,
+            "cache_write": 0
+          },
+          "summary": "========================= 1 passed, 9 errors in 0.52s ==========================",
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 9
+          }
+        }
+      ]
+    },
+    {
+      "file": "jwt/jwk_set_cache.py",
+      "size": 1155,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 4.5,
+          "usage": {
+            "input": 252,
+            "output": 366,
+            "cache_read": 16626,
+            "cache_write": 0
+          },
+          "summary": "========================= 1 passed, 9 errors in 0.40s ==========================",
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 9
+          }
+        }
+      ]
+    },
+    {
+      "file": "jwt/help.py",
+      "size": 917,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.2,
+          "usage": {
+            "input": 300,
+            "output": 261,
+            "cache_read": 16626,
+            "cache_write": 0
+          },
+          "summary": "========================= 1 passed, 9 errors in 0.42s ==========================",
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 9
+          }
+        }
+      ]
+    },
+    {
+      "file": "jwt/exceptions.py",
+      "size": 1031,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 4.3,
+          "usage": {
+            "input": 468,
+            "output": 324,
+            "cache_read": 16626,
+            "cache_write": 0
+          },
+          "summary": "========================= 1 passed, 9 errors in 0.38s ==========================",
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 9
+          }
+        }
+      ]
+    },
+    {
+      "file": "jwt/jwks_client.py",
+      "size": 4089,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 14.4,
+          "usage": {
+            "input": 548,
+            "output": 1223,
+            "cache_read": 16626,
+            "cache_write": 0
+          },
+          "summary": "========================= 1 passed, 9 errors in 0.37s ==========================",
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 9
+          }
+        }
+      ]
+    },
+    {
+      "file": "jwt/api_jwt.py",
+      "size": 11754,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 34.6,
+          "usage": {
+            "input": 621,
+            "output": 3215,
+            "cache_read": 16626,
+            "cache_write": 0
+          },
+          "summary": "========================= 1 passed, 9 errors in 0.38s ==========================",
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 9
+          }
+        }
+      ]
+    },
+    {
+      "file": "jwt/__init__.py",
+      "size": 1670,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 5.9,
+          "usage": {
+            "input": 773,
+            "output": 629,
+            "cache_read": 16626,
+            "cache_write": 0
+          },
+          "summary": "========================= 1 passed, 9 errors in 0.36s ==========================",
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 9
+          }
+        }
+      ]
+    },
+    {
+      "file": "jwt/api_jwk.py",
+      "size": 3801,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 14.0,
+          "usage": {
+            "input": 1096,
+            "output": 1299,
+            "cache_read": 16626,
+            "cache_write": 0
+          },
+          "summary": "========================= 1 passed, 9 errors in 0.37s ==========================",
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 9
+          }
+        }
+      ]
+    },
+    {
+      "file": "jwt/utils.py",
+      "size": 3302,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 14.3,
+          "usage": {
+            "input": 561,
+            "output": 1295,
+            "cache_read": 16626,
+            "cache_write": 0
+          },
+          "summary": "======== 94 failed, 13 passed, 1 skipped, 1 xfailed, 6 errors in 1.36s =========",
+          "counts": {
+            "passed": 13,
+            "failed": 94,
+            "skipped": 1,
+            "errors": 6
+          }
+        }
+      ]
+    },
+    {
+      "file": "jwt/api_jws.py",
+      "size": 11489,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 36.5,
+          "usage": {
+            "input": 870,
+            "output": 3170,
+            "cache_read": 16626,
+            "cache_write": 0
+          },
+          "summary": "======== 94 failed, 13 passed, 1 skipped, 1 xfailed, 6 errors in 1.29s =========",
+          "counts": {
+            "passed": 13,
+            "failed": 94,
+            "skipped": 1,
+            "errors": 6
+          }
+        }
+      ]
+    },
+    {
+      "file": "jwt/algorithms.py",
+      "size": 29675,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 87.3,
+          "usage": {
+            "input": 2280,
+            "output": 8596,
+            "cache_read": 16626,
+            "cache_write": 0
+          },
+          "summary": "======= 128 failed, 108 passed, 2 skipped, 1 xfailed, 4 errors in 3.50s ========",
+          "counts": {
+            "passed": 108,
+            "failed": 128,
+            "skipped": 2,
+            "errors": 4
+          }
+        }
+      ]
+    }
+  ]
+}
