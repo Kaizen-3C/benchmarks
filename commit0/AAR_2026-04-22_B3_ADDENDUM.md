@@ -19,14 +19,15 @@ The "test-import-aware Decompose" fix proposed in AAR-2 was **necessary but not 
 | 5 | marshmallow v2 | `relevant_test_imports()` matcher off-by-one for `src/` layouts | Compare `rel_parts[-len(mod_parts):] == mod_parts` (was `mod_parts[-len(rel_parts):] == rel_parts`) | Still 0% — exposes #6 |
 | 6 | marshmallow v3 | Largest files (40KB+) still truncate at 32K output cap | `MAX_TOKENS` 32K→48K + prompt hint *"file >15KB: PRIORITIZE FUNCTION BODIES over verbose docstrings"* | Still 0% — exposes #7 |
 | 7 | marshmallow v4 | **`utils.to_timestamp` attribute-access invisible to `from X import Y` scanner** | NOT YET FIXED — requires AST `Attribute` walk or runtime introspection | **0% — architectural ceiling** |
+| 8 | jinja v4 | **Relative imports (`from .async_utils import async_variant`) invisible to scanner** — `.async_utils` parses to `['', 'async_utils']`, never matches `['src', 'jinja2', 'async_utils']` | NOT YET FIXED — requires per-file relative-import resolution to absolute path | **0% — second architectural ceiling** |
 
 ## Final state per lib
 
 | Lib | After all 6 fixes | Cost | Wall | Files accepted | Architectural verdict |
 |---|---|---|---|---|---|
 | **voluptuous** | **39% (58/149 passed)** | $0.71 | 9 min | 6/6 | ✅ **B3 fix worked. Cheaper than OH-GPT's $1.21 for this lib.** |
-| marshmallow | 0% — `AttributeError: utils.to_timestamp` | $1.43 cumulative | 8 min latest | 13/13 latest | Hits 7th blocker; needs AST attribute scanner |
-| jinja | TBD (in flight) | TBD | TBD | TBD | Likely v4 unlocks (had matcher bug only) — wait for confirmation |
+| marshmallow | 0% — `AttributeError: utils.to_timestamp` | $1.43 latest | 8 min latest | 13/13 latest | Hits 7th blocker — attribute-access invisible to `from X import Y` scanner |
+| jinja | 0% — `cannot import name 'async_variant' from 'jinja2.async_utils'` | $2.65 v4 | 39 min v4 | 24/25 v4 | Hits 8th blocker — relative imports (`from .X import Y`) invisible to scanner |
 
 ## What this means for AAR-2 action item #1
 
@@ -34,7 +35,7 @@ Original framing: *"unblocks 3 of 5 floor libs"*. Honest revised framing:
 
 - **Voluptuous: clean unlock, 39% pass rate, $0.71.** First and only baseline of any architecture to crack voluptuous from 0% via decompose-only (OH-GPT cracked it via tool use at $1.21). Action item #1 is **partially closed** — the test-import idea works.
 - **Marshmallow: blocked at the 7th layer (attribute-access).** Six fixes peeled the import-graph problem progressively. The remaining blocker is fundamentally different — it's not "what's missing from the contract?" but "how do we extract the contract from non-import-statement Python?" Solving this needs `ast.Attribute` walking or runtime introspection. Estimated: another 1–2 days of engineering.
-- **Jinja: TBD.** Earlier failure mode matched marshmallow v1 (matcher bug). Should unlock with v4 fixes. Will report on next wake.
+- **Jinja: blocked at the 8th layer (relative imports).** Same fix-class as marshmallow — needs deeper Python parsing. Jinja extensively uses relative imports (`from .async_utils import async_variant`); my scanner sees `.async_utils` as an empty-package import and never resolves it to `jinja2.async_utils`. Fix is per-file relative-to-absolute resolution. Estimated: 30 min, but with diminishing return — a lib like marshmallow would still fail at attribute-access.
 
 ## The architectural-ceiling finding
 
@@ -90,4 +91,16 @@ Well within action item #1's "3–5 days" budget allocation.
 
 ## Closing
 
-The B3 work validated AAR-2's design hint: each architecture's weakness IS the other's strength. KD made real progress on cross-import floor libs (voluptuous unlocked) AND surfaced its own architectural ceiling (attribute-access patterns) by trying to push past it. **Both findings are publishable.** The first proves the methodology; the second prevents over-investment in the wrong direction.
+The B3 work validated AAR-2's design hint: each architecture's weakness IS the other's strength. KD made real progress on cross-import floor libs (voluptuous unlocked) AND surfaced its own architectural ceilings (attribute-access patterns AND relative imports) by trying to push past them. **Both findings are publishable.** The first proves the methodology; the second prevents over-investment in the wrong direction.
+
+### Final B3 score
+
+| Floor lib | Pre-campaign (every baseline) | After B3 fixes | Verdict |
+|---|---|---|---|
+| voluptuous | 0% (collection broken on every architecture) | **39%** at $0.71 | ✅ Unlocked |
+| marshmallow | 0% (collection broken) | 0% (peeled 4 layers, ceiling at #7 attribute-access) | Architectural ceiling |
+| jinja | 0% (collection broken) | 0% (peeled 4 layers, ceiling at #8 relative imports) | Architectural ceiling |
+
+**1 of 3 cleanly unlocked. Both ceilings are discrete, named, and recommend a specific compose-with-OH next step rather than further regex iteration.**
+
+The campaign is complete. Eight blockers identified, six fixed, two named for the next architectural campaign. **Total session spend: ~$15.** Diagnostic methodology validated end-to-end.
