@@ -6,7 +6,19 @@
     "wcwidth",
     "portalocker",
     "voluptuous",
-    "chardet"
+    "chardet",
+    "deprecated",
+    "cachetools",
+    "pyjwt",
+    "tinydb",
+    "simpy",
+    "imapclient",
+    "parsel",
+    "marshmallow",
+    "cookiecutter",
+    "babel",
+    "jinja",
+    "minitorch"
   ],
   "per_library": {
     "wcwidth": {
@@ -2343,21 +2355,5062 @@
         "errors": 1
       },
       "pytest_summary": "=============================== 1 error in 0.69s ==============================="
+    },
+    "deprecated": {
+      "repo": "deprecated",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "branch": "kaizen_delta",
+      "files_total": 3,
+      "files_accepted": 2,
+      "elapsed_s": 221.5,
+      "final_summary": "============ 38 failed, 89 passed, 5 warnings, 44 errors in 39.59s =============",
+      "final_counts": {
+        "passed": 89,
+        "failed": 38,
+        "skipped": 0,
+        "errors": 44
+      },
+      "totals": {
+        "input_tokens": 104125,
+        "output_tokens": 6756,
+        "cache_read_tokens": 75008,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.1133
+      },
+      "per_file": [
+        {
+          "file": "deprecated/__init__.py",
+          "size": 375,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 15.3,
+              "usage": {
+                "input": 24757,
+                "output": 106,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "summary": "============ 104 failed, 17 passed, 2 warnings, 50 errors in 0.96s =============",
+              "counts": {
+                "passed": 17,
+                "failed": 104,
+                "skipped": 0,
+                "errors": 50
+              }
+            }
+          ]
+        },
+        {
+          "file": "deprecated/sphinx.py",
+          "size": 9996,
+          "accepted": false,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 26.9,
+              "usage": {
+                "input": 26533,
+                "output": 2317,
+                "cache_read": 24320,
+                "cache_write": 0
+              },
+              "summary": "============= 113 failed, 8 passed, 2 warnings, 50 errors in 1.31s =============",
+              "counts": {
+                "passed": 8,
+                "failed": 113,
+                "skipped": 0,
+                "errors": 50
+              }
+            },
+            {
+              "attempt": 2,
+              "elapsed_s": 25.4,
+              "usage": {
+                "input": 26585,
+                "output": 2174,
+                "cache_read": 26368,
+                "cache_write": 0
+              },
+              "summary": "============= 113 failed, 8 passed, 2 warnings, 50 errors in 1.17s =============",
+              "counts": {
+                "passed": 8,
+                "failed": 113,
+                "skipped": 0,
+                "errors": 50
+              }
+            }
+          ]
+        },
+        {
+          "file": "deprecated/classic.py",
+          "size": 10372,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 21.1,
+              "usage": {
+                "input": 26250,
+                "output": 2159,
+                "cache_read": 24320,
+                "cache_write": 0
+              },
+              "summary": "============ 38 failed, 89 passed, 5 warnings, 44 errors in 40.26s =============",
+              "counts": {
+                "passed": 89,
+                "failed": 38,
+                "skipped": 0,
+                "errors": 44
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 89,
+        "failed": 38,
+        "skipped": 0,
+        "errors": 44
+      },
+      "pytest_summary": "============ 38 failed, 89 passed, 5 warnings, 44 errors in 39.59s ============="
+    },
+    "cachetools": {
+      "repo": "cachetools",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "branch": "kaizen_delta",
+      "files_total": 3,
+      "files_accepted": 2,
+      "elapsed_s": 167.6,
+      "final_summary": "================= 14 failed, 201 passed, 15 warnings in 0.55s ==================",
+      "final_counts": {
+        "passed": 201,
+        "failed": 14,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 82730,
+        "output_tokens": 12170,
+        "cache_read_tokens": 56576,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.1615
+      },
+      "per_file": [
+        {
+          "file": "src/cachetools/keys.py",
+          "size": 1651,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 5.4,
+              "usage": {
+                "input": 17993,
+                "output": 419,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "summary": "================= 42 failed, 173 passed, 15 warnings in 0.37s ==================",
+              "counts": {
+                "passed": 173,
+                "failed": 42,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/cachetools/func.py",
+          "size": 3574,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.4,
+              "usage": {
+                "input": 18154,
+                "output": 889,
+                "cache_read": 17152,
+                "cache_write": 0
+              },
+              "summary": "================== 6 failed, 209 passed, 15 warnings in 0.30s ==================",
+              "counts": {
+                "passed": 209,
+                "failed": 6,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/cachetools/__init__.py",
+          "size": 25101,
+          "accepted": false,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 54.2,
+              "usage": {
+                "input": 23269,
+                "output": 5372,
+                "cache_read": 17152,
+                "cache_write": 0
+              },
+              "summary": "================= 19 failed, 196 passed, 15 warnings in 0.37s ==================",
+              "counts": {
+                "passed": 196,
+                "failed": 19,
+                "skipped": 0,
+                "errors": 0
+              }
+            },
+            {
+              "attempt": 2,
+              "elapsed_s": 60.0,
+              "usage": {
+                "input": 23314,
+                "output": 5490,
+                "cache_read": 22272,
+                "cache_write": 0
+              },
+              "summary": "================= 14 failed, 201 passed, 15 warnings in 0.56s ==================",
+              "counts": {
+                "passed": 201,
+                "failed": 14,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 201,
+        "failed": 14,
+        "skipped": 0,
+        "errors": 0
+      },
+      "pytest_summary": "================= 14 failed, 201 passed, 15 warnings in 0.55s =================="
+    },
+    "pyjwt": {
+      "repo": "pyjwt",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "branch": "kaizen_delta",
+      "files_total": 12,
+      "files_accepted": 12,
+      "elapsed_s": 309.6,
+      "final_summary": "============ 128 failed, 131 passed, 2 skipped, 1 xfailed in 7.30s =============",
+      "final_counts": {
+        "passed": 131,
+        "failed": 128,
+        "skipped": 2,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 175032,
+        "output_tokens": 15052,
+        "cache_read_tokens": 143616,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.2077
+      },
+      "per_file": [
+        {
+          "file": "jwt/warnings.py",
+          "size": 148,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.4,
+              "usage": {
+                "input": 14187,
+                "output": 43,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.43s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/types.py",
+          "size": 98,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.7,
+              "usage": {
+                "input": 14196,
+                "output": 36,
+                "cache_read": 13056,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.38s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/help.py",
+          "size": 1364,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 5.3,
+              "usage": {
+                "input": 14291,
+                "output": 287,
+                "cache_read": 13056,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.40s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/exceptions.py",
+          "size": 1091,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.5,
+              "usage": {
+                "input": 14418,
+                "output": 268,
+                "cache_read": 13056,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.43s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/jwk_set_cache.py",
+          "size": 910,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.2,
+              "usage": {
+                "input": 14245,
+                "output": 236,
+                "cache_read": 13056,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.39s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/__init__.py",
+          "size": 1710,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 8.6,
+              "usage": {
+                "input": 14635,
+                "output": 481,
+                "cache_read": 13056,
+                "cache_write": 0
+              },
+              "summary": "========================= 1 passed, 9 errors in 0.37s ==========================",
+              "counts": {
+                "passed": 1,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 9
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/utils.py",
+          "size": 3645,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 12.4,
+              "usage": {
+                "input": 14504,
+                "output": 1045,
+                "cache_read": 13056,
+                "cache_write": 0
+              },
+              "summary": "======== 94 failed, 13 passed, 1 skipped, 1 xfailed, 6 errors in 1.33s =========",
+              "counts": {
+                "passed": 13,
+                "failed": 94,
+                "skipped": 1,
+                "errors": 6
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/api_jwk.py",
+          "size": 4596,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 12.1,
+              "usage": {
+                "input": 14931,
+                "output": 1159,
+                "cache_read": 13056,
+                "cache_write": 0
+              },
+              "summary": "======== 94 failed, 13 passed, 1 skipped, 1 xfailed, 6 errors in 1.31s =========",
+              "counts": {
+                "passed": 13,
+                "failed": 94,
+                "skipped": 1,
+                "errors": 6
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/jwks_client.py",
+          "size": 4098,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 11.3,
+              "usage": {
+                "input": 14486,
+                "output": 956,
+                "cache_read": 13056,
+                "cache_write": 0
+              },
+              "summary": "======== 94 failed, 13 passed, 1 skipped, 1 xfailed, 6 errors in 1.58s =========",
+              "counts": {
+                "passed": 13,
+                "failed": 94,
+                "skipped": 1,
+                "errors": 6
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/api_jws.py",
+          "size": 10560,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 34.6,
+              "usage": {
+                "input": 14735,
+                "output": 2284,
+                "cache_read": 13056,
+                "cache_write": 0
+              },
+              "summary": "======== 94 failed, 13 passed, 1 skipped, 1 xfailed, 6 errors in 1.36s =========",
+              "counts": {
+                "passed": 13,
+                "failed": 94,
+                "skipped": 1,
+                "errors": 6
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/api_jwt.py",
+          "size": 10746,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 26.7,
+              "usage": {
+                "input": 14541,
+                "output": 2358,
+                "cache_read": 13056,
+                "cache_write": 0
+              },
+              "summary": "======== 94 failed, 13 passed, 1 skipped, 1 xfailed, 6 errors in 1.69s =========",
+              "counts": {
+                "passed": 13,
+                "failed": 94,
+                "skipped": 1,
+                "errors": 6
+              }
+            }
+          ]
+        },
+        {
+          "file": "jwt/algorithms.py",
+          "size": 26373,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 62.1,
+              "usage": {
+                "input": 15863,
+                "output": 5899,
+                "cache_read": 13056,
+                "cache_write": 0
+              },
+              "summary": "============ 128 failed, 131 passed, 2 skipped, 1 xfailed in 7.27s =============",
+              "counts": {
+                "passed": 131,
+                "failed": 128,
+                "skipped": 2,
+                "errors": 0
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 131,
+        "failed": 128,
+        "skipped": 2,
+        "errors": 0
+      },
+      "pytest_summary": "============ 128 failed, 131 passed, 2 skipped, 1 xfailed in 7.30s ============="
+    },
+    "tinydb": {
+      "repo": "tinydb",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "branch": "kaizen_delta",
+      "files_total": 10,
+      "files_accepted": 10,
+      "elapsed_s": 577.5,
+      "final_summary": "======================== 31 failed, 170 passed in 1.97s ========================",
+      "final_counts": {
+        "passed": 170,
+        "failed": 31,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 207731,
+        "output_tokens": 11647,
+        "cache_read_tokens": 172800,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.1817
+      },
+      "per_file": [
+        {
+          "file": "tinydb/version.py",
+          "size": 22,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 1.5,
+              "usage": {
+                "input": 19952,
+                "output": 21,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:12:09,464 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:12:09,506 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/__init__.py",
+          "size": 981,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.9,
+              "usage": {
+                "input": 20185,
+                "output": 264,
+                "cache_read": 19200,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:12:20,990 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:12:21,028 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/mypy_plugin.py",
+          "size": 2361,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 8.9,
+              "usage": {
+                "input": 20046,
+                "output": 527,
+                "cache_read": 19200,
+                "cache_write": 0
+              },
+              "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-21 23:12:36,708 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/operations.py",
+          "size": 1161,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.7,
+              "usage": {
+                "input": 20138,
+                "output": 284,
+                "cache_read": 19200,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:12:48,120 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:12:48,177 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/utils.py",
+          "size": 3808,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.2,
+              "usage": {
+                "input": 20573,
+                "output": 933,
+                "cache_read": 19200,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:13:04,723 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:13:04,794 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/middlewares.py",
+          "size": 4454,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.6,
+              "usage": {
+                "input": 20563,
+                "output": 927,
+                "cache_read": 19200,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:14:32,771 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:14:32,803 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/storages.py",
+          "size": 3951,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.5,
+              "usage": {
+                "input": 20569,
+                "output": 919,
+                "cache_read": 19200,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:16:02,797 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:16:02,836 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/database.py",
+          "size": 6926,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 13.5,
+              "usage": {
+                "input": 21263,
+                "output": 1475,
+                "cache_read": 19200,
+                "cache_write": 0
+              },
+              "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-21 23:17:32,195 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/table.py",
+          "size": 14620,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 29.3,
+              "usage": {
+                "input": 21788,
+                "output": 3040,
+                "cache_read": 19200,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:19:23,231 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:19:23,272 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "tinydb/queries.py",
+          "size": 13696,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 31.0,
+              "usage": {
+                "input": 22654,
+                "output": 3257,
+                "cache_read": 19200,
+                "cache_write": 0
+              },
+              "summary": "======================== 31 failed, 170 passed in 1.89s ========================",
+              "counts": {
+                "passed": 170,
+                "failed": 31,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 170,
+        "failed": 31,
+        "skipped": 0,
+        "errors": 0
+      },
+      "pytest_summary": "======================== 31 failed, 170 passed in 1.97s ========================"
+    },
+    "simpy": {
+      "repo": "simpy",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "branch": "kaizen_delta",
+      "files_total": 11,
+      "files_accepted": 8,
+      "elapsed_s": 318.2,
+      "final_summary": "================= 8 failed, 132 passed, 10 deselected in 2.01s =================",
+      "final_counts": {
+        "passed": 132,
+        "failed": 8,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 640198,
+        "output_tokens": 17439,
+        "cache_read_tokens": 572160,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.331
+      },
+      "per_file": [
+        {
+          "file": "src/simpy/resources/__init__.py",
+          "size": 492,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.3,
+              "usage": {
+                "input": 44793,
+                "output": 119,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "summary": "================= 57 failed, 83 passed, 10 deselected in 0.69s =================",
+              "counts": {
+                "passed": 83,
+                "failed": 57,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/exceptions.py",
+          "size": 905,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.5,
+              "usage": {
+                "input": 44906,
+                "output": 218,
+                "cache_read": 43776,
+                "cache_write": 0
+              },
+              "summary": "================= 57 failed, 83 passed, 10 deselected in 0.54s =================",
+              "counts": {
+                "passed": 83,
+                "failed": 57,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/util.py",
+          "size": 2102,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 7.9,
+              "usage": {
+                "input": 45026,
+                "output": 492,
+                "cache_read": 43776,
+                "cache_write": 0
+              },
+              "summary": "================= 56 failed, 84 passed, 10 deselected in 0.56s =================",
+              "counts": {
+                "passed": 84,
+                "failed": 56,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/__init__.py",
+          "size": 2580,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 7.3,
+              "usage": {
+                "input": 45305,
+                "output": 601,
+                "cache_read": 43776,
+                "cache_write": 0
+              },
+              "summary": "================= 56 failed, 84 passed, 10 deselected in 0.57s =================",
+              "counts": {
+                "passed": 84,
+                "failed": 56,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/rt.py",
+          "size": 2738,
+          "accepted": false,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 7.9,
+              "usage": {
+                "input": 45197,
+                "output": 652,
+                "cache_read": 43776,
+                "cache_write": 0
+              },
+              "summary": "================= 57 failed, 83 passed, 10 deselected in 0.52s =================",
+              "counts": {
+                "passed": 83,
+                "failed": 57,
+                "skipped": 0,
+                "errors": 0
+              }
+            },
+            {
+              "attempt": 2,
+              "elapsed_s": 7.6,
+              "usage": {
+                "input": 45242,
+                "output": 641,
+                "cache_read": 44800,
+                "cache_write": 0
+              },
+              "summary": "================= 57 failed, 83 passed, 10 deselected in 0.52s =================",
+              "counts": {
+                "passed": 83,
+                "failed": 57,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/resources/container.py",
+          "size": 3706,
+          "accepted": false,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.0,
+              "usage": {
+                "input": 45432,
+                "output": 850,
+                "cache_read": 43776,
+                "cache_write": 0
+              },
+              "summary": "================= 57 failed, 83 passed, 10 deselected in 0.59s =================",
+              "counts": {
+                "passed": 83,
+                "failed": 57,
+                "skipped": 0,
+                "errors": 0
+              }
+            },
+            {
+              "attempt": 2,
+              "elapsed_s": 8.8,
+              "usage": {
+                "input": 45477,
+                "output": 847,
+                "cache_read": 44800,
+                "cache_write": 0
+              },
+              "summary": "================= 57 failed, 83 passed, 10 deselected in 0.54s =================",
+              "counts": {
+                "passed": 83,
+                "failed": 57,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/resources/store.py",
+          "size": 6049,
+          "accepted": false,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 17.8,
+              "usage": {
+                "input": 45850,
+                "output": 1397,
+                "cache_read": 43776,
+                "cache_write": 0
+              },
+              "summary": "================= 57 failed, 83 passed, 10 deselected in 0.61s =================",
+              "counts": {
+                "passed": 83,
+                "failed": 57,
+                "skipped": 0,
+                "errors": 0
+              }
+            },
+            {
+              "attempt": 2,
+              "elapsed_s": 15.7,
+              "usage": {
+                "input": 45895,
+                "output": 1397,
+                "cache_read": 44800,
+                "cache_write": 0
+              },
+              "summary": "================= 57 failed, 83 passed, 10 deselected in 0.53s =================",
+              "counts": {
+                "passed": 83,
+                "failed": 57,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/core.py",
+          "size": 6982,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 17.5,
+              "usage": {
+                "input": 45860,
+                "output": 1565,
+                "cache_read": 43776,
+                "cache_write": 0
+              },
+              "summary": "================= 55 failed, 85 passed, 10 deselected in 1.87s =================",
+              "counts": {
+                "passed": 85,
+                "failed": 55,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/resources/base.py",
+          "size": 9024,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 21.6,
+              "usage": {
+                "input": 46559,
+                "output": 2063,
+                "cache_read": 43776,
+                "cache_write": 0
+              },
+              "summary": "================= 52 failed, 88 passed, 10 deselected in 1.89s =================",
+              "counts": {
+                "passed": 88,
+                "failed": 52,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/resources/resource.py",
+          "size": 9367,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 23.1,
+              "usage": {
+                "input": 46548,
+                "output": 2125,
+                "cache_read": 43776,
+                "cache_write": 0
+              },
+              "summary": "================= 52 failed, 88 passed, 10 deselected in 1.94s =================",
+              "counts": {
+                "passed": 88,
+                "failed": 52,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/simpy/events.py",
+          "size": 20201,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 49.5,
+              "usage": {
+                "input": 48108,
+                "output": 4472,
+                "cache_read": 43776,
+                "cache_write": 0
+              },
+              "summary": "================= 8 failed, 132 passed, 10 deselected in 2.02s =================",
+              "counts": {
+                "passed": 132,
+                "failed": 8,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 132,
+        "failed": 8,
+        "skipped": 0,
+        "errors": 0
+      },
+      "pytest_summary": "================= 8 failed, 132 passed, 10 deselected in 2.01s ================="
+    },
+    "imapclient": {
+      "repo": "imapclient",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "branch": "kaizen_delta",
+      "files_total": 17,
+      "files_accepted": 17,
+      "elapsed_s": 390.6,
+      "final_summary": "=================== 62 failed, 25 passed, 4 errors in 0.49s ====================",
+      "final_counts": {
+        "passed": 25,
+        "failed": 62,
+        "skipped": 0,
+        "errors": 4
+      },
+      "totals": {
+        "input_tokens": 577335,
+        "output_tokens": 22123,
+        "cache_read_tokens": 520192,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.3577
+      },
+      "per_file": [
+        {
+          "file": "imapclient/__init__.py",
+          "size": 551,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.5,
+              "usage": {
+                "input": 33488,
+                "output": 163,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "summary": "============================== 18 errors in 0.24s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/version.py",
+          "size": 539,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 2.7,
+              "usage": {
+                "input": 33405,
+                "output": 157,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "============================== 18 errors in 0.31s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/typing_imapclient.py",
+          "size": 365,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 2.1,
+              "usage": {
+                "input": 33370,
+                "output": 96,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "============================== 18 errors in 0.33s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/exceptions.py",
+          "size": 1766,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 6.7,
+              "usage": {
+                "input": 33550,
+                "output": 420,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "============================== 18 errors in 0.23s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/testable_imapclient.py",
+          "size": 7520,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 25.1,
+              "usage": {
+                "input": 33518,
+                "output": 1989,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "============================== 18 errors in 0.26s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/fixed_offset.py",
+          "size": 1360,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.5,
+              "usage": {
+                "input": 33501,
+                "output": 327,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "============================== 18 errors in 0.25s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/imap4.py",
+          "size": 699,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.4,
+              "usage": {
+                "input": 33408,
+                "output": 173,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "============================== 18 errors in 0.25s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/tls.py",
+          "size": 2419,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 6.8,
+              "usage": {
+                "input": 33504,
+                "output": 555,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "============================== 18 errors in 0.22s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/imap_utf7.py",
+          "size": 2064,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.2,
+              "usage": {
+                "input": 33508,
+                "output": 563,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "============================== 18 errors in 0.25s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/datetime_util.py",
+          "size": 2232,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 8.6,
+              "usage": {
+                "input": 33601,
+                "output": 607,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "============================== 18 errors in 0.31s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/interact.py",
+          "size": 6127,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 17.3,
+              "usage": {
+                "input": 33379,
+                "output": 1393,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "============================== 18 errors in 0.26s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 18
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/util.py",
+          "size": 2972,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.8,
+              "usage": {
+                "input": 33391,
+                "output": 704,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "=================== 17 failed, 6 passed, 15 errors in 0.59s ====================",
+              "counts": {
+                "passed": 6,
+                "failed": 17,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/response_types.py",
+          "size": 4130,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 12.2,
+              "usage": {
+                "input": 34342,
+                "output": 1029,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "=================== 17 failed, 6 passed, 15 errors in 0.58s ====================",
+              "counts": {
+                "passed": 6,
+                "failed": 17,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/config.py",
+          "size": 4784,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 12.9,
+              "usage": {
+                "input": 33489,
+                "output": 1154,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "=================== 17 failed, 6 passed, 15 errors in 0.57s ====================",
+              "counts": {
+                "passed": 6,
+                "failed": 17,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/response_lexer.py",
+          "size": 5960,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 14.1,
+              "usage": {
+                "input": 33893,
+                "output": 1297,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "=================== 9 failed, 14 passed, 15 errors in 0.63s ====================",
+              "counts": {
+                "passed": 14,
+                "failed": 9,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/response_parser.py",
+          "size": 9721,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 26.7,
+              "usage": {
+                "input": 33744,
+                "output": 2198,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "=================== 9 failed, 14 passed, 15 errors in 0.54s ====================",
+              "counts": {
+                "passed": 14,
+                "failed": 9,
+                "skipped": 0,
+                "errors": 15
+              }
+            }
+          ]
+        },
+        {
+          "file": "imapclient/imapclient.py",
+          "size": 39359,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 102.5,
+              "usage": {
+                "input": 40244,
+                "output": 9298,
+                "cache_read": 32512,
+                "cache_write": 0
+              },
+              "summary": "=================== 62 failed, 25 passed, 4 errors in 0.49s ====================",
+              "counts": {
+                "passed": 25,
+                "failed": 62,
+                "skipped": 0,
+                "errors": 4
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 25,
+        "failed": 62,
+        "skipped": 0,
+        "errors": 4
+      },
+      "pytest_summary": "=================== 62 failed, 25 passed, 4 errors in 0.49s ===================="
+    },
+    "parsel": {
+      "repo": "parsel",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "branch": "kaizen_delta",
+      "files_total": 5,
+      "files_accepted": 5,
+      "elapsed_s": 129.5,
+      "final_summary": "=================== 1 failed, 14 passed, 11 errors in 0.19s ====================",
+      "final_counts": {
+        "passed": 14,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 11
+      },
+      "totals": {
+        "input_tokens": 87696,
+        "output_tokens": 7856,
+        "cache_read_tokens": 64512,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.1156
+      },
+      "per_file": [
+        {
+          "file": "parsel/__init__.py",
+          "size": 428,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 2.5,
+              "usage": {
+                "input": 16687,
+                "output": 135,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "summary": "======================== 15 failed, 11 errors in 0.25s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 15,
+                "skipped": 0,
+                "errors": 11
+              }
+            }
+          ]
+        },
+        {
+          "file": "parsel/xpathfuncs.py",
+          "size": 1491,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.7,
+              "usage": {
+                "input": 16788,
+                "output": 363,
+                "cache_read": 16128,
+                "cache_write": 0
+              },
+              "summary": "======================== 15 failed, 11 errors in 0.26s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 15,
+                "skipped": 0,
+                "errors": 11
+              }
+            }
+          ]
+        },
+        {
+          "file": "parsel/utils.py",
+          "size": 2696,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 8.4,
+              "usage": {
+                "input": 17117,
+                "output": 759,
+                "cache_read": 16128,
+                "cache_write": 0
+              },
+              "summary": "=================== 1 failed, 14 passed, 11 errors in 0.20s ====================",
+              "counts": {
+                "passed": 14,
+                "failed": 1,
+                "skipped": 0,
+                "errors": 11
+              }
+            }
+          ]
+        },
+        {
+          "file": "parsel/csstranslator.py",
+          "size": 4114,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.0,
+              "usage": {
+                "input": 17013,
+                "output": 887,
+                "cache_read": 16128,
+                "cache_write": 0
+              },
+              "summary": "=================== 1 failed, 14 passed, 11 errors in 0.22s ====================",
+              "counts": {
+                "passed": 14,
+                "failed": 1,
+                "skipped": 0,
+                "errors": 11
+              }
+            }
+          ]
+        },
+        {
+          "file": "parsel/selector.py",
+          "size": 26016,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 58.4,
+              "usage": {
+                "input": 20091,
+                "output": 5712,
+                "cache_read": 16128,
+                "cache_write": 0
+              },
+              "summary": "=================== 1 failed, 14 passed, 11 errors in 0.21s ====================",
+              "counts": {
+                "passed": 14,
+                "failed": 1,
+                "skipped": 0,
+                "errors": 11
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 14,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 11
+      },
+      "pytest_summary": "=================== 1 failed, 14 passed, 11 errors in 0.19s ===================="
+    },
+    "marshmallow": {
+      "repo": "marshmallow",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "branch": "kaizen_delta",
+      "files_total": 13,
+      "files_accepted": 13,
+      "elapsed_s": 519.9,
+      "final_summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:45:04,719 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:45:04,760 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 1117619,
+        "output_tokens": 35654,
+        "cache_read_tokens": 1004544,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.6235
+      },
+      "per_file": [
+        {
+          "file": "src/marshmallow/warnings.py",
+          "size": 291,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.3,
+              "usage": {
+                "input": 84338,
+                "output": 76,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:36:40,504 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:36:40,539 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/marshmallow/types.py",
+          "size": 413,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 2.3,
+              "usage": {
+                "input": 84393,
+                "output": 103,
+                "cache_read": 83712,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:36:48,889 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:36:48,950 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/marshmallow/base.py",
+          "size": 1380,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 5.0,
+              "usage": {
+                "input": 84429,
+                "output": 312,
+                "cache_read": 83712,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:36:59,502 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:36:59,539 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/marshmallow/exceptions.py",
+          "size": 2239,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 11.8,
+              "usage": {
+                "input": 84697,
+                "output": 503,
+                "cache_read": 83712,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:37:16,975 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:37:17,012 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/marshmallow/class_registry.py",
+          "size": 2068,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.0,
+              "usage": {
+                "input": 84619,
+                "output": 487,
+                "cache_read": 83712,
+                "cache_write": 0
+              },
+              "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-21 23:37:32,488 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/marshmallow/__init__.py",
+          "size": 2350,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 7.3,
+              "usage": {
+                "input": 84847,
+                "output": 517,
+                "cache_read": 83712,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:37:45,264 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:37:45,300 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/marshmallow/orderedset.py",
+          "size": 2209,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.2,
+              "usage": {
+                "input": 84625,
+                "output": 570,
+                "cache_read": 83712,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:38:00,073 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:38:00,110 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/marshmallow/error_store.py",
+          "size": 1961,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 7.5,
+              "usage": {
+                "input": 84433,
+                "output": 446,
+                "cache_read": 83712,
+                "cache_write": 0
+              },
+              "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-21 23:38:13,081 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/marshmallow/decorators.py",
+          "size": 7935,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 22.6,
+              "usage": {
+                "input": 85962,
+                "output": 1865,
+                "cache_read": 83712,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:38:41,356 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:38:41,395 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/marshmallow/utils.py",
+          "size": 10192,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 34.6,
+              "usage": {
+                "input": 85857,
+                "output": 2665,
+                "cache_read": 83712,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:39:21,632 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:39:21,666 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/marshmallow/validate.py",
+          "size": 21892,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 57.8,
+              "usage": {
+                "input": 88495,
+                "output": 5281,
+                "cache_read": 83712,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:40:25,400 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:40:25,449 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/marshmallow/fields.py",
+          "size": 62006,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 163.5,
+              "usage": {
+                "input": 91238,
+                "output": 14629,
+                "cache_read": 83712,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:43:14,856 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:43:14,890 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/marshmallow/schema.py",
+          "size": 38225,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 97.7,
+              "usage": {
+                "input": 89686,
+                "output": 8200,
+                "cache_read": 83712,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:44:58,635 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:44:58,674 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "pytest_summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:45:04,719 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:45:04,760 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\""
+    },
+    "cookiecutter": {
+      "repo": "cookiecutter",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "branch": "kaizen_delta",
+      "files_total": 18,
+      "files_accepted": 18,
+      "elapsed_s": 505.9,
+      "final_summary": "=========== 205 failed, 162 passed, 4 skipped, 6 warnings in 11.15s ============",
+      "final_counts": {
+        "passed": 162,
+        "failed": 205,
+        "skipped": 4,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 788456,
+        "output_tokens": 16557,
+        "cache_read_tokens": 726784,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.3335
+      },
+      "per_file": [
+        {
+          "file": "cookiecutter/__main__.py",
+          "size": 194,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 15.8,
+              "usage": {
+                "input": 43397,
+                "output": 62,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "summary": "============= 325 failed, 16 passed, 4 skipped, 26 errors in 7.31s =============",
+              "counts": {
+                "passed": 16,
+                "failed": 325,
+                "skipped": 4,
+                "errors": 26
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/__init__.py",
+          "size": 318,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.8,
+              "usage": {
+                "input": 43419,
+                "output": 84,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "============= 325 failed, 16 passed, 4 skipped, 26 errors in 7.22s =============",
+              "counts": {
+                "passed": 16,
+                "failed": 325,
+                "skipped": 4,
+                "errors": 26
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/replay.py",
+          "size": 999,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.3,
+              "usage": {
+                "input": 43446,
+                "output": 254,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "============= 319 failed, 22 passed, 4 skipped, 26 errors in 7.04s =============",
+              "counts": {
+                "passed": 22,
+                "failed": 319,
+                "skipped": 4,
+                "errors": 26
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/find.py",
+          "size": 908,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.2,
+              "usage": {
+                "input": 43458,
+                "output": 200,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "============= 318 failed, 23 passed, 4 skipped, 26 errors in 7.01s =============",
+              "counts": {
+                "passed": 23,
+                "failed": 318,
+                "skipped": 4,
+                "errors": 26
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/log.py",
+          "size": 1396,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.5,
+              "usage": {
+                "input": 43479,
+                "output": 313,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "============= 318 failed, 23 passed, 4 skipped, 26 errors in 7.02s =============",
+              "counts": {
+                "passed": 23,
+                "failed": 318,
+                "skipped": 4,
+                "errors": 26
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/environment.py",
+          "size": 2301,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 5.7,
+              "usage": {
+                "input": 43743,
+                "output": 461,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "============= 325 failed, 28 passed, 4 skipped, 14 errors in 6.91s =============",
+              "counts": {
+                "passed": 28,
+                "failed": 325,
+                "skipped": 4,
+                "errors": 14
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/utils.py",
+          "size": 2679,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 8.1,
+              "usage": {
+                "input": 43710,
+                "output": 618,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "================== 329 failed, 38 passed, 4 skipped in 6.84s ===================",
+              "counts": {
+                "passed": 38,
+                "failed": 329,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/extensions.py",
+          "size": 3193,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 8.6,
+              "usage": {
+                "input": 43808,
+                "output": 648,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "================== 324 failed, 43 passed, 4 skipped in 6.82s ===================",
+              "counts": {
+                "passed": 43,
+                "failed": 324,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/zipfile.py",
+          "size": 4527,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 11.7,
+              "usage": {
+                "input": 43589,
+                "output": 941,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "================== 315 failed, 52 passed, 4 skipped in 6.84s ===================",
+              "counts": {
+                "passed": 52,
+                "failed": 315,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/exceptions.py",
+          "size": 3930,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 8.7,
+              "usage": {
+                "input": 44110,
+                "output": 820,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "================== 315 failed, 52 passed, 4 skipped in 7.18s ===================",
+              "counts": {
+                "passed": 52,
+                "failed": 315,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/repository.py",
+          "size": 3745,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.1,
+              "usage": {
+                "input": 43859,
+                "output": 811,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "================== 286 failed, 81 passed, 4 skipped in 7.14s ===================",
+              "counts": {
+                "passed": 81,
+                "failed": 286,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/config.py",
+          "size": 4568,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 11.6,
+              "usage": {
+                "input": 43783,
+                "output": 1002,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "================== 271 failed, 96 passed, 4 skipped in 7.50s ===================",
+              "counts": {
+                "passed": 96,
+                "failed": 271,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/vcs.py",
+          "size": 5275,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 14.2,
+              "usage": {
+                "input": 43699,
+                "output": 1175,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "================== 259 failed, 108 passed, 4 skipped in 7.20s ==================",
+              "counts": {
+                "passed": 108,
+                "failed": 259,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/main.py",
+          "size": 5753,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 14.8,
+              "usage": {
+                "input": 43973,
+                "output": 1191,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "================== 256 failed, 111 passed, 4 skipped in 7.47s ==================",
+              "counts": {
+                "passed": 111,
+                "failed": 256,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/hooks.py",
+          "size": 5792,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 14.3,
+              "usage": {
+                "input": 43977,
+                "output": 1306,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "================== 250 failed, 117 passed, 4 skipped in 7.64s ==================",
+              "counts": {
+                "passed": 117,
+                "failed": 250,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/cli.py",
+          "size": 6618,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 20.0,
+              "usage": {
+                "input": 44135,
+                "output": 1447,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "================== 248 failed, 119 passed, 4 skipped in 8.24s ==================",
+              "counts": {
+                "passed": 119,
+                "failed": 248,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/prompt.py",
+          "size": 11970,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 27.0,
+              "usage": {
+                "input": 44630,
+                "output": 2577,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "============ 226 failed, 141 passed, 4 skipped, 1 warning in 10.78s ============",
+              "counts": {
+                "passed": 141,
+                "failed": 226,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "cookiecutter/generate.py",
+          "size": 12942,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 31.0,
+              "usage": {
+                "input": 44241,
+                "output": 2647,
+                "cache_read": 42752,
+                "cache_write": 0
+              },
+              "summary": "=========== 205 failed, 162 passed, 4 skipped, 6 warnings in 11.08s ============",
+              "counts": {
+                "passed": 162,
+                "failed": 205,
+                "skipped": 4,
+                "errors": 0
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 162,
+        "failed": 205,
+        "skipped": 4,
+        "errors": 0
+      },
+      "pytest_summary": "=========== 205 failed, 162 passed, 4 skipped, 6 warnings in 11.15s ============"
+    },
+    "babel": {
+      "repo": "babel",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "branch": "kaizen_delta",
+      "files_total": 26,
+      "files_accepted": 26,
+      "elapsed_s": 1209.4,
+      "final_summary": "======================== 1 skipped, 22 errors in 1.76s =========================",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 1,
+        "errors": 22
+      },
+      "totals": {
+        "input_tokens": 1557545,
+        "output_tokens": 91515,
+        "cache_read_tokens": 1427200,
+        "cache_write_tokens": 0,
+        "cost_usd": 1.2565
+      },
+      "per_file": [
+        {
+          "file": "babel/messages/__init__.py",
+          "size": 349,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.2,
+              "usage": {
+                "input": 57832,
+                "output": 96,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.60s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/localtime/_helpers.py",
+          "size": 535,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.7,
+              "usage": {
+                "input": 57834,
+                "output": 156,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.71s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/__init__.py",
+          "size": 863,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.1,
+              "usage": {
+                "input": 57942,
+                "output": 207,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.77s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/localtime/__init__.py",
+          "size": 1400,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 6.1,
+              "usage": {
+                "input": 58021,
+                "output": 356,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.72s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/localtime/_fallback.py",
+          "size": 1931,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 7.8,
+              "usage": {
+                "input": 57873,
+                "output": 464,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.71s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/localtime/_win32.py",
+          "size": 663,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.4,
+              "usage": {
+                "input": 57868,
+                "output": 185,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.69s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/languages.py",
+          "size": 3344,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 8.0,
+              "usage": {
+                "input": 58230,
+                "output": 736,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.65s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/localtime/_unix.py",
+          "size": 5047,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 15.6,
+              "usage": {
+                "input": 57902,
+                "output": 1117,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.79s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/lists.py",
+          "size": 3250,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.1,
+              "usage": {
+                "input": 58346,
+                "output": 842,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.98s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/messages/setuptools_frontend.py",
+          "size": 4722,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 12.5,
+              "usage": {
+                "input": 58379,
+                "output": 1001,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.62s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/messages/plurals.py",
+          "size": 5423,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 22.5,
+              "usage": {
+                "input": 59733,
+                "output": 2235,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.78s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/messages/checkers.py",
+          "size": 6737,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 17.9,
+              "usage": {
+                "input": 58231,
+                "output": 1566,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.71s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/messages/jslexer.py",
+          "size": 6892,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 19.3,
+              "usage": {
+                "input": 58709,
+                "output": 1780,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.67s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/messages/mofile.py",
+          "size": 8730,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 23.0,
+              "usage": {
+                "input": 58393,
+                "output": 2157,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.85s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/util.py",
+          "size": 8151,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 28.0,
+              "usage": {
+                "input": 58862,
+                "output": 2025,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.69s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/localedata.py",
+          "size": 9818,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 24.7,
+              "usage": {
+                "input": 59019,
+                "output": 2358,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.68s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/units.py",
+          "size": 12618,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 30.5,
+              "usage": {
+                "input": 59771,
+                "output": 2964,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.76s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/messages/pofile.py",
+          "size": 25905,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 61.9,
+              "usage": {
+                "input": 60154,
+                "output": 5881,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.72s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/support.py",
+          "size": 28002,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 66.0,
+              "usage": {
+                "input": 62418,
+                "output": 6328,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.71s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/plural.py",
+          "size": 22683,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 63.6,
+              "usage": {
+                "input": 61166,
+                "output": 5860,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.77s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/messages/catalog.py",
+          "size": 37022,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 88.3,
+              "usage": {
+                "input": 63145,
+                "output": 8300,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.76s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/numbers.py",
+          "size": 43050,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 104.0,
+              "usage": {
+                "input": 64920,
+                "output": 9783,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.63s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/dates.py",
+          "size": 41628,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 116.4,
+              "usage": {
+                "input": 65935,
+                "output": 10986,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.70s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/messages/frontend.py",
+          "size": 34153,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 74.9,
+              "usage": {
+                "input": 60715,
+                "output": 7099,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.64s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/messages/extract.py",
+          "size": 31534,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 75.2,
+              "usage": {
+                "input": 61093,
+                "output": 7084,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.78s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        },
+        {
+          "file": "babel/core.py",
+          "size": 42526,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 102.4,
+              "usage": {
+                "input": 65054,
+                "output": 9949,
+                "cache_read": 57088,
+                "cache_write": 0
+              },
+              "summary": "======================== 1 skipped, 22 errors in 1.86s =========================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 1,
+                "errors": 22
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 1,
+        "errors": 22
+      },
+      "pytest_summary": "======================== 1 skipped, 22 errors in 1.76s ========================="
+    },
+    "jinja": {
+      "repo": "jinja",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "branch": "kaizen_delta",
+      "files_total": 25,
+      "files_accepted": 25,
+      "elapsed_s": 1093.3,
+      "final_summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:32:33,084 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:32:33,134 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 574846,
+        "output_tokens": 89480,
+        "cache_read_tokens": 485376,
+        "cache_write_tokens": 0,
+        "cost_usd": 1.0673
+      },
+      "per_file": [
+        {
+          "file": "src/jinja2/defaults.py",
+          "size": 1147,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.4,
+              "usage": {
+                "input": 21188,
+                "output": 331,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:14:36,019 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:14:36,067 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/constants.py",
+          "size": 1587,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.8,
+              "usage": {
+                "input": 21211,
+                "output": 409,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:14:46,494 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:14:46,530 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/optimizer.py",
+          "size": 1497,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.4,
+              "usage": {
+                "input": 21078,
+                "output": 319,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:14:57,113 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:14:57,150 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/__init__.py",
+          "size": 2671,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 7.1,
+              "usage": {
+                "input": 21285,
+                "output": 592,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:15:10,028 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:15:10,066 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/_identifier.py",
+          "size": 2500,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 17.6,
+              "usage": {
+                "input": 22440,
+                "output": 1748,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:15:33,498 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:15:33,535 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/async_utils.py",
+          "size": 3218,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.0,
+              "usage": {
+                "input": 20953,
+                "output": 707,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:15:49,122 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:15:49,160 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/meta.py",
+          "size": 3675,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 8.8,
+              "usage": {
+                "input": 21438,
+                "output": 770,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:16:03,862 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:16:03,896 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/visitor.py",
+          "size": 3659,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 8.5,
+              "usage": {
+                "input": 21401,
+                "output": 810,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:16:18,078 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:16:18,117 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/exceptions.py",
+          "size": 4387,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.6,
+              "usage": {
+                "input": 21810,
+                "output": 979,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:16:33,520 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:16:33,595 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/nativetypes.py",
+          "size": 4621,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 13.0,
+              "usage": {
+                "input": 21243,
+                "output": 984,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-22 00:16:52,484 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/tests.py",
+          "size": 5774,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 18.9,
+              "usage": {
+                "input": 22138,
+                "output": 1446,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:17:17,196 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:17:17,234 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/idtracking.py",
+          "size": 5526,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 14.1,
+              "usage": {
+                "input": 21435,
+                "output": 1285,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:17:36,912 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:17:36,947 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/debug.py",
+          "size": 5692,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 15.1,
+              "usage": {
+                "input": 21248,
+                "output": 1287,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-22 00:17:57,925 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/bccache.py",
+          "size": 11860,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 24.9,
+              "usage": {
+                "input": 22597,
+                "output": 2600,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-22 00:18:28,852 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/sandbox.py",
+          "size": 11492,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 25.4,
+              "usage": {
+                "input": 22585,
+                "output": 2577,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-22 00:19:00,000 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/compiler.py",
+          "size": 32254,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 73.7,
+              "usage": {
+                "input": 24022,
+                "output": 7342,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-22 00:20:19,757 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/loaders.py",
+          "size": 20801,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 44.1,
+              "usage": {
+                "input": 23417,
+                "output": 4428,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:21:09,752 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:21:09,802 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/utils.py",
+          "size": 23285,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 64.7,
+              "usage": {
+                "input": 24736,
+                "output": 5677,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:22:20,728 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:22:20,770 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/runtime.py",
+          "size": 30907,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 73.2,
+              "usage": {
+                "input": 26050,
+                "output": 7262,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-22 00:23:39,929 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/lexer.py",
+          "size": 24978,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 57.8,
+              "usage": {
+                "input": 24170,
+                "output": 5485,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:24:43,682 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:24:43,725 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/ext.py",
+          "size": 28139,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 66.2,
+              "usage": {
+                "input": 23369,
+                "output": 6110,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:25:55,946 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:25:55,986 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/filters.py",
+          "size": 51846,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 132.5,
+              "usage": {
+                "input": 28605,
+                "output": 13079,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:28:14,330 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:28:14,363 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/nodes.py",
+          "size": 35158,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 80.1,
+              "usage": {
+                "input": 26457,
+                "output": 8531,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:29:40,162 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:29:40,195 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/parser.py",
+          "size": 17452,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 39.6,
+              "usage": {
+                "input": 22399,
+                "output": 3665,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:30:25,745 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:30:25,793 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        },
+        {
+          "file": "src/jinja2/environment.py",
+          "size": 51272,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 115.7,
+              "usage": {
+                "input": 27571,
+                "output": 11057,
+                "cache_read": 20224,
+                "cache_write": 0
+              },
+              "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:32:27,333 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:32:27,375 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 0
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "pytest_summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:32:33,084 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-22 00:32:33,134 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\""
+    },
+    "minitorch": {
+      "repo": "minitorch",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "branch": "kaizen_delta",
+      "files_total": 47,
+      "files_accepted": 47,
+      "elapsed_s": 1149.9,
+      "final_summary": "============================== 10 errors in 1.59s ==============================",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 10
+      },
+      "totals": {
+        "input_tokens": 1406065,
+        "output_tokens": 67477,
+        "cache_read_tokens": 1307136,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.9618
+      },
+      "per_file": [
+        {
+          "file": "project/__init__.py",
+          "size": 160,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 2.2,
+              "usage": {
+                "input": 29093,
+                "output": 50,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.30s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/__init__.py",
+          "size": 1071,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.6,
+              "usage": {
+                "input": 29348,
+                "output": 324,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.35s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/show_expression_interface.py",
+          "size": 1163,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 3.9,
+              "usage": {
+                "input": 29256,
+                "output": 291,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.37s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/parallel_check.py",
+          "size": 1427,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 6.4,
+              "usage": {
+                "input": 29405,
+                "output": 430,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.42s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/interface/streamlit_utils.py",
+          "size": 1403,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.6,
+              "usage": {
+                "input": 29244,
+                "output": 361,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.41s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/train_utils.py",
+          "size": 1738,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 6.5,
+              "usage": {
+                "input": 29102,
+                "output": 373,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.38s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/module_interface.py",
+          "size": 2999,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 8.0,
+              "usage": {
+                "input": 29377,
+                "output": 721,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.36s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/optim.py",
+          "size": 1616,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 4.9,
+              "usage": {
+                "input": 29141,
+                "output": 333,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.38s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/run_manual.py",
+          "size": 2163,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 7.5,
+              "usage": {
+                "input": 29386,
+                "output": 508,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.35s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/show_expression.py",
+          "size": 2663,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 8.9,
+              "usage": {
+                "input": 29595,
+                "output": 653,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.35s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/run_torch.py",
+          "size": 4637,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 11.6,
+              "usage": {
+                "input": 29685,
+                "output": 1081,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.34s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/scalar_modules.py",
+          "size": 2715,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 9.1,
+              "usage": {
+                "input": 29063,
+                "output": 619,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.35s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/run_tensor.py",
+          "size": 3238,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.3,
+              "usage": {
+                "input": 29809,
+                "output": 801,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.34s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/run_mnist_interface.py",
+          "size": 3790,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.1,
+              "usage": {
+                "input": 29760,
+                "output": 902,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.38s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/run_scalar.py",
+          "size": 5279,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 18.9,
+              "usage": {
+                "input": 29919,
+                "output": 1215,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.32s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/app.py",
+          "size": 4475,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 11.8,
+              "usage": {
+                "input": 29903,
+                "output": 993,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.32s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/graph_builder.py",
+          "size": 3662,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 12.6,
+              "usage": {
+                "input": 29671,
+                "output": 914,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.30s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/datasets.py",
+          "size": 4434,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 16.6,
+              "usage": {
+                "input": 29144,
+                "output": 1258,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.33s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/testing.py",
+          "size": 3709,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 14.9,
+              "usage": {
+                "input": 29547,
+                "output": 945,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.47s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/autodiff.py",
+          "size": 3786,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.5,
+              "usage": {
+                "input": 29500,
+                "output": 860,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.37s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/operators.py",
+          "size": 4347,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 14.6,
+              "usage": {
+                "input": 30151,
+                "output": 1399,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.48s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/run_fast_tensor.py",
+          "size": 4511,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 12.2,
+              "usage": {
+                "input": 30167,
+                "output": 1112,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.52s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/minitorch_datasets.py",
+          "size": 3073,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 10.3,
+              "usage": {
+                "input": 29365,
+                "output": 899,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.33s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/nn.py",
+          "size": 4494,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 12.8,
+              "usage": {
+                "input": 29780,
+                "output": 1169,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.31s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/module.py",
+          "size": 4702,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 11.4,
+              "usage": {
+                "input": 29962,
+                "output": 1079,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.33s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/interface/train.py",
+          "size": 6293,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 17.2,
+              "usage": {
+                "input": 30154,
+                "output": 1486,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.38s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/math_interface.py",
+          "size": 6597,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 16.9,
+              "usage": {
+                "input": 30456,
+                "output": 1652,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.44s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/modules.py",
+          "size": 5655,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 14.9,
+              "usage": {
+                "input": 29061,
+                "output": 1255,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.37s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/run_mnist_multiclass.py",
+          "size": 6498,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 17.7,
+              "usage": {
+                "input": 30617,
+                "output": 1629,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.33s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/run_mnist.py",
+          "size": 6859,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 22.5,
+              "usage": {
+                "input": 30584,
+                "output": 1826,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.35s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/scalar.py",
+          "size": 6392,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 17.4,
+              "usage": {
+                "input": 30035,
+                "output": 1495,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.38s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/run_torch_sentiment.py",
+          "size": 6239,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 18.3,
+              "usage": {
+                "input": 30407,
+                "output": 1489,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.32s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/interface/plots.py",
+          "size": 7924,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 24.4,
+              "usage": {
+                "input": 30524,
+                "output": 2091,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.37s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/sentiment_interface.py",
+          "size": 8439,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 21.6,
+              "usage": {
+                "input": 30567,
+                "output": 1867,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.35s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/fast_ops.py",
+          "size": 8330,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 26.1,
+              "usage": {
+                "input": 30112,
+                "output": 2580,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.34s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/interface/mlprimer.py",
+          "size": 6596,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 22.7,
+              "usage": {
+                "input": 31067,
+                "output": 1954,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.38s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/run_sentiment.py",
+          "size": 10354,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 25.5,
+              "usage": {
+                "input": 31245,
+                "output": 2423,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.41s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/tensor_data.py",
+          "size": 8938,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 25.6,
+              "usage": {
+                "input": 29991,
+                "output": 2208,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.40s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/scalar_functions.py",
+          "size": 6153,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 16.5,
+              "usage": {
+                "input": 29384,
+                "output": 1473,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.35s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/cuda_ops.py",
+          "size": 10329,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 39.4,
+              "usage": {
+                "input": 30074,
+                "output": 3680,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.50s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/tensor.py",
+          "size": 9941,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 25.1,
+              "usage": {
+                "input": 30508,
+                "output": 2303,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.53s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/tensor_interface.py",
+          "size": 14005,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 34.8,
+              "usage": {
+                "input": 31348,
+                "output": 3283,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.66s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/fast_conv.py",
+          "size": 12039,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 31.1,
+              "usage": {
+                "input": 30021,
+                "output": 2702,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.59s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/tensor_ops.py",
+          "size": 10173,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 26.4,
+              "usage": {
+                "input": 30518,
+                "output": 2437,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.63s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/cuda_conv.py",
+          "size": 8970,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 28.4,
+              "usage": {
+                "input": 29063,
+                "output": 2330,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.50s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "project/show_tensor.py",
+          "size": 12873,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 36.4,
+              "usage": {
+                "input": 32338,
+                "output": 3515,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.57s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        },
+        {
+          "file": "minitorch/tensor_functions.py",
+          "size": 10275,
+          "accepted": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "elapsed_s": 29.7,
+              "usage": {
+                "input": 29618,
+                "output": 2509,
+                "cache_read": 28416,
+                "cache_write": 0
+              },
+              "summary": "============================== 10 errors in 1.60s ==============================",
+              "counts": {
+                "passed": 0,
+                "failed": 0,
+                "skipped": 0,
+                "errors": 10
+              }
+            }
+          ]
+        }
+      ],
+      "runner_exit": 0,
+      "counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 10
+      },
+      "pytest_summary": "============================== 10 errors in 1.59s =============================="
     }
   },
   "aggregate": {
-    "libraries_total": 4,
-    "tests_passed": 45,
-    "tests_failed": 33,
-    "tests_skipped": 3,
-    "tests_errored": 3,
-    "tests_attempted_total": 81,
-    "pass_rate_attempted": 0.5556,
-    "input_tokens_total": 1760143,
-    "cache_read_input_tokens_total": 1252608,
+    "libraries_total": 16,
+    "tests_passed": 969,
+    "tests_failed": 520,
+    "tests_skipped": 10,
+    "tests_errored": 94,
+    "tests_attempted_total": 1583,
+    "pass_rate_attempted": 0.6121,
+    "input_tokens_total": 9079521,
+    "cache_read_input_tokens_total": 7808512,
     "cache_creation_input_tokens_total": 0,
-    "output_tokens_total": 406501,
-    "wall_seconds_total": 5047.9,
-    "cost_usd_estimate": 4.86
+    "output_tokens_total": 800227,
+    "wall_seconds_total": 11640.8,
+    "cost_usd_estimate": 10.57
   }
 }

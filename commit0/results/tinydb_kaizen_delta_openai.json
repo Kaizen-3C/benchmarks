@@ -1,0 +1,265 @@
+{
+  "repo": "tinydb",
+  "provider": "openai",
+  "model": "gpt-5.4",
+  "branch": "kaizen_delta",
+  "files_total": 10,
+  "files_accepted": 10,
+  "elapsed_s": 577.5,
+  "final_summary": "======================== 31 failed, 170 passed in 1.97s ========================",
+  "final_counts": {
+    "passed": 170,
+    "failed": 31,
+    "skipped": 0,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 207731,
+    "output_tokens": 11647,
+    "cache_read_tokens": 172800,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.1817
+  },
+  "per_file": [
+    {
+      "file": "tinydb/version.py",
+      "size": 22,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 1.5,
+          "usage": {
+            "input": 19952,
+            "output": 21,
+            "cache_read": 0,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:12:09,464 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:12:09,506 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "tinydb/__init__.py",
+      "size": 981,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 4.9,
+          "usage": {
+            "input": 20185,
+            "output": 264,
+            "cache_read": 19200,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:12:20,990 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:12:21,028 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "tinydb/mypy_plugin.py",
+      "size": 2361,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 8.9,
+          "usage": {
+            "input": 20046,
+            "output": 527,
+            "cache_read": 19200,
+            "cache_write": 0
+          },
+          "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-21 23:12:36,708 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "tinydb/operations.py",
+      "size": 1161,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.7,
+          "usage": {
+            "input": 20138,
+            "output": 284,
+            "cache_read": 19200,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:12:48,120 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:12:48,177 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "tinydb/utils.py",
+      "size": 3808,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 10.2,
+          "usage": {
+            "input": 20573,
+            "output": 933,
+            "cache_read": 19200,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:13:04,723 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:13:04,794 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "tinydb/middlewares.py",
+      "size": 4454,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 10.6,
+          "usage": {
+            "input": 20563,
+            "output": 927,
+            "cache_read": 19200,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:14:32,771 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:14:32,803 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "tinydb/storages.py",
+      "size": 3951,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 9.5,
+          "usage": {
+            "input": 20569,
+            "output": 919,
+            "cache_read": 19200,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:16:02,797 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:16:02,836 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "tinydb/database.py",
+      "size": 6926,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 13.5,
+          "usage": {
+            "input": 21263,
+            "output": 1475,
+            "cache_read": 19200,
+            "cache_write": 0
+          },
+          "summary": "EAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n2026-04-21 23:17:32,195 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "tinydb/table.py",
+      "size": 14620,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 29.3,
+          "usage": {
+            "input": 21788,
+            "output": 3040,
+            "cache_read": 19200,
+            "cache_write": 0
+          },
+          "summary": "3c42a631a253c7737/data?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:19:23,231 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/datasets/wentingzhao/commit0_combined/tree/944c325cf7899ee75dcf3ec3c42a631a253c7737?recursive=false&expand=false \"HTTP/1.1 200 OK\"\n2026-04-21 23:19:23,272 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/datasets/wentingzhao/commit0_combined/resolve/944c325cf7899ee75dcf3ec3c42a631a253c7737/dataset_infos.json \"HTTP/1.1 404 Not Found\"",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "tinydb/queries.py",
+      "size": 13696,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 31.0,
+          "usage": {
+            "input": 22654,
+            "output": 3257,
+            "cache_read": 19200,
+            "cache_write": 0
+          },
+          "summary": "======================== 31 failed, 170 passed in 1.89s ========================",
+          "counts": {
+            "passed": 170,
+            "failed": 31,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    }
+  ]
+}

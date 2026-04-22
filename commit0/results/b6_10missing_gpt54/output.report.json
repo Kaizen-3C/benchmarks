@@ -1,0 +1,33 @@
+{
+    "total_instances": 16,
+    "submitted_instances": 8,
+    "completed_instances": 8,
+    "resolved_instances": 5,
+    "unresolved_instances": 3,
+    "empty_patch_instances": 0,
+    "error_instances": 0,
+    "total_tests": 10021,
+    "total_passed_tests": 10009,
+    "completed_ids": [
+        "imapclient",
+        "marshmallow",
+        "cachetools",
+        "deprecated",
+        "jinja",
+        "cookiecutter",
+        "parsel",
+        "babel"
+    ],
+    "resolved_ids": [
+        "imapclient",
+        "marshmallow",
+        "cachetools",
+        "deprecated",
+        "jinja"
+    ],
+    "unresolved_ids": [
+        "cookiecutter",
+        "parsel",
+        "babel"
+    ]
+}

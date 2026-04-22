@@ -1,0 +1,433 @@
+{
+  "repo": "imapclient",
+  "provider": "openai",
+  "model": "gpt-5.4",
+  "branch": "kaizen_delta",
+  "files_total": 17,
+  "files_accepted": 17,
+  "elapsed_s": 390.6,
+  "final_summary": "=================== 62 failed, 25 passed, 4 errors in 0.49s ====================",
+  "final_counts": {
+    "passed": 25,
+    "failed": 62,
+    "skipped": 0,
+    "errors": 4
+  },
+  "totals": {
+    "input_tokens": 577335,
+    "output_tokens": 22123,
+    "cache_read_tokens": 520192,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.3577
+  },
+  "per_file": [
+    {
+      "file": "imapclient/__init__.py",
+      "size": 551,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.5,
+          "usage": {
+            "input": 33488,
+            "output": 163,
+            "cache_read": 0,
+            "cache_write": 0
+          },
+          "summary": "============================== 18 errors in 0.24s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 18
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/version.py",
+      "size": 539,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 2.7,
+          "usage": {
+            "input": 33405,
+            "output": 157,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "============================== 18 errors in 0.31s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 18
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/typing_imapclient.py",
+      "size": 365,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 2.1,
+          "usage": {
+            "input": 33370,
+            "output": 96,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "============================== 18 errors in 0.33s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 18
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/exceptions.py",
+      "size": 1766,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.7,
+          "usage": {
+            "input": 33550,
+            "output": 420,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "============================== 18 errors in 0.23s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 18
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/testable_imapclient.py",
+      "size": 7520,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 25.1,
+          "usage": {
+            "input": 33518,
+            "output": 1989,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "============================== 18 errors in 0.26s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 18
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/fixed_offset.py",
+      "size": 1360,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 4.5,
+          "usage": {
+            "input": 33501,
+            "output": 327,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "============================== 18 errors in 0.25s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 18
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/imap4.py",
+      "size": 699,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.4,
+          "usage": {
+            "input": 33408,
+            "output": 173,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "============================== 18 errors in 0.25s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 18
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/tls.py",
+      "size": 2419,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.8,
+          "usage": {
+            "input": 33504,
+            "output": 555,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "============================== 18 errors in 0.22s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 18
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/imap_utf7.py",
+      "size": 2064,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 9.2,
+          "usage": {
+            "input": 33508,
+            "output": 563,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "============================== 18 errors in 0.25s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 18
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/datetime_util.py",
+      "size": 2232,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 8.6,
+          "usage": {
+            "input": 33601,
+            "output": 607,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "============================== 18 errors in 0.31s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 18
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/interact.py",
+      "size": 6127,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 17.3,
+          "usage": {
+            "input": 33379,
+            "output": 1393,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "============================== 18 errors in 0.26s ==============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 18
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/util.py",
+      "size": 2972,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 10.8,
+          "usage": {
+            "input": 33391,
+            "output": 704,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "=================== 17 failed, 6 passed, 15 errors in 0.59s ====================",
+          "counts": {
+            "passed": 6,
+            "failed": 17,
+            "skipped": 0,
+            "errors": 15
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/response_types.py",
+      "size": 4130,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 12.2,
+          "usage": {
+            "input": 34342,
+            "output": 1029,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "=================== 17 failed, 6 passed, 15 errors in 0.58s ====================",
+          "counts": {
+            "passed": 6,
+            "failed": 17,
+            "skipped": 0,
+            "errors": 15
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/config.py",
+      "size": 4784,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 12.9,
+          "usage": {
+            "input": 33489,
+            "output": 1154,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "=================== 17 failed, 6 passed, 15 errors in 0.57s ====================",
+          "counts": {
+            "passed": 6,
+            "failed": 17,
+            "skipped": 0,
+            "errors": 15
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/response_lexer.py",
+      "size": 5960,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 14.1,
+          "usage": {
+            "input": 33893,
+            "output": 1297,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "=================== 9 failed, 14 passed, 15 errors in 0.63s ====================",
+          "counts": {
+            "passed": 14,
+            "failed": 9,
+            "skipped": 0,
+            "errors": 15
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/response_parser.py",
+      "size": 9721,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 26.7,
+          "usage": {
+            "input": 33744,
+            "output": 2198,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "=================== 9 failed, 14 passed, 15 errors in 0.54s ====================",
+          "counts": {
+            "passed": 14,
+            "failed": 9,
+            "skipped": 0,
+            "errors": 15
+          }
+        }
+      ]
+    },
+    {
+      "file": "imapclient/imapclient.py",
+      "size": 39359,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 102.5,
+          "usage": {
+            "input": 40244,
+            "output": 9298,
+            "cache_read": 32512,
+            "cache_write": 0
+          },
+          "summary": "=================== 62 failed, 25 passed, 4 errors in 0.49s ====================",
+          "counts": {
+            "passed": 25,
+            "failed": 62,
+            "skipped": 0,
+            "errors": 4
+          }
+        }
+      ]
+    }
+  ]
+}

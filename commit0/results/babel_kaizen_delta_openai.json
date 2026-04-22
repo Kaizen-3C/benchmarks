@@ -1,0 +1,649 @@
+{
+  "repo": "babel",
+  "provider": "openai",
+  "model": "gpt-5.4",
+  "branch": "kaizen_delta",
+  "files_total": 26,
+  "files_accepted": 26,
+  "elapsed_s": 1209.4,
+  "final_summary": "======================== 1 skipped, 22 errors in 1.76s =========================",
+  "final_counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 1,
+    "errors": 22
+  },
+  "totals": {
+    "input_tokens": 1557545,
+    "output_tokens": 91515,
+    "cache_read_tokens": 1427200,
+    "cache_write_tokens": 0,
+    "cost_usd": 1.2565
+  },
+  "per_file": [
+    {
+      "file": "babel/messages/__init__.py",
+      "size": 349,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.2,
+          "usage": {
+            "input": 57832,
+            "output": 96,
+            "cache_read": 0,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.60s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/localtime/_helpers.py",
+      "size": 535,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.7,
+          "usage": {
+            "input": 57834,
+            "output": 156,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.71s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/__init__.py",
+      "size": 863,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.1,
+          "usage": {
+            "input": 57942,
+            "output": 207,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.77s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/localtime/__init__.py",
+      "size": 1400,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 6.1,
+          "usage": {
+            "input": 58021,
+            "output": 356,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.72s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/localtime/_fallback.py",
+      "size": 1931,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.8,
+          "usage": {
+            "input": 57873,
+            "output": 464,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.71s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/localtime/_win32.py",
+      "size": 663,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.4,
+          "usage": {
+            "input": 57868,
+            "output": 185,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.69s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/languages.py",
+      "size": 3344,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 8.0,
+          "usage": {
+            "input": 58230,
+            "output": 736,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.65s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/localtime/_unix.py",
+      "size": 5047,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 15.6,
+          "usage": {
+            "input": 57902,
+            "output": 1117,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.79s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/lists.py",
+      "size": 3250,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 9.1,
+          "usage": {
+            "input": 58346,
+            "output": 842,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.98s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/messages/setuptools_frontend.py",
+      "size": 4722,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 12.5,
+          "usage": {
+            "input": 58379,
+            "output": 1001,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.62s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/messages/plurals.py",
+      "size": 5423,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 22.5,
+          "usage": {
+            "input": 59733,
+            "output": 2235,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.78s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/messages/checkers.py",
+      "size": 6737,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 17.9,
+          "usage": {
+            "input": 58231,
+            "output": 1566,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.71s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/messages/jslexer.py",
+      "size": 6892,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 19.3,
+          "usage": {
+            "input": 58709,
+            "output": 1780,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.67s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/messages/mofile.py",
+      "size": 8730,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 23.0,
+          "usage": {
+            "input": 58393,
+            "output": 2157,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.85s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/util.py",
+      "size": 8151,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 28.0,
+          "usage": {
+            "input": 58862,
+            "output": 2025,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.69s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/localedata.py",
+      "size": 9818,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 24.7,
+          "usage": {
+            "input": 59019,
+            "output": 2358,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.68s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/units.py",
+      "size": 12618,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 30.5,
+          "usage": {
+            "input": 59771,
+            "output": 2964,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.76s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/messages/pofile.py",
+      "size": 25905,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 61.9,
+          "usage": {
+            "input": 60154,
+            "output": 5881,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.72s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/support.py",
+      "size": 28002,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 66.0,
+          "usage": {
+            "input": 62418,
+            "output": 6328,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.71s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/plural.py",
+      "size": 22683,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 63.6,
+          "usage": {
+            "input": 61166,
+            "output": 5860,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.77s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/messages/catalog.py",
+      "size": 37022,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 88.3,
+          "usage": {
+            "input": 63145,
+            "output": 8300,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.76s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/numbers.py",
+      "size": 43050,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 104.0,
+          "usage": {
+            "input": 64920,
+            "output": 9783,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.63s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/dates.py",
+      "size": 41628,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 116.4,
+          "usage": {
+            "input": 65935,
+            "output": 10986,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.70s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/messages/frontend.py",
+      "size": 34153,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 74.9,
+          "usage": {
+            "input": 60715,
+            "output": 7099,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.64s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/messages/extract.py",
+      "size": 31534,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 75.2,
+          "usage": {
+            "input": 61093,
+            "output": 7084,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.78s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    },
+    {
+      "file": "babel/core.py",
+      "size": 42526,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 102.4,
+          "usage": {
+            "input": 65054,
+            "output": 9949,
+            "cache_read": 57088,
+            "cache_write": 0
+          },
+          "summary": "======================== 1 skipped, 22 errors in 1.86s =========================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "errors": 22
+          }
+        }
+      ]
+    }
+  ]
+}

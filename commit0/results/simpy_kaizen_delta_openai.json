@@ -1,0 +1,340 @@
+{
+  "repo": "simpy",
+  "provider": "openai",
+  "model": "gpt-5.4",
+  "branch": "kaizen_delta",
+  "files_total": 11,
+  "files_accepted": 8,
+  "elapsed_s": 318.2,
+  "final_summary": "================= 8 failed, 132 passed, 10 deselected in 2.01s =================",
+  "final_counts": {
+    "passed": 132,
+    "failed": 8,
+    "skipped": 0,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 640198,
+    "output_tokens": 17439,
+    "cache_read_tokens": 572160,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.331
+  },
+  "per_file": [
+    {
+      "file": "src/simpy/resources/__init__.py",
+      "size": 492,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.3,
+          "usage": {
+            "input": 44793,
+            "output": 119,
+            "cache_read": 0,
+            "cache_write": 0
+          },
+          "summary": "================= 57 failed, 83 passed, 10 deselected in 0.69s =================",
+          "counts": {
+            "passed": 83,
+            "failed": 57,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "src/simpy/exceptions.py",
+      "size": 905,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 3.5,
+          "usage": {
+            "input": 44906,
+            "output": 218,
+            "cache_read": 43776,
+            "cache_write": 0
+          },
+          "summary": "================= 57 failed, 83 passed, 10 deselected in 0.54s =================",
+          "counts": {
+            "passed": 83,
+            "failed": 57,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "src/simpy/util.py",
+      "size": 2102,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.9,
+          "usage": {
+            "input": 45026,
+            "output": 492,
+            "cache_read": 43776,
+            "cache_write": 0
+          },
+          "summary": "================= 56 failed, 84 passed, 10 deselected in 0.56s =================",
+          "counts": {
+            "passed": 84,
+            "failed": 56,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "src/simpy/__init__.py",
+      "size": 2580,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.3,
+          "usage": {
+            "input": 45305,
+            "output": 601,
+            "cache_read": 43776,
+            "cache_write": 0
+          },
+          "summary": "================= 56 failed, 84 passed, 10 deselected in 0.57s =================",
+          "counts": {
+            "passed": 84,
+            "failed": 56,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "src/simpy/rt.py",
+      "size": 2738,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 7.9,
+          "usage": {
+            "input": 45197,
+            "output": 652,
+            "cache_read": 43776,
+            "cache_write": 0
+          },
+          "summary": "================= 57 failed, 83 passed, 10 deselected in 0.52s =================",
+          "counts": {
+            "passed": 83,
+            "failed": 57,
+            "skipped": 0,
+            "errors": 0
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 7.6,
+          "usage": {
+            "input": 45242,
+            "output": 641,
+            "cache_read": 44800,
+            "cache_write": 0
+          },
+          "summary": "================= 57 failed, 83 passed, 10 deselected in 0.52s =================",
+          "counts": {
+            "passed": 83,
+            "failed": 57,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "src/simpy/resources/container.py",
+      "size": 3706,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 9.0,
+          "usage": {
+            "input": 45432,
+            "output": 850,
+            "cache_read": 43776,
+            "cache_write": 0
+          },
+          "summary": "================= 57 failed, 83 passed, 10 deselected in 0.59s =================",
+          "counts": {
+            "passed": 83,
+            "failed": 57,
+            "skipped": 0,
+            "errors": 0
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 8.8,
+          "usage": {
+            "input": 45477,
+            "output": 847,
+            "cache_read": 44800,
+            "cache_write": 0
+          },
+          "summary": "================= 57 failed, 83 passed, 10 deselected in 0.54s =================",
+          "counts": {
+            "passed": 83,
+            "failed": 57,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "src/simpy/resources/store.py",
+      "size": 6049,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 17.8,
+          "usage": {
+            "input": 45850,
+            "output": 1397,
+            "cache_read": 43776,
+            "cache_write": 0
+          },
+          "summary": "================= 57 failed, 83 passed, 10 deselected in 0.61s =================",
+          "counts": {
+            "passed": 83,
+            "failed": 57,
+            "skipped": 0,
+            "errors": 0
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 15.7,
+          "usage": {
+            "input": 45895,
+            "output": 1397,
+            "cache_read": 44800,
+            "cache_write": 0
+          },
+          "summary": "================= 57 failed, 83 passed, 10 deselected in 0.53s =================",
+          "counts": {
+            "passed": 83,
+            "failed": 57,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "src/simpy/core.py",
+      "size": 6982,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 17.5,
+          "usage": {
+            "input": 45860,
+            "output": 1565,
+            "cache_read": 43776,
+            "cache_write": 0
+          },
+          "summary": "================= 55 failed, 85 passed, 10 deselected in 1.87s =================",
+          "counts": {
+            "passed": 85,
+            "failed": 55,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "src/simpy/resources/base.py",
+      "size": 9024,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 21.6,
+          "usage": {
+            "input": 46559,
+            "output": 2063,
+            "cache_read": 43776,
+            "cache_write": 0
+          },
+          "summary": "================= 52 failed, 88 passed, 10 deselected in 1.89s =================",
+          "counts": {
+            "passed": 88,
+            "failed": 52,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "src/simpy/resources/resource.py",
+      "size": 9367,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 23.1,
+          "usage": {
+            "input": 46548,
+            "output": 2125,
+            "cache_read": 43776,
+            "cache_write": 0
+          },
+          "summary": "================= 52 failed, 88 passed, 10 deselected in 1.94s =================",
+          "counts": {
+            "passed": 88,
+            "failed": 52,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "file": "src/simpy/events.py",
+      "size": 20201,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 49.5,
+          "usage": {
+            "input": 48108,
+            "output": 4472,
+            "cache_read": 43776,
+            "cache_write": 0
+          },
+          "summary": "================= 8 failed, 132 passed, 10 deselected in 2.02s =================",
+          "counts": {
+            "passed": 132,
+            "failed": 8,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    }
+  ]
+}

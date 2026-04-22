@@ -1,0 +1,114 @@
+{
+  "repo": "deprecated",
+  "provider": "openai",
+  "model": "gpt-5.4",
+  "branch": "kaizen_delta",
+  "files_total": 3,
+  "files_accepted": 2,
+  "elapsed_s": 221.5,
+  "final_summary": "============ 38 failed, 89 passed, 5 warnings, 44 errors in 39.59s =============",
+  "final_counts": {
+    "passed": 89,
+    "failed": 38,
+    "skipped": 0,
+    "errors": 44
+  },
+  "totals": {
+    "input_tokens": 104125,
+    "output_tokens": 6756,
+    "cache_read_tokens": 75008,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.1133
+  },
+  "per_file": [
+    {
+      "file": "deprecated/__init__.py",
+      "size": 375,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 15.3,
+          "usage": {
+            "input": 24757,
+            "output": 106,
+            "cache_read": 0,
+            "cache_write": 0
+          },
+          "summary": "============ 104 failed, 17 passed, 2 warnings, 50 errors in 0.96s =============",
+          "counts": {
+            "passed": 17,
+            "failed": 104,
+            "skipped": 0,
+            "errors": 50
+          }
+        }
+      ]
+    },
+    {
+      "file": "deprecated/sphinx.py",
+      "size": 9996,
+      "accepted": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 26.9,
+          "usage": {
+            "input": 26533,
+            "output": 2317,
+            "cache_read": 24320,
+            "cache_write": 0
+          },
+          "summary": "============= 113 failed, 8 passed, 2 warnings, 50 errors in 1.31s =============",
+          "counts": {
+            "passed": 8,
+            "failed": 113,
+            "skipped": 0,
+            "errors": 50
+          }
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 25.4,
+          "usage": {
+            "input": 26585,
+            "output": 2174,
+            "cache_read": 26368,
+            "cache_write": 0
+          },
+          "summary": "============= 113 failed, 8 passed, 2 warnings, 50 errors in 1.17s =============",
+          "counts": {
+            "passed": 8,
+            "failed": 113,
+            "skipped": 0,
+            "errors": 50
+          }
+        }
+      ]
+    },
+    {
+      "file": "deprecated/classic.py",
+      "size": 10372,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 21.1,
+          "usage": {
+            "input": 26250,
+            "output": 2159,
+            "cache_read": 24320,
+            "cache_write": 0
+          },
+          "summary": "============ 38 failed, 89 passed, 5 warnings, 44 errors in 40.26s =============",
+          "counts": {
+            "passed": 89,
+            "failed": 38,
+            "skipped": 0,
+            "errors": 44
+          }
+        }
+      ]
+    }
+  ]
+}
