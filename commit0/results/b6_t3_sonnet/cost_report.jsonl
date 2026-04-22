@@ -1,0 +1,40 @@
+{
+  "directory": "/home/aadame/openhands-latest/runs/claude-sonnet-4-6/t3_3libs/wentingzhao__commit0_combined-lite/anthropic/claude-sonnet-4-6_sdk_3e0a3a0_maxiter_30",
+  "timestamp": "2026-04-22T01:10:09.589497",
+  "main_output": {
+    "filename": "output.jsonl",
+    "lines": 2,
+    "cost": 4.618566,
+    "time_statistics": {
+      "average_duration": 258.2890205,
+      "total_duration": 516.578041,
+      "total_lines": 2,
+      "lines_with_duration": 2
+    }
+  },
+  "critic_files": [
+    {
+      "filename": "output.critic_attempt_1.jsonl",
+      "lines": 3,
+      "cost": 4.618566,
+      "time_statistics": {
+        "average_duration": 258.2890205,
+        "total_duration": 516.578041,
+        "total_lines": 3,
+        "lines_with_duration": 2
+      }
+    }
+  ],
+  "summary": {
+    "total_cost": 4.618566,
+    "total_duration": 516.578041,
+    "only_main_output_cost": 4.618566,
+    "sum_critic_files": 4.618566
+  },
+  "proxy_cost_summary": {
+    "total_proxy_cost": 0.0,
+    "zero_proxy_cost_instances": 0,
+    "only_main_output_proxy_cost": 0.0,
+    "sum_critic_files_proxy_cost": 0.0
+  }
+}
