@@ -30,7 +30,7 @@ GPT54_INPUT  = 1.25
 GPT54_OUTPUT = 10.00
 GPT54_CACHE_READ = 0.125
 
-DEFAULT_MAX_TOKENS = 32_000  # raised from 16K after voluptuous validators.py truncated mid-docstring
+DEFAULT_MAX_TOKENS = 48_000  # raised: 16K -> 32K (voluptuous fix) -> 48K (marshmallow fields.py / jinja compiler.py)
 DEFAULT_TIMEOUT_S = 300
 DEFAULT_RETRIES = 4
 

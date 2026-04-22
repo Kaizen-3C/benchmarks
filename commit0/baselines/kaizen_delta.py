@@ -95,63 +95,69 @@ _FROM_IMPORT_RE = re.compile(
 )
 
 
-def discover_test_imports(repo_dir: Path) -> dict[str, set[str]]:
-    """Return {module_path: {symbol, ...}} for everything tests/* imports.
+def _scan_imports_in_file(py: Path, imports: dict[str, set[str]]) -> None:
+    """Walk one .py file and add its `from <module> import ...` lines to the dict."""
+    try:
+        text = py.read_text(encoding="utf-8", errors="replace")
+    except Exception:
+        return
+    collapsed = re.sub(
+        r"from\s+([\w.]+)\s+import\s*\(([^)]*)\)",
+        lambda m: f"from {m.group(1)} import "
+                  f"{','.join(s.strip() for s in m.group(2).split(',') if s.strip())}",
+        text, flags=re.DOTALL,
+    )
+    for m in _FROM_IMPORT_RE.finditer(collapsed):
+        mod = m.group(1)
+        names_str = m.group(2)
+        names = [n.strip().split(" as ")[0] for n in names_str.split(",")]
+        names = [n for n in names if n and n != "*"]
+        imports.setdefault(mod, set()).update(names)
 
-    Walks every .py file under any 'tests' or 'test' directory and parses
-    `from <module> import (a, b, c)` lines. Multi-line imports handled by
-    a soft pre-process that collapses parens.
+
+def discover_test_imports(repo_dir: Path) -> dict[str, set[str]]:
+    """Return {module_path: {symbol, ...}} for everything that imports from
+    the package -- BOTH test files AND production code.
+
+    AAR-2 fix v2: marshmallow showed that test-only scanning misses INTERNAL
+    cross-file imports (fields.py needs is_aware from utils.py; tests don't
+    import is_aware so KD's first-version contract had no signal). Solution:
+    walk EVERY .py file in the repo. Each `from <pkg>...import (a, b)` line
+    becomes a contract on the imported module: 'must export a and b'.
     """
     imports: dict[str, set[str]] = {}
-    test_dirs = []
-    for p in repo_dir.iterdir():
-        if p.is_dir() and p.name in ("tests", "test", "testing"):
-            test_dirs.append(p)
-    # Some repos nest tests inside the package (e.g., voluptuous/voluptuous/tests/)
-    for sub in repo_dir.rglob("tests"):
-        if sub.is_dir() and sub not in test_dirs:
-            test_dirs.append(sub)
-    for sub in repo_dir.rglob("test"):
-        if sub.is_dir() and sub not in test_dirs:
-            test_dirs.append(sub)
-
-    for tdir in test_dirs:
-        for py in tdir.rglob("*.py"):
-            try:
-                text = py.read_text(encoding="utf-8", errors="replace")
-            except Exception:
-                continue
-            # Collapse parenthesized multi-line imports into single lines so the
-            # regex matches them whole. Conservative: only flatten balanced ().
-            collapsed = re.sub(
-                r"from\s+([\w.]+)\s+import\s*\(([^)]*)\)",
-                lambda m: f"from {m.group(1)} import "
-                          f"{','.join(s.strip() for s in m.group(2).split(',') if s.strip())}",
-                text, flags=re.DOTALL,
-            )
-            for m in _FROM_IMPORT_RE.finditer(collapsed):
-                mod = m.group(1)
-                names_str = m.group(2)
-                names = [n.strip().split(" as ")[0] for n in names_str.split(",")]
-                names = [n for n in names if n and n != "*"]
-                imports.setdefault(mod, set()).update(names)
+    for py in repo_dir.rglob("*.py"):
+        # Skip hidden/build dirs
+        if any(part.startswith(".") or part in ("__pycache__", "build", "dist")
+               for part in py.relative_to(repo_dir).parts):
+            continue
+        _scan_imports_in_file(py, imports)
     return imports
 
 
 def relevant_test_imports(file: Path, repo_dir: Path,
                           test_imports: dict[str, set[str]]) -> list[tuple[str, list[str]]]:
-    """For a given source file, return [(import_path, [symbols])] entries from the
-    test suite that target this file (by module path)."""
+    """For a given source file, return [(import_path, [symbols])] entries from
+    other code that target this file (by module path).
+
+    Matches `from marshmallow.utils import is_aware` to file
+    `src/marshmallow/utils.py` -- i.e., the LAST len(mod_parts) elements of
+    the file path must equal mod_parts. Handles both flat (voluptuous/util.py)
+    and src/ layouts (src/marshmallow/utils.py).
+    """
     rel = file.relative_to(repo_dir).with_suffix("").as_posix()
     rel_parts = rel.split("/")
     out: list[tuple[str, list[str]]] = []
     for mod, names in test_imports.items():
         mod_parts = mod.split(".")
-        # Match if test imports e.g. `voluptuous.util` and our file is voluptuous/util.py
-        if mod_parts[-len(rel_parts):] == rel_parts:
+        if len(mod_parts) > len(rel_parts):
+            continue
+        # File path's tail must match the module path
+        if rel_parts[-len(mod_parts):] == mod_parts:
             out.append((mod, sorted(names)))
-        # Also match if test imports the package root and our file is the __init__
-        elif file.name == "__init__.py" and mod_parts == rel_parts[:-1]:
+        # Also match: import is package-root (`from marshmallow import ...`)
+        # and file is that package's __init__.py
+        elif file.name == "__init__.py" and rel_parts[-len(mod_parts) - 1:-1] == mod_parts:
             out.append((mod, sorted(names)))
     return out
 
@@ -194,13 +200,14 @@ def build_file_instructions(file: Path, file_src: str, repo_dir: Path,
     if test_imports:
         relevant = relevant_test_imports(file, repo_dir, test_imports)
         if relevant:
-            parts.append("## Test-suite import contract (MUST satisfy)")
+            parts.append("## Inter-module import contract (MUST satisfy)")
             parts.append("")
             parts.append(
-                "The test suite imports the following symbols from this module. "
-                "Your regenerated file MUST define and export each of these names "
-                "(class, function, constant, or alias). Missing any of them will "
-                "break test collection for the entire library."
+                "Other code in this library (and the test suite) imports the "
+                "following symbols from this module. Your regenerated file MUST "
+                "define and export each of these names (class, function, constant, "
+                "or alias). Missing any of them will break import / collection "
+                "for downstream modules."
             )
             parts.append("")
             for mod, names in relevant:
@@ -216,6 +223,16 @@ def build_file_instructions(file: Path, file_src: str, repo_dir: Path,
         "If the module is a data-table file (e.g., Unicode table), emit the full data "
         "structure required by the spec."
     )
+    # AAR-2 v4 hint: large files were truncating mid-docstring under 32K output.
+    # Hint Sonnet to keep docstrings compact when the file is big.
+    file_size = file.stat().st_size if file.exists() else 0
+    if file_size > 15_000:
+        parts.append("")
+        parts.append(
+            "**SIZE NOTICE:** This file is large (>15KB). PRIORITIZE CORRECT FUNCTION "
+            "BODIES over verbose docstrings. Keep docstrings to 1-3 lines max. The "
+            "output token budget is finite; an unfinished file is rejected."
+        )
     if prior_attempt and failure_signal:
         parts.append("")
         parts.append("## Previous attempt failed -- use this signal to fix")
