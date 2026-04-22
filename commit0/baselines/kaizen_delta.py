@@ -63,9 +63,97 @@ from _llm import LLMClient, cost, DEFAULT_MODELS  # noqa: E402
 # -------------------- Decompose: per-file --------------------
 
 def discover_files(repo_dir: Path) -> list[Path]:
-    """Every .py file under the package source. Order: smaller first (cheaper to retry)."""
+    """Every .py file under the package source. Order: smaller first (cheaper to retry).
+
+    Excludes anything under a 'tests', 'test', or 'testing' directory at ANY depth.
+    discover_stub_files filters at depth-1 only; voluptuous/marshmallow/jinja nest
+    their tests INSIDE the package (e.g., voluptuous/voluptuous/tests/), and
+    regenerating those test files breaks pytest collection. Defensive: also
+    exclude files whose basename starts with 'test_'.
+    """
     files = discover_stub_files(repo_dir)
-    return sorted(files, key=lambda p: p.stat().st_size)
+    forbidden_parts = {"tests", "test", "testing", "__pycache__"}
+    out = []
+    for p in files:
+        rel_parts = p.relative_to(repo_dir).parts
+        if any(part in forbidden_parts for part in rel_parts):
+            continue
+        if p.name.startswith("test_") or p.name == "conftest.py":
+            continue
+        out.append(p)
+    return sorted(out, key=lambda p: p.stat().st_size)
+
+
+# AAR-2 action item #1: test-import-aware Decompose. Scan the test suite for
+# `from <pkg>...import...` lines and produce a per-module symbol list. Inject
+# into per-file prompts so the regenerated package exposes what tests need.
+# Unblocks voluptuous/marshmallow/jinja which had collection-broken pytest in
+# every prior baseline (per AAR_2026-04-22_FINAL.md §"What we learned" #2).
+_FROM_IMPORT_RE = re.compile(
+    r"^from\s+([\w.]+)\s+import\s+(.+?)(?:\s*#.*)?$",
+    re.MULTILINE,
+)
+
+
+def discover_test_imports(repo_dir: Path) -> dict[str, set[str]]:
+    """Return {module_path: {symbol, ...}} for everything tests/* imports.
+
+    Walks every .py file under any 'tests' or 'test' directory and parses
+    `from <module> import (a, b, c)` lines. Multi-line imports handled by
+    a soft pre-process that collapses parens.
+    """
+    imports: dict[str, set[str]] = {}
+    test_dirs = []
+    for p in repo_dir.iterdir():
+        if p.is_dir() and p.name in ("tests", "test", "testing"):
+            test_dirs.append(p)
+    # Some repos nest tests inside the package (e.g., voluptuous/voluptuous/tests/)
+    for sub in repo_dir.rglob("tests"):
+        if sub.is_dir() and sub not in test_dirs:
+            test_dirs.append(sub)
+    for sub in repo_dir.rglob("test"):
+        if sub.is_dir() and sub not in test_dirs:
+            test_dirs.append(sub)
+
+    for tdir in test_dirs:
+        for py in tdir.rglob("*.py"):
+            try:
+                text = py.read_text(encoding="utf-8", errors="replace")
+            except Exception:
+                continue
+            # Collapse parenthesized multi-line imports into single lines so the
+            # regex matches them whole. Conservative: only flatten balanced ().
+            collapsed = re.sub(
+                r"from\s+([\w.]+)\s+import\s*\(([^)]*)\)",
+                lambda m: f"from {m.group(1)} import "
+                          f"{','.join(s.strip() for s in m.group(2).split(',') if s.strip())}",
+                text, flags=re.DOTALL,
+            )
+            for m in _FROM_IMPORT_RE.finditer(collapsed):
+                mod = m.group(1)
+                names_str = m.group(2)
+                names = [n.strip().split(" as ")[0] for n in names_str.split(",")]
+                names = [n for n in names if n and n != "*"]
+                imports.setdefault(mod, set()).update(names)
+    return imports
+
+
+def relevant_test_imports(file: Path, repo_dir: Path,
+                          test_imports: dict[str, set[str]]) -> list[tuple[str, list[str]]]:
+    """For a given source file, return [(import_path, [symbols])] entries from the
+    test suite that target this file (by module path)."""
+    rel = file.relative_to(repo_dir).with_suffix("").as_posix()
+    rel_parts = rel.split("/")
+    out: list[tuple[str, list[str]]] = []
+    for mod, names in test_imports.items():
+        mod_parts = mod.split(".")
+        # Match if test imports e.g. `voluptuous.util` and our file is voluptuous/util.py
+        if mod_parts[-len(rel_parts):] == rel_parts:
+            out.append((mod, sorted(names)))
+        # Also match if test imports the package root and our file is the __init__
+        elif file.name == "__init__.py" and mod_parts == rel_parts[:-1]:
+            out.append((mod, sorted(names)))
+    return out
 
 
 # -------------------- Recompose: per-stub --------------------
@@ -87,7 +175,8 @@ def build_cached_block(repo_name: str, spec_text: str) -> str:
 
 def build_file_instructions(file: Path, file_src: str, repo_dir: Path,
                             prior_attempt: Optional[str] = None,
-                            failure_signal: Optional[str] = None) -> str:
+                            failure_signal: Optional[str] = None,
+                            test_imports: Optional[dict[str, set[str]]] = None) -> str:
     rel = file.relative_to(repo_dir).as_posix()
     parts = [PROMPT_PREAMBLE, ""]
     parts.append(f"## File to regenerate: `{rel}`")
@@ -97,6 +186,29 @@ def build_file_instructions(file: Path, file_src: str, repo_dir: Path,
     parts.append(_truncate(file_src, MAX_STUB_FILE_BYTES))
     parts.append("```")
     parts.append("")
+
+    # AAR-2 fix: inject test-side import contract. The test suite imports specific
+    # symbols from this file's module path; the regenerated file MUST export them
+    # or pytest collection breaks downstream (the voluptuous/marshmallow/jinja
+    # failure mode in every prior baseline).
+    if test_imports:
+        relevant = relevant_test_imports(file, repo_dir, test_imports)
+        if relevant:
+            parts.append("## Test-suite import contract (MUST satisfy)")
+            parts.append("")
+            parts.append(
+                "The test suite imports the following symbols from this module. "
+                "Your regenerated file MUST define and export each of these names "
+                "(class, function, constant, or alias). Missing any of them will "
+                "break test collection for the entire library."
+            )
+            parts.append("")
+            for mod, names in relevant:
+                parts.append(f"  from {mod} import:")
+                for nm in names:
+                    parts.append(f"    - {nm}")
+            parts.append("")
+
     parts.append(
         "Return ONE fenced code block tagged `python:full-file` containing the COMPLETE "
         "replacement file contents. Preserve module-level docstring if present. Implement "
@@ -203,6 +315,14 @@ def run_one_lib(repo: str, provider: str, model: str, max_retries_per_file: int 
     if not files:
         return {"repo": repo, "error": "no_files"}
 
+    # AAR-2 fix: scan tests/ for the import contract before regenerating files.
+    test_imports = discover_test_imports(repo_dir)
+    if test_imports:
+        n_symbols = sum(len(v) for v in test_imports.values())
+        print(f"  test-import scan: {len(test_imports)} modules, {n_symbols} symbols")
+    else:
+        print(f"  test-import scan: none found (file regen will run without contract)")
+
     branch = "kaizen_delta"
     git(repo_dir, "checkout", "commit0")
     git(repo_dir, "branch", "-D", branch)
@@ -214,9 +334,21 @@ def run_one_lib(repo: str, provider: str, model: str, max_retries_per_file: int 
     per_file = []
     total_cost = 0.0
     total_input = total_output = total_cache_r = total_cache_w = 0
-    last_passed = 0  # Tracks pytest progress for grounding decisions
-    last_summary = ""
     t0_total = time.time()
+
+    # Establish baseline: run pytest BEFORE any modifications. This gives us
+    # the (passed, errors) pair the acceptance rule compares against. Without
+    # this, a lib that starts with collection errors (voluptuous, babel,
+    # minitorch) gets every regen rejected because the original `errs == 0`
+    # rule can never be satisfied while the broken state persists.
+    git(repo_dir, "commit", "--allow-empty", "-m", "kaizen baseline (pre-modifications)")
+    _, baseline_summary, _ = run_pytest(repo, branch)
+    baseline_counts = parse_counts(baseline_summary)
+    last_passed = baseline_counts.get("passed", 0)
+    last_errors = baseline_counts.get("errors", 0)
+    print(f"  baseline pytest: {ANSI.sub('', baseline_summary).strip()[:120]}")
+    print(f"  baseline (passed={last_passed}, errors={last_errors}) -- accept rule: "
+          f"strict pass-progress OR same-passes-with-fewer-errors")
 
     for i, file in enumerate(files, 1):
         rel = file.relative_to(repo_dir).as_posix()
@@ -230,7 +362,8 @@ def run_one_lib(repo: str, provider: str, model: str, max_retries_per_file: int 
         for attempt_n in range(max_retries_per_file + 1):
             t0 = time.time()
             instructions = build_file_instructions(file, original_src, repo_dir,
-                                                   prior_attempt, prior_failure)
+                                                   prior_attempt, prior_failure,
+                                                   test_imports=test_imports)
             try:
                 response, usage = client.call(instructions, cached_block)
             except Exception as e:
@@ -251,6 +384,28 @@ def run_one_lib(repo: str, provider: str, model: str, max_retries_per_file: int 
                                  "usage": usage, "result": "empty_response"})
                 break
 
+            # AAR-2 third blocker: validate Python syntax BEFORE writing. A
+            # SyntaxError in any package file breaks pytest collection for the
+            # entire library (voluptuous, marshmallow, jinja all hit this).
+            try:
+                ast.parse(content)
+            except SyntaxError as e:
+                print(f"      attempt {attempt_n+1} rejected: SyntaxError at line {e.lineno}: {e.msg}")
+                attempts.append({"attempt": attempt_n + 1, "elapsed_s": round(elapsed, 1),
+                                 "usage": usage, "result": "syntax_error",
+                                 "error": f"line {e.lineno}: {e.msg}"})
+                # Reject and retry if attempts remain
+                if attempt_n < max_retries_per_file:
+                    prior_attempt = content
+                    prior_failure = (
+                        f"Your previous output was REJECTED because it had a Python "
+                        f"SyntaxError at line {e.lineno}: {e.msg}\n\n"
+                        f"Most likely cause: output token budget exceeded mid-string. "
+                        f"Generate a more compact implementation, or shorten docstrings."
+                    )
+                    continue
+                break
+
             try:
                 write_file(file, content)
             except Exception as e:
@@ -264,17 +419,30 @@ def run_one_lib(repo: str, provider: str, model: str, max_retries_per_file: int 
             exit_code, summary, failure = run_pytest(repo, branch)
             counts = parse_counts(summary)
             now_passed = counts.get("passed", 0)
+            now_errors = counts.get("errors", 0)
             attempts.append({"attempt": attempt_n + 1, "elapsed_s": round(elapsed, 1),
                              "usage": usage, "summary": ANSI.sub("", summary).strip(),
                              "counts": counts})
             print(f"      pytest: {ANSI.sub('', summary).strip()[:120]}")
 
-            # Grounding rule: accept this attempt if pytest progress did not regress
-            #   AND we didn't introduce new collection errors.
-            errs = counts.get("errors", 0)
-            if now_passed >= last_passed and errs == 0:
+            # Acceptance rule v2 — accept on EITHER-axis improvement, reject only
+            # on regression of either axis. This unblocks zero->nonzero climbs
+            # for libs that start with collection errors (voluptuous, babel, etc.).
+            #
+            #   ACCEPT if: passed went up   (strict test-progress)
+            #          OR: passed unchanged AND errors went down (escaped error state)
+            #   REJECT if: passed went down OR errors went up (regression on either axis)
+            made_test_progress = now_passed > last_passed
+            reduced_errors = (now_passed >= last_passed) and (now_errors < last_errors)
+            no_regression = (now_passed >= last_passed) and (now_errors <= last_errors)
+            if made_test_progress or reduced_errors:
                 last_passed = now_passed
-                last_summary = ANSI.sub("", summary).strip()
+                last_errors = now_errors
+                accepted = True
+                break
+            if no_regression:
+                # Neither improved nor worsened. Accept (don't burn a retry on no-op)
+                # but don't update last_* trackers.
                 accepted = True
                 break
 

@@ -3,87 +3,39 @@
   "provider": "anthropic",
   "model": "claude-sonnet-4-6",
   "branch": "kaizen_delta",
-  "files_total": 8,
-  "files_accepted": 7,
-  "elapsed_s": 788.9,
-  "final_summary": "============================== 2 errors in 0.23s ===============================",
+  "files_total": 6,
+  "files_accepted": 6,
+  "elapsed_s": 533.1,
+  "final_summary": "======================== 91 failed, 58 passed in 3.01s =========================",
   "final_counts": {
-    "passed": 0,
-    "failed": 0,
+    "passed": 58,
+    "failed": 91,
     "skipped": 0,
-    "errors": 2
+    "errors": 0
   },
   "totals": {
-    "input_tokens": 28975,
-    "output_tokens": 58180,
-    "cache_read_tokens": 97727,
+    "input_tokens": 28369,
+    "output_tokens": 36207,
+    "cache_read_tokens": 83766,
     "cache_write_tokens": 13961,
-    "cost_usd": 1.0413
+    "cost_usd": 0.7057
   },
   "per_file": [
     {
-      "file": "voluptuous/tests/__init__.py",
-      "size": 46122,
+      "file": "voluptuous/humanize.py",
+      "size": 1885,
       "accepted": true,
       "attempts": [
         {
           "attempt": 1,
-          "elapsed_s": 144.6,
+          "elapsed_s": 6.9,
           "usage": {
-            "input": 173,
-            "output": 12740,
+            "input": 387,
+            "output": 515,
             "cache_read": 0,
             "cache_write": 13961
           },
-          "summary": "============================== 2 errors in 0.14s ===============================",
-          "counts": {
-            "passed": 0,
-            "failed": 0,
-            "skipped": 0,
-            "errors": 2
-          }
-        }
-      ]
-    },
-    {
-      "file": "voluptuous/humanize.py",
-      "size": 2337,
-      "accepted": true,
-      "attempts": [
-        {
-          "attempt": 1,
-          "elapsed_s": 8.8,
-          "usage": {
-            "input": 309,
-            "output": 652,
-            "cache_read": 13961,
-            "cache_write": 0
-          },
-          "summary": "============================== 2 errors in 0.15s ===============================",
-          "counts": {
-            "passed": 0,
-            "failed": 0,
-            "skipped": 0,
-            "errors": 2
-          }
-        }
-      ]
-    },
-    {
-      "file": "voluptuous/__init__.py",
-      "size": 2227,
-      "accepted": true,
-      "attempts": [
-        {
-          "attempt": 1,
-          "elapsed_s": 6.5,
-          "usage": {
-            "input": 856,
-            "output": 710,
-            "cache_read": 13961,
-            "cache_write": 0
-          },
-          "summary": "============================== 2 errors in 0.14s ===============================",
+          "summary": "============================== 2 errors in 0.21s ===============================",
           "counts": {
             "passed": 0,
             "failed": 0,
@@ -100,14 +52,38 @@
       "attempts": [
         {
           "attempt": 1,
-          "elapsed_s": 8.8,
+          "elapsed_s": 17.0,
           "usage": {
-            "input": 1122,
+            "input": 1213,
             "output": 996,
             "cache_read": 13961,
             "cache_write": 0
           },
-          "summary": "============================== 2 errors in 0.14s ===============================",
+          "summary": "============================== 2 errors in 0.15s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "voluptuous/__init__.py",
+      "size": 3692,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 14.8,
+          "usage": {
+            "input": 1211,
+            "output": 1304,
+            "cache_read": 13961,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.17s ===============================",
           "counts": {
             "passed": 0,
             "failed": 0,
@@ -124,10 +100,46 @@
       "attempts": [
         {
           "attempt": 1,
-          "elapsed_s": 13.1,
+          "elapsed_s": 13.4,
           "usage": {
             "input": 1195,
             "output": 1356,
+            "cache_read": 13961,
+            "cache_write": 0
+          },
+          "summary": "============================== 2 errors in 0.13s ===============================",
+          "counts": {
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "errors": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "voluptuous/validators.py",
+      "size": 31404,
+      "accepted": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "elapsed_s": 137.1,
+          "usage": {
+            "input": 8937,
+            "output": 10627,
+            "cache_read": 13961,
+            "cache_write": 0
+          },
+          "result": "syntax_error",
+          "error": "line 260: unterminated triple-quoted string literal (detected at line 275)"
+        },
+        {
+          "attempt": 2,
+          "elapsed_s": 122.0,
+          "usage": {
+            "input": 9034,
+            "output": 9628,
             "cache_read": 13961,
             "cache_write": 0
           },
@@ -142,68 +154,26 @@
       ]
     },
     {
-      "file": "voluptuous/validators.py",
-      "size": 9056,
-      "accepted": true,
-      "attempts": [
-        {
-          "attempt": 1,
-          "elapsed_s": 152.6,
-          "usage": {
-            "input": 8937,
-            "output": 11533,
-            "cache_read": 13961,
-            "cache_write": 0
-          },
-          "summary": "============================== 2 errors in 0.16s ===============================",
-          "counts": {
-            "passed": 0,
-            "failed": 0,
-            "skipped": 0,
-            "errors": 2
-          }
-        }
-      ]
-    },
-    {
       "file": "voluptuous/schema_builder.py",
-      "size": 53886,
+      "size": 45042,
       "accepted": true,
       "attempts": [
         {
           "attempt": 1,
-          "elapsed_s": 201.0,
+          "elapsed_s": 167.1,
           "usage": {
             "input": 6392,
-            "output": 14193,
+            "output": 11781,
             "cache_read": 13961,
             "cache_write": 0
           },
-          "summary": "============================== 2 errors in 0.20s ===============================",
+          "summary": "======================== 91 failed, 58 passed in 3.27s =========================",
           "counts": {
-            "passed": 0,
-            "failed": 0,
+            "passed": 58,
+            "failed": 91,
             "skipped": 0,
-            "errors": 2
+            "errors": 0
           }
-        }
-      ]
-    },
-    {
-      "file": "voluptuous/tests/tests.py",
-      "size": 50882,
-      "accepted": false,
-      "attempts": [
-        {
-          "attempt": 1,
-          "elapsed_s": 200.3,
-          "usage": {
-            "input": 9991,
-            "output": 16000,
-            "cache_read": 13961,
-            "cache_write": 0
-          },
-          "result": "empty_response"
         }
       ]
     }

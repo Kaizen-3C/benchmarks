@@ -30,7 +30,7 @@ GPT54_INPUT  = 1.25
 GPT54_OUTPUT = 10.00
 GPT54_CACHE_READ = 0.125
 
-DEFAULT_MAX_TOKENS = 16_000
+DEFAULT_MAX_TOKENS = 32_000  # raised from 16K after voluptuous validators.py truncated mid-docstring
 DEFAULT_TIMEOUT_S = 300
 DEFAULT_RETRIES = 4
 
