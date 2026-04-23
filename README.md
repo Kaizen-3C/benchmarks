@@ -20,6 +20,19 @@ We measure **value-add per dollar**, **LLM-leanness**, **architectural blockers*
 
 Each subdirectory is self-contained: PROTOCOL.md, run scripts, results, and analysis.
 
+### Harness scaffolding (contributor invitations)
+
+Beyond the three benchmarks above, this repo includes a **generic harness** shared across all current and future benchmarks (`runner.py`, `base_adapter.py`, `calibration.py`, `compare_results.py`, `download_datasets.py`) plus **stub adapters** ready to extend:
+
+| Stub | Status |
+|---|---|
+| [`humaneval/`](humaneval/) | Adapter stub — implementation welcome via PR |
+| [`mbpp/`](mbpp/) | Adapter stub — implementation welcome via PR |
+| [`swebench/`](swebench/) | Adapter stub — implementation welcome via PR |
+| [`terminalbench/`](terminalbench/) | Adapter stub — implementation welcome via PR |
+
+The harness is benchmark-agnostic by design; adding a new benchmark is a matter of writing the adapter, not modifying the harness. See [`CONTRIBUTING.md`](CONTRIBUTING.md#new-sub-benchmarks) for the path.
+
 ---
 
 ## Headline findings (commit0 lite, 2026-04)
