@@ -138,7 +138,7 @@ benchmarks/
 
 Kaizen-delta (currently private) is the integrated dev monorepo where the Kaizen architecture-first AI platform is built. This benchmarks repo is **independent of any specific architecture** — the methodology is designed to evaluate any agent stack (Aider, smolagents, OpenHands, Cursor, custom in-house architectures). Kaizen-delta is the first reference architecture in the matrix; we welcome contributions adding others.
 
-For Kaizen the product, see [`Kaizen-3C/kaizen-cli`](https://github.com/Kaizen-3C/kaizen-cli) (coming W2 2026-04).
+For Kaizen the product, see [`Kaizen-3C/kaizen-cli`](https://github.com/Kaizen-3C/kaizen-cli) — `pip install kaizen-3c-cli` (Apache-2.0, [PyPI](https://pypi.org/project/kaizen-3c-cli/)).
 
 ---
 
