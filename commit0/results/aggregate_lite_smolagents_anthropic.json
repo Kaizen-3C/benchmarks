@@ -1,0 +1,485 @@
+{
+  "architecture": "smolagents",
+  "provider": "anthropic",
+  "split": "lite",
+  "completed": [
+    "deprecated",
+    "cachetools",
+    "voluptuous",
+    "portalocker",
+    "pyjwt",
+    "chardet",
+    "tinydb",
+    "simpy",
+    "imapclient",
+    "parsel",
+    "marshmallow",
+    "cookiecutter",
+    "babel",
+    "jinja",
+    "minitorch"
+  ],
+  "per_library": {
+    "deprecated": {
+      "repo": "deprecated",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 49.8,
+      "final_summary": "171 passed, 4 warnings in 0.19s",
+      "final_counts": {
+        "passed": 171,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 319729,
+        "output_tokens": 1973,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.9888
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 14,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 58.3
+    },
+    "cachetools": {
+      "repo": "cachetools",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 251.9,
+      "final_summary": "1 failed, 58 passed in 0.11s",
+      "final_counts": {
+        "passed": 58,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 726168,
+        "output_tokens": 14210,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.3917
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 257.7
+    },
+    "voluptuous": {
+      "repo": "voluptuous",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 114.7,
+      "final_summary": "============================== 1 failed in 0.04s ===============================",
+      "final_counts": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 994999,
+        "output_tokens": 5222,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 3.0633
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 120.9
+    },
+    "portalocker": {
+      "repo": "portalocker",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 158.3,
+      "final_summary": "1 failed, 2 passed, 2 skipped, 1 warning in 0.45s",
+      "final_counts": {
+        "passed": 2,
+        "failed": 1,
+        "skipped": 2,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 929698,
+        "output_tokens": 9791,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.936
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 165.6
+    },
+    "pyjwt": {
+      "repo": "pyjwt",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 74.1,
+      "final_summary": "147 passed, 114 skipped, 1 xfailed in 0.19s",
+      "final_counts": {
+        "passed": 147,
+        "failed": 0,
+        "skipped": 114,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 837776,
+        "output_tokens": 2555,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.5517
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 17,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 79.0
+    },
+    "chardet": {
+      "repo": "chardet",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 74.5,
+      "final_summary": "=============================== 1 error in 0.13s ===============================",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 666203,
+        "output_tokens": 2789,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.0404
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 79.0
+    },
+    "tinydb": {
+      "repo": "tinydb",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 21.4,
+      "final_summary": "============================= 201 passed in 1.53s ==============================",
+      "final_counts": {
+        "passed": 201,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 114563,
+        "output_tokens": 584,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.3524
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 10,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 28.0
+    },
+    "simpy": {
+      "repo": "simpy",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 137.1,
+      "final_summary": "1 error in 0.01s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 1063461,
+        "output_tokens": 7658,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 3.3053
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 148.5
+    },
+    "imapclient": {
+      "repo": "imapclient",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 170.0,
+      "final_summary": "1 failed, 22 passed in 0.09s",
+      "final_counts": {
+        "passed": 22,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 772401,
+        "output_tokens": 10006,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.4673
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 178.5
+    },
+    "parsel": {
+      "repo": "parsel",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 75.6,
+      "final_summary": "1 error in 0.01s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 786683,
+        "output_tokens": 3824,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.4174
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 80.5
+    },
+    "marshmallow": {
+      "repo": "marshmallow",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 62.1,
+      "final_summary": "",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 382967,
+        "output_tokens": 2414,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 1.1851
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 70.0
+    },
+    "cookiecutter": {
+      "repo": "cookiecutter",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 98.7,
+      "final_summary": "========================= 1 failed, 14 passed in 1.35s =========================",
+      "final_counts": {
+        "passed": 14,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 899229,
+        "output_tokens": 3823,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.755
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 106.2
+    },
+    "babel": {
+      "repo": "babel",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 65.8,
+      "final_summary": "1 error in 0.06s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 251392,
+        "output_tokens": 2758,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.7955
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 72.6
+    },
+    "jinja": {
+      "repo": "jinja",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 97.8,
+      "final_summary": "1 failed, 24 passed in 0.21s",
+      "final_counts": {
+        "passed": 24,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 279207,
+        "output_tokens": 5083,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.9139
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 106.5
+    },
+    "minitorch": {
+      "repo": "minitorch",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "elapsed_s": 48.9,
+      "final_summary": "1 error in 0.08s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 353810,
+        "output_tokens": 1684,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 1.0867
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 62.2
+    }
+  },
+  "aggregate": {
+    "libraries_total": 15,
+    "tests_passed": 639,
+    "tests_failed": 6,
+    "tests_skipped": 116,
+    "tests_errored": 5,
+    "tests_attempted_total": 650,
+    "pass_rate_attempted": 0.9831,
+    "cost_usd_total": 29.25,
+    "wall_seconds_total": 1500.7
+  }
+}

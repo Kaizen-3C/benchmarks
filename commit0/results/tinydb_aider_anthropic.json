@@ -1,0 +1,27 @@
+{
+  "repo": "tinydb",
+  "model": "anthropic/claude-sonnet-4-6",
+  "branch": "aider",
+  "elapsed_s": 94.5,
+  "final_summary": "============================= 201 passed in 0.71s ==============================",
+  "final_counts": {
+    "passed": 201,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 49894,
+    "output_tokens": 9194,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.2876
+  },
+  "aider_diagnostics": {
+    "exhausted_context_windows": 0,
+    "malformed_responses": 0,
+    "test_cmd": "pytest -x --tb=no -q",
+    "wall_clock_capped": false,
+    "cost_capped": false
+  }
+}

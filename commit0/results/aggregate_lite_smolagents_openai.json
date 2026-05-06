@@ -1,0 +1,516 @@
+{
+  "architecture": "smolagents",
+  "provider": "openai",
+  "split": "lite",
+  "completed": [
+    "wcwidth",
+    "deprecated",
+    "cachetools",
+    "voluptuous",
+    "portalocker",
+    "pyjwt",
+    "chardet",
+    "tinydb",
+    "simpy",
+    "imapclient",
+    "parsel",
+    "marshmallow",
+    "cookiecutter",
+    "babel",
+    "jinja",
+    "minitorch"
+  ],
+  "per_library": {
+    "wcwidth": {
+      "repo": "wcwidth",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 47.1,
+      "final_summary": "\u001b[32m\u001b[32m\u001b[1m39 passed\u001b[0m\u001b[32m in 1.11s\u001b[0m\u001b[0m",
+      "final_counts": {
+        "passed": 39,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 390369,
+        "output_tokens": 2669,
+        "cache_read_tokens": 317056,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.3026
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 9,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 53.8
+    },
+    "deprecated": {
+      "repo": "deprecated",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 195.7,
+      "final_summary": "1 failed, 148 passed, 2 warnings in 0.17s",
+      "final_counts": {
+        "passed": 148,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 512119,
+        "output_tokens": 14257,
+        "cache_read_tokens": 448640,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.4847
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 202.5
+    },
+    "cachetools": {
+      "repo": "cachetools",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 279.7,
+      "final_summary": "1 failed, 149 passed, 6 warnings in 0.15s",
+      "final_counts": {
+        "passed": 149,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 806572,
+        "output_tokens": 22157,
+        "cache_read_tokens": 726656,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.7138
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 285.3
+    },
+    "voluptuous": {
+      "repo": "voluptuous",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 796.3,
+      "final_summary": "========================= 1 failed, 11 passed in 0.04s =========================",
+      "final_counts": {
+        "passed": 11,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 1024165,
+        "output_tokens": 14450,
+        "cache_read_tokens": 925312,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.6952
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 802.6
+    },
+    "portalocker": {
+      "repo": "portalocker",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 485.6,
+      "final_summary": "1 failed, 34 passed, 2 skipped, 3 warnings in 2.17s",
+      "final_counts": {
+        "passed": 34,
+        "failed": 1,
+        "skipped": 2,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 772140,
+        "output_tokens": 39712,
+        "cache_read_tokens": 727424,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.8893
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 19,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 494.6
+    },
+    "pyjwt": {
+      "repo": "pyjwt",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 27.1,
+      "final_summary": "147 passed, 114 skipped, 1 xfailed in 0.23s",
+      "final_counts": {
+        "passed": 147,
+        "failed": 0,
+        "skipped": 114,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 71547,
+        "output_tokens": 1597,
+        "cache_read_tokens": 47744,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.0954
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 5,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 32.1
+    },
+    "chardet": {
+      "repo": "chardet",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 285.1,
+      "final_summary": "========================= 1 failed, 6 passed in 0.16s ==========================",
+      "final_counts": {
+        "passed": 6,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 1070722,
+        "output_tokens": 20845,
+        "cache_read_tokens": 894848,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.9761
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 290.1
+    },
+    "tinydb": {
+      "repo": "tinydb",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 187.3,
+      "final_summary": "============================= 201 passed in 0.71s ==============================",
+      "final_counts": {
+        "passed": 201,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 182117,
+        "output_tokens": 16731,
+        "cache_read_tokens": 145280,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.3794
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 7,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 193.3
+    },
+    "simpy": {
+      "repo": "simpy",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 219.8,
+      "final_summary": "1 error in 0.01s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 698560,
+        "output_tokens": 14953,
+        "cache_read_tokens": 642688,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.5246
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 19,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 230.3
+    },
+    "imapclient": {
+      "repo": "imapclient",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 183.8,
+      "final_summary": "1 error in 0.08s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 672317,
+        "output_tokens": 12365,
+        "cache_read_tokens": 589312,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.5403
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 192.7
+    },
+    "parsel": {
+      "repo": "parsel",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 217.1,
+      "final_summary": "1 error in 0.01s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 499013,
+        "output_tokens": 14275,
+        "cache_read_tokens": 430592,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.4928
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 222.4
+    },
+    "marshmallow": {
+      "repo": "marshmallow",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 196.2,
+      "final_summary": "========================= 1 failed, 11 passed in 0.18s =========================",
+      "final_counts": {
+        "passed": 11,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 817467,
+        "output_tokens": 13750,
+        "cache_read_tokens": 763136,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.5329
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 19,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 206.5
+    },
+    "cookiecutter": {
+      "repo": "cookiecutter",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 439.6,
+      "final_summary": "========================= 1 failed, 60 passed in 1.67s =========================",
+      "final_counts": {
+        "passed": 60,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 955650,
+        "output_tokens": 35288,
+        "cache_read_tokens": 834432,
+        "cache_write_tokens": 0,
+        "cost_usd": 1.041
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 448.4
+    },
+    "babel": {
+      "repo": "babel",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 191.9,
+      "final_summary": "1 error in 0.06s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 527645,
+        "output_tokens": 13403,
+        "cache_read_tokens": 452480,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.5021
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 198.7
+    },
+    "jinja": {
+      "repo": "jinja",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 129.5,
+      "final_summary": "1 failed, 24 passed in 0.16s",
+      "final_counts": {
+        "passed": 24,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 231811,
+        "output_tokens": 8125,
+        "cache_read_tokens": 211840,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.2248
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 17,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 136.7
+    },
+    "minitorch": {
+      "repo": "minitorch",
+      "model": "openai/gpt-5.4",
+      "branch": "smolagents",
+      "elapsed_s": 382.4,
+      "final_summary": "1 error in 0.14s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 1098383,
+        "output_tokens": 30171,
+        "cache_read_tokens": 959360,
+        "cache_write_tokens": 0,
+        "cost_usd": 1.04
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 394.6
+    }
+  },
+  "aggregate": {
+    "libraries_total": 16,
+    "tests_passed": 830,
+    "tests_failed": 8,
+    "tests_skipped": 116,
+    "tests_errored": 5,
+    "tests_attempted_total": 843,
+    "pass_rate_attempted": 0.9846,
+    "cost_usd_total": 9.44,
+    "wall_seconds_total": 4264.2
+  }
+}

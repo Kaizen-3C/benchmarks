@@ -1,0 +1,27 @@
+{
+  "repo": "simpy",
+  "model": "anthropic/claude-sonnet-4-6",
+  "branch": "aider",
+  "elapsed_s": 275.4,
+  "final_summary": "1 error in 0.01s",
+  "final_counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 1
+  },
+  "totals": {
+    "input_tokens": 471239,
+    "output_tokens": 17071,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": 1.6698
+  },
+  "aider_diagnostics": {
+    "exhausted_context_windows": 0,
+    "malformed_responses": 0,
+    "test_cmd": "pytest -x --tb=no -q",
+    "wall_clock_capped": false,
+    "cost_capped": false
+  }
+}

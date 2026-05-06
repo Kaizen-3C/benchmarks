@@ -95,8 +95,33 @@ _FROM_IMPORT_RE = re.compile(
 )
 
 
-def _scan_imports_in_file(py: Path, imports: dict[str, set[str]]) -> None:
-    """Walk one .py file and add its `from <module> import ...` lines to the dict."""
+def _file_package(py: Path, repo_dir: Path) -> tuple[str, ...]:
+    """Return the containing package of *py* as a top-down tuple of name parts.
+
+    Walk UP from py.parent, collecting directory names while __init__.py is
+    present in that directory.  Stop at the first directory without __init__.py
+    or when reaching repo_dir.  Parts are returned in top-down order, e.g.
+    ('jinja2', 'async_compat') for src/jinja2/async_compat/foo.py.
+    """
+    parts: list[str] = []
+    current = py.parent
+    while current != repo_dir and current != current.parent:
+        if not (current / "__init__.py").exists():
+            break
+        parts.append(current.name)
+        current = current.parent
+    parts.reverse()
+    return tuple(parts)
+
+
+def _scan_imports_in_file(py: Path, imports: dict[str, set[str]],
+                          repo_dir: Path | None = None) -> None:
+    """Walk one .py file and add its `from <module> import ...` lines to the dict.
+
+    When repo_dir is provided, relative imports (leading dots) are resolved to
+    their absolute dotted module path via PEP 328 semantics before storage.
+    Closes blocker #8 from AAR_2026-04-22_B3_ADDENDUM.md (jinja relative imports).
+    """
     try:
         text = py.read_text(encoding="utf-8", errors="replace")
     except Exception:
@@ -112,7 +137,26 @@ def _scan_imports_in_file(py: Path, imports: dict[str, set[str]]) -> None:
         names_str = m.group(2)
         names = [n.strip().split(" as ")[0] for n in names_str.split(",")]
         names = [n for n in names if n and n != "*"]
-        imports.setdefault(mod, set()).update(names)
+        if not names:
+            continue
+        # Resolve relative imports (leading dots) per PEP 328.
+        # Closes blocker #8 from AAR_2026-04-22_B3_ADDENDUM.md (jinja relative imports).
+        level = len(mod) - len(mod.lstrip("."))
+        if level == 0:
+            # Absolute import — store as-is (existing behaviour).
+            imports.setdefault(mod, set()).update(names)
+        elif repo_dir is not None:
+            mod_str = mod.lstrip(".")
+            file_pkg = _file_package(py, repo_dir)
+            n = level - 1  # packages to go up from current package
+            if n > len(file_pkg):
+                continue  # invalid relative import — goes above package root
+            base_parts = file_pkg if n == 0 else file_pkg[: len(file_pkg) - n]
+            full_mod = ".".join((*base_parts, mod_str)) if mod_str else ".".join(base_parts)
+            if not full_mod:
+                continue
+            imports.setdefault(full_mod, set()).update(names)
+        # If repo_dir is None, relative imports are silently dropped (no resolution context).
 
 
 def discover_test_imports(repo_dir: Path) -> dict[str, set[str]]:
@@ -131,7 +175,7 @@ def discover_test_imports(repo_dir: Path) -> dict[str, set[str]]:
         if any(part.startswith(".") or part in ("__pycache__", "build", "dist")
                for part in py.relative_to(repo_dir).parts):
             continue
-        _scan_imports_in_file(py, imports)
+        _scan_imports_in_file(py, imports, repo_dir)
     return imports
 
 

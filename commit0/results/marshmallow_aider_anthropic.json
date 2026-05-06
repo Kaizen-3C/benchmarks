@@ -1,0 +1,27 @@
+{
+  "repo": "marshmallow",
+  "model": "anthropic/claude-sonnet-4-6",
+  "branch": "aider",
+  "elapsed_s": 5450.4,
+  "final_summary": "========================= 1 failed, 11 passed in 0.16s =========================",
+  "final_counts": {
+    "passed": 11,
+    "failed": 1,
+    "skipped": 0,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.0
+  },
+  "aider_diagnostics": {
+    "exhausted_context_windows": 0,
+    "malformed_responses": 0,
+    "test_cmd": "pytest -x --tb=no -q",
+    "wall_clock_capped": true,
+    "cost_capped": false
+  }
+}

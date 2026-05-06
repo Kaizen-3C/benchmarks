@@ -1,0 +1,27 @@
+{
+  "repo": "cookiecutter",
+  "model": "anthropic/claude-sonnet-4-6",
+  "branch": "aider",
+  "elapsed_s": 281.9,
+  "final_summary": "========================= 1 failed, 14 passed in 1.25s =========================",
+  "final_counts": {
+    "passed": 14,
+    "failed": 1,
+    "skipped": 0,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 608599,
+    "output_tokens": 17892,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": 2.0942
+  },
+  "aider_diagnostics": {
+    "exhausted_context_windows": 0,
+    "malformed_responses": 0,
+    "test_cmd": "pytest -x --tb=no -q",
+    "wall_clock_capped": false,
+    "cost_capped": false
+  }
+}

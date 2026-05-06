@@ -122,6 +122,37 @@ def kd_per_lib(provider: str) -> dict:
 kds = kd_per_lib("anthropic")
 kdg = kd_per_lib("openai")
 
+# Aider and smolagents per-lib loaders — same JSON schema as KD (final_counts + totals)
+def arch_per_lib_from_aggregate(arch_name: str, provider: str) -> dict:
+    """Load per-lib dict for new architectures (Aider, smolagents).
+
+    Reads the aggregate JSON if present, then *also* globs per-lib JSONs and
+    fills in any libs missing from the aggregate (e.g. smoke-test runs that
+    weren't included in the sweep's --skip set).
+    """
+    out: dict = {}
+    agg = R / f"aggregate_lite_{arch_name}_{provider}.json"
+    if agg.exists():
+        d = json.loads(agg.read_text())
+        out = dict(d.get("per_library", {}) or {})
+    for lib in LIBS:
+        if lib in out:
+            continue
+        p = R / f"{lib}_{arch_name}_{provider}.json"
+        if p.exists():
+            out[lib] = json.loads(p.read_text())
+    # Normalize counts key for downstream helpers
+    for entry in out.values():
+        if "final_counts" in entry and "counts" not in entry:
+            entry["counts"] = entry["final_counts"]
+    return out
+
+
+aiders = arch_per_lib_from_aggregate("aider", "anthropic")
+aiderg = arch_per_lib_from_aggregate("aider", "openai")
+smols  = arch_per_lib_from_aggregate("smolagents", "anthropic")
+smolg  = arch_per_lib_from_aggregate("smolagents", "openai")
+
 # OH merged across all subset dirs
 oh_s = merge_oh_dirs("b6_partial_pass1", "b6_4cheap_sonnet", "b6_t3_sonnet")
 oh_g = merge_oh_dirs("b6_partial_gpt54_3libs", "b6_4cheap_gpt54", "b6_10missing_gpt54")
@@ -192,10 +223,16 @@ def fmt_cell(c, kind="kd"):
     return f"{c['rate']:>3.0f}% {sign}{va:>+4.0f}pp x{c['llm_lean']:>4.1f}"
 
 
-print("=" * 145)
+print("=" * 200)
 print("VALUE-ADD FINGERPRINT — each cell shows: pass-rate, value_add_pp vs same-model B2, llm_lean (cost ratio vs B2)")
-print("=" * 145)
-hdr = f"{'lib':12} {'F?':>2} | {'KD-S':>16} {'KD-G':>16} | {'OH-S':>17} {'OH-G':>17}"
+print("=" * 200)
+hdr = (
+    f"{'lib':12} {'F?':>2} | "
+    f"{'KD-S':>16} {'KD-G':>16} | "
+    f"{'Aider-S':>16} {'Aider-G':>16} | "
+    f"{'Sm-S':>16} {'Sm-G':>16} | "
+    f"{'OH-S':>17} {'OH-G':>17}"
+)
 print(hdr); print("-" * len(hdr))
 
 floor_unlocks = []
@@ -205,14 +242,29 @@ oh_resolved = []
 
 for lib in LIBS:
     f = "*" if lib in FLOOR else " "
-    kds_cell = compute_cell(kds, lib, b2s, "anthropic")
-    kdg_cell = compute_cell(kdg, lib, b2g, "openai")
-    ohs_cell = compute_oh_cell(oh_s, lib, b2s, "anthropic")
-    ohg_cell = compute_oh_cell(oh_g, lib, b2g, "openai")
-    print(f"{lib:12} {f:>2} | {fmt_cell(kds_cell, 'kd'):>16} {fmt_cell(kdg_cell, 'kd'):>16} | {fmt_cell(ohs_cell, 'oh'):>17} {fmt_cell(ohg_cell, 'oh'):>17}")
+    kds_cell    = compute_cell(kds,    lib, b2s, "anthropic")
+    kdg_cell    = compute_cell(kdg,    lib, b2g, "openai")
+    aiders_cell = compute_cell(aiders, lib, b2s, "anthropic")
+    aiderg_cell = compute_cell(aiderg, lib, b2g, "openai")
+    smols_cell  = compute_cell(smols,  lib, b2s, "anthropic")
+    smolg_cell  = compute_cell(smolg,  lib, b2g, "openai")
+    ohs_cell    = compute_oh_cell(oh_s, lib, b2s, "anthropic")
+    ohg_cell    = compute_oh_cell(oh_g, lib, b2g, "openai")
+    print(
+        f"{lib:12} {f:>2} | "
+        f"{fmt_cell(kds_cell, 'kd'):>16} {fmt_cell(kdg_cell, 'kd'):>16} | "
+        f"{fmt_cell(aiders_cell, 'kd'):>16} {fmt_cell(aiderg_cell, 'kd'):>16} | "
+        f"{fmt_cell(smols_cell, 'kd'):>16} {fmt_cell(smolg_cell, 'kd'):>16} | "
+        f"{fmt_cell(ohs_cell, 'oh'):>17} {fmt_cell(ohg_cell, 'oh'):>17}"
+    )
 
     # Collect findings
-    for cell, label in [(kds_cell, f"KD-S {lib}"), (kdg_cell, f"KD-G {lib}")]:
+    cell_labels = [
+        (kds_cell, f"KD-S {lib}"), (kdg_cell, f"KD-G {lib}"),
+        (aiders_cell, f"Aider-S {lib}"), (aiderg_cell, f"Aider-G {lib}"),
+        (smols_cell, f"Sm-S {lib}"),    (smolg_cell, f"Sm-G {lib}"),
+    ]
+    for cell, label in cell_labels:
         if cell and cell['value_add_pp'] is not None:
             if cell['value_add_pp'] >= 10: big_wins.append((label, cell))
             if cell['value_add_pp'] <= -10: big_losses.append((label, cell))

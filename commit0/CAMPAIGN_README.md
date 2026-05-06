@@ -107,6 +107,33 @@ python baselines/run_lite_kaizen_delta.py --provider openai --sleep 10 2>&1     
 
 Expected: ~$32 combined, ~7.5 hr wall (chardet + babel are the slow libs at 35–93 min each).
 
+### Aider baselines (Phase 1, added 2026-05-05)
+
+```bash
+pip install aider-chat pytest-cov
+pip install --upgrade litellm
+
+# One-time compat patch for aider 0.86.2 + litellm ≥1.81 (see baselines/aider/SETUP.md):
+# Add ExInfo("PermissionDeniedError", False, "...") to EXCEPTIONS list in
+# .venv/lib/python3.12/site-packages/aider/exceptions.py
+
+python baselines/aider/run_lite_aider.py --provider anthropic 2>&1   # Aider-Sonnet
+python baselines/aider/run_lite_aider.py --provider openai 2>&1      # Aider-GPT-5.4
+```
+
+Expected: ~$26 combined (this campaign: $16.80 + $9.63), Aider-Anthropic ~7 hr (auto-test loop iterates until pytest passes; marshmallow/voluptuous/babel exceed 30-min wall flag), Aider-OpenAI ~55 min.
+
+### smolagents baselines (Phase 1, added 2026-05-05)
+
+```bash
+pip install smolagents
+
+python baselines/smolagents/run_lite_smolagents.py --provider anthropic 2>&1   # Sm-Sonnet
+python baselines/smolagents/run_lite_smolagents.py --provider openai 2>&1      # Sm-GPT-5.4
+```
+
+Expected: ~$39 combined ($29.25 + $9.44), 25 min + 71 min wall. Note: `minitorch` errors uniformly because smolagents' interpreter blocks `posixpath` (used internally by `os.walk`) even though `os` is in `AUTHORIZED_IMPORTS`. This is documented as a sandbox quirk, not a harness bug — the result is a legitimate diagnostic finding for the methodology paper.
+
 ### OH OpenHands V1 baselines (full run requires their hosted runtime; local-Docker is bandwidth-bound)
 
 For local Docker runtime (what we used):
@@ -161,10 +188,14 @@ Per the [final AAR](AAR_2026-04-22_FINAL.md):
 | KD-GPT-5.4 | 969 / 1,583 | $10.57 | 194 min |
 | OH-Sonnet (6 of 16 covered) | 1,025 / 1,028 | $94.31 | n/a |
 | OH-GPT-5.4 (14 of 16 covered) | 11,177 / 11,193 | $30.38 | n/a |
+| Aider-Sonnet | 493 / 506 | $16.80 | 439 min |
+| Aider-GPT-5.4 | 385 / 398 | $9.63 | 55 min |
+| smolagents-Sonnet | 639 / 650 | $29.25 | 25 min |
+| smolagents-GPT-5.4 | 830 / 843 | $9.44 | 71 min |
 
 ¹ KD-Sonnet's denominator inflated by babel collection unlock (22 errors → 1,281 collected).
 
-**Total: $182.41.**
+**Total: $247.53** ($182.41 original + $65.12 Phase 1).
 
 ## Result schema
 

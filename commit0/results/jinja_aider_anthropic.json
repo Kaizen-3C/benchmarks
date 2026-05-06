@@ -1,0 +1,27 @@
+{
+  "repo": "jinja",
+  "model": "anthropic/claude-sonnet-4-6",
+  "branch": "aider",
+  "elapsed_s": 12.2,
+  "final_summary": "1 failed, 24 passed in 0.18s",
+  "final_counts": {
+    "passed": 24,
+    "failed": 1,
+    "skipped": 0,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 252983,
+    "output_tokens": 305,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.7635
+  },
+  "aider_diagnostics": {
+    "exhausted_context_windows": 0,
+    "malformed_responses": 0,
+    "test_cmd": "pytest -x --tb=no -q",
+    "wall_clock_capped": false,
+    "cost_capped": false
+  }
+}
