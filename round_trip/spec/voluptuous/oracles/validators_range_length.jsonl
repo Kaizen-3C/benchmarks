@@ -1,0 +1,15 @@
+{"name": "range_in_bounds", "input": {"min": 1, "max": 10, "data": 5}, "expected": 5}
+{"name": "range_at_min", "input": {"min": 1, "max": 10, "data": 1}, "expected": 1}
+{"name": "range_at_max", "input": {"min": 1, "max": 10, "data": 10}, "expected": 10}
+{"name": "range_below_min", "input": {"min": 1, "max": 10, "data": 0}, "expected": "raises RangeInvalid"}
+{"name": "range_above_max", "input": {"min": 1, "max": 10, "data": 11}, "expected": "raises RangeInvalid"}
+{"name": "range_exclusive_min", "input": {"min": 1, "min_included": false, "data": 1}, "expected": "raises RangeInvalid"}
+{"name": "range_exclusive_max", "input": {"max": 10, "max_included": false, "data": 10}, "expected": "raises RangeInvalid"}
+{"name": "range_nan", "input": {"min": 0, "max": 10, "data": "NaN float"}, "expected": "raises RangeInvalid"}
+{"name": "length_min_pass", "input": {"min": 2, "data": "ab"}, "expected": "ab"}
+{"name": "length_min_fail", "input": {"min": 3, "data": "ab"}, "expected": "raises LengthInvalid"}
+{"name": "length_max_pass", "input": {"max": 3, "data": "ab"}, "expected": "ab"}
+{"name": "length_max_fail", "input": {"max": 1, "data": "ab"}, "expected": "raises LengthInvalid"}
+{"name": "clamp_below_min", "input": {"min": 5, "data": 2}, "expected": 5}
+{"name": "clamp_above_max", "input": {"max": 5, "data": 8}, "expected": 5}
+{"name": "clamp_in_range", "input": {"min": 1, "max": 10, "data": 5}, "expected": 5}

@@ -1,0 +1,7 @@
+{"name": "no_roles", "input": {"reason": "simple text"}, "expected": "simple text"}
+{"name": "func_role", "input": {"reason": "use :func:`statistics.mean`"}, "expected": "use `statistics.mean`"}
+{"name": "meth_role", "input": {"reason": "see :meth:`Foo.bar`"}, "expected": "see `Foo.bar`"}
+{"name": "multiple_roles", "input": {"reason": ":class:`Foo` and :func:`bar`"}, "expected": "`Foo` and `bar`"}
+{"name": "none_passthrough", "input": {"reason": null}, "expected": null}
+{"name": "no_backtick_content", "input": {"reason": "no roles here"}, "expected": "no roles here"}
+{"name": "scoped_role", "input": {"reason": "see :py:func:`os.path.join`"}, "expected": "see `os.path.join`"}

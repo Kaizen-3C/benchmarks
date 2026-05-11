@@ -1,0 +1,15 @@
+{"name": "lock_acquire_returns_file_handle", "input": {"scenario": "acquire on unlocked file"}, "expected": "IO object (not closed)"}
+{"name": "lock_acquire_twice_same_fh", "input": {"scenario": "acquire already-acquired Lock"}, "expected": "same fh returned, no error"}
+{"name": "lock_release_closes_fh", "input": {"scenario": "release after acquire"}, "expected": "fh.closed == true"}
+{"name": "lock_release_no_op_if_not_acquired", "input": {"scenario": "release without acquire"}, "expected": "no exception, no-op"}
+{"name": "lock_fail_when_locked_true", "input": {"scenario": "second lock with fail_when_locked=True"}, "expected": "AlreadyLocked raised"}
+{"name": "lock_timeout_expires", "input": {"scenario": "timeout=0.1 on already-locked file"}, "expected": "AlreadyLocked raised within ~0.1s"}
+{"name": "lock_mode_w_truncates", "input": {"scenario": "Lock with mode='w+' on file with content"}, "expected": "fh.read() == ''"}
+{"name": "lock_context_manager", "input": {"scenario": "with Lock(tmpfile) as fh"}, "expected": "fh is IO, released on exit"}
+{"name": "rlock_reentrant", "input": {"scenario": "acquire RLock twice on same instance"}, "expected": "no exception, same fh"}
+{"name": "rlock_release_unacquired", "input": {"scenario": "RLock.release() without acquire"}, "expected": "LockException raised"}
+{"name": "rlock_release_count", "input": {"scenario": "RLock acquire x2, release x1"}, "expected": "fh still open"}
+{"name": "rlock_release_count_final", "input": {"scenario": "RLock acquire x2, release x2"}, "expected": "fh closed"}
+{"name": "lock_exception_on_generic_error", "input": {"scenario": "lock() raises ValueError internally"}, "expected": "LockException wrapping original args"}
+{"name": "blocking_timeout_warning", "input": {"scenario": "Lock(tmpfile, timeout=5, flags=LockFlags.SHARED)"}, "expected": "UserWarning emitted"}
+{"name": "nb_without_sh_or_ex_raises", "input": {"scenario": "lock(fh, LockFlags.NON_BLOCKING) on posix"}, "expected": "RuntimeError raised"}

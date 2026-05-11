@@ -1,0 +1,6 @@
+{"name": "in_present", "input": {"container": [1, 2, 3], "data": 2}, "expected": 2}
+{"name": "in_absent", "input": {"container": [1, 2, 3], "data": 4}, "expected": "raises InInvalid"}
+{"name": "notin_absent", "input": {"container": [1, 2, 3], "data": 4}, "expected": 4}
+{"name": "notin_present", "input": {"container": [1, 2, 3], "data": 2}, "expected": "raises NotInInvalid"}
+{"name": "contains_present", "input": {"item": 2, "data": [1, 2, 3]}, "expected": [1, 2, 3]}
+{"name": "contains_absent", "input": {"item": 5, "data": [1, 2, 3]}, "expected": "raises ContainsInvalid"}

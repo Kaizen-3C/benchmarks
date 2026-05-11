@@ -1,0 +1,5 @@
+{"name": "typedkey_appends_types", "input": {"args": [1], "kwargs": {}}, "expected_suffix": [{"type": "int"}]}
+{"name": "typedkey_longer_than_hashkey", "input": {"args": [1, 2], "kwargs": {}}, "expected_length": 4}
+{"name": "typedkey_int_vs_float_differ", "input_a": {"args": [1], "kwargs": {}}, "input_b": {"args": [1.0], "kwargs": {}}, "expected": "not equal"}
+{"name": "typedkey_kwargs_types_appended", "input": {"args": [], "kwargs": {"a": 1}}, "expected": "includes int type for value 1"}
+{"name": "typedkey_is_hashed_tuple", "input": {"args": [1], "kwargs": {}}, "expected_type": "_HashedTuple"}

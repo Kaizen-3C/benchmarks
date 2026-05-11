@@ -1,0 +1,7 @@
+{"name": "no_extras", "input": {"kind": "function (or staticmethod)", "name": "foo", "reason": null, "version": null}, "expected": "Call to deprecated function (or staticmethod) foo."}
+{"name": "version_only", "input": {"kind": "function (or staticmethod)", "name": "foo", "reason": null, "version": "1.2.0"}, "expected": "Call to deprecated function (or staticmethod) foo. (Deprecated in version 1.2.0.)"}
+{"name": "reason_only", "input": {"kind": "method", "name": "bar", "reason": "use baz instead", "version": null}, "expected": "Call to deprecated method bar. (use baz instead)"}
+{"name": "version_and_reason", "input": {"kind": "class", "name": "OldClass", "reason": "replaced by NewClass", "version": "2.0"}, "expected": "Call to deprecated class OldClass. (Deprecated in version 2.0. replaced by NewClass)"}
+{"name": "empty_reason_string", "input": {"kind": "function (or staticmethod)", "name": "func", "reason": "", "version": null}, "expected": "Call to deprecated function (or staticmethod) func."}
+{"name": "empty_reason_with_version", "input": {"kind": "function (or staticmethod)", "name": "func", "reason": "", "version": "3.0"}, "expected": "Call to deprecated function (or staticmethod) func. (Deprecated in version 3.0.)"}
+{"name": "class_method_kind", "input": {"kind": "class method", "name": "do_thing", "reason": "old api", "version": "1.0"}, "expected": "Call to deprecated class method do_thing. (Deprecated in version 1.0. old api)"}

@@ -1,0 +1,9 @@
+{"name": "pyjwkset_empty_list_raises", "input": {"keys": []}, "expected": {"raises": "PyJWKSetError"}}
+{"name": "pyjwkset_not_list_raises", "input": {"keys": "notalist"}, "expected": {"raises": "PyJWKSetError"}}
+{"name": "pyjwkset_all_invalid_raises", "input": {"keys": [{"kty": "INVALID"}]}, "expected": {"raises": "PyJWKSetError"}}
+{"name": "pyjwkset_valid_single_key", "input": {"keys": [{"kty": "oct", "k": "c2VjcmV0", "kid": "k1"}]}, "expected": {"key_count": 1}}
+{"name": "pyjwkset_getitem_found", "input": {"keys": [{"kty": "oct", "k": "c2VjcmV0", "kid": "k1"}], "lookup_kid": "k1"}, "expected": {"found": true}}
+{"name": "pyjwkset_getitem_not_found", "input": {"keys": [{"kty": "oct", "k": "c2VjcmV0", "kid": "k1"}], "lookup_kid": "k2"}, "expected": {"raises": "KeyError"}}
+{"name": "pyjwkset_from_dict_valid", "input": {"obj": {"keys": [{"kty": "oct", "k": "c2VjcmV0"}]}}, "expected": {"success": true}}
+{"name": "pyjwkset_from_dict_no_keys", "input": {"obj": {}}, "expected": {"raises": "PyJWKSetError"}}
+{"name": "pyjwkset_skips_invalid_keeps_valid", "input": {"keys": [{"kty": "INVALID"}, {"kty": "oct", "k": "c2VjcmV0"}]}, "expected": {"key_count": 1}}

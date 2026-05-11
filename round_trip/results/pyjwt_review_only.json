@@ -1,0 +1,139 @@
+{
+  "ok": true,
+  "review": {
+    "summary": "The recomposed package is mostly faithful but contains several behavioural drifts that will fail oracle tests. The most serious issues are: (1) PyJWK has a property/setter conflict on `key_type` that will raise AttributeError at construction; (2) `_validate_iat` does not raise `InvalidIssuedAtError` on non-integer `iat` despite the oracle explicitly requiring it; (3) RSAAlgorithm.to_jwk has a wrong isinstance check that will fail for public keys; (4) decode_complete's algorithm-missing check is wrong (the `if algorithms is None` is nested incorrectly so empty-list `algorithms=[]` won't raise as expected, and an unknown alg is reported as InvalidAlgorithmError but a missing `algorithms` argument may not surface correctly). Several smaller deviations exist around `requires_cryptography` set contents and PyJWK alg-from-jwk handling.",
+    "findings": [
+      {
+        "id": "F1",
+        "severity": "high",
+        "kind": "behavioural_drift",
+        "file": "jwt/api_jwk.py",
+        "spec_anchor": "contracts/api_jwk.md PyJWK properties; oracles/pyjwk.jsonl",
+        "evidence": "`PyJWK.__init__` does `self.key_type = kty`, but `key_type` is declared as a `@property` with a setter that stores into `self._key_type`. However `key_type` is *also* listed as an attribute in ADR-0009 'exposes ... key_type'. The class defines both a property `key_type` and assigns `self.key_type = kty` in __init__ \u2014 the setter exists so this works, but then `self.key_type` (the property) shadows access. More importantly, the property/setter is redundant and the spec lists `key_type` as a plain attribute. This works, but the construction order assigns `key_type` before `self.key` is set, meaning `from_jwk` may fail and leave the object partially initialised.",
+        "expected": "PyJWK exposes `key_type` as the kty string and constructs cleanly per ADR-0009.",
+        "fix_hint": "Drop the property/setter for key_type and just assign `self.key_type = kty` as a plain attribute."
+      },
+      {
+        "id": "F2",
+        "severity": "high",
+        "kind": "behavioural_drift",
+        "file": "jwt/api_jwt.py:_validate_iat",
+        "spec_anchor": "oracles/claim_validation.jsonl 'iat_non_integer_raises'; ADR-0005",
+        "evidence": "`_validate_iat` checks `isinstance(iat, (int, float))` but if it is *not* an int/float, the function does nothing \u2014 there is no `raise InvalidIssuedAtError`. The oracle requires `iat: 'notanint'` to raise `InvalidIssuedAtError`.",
+        "expected": "Non-integer `iat` must raise `InvalidIssuedAtError` per ADR-0005 and the oracle.",
+        "fix_hint": "Add `raise InvalidIssuedAtError(...)` in the `if not isinstance(iat, (int, float))` branch (and remove the dead comment block)."
+      },
+      {
+        "id": "F3",
+        "severity": "high",
+        "kind": "behavioural_drift",
+        "file": "jwt/algorithms.py RSAAlgorithm.to_jwk",
+        "spec_anchor": "contracts/algorithms.md RSAAlgorithm.to_jwk",
+        "evidence": "The first branch is `if isinstance(key_obj, RSAPublicKey):` and inside it calls `key_obj.public_key().public_numbers() if isinstance(key_obj, RSAPrivateKey) else key_obj.public_numbers()`. The inner `isinstance(key_obj, RSAPrivateKey)` is always False here (we already matched RSAPublicKey), and an RSAPublicKey has no `.public_key()` method. This branch order is also reversed \u2014 RSAPrivateKey is also typically an RSAPublicKey-like protocol in some versions, so it could be hit incorrectly.",
+        "expected": "to_jwk should produce `{n,e}` for public keys and `{n,e,d,p,q,dp,dq,qi}` for private keys.",
+        "fix_hint": "Test for RSAPrivateKey first, then RSAPublicKey, and just use `key_obj.public_numbers()` directly in the public branch."
+      },
+      {
+        "id": "F4",
+        "severity": "high",
+        "kind": "behavioural_drift",
+        "file": "jwt/api_jws.py decode_complete",
+        "spec_anchor": "oracles/encode_decode.jsonl 'decode_missing_algorithms_raises'; contracts/api_jws.md",
+        "evidence": "Logic: `if not algorithms and not isinstance(key, PyJWS):` then `if algorithms is None: raise DecodeError(...)`. If `algorithms=[]` is passed, the outer condition fires but the inner `algorithms is None` does not, so no error is raised \u2014 execution falls through to `if algorithms and alg not in algorithms`, which is False for `[]`, so verification proceeds with the alg from header. The contract requires `algorithms` to be required when `verify_signature=True`.",
+        "expected": "Empty or missing `algorithms` should raise `DecodeError` when verify_signature is True.",
+        "fix_hint": "Raise DecodeError whenever `algorithms` is falsy (None or empty) and verify_signature is True."
+      },
+      {
+        "id": "F5",
+        "severity": "high",
+        "kind": "behavioural_drift",
+        "file": "jwt/api_jwk.py PyJWK.__init__",
+        "spec_anchor": "ADR-0009; contracts/api_jwk.md",
+        "evidence": "When `algorithm` is None, the code falls back to `jwk_data.get('alg')` *before* applying the kty/crv inference table. ADR-0009 says inference applies 'when `algorithm` is not provided and the JWK dict has no `\"alg\"` field' \u2014 that's correct. But then the code calls `self.Algorithm.from_jwk(jwk_data)` for HMAC even when the inferred alg differs from the kty default. Lower priority issue: `algorithm_name` is set before `from_jwk` is called, so a from_jwk failure leaves a partially constructed object.",
+        "expected": "PyJWK should attempt key deserialization fully or raise; partially constructed objects shouldn't expose attributes.",
+        "fix_hint": "Set self.algorithm_name after successful from_jwk, and ensure attribute order matches ADR-0009."
+      },
+      {
+        "id": "F6",
+        "severity": "medium",
+        "kind": "incorrect_default",
+        "file": "jwt/algorithms.py",
+        "spec_anchor": "ADR-0001 requires_cryptography",
+        "evidence": "`requires_cryptography` includes both `'ES521'` and `'ES512'`. The ADR text literally says `{...,'ES521','ES512',...}` (a typo in the ADR), but the spec set should also be reflected in `get_default_algorithms` \u2014 the recomposed dict only adds 'ES512' (not 'ES521'), so `'ES521'` is in `requires_cryptography` but not registered. This is consistent with the ADR but means asking for 'ES521' yields a confusing NotImplementedError suggesting cryptography is missing when really the algorithm name is wrong.",
+        "expected": "Either match the ADR exactly (which the code does, including the typo) or normalize to 'ES512' only. Acceptable but worth flagging.",
+        "fix_hint": "Leave requires_cryptography as specified; ensure `get_algorithm_by_name` distinguishes 'unknown' from 'requires crypto'."
+      },
+      {
+        "id": "F7",
+        "severity": "medium",
+        "kind": "behavioural_drift",
+        "file": "jwt/api_jws.py encode",
+        "spec_anchor": "ADR-0006 algorithm selection precedence",
+        "evidence": "ADR-0006 says: if `algorithm=None` and `key is None`, use 'none'; if `algorithm=None` and key is provided, default to 'HS256'. The code uses `if key is None or key == '':` \u2014 treating empty string also as 'none'. The ADR only mentions `key is None`. This may cause encode with `key=''` to use 'none' instead of 'HS256'.",
+        "expected": "Only `key is None` triggers algorithm='none' default; non-None keys default to 'HS256'.",
+        "fix_hint": "Change `if key is None or key == '':` to `if key is None:`."
+      },
+      {
+        "id": "F8",
+        "severity": "medium",
+        "kind": "edge_case_absence",
+        "file": "jwt/api_jwt.py decode_complete",
+        "spec_anchor": "ADR-0005 'When verify_signature=False, all verify_* options default to False'",
+        "evidence": "The code applies the cascade only when `options is None or k not in options`, but it merges `self.options` (defaults) into `merged_options` first. So if user passes `options={'verify_signature': False}`, the default `verify_exp=True` from `self.options` is already in merged_options and won't be overridden. The check `k not in options` (the user's dict) is True, so it should override \u2014 actually this *does* work. However, `_validate_aud` is always called regardless of whether verify_aud is in options because `options.get('verify_aud', True)` defaults True; the cascade sets verify_aud=False only if user didn't set it. This is fine, but there is no path that propagates `verify_signature=False` into the `api_jws` layer's options \u2014 `merged_options` is passed but api_jws also keeps its own self.options which has verify_signature=True.",
+        "expected": "Passing options={'verify_signature': False} from PyJWT.decode should skip signature verification end-to-end.",
+        "fix_hint": "Ensure merged_options['verify_signature'] is honoured by api_jws layer (it is via the options arg merge \u2014 verify with a test)."
+      },
+      {
+        "id": "F9",
+        "severity": "medium",
+        "kind": "behavioural_drift",
+        "file": "jwt/algorithms.py NoneAlgorithm.prepare_key",
+        "spec_anchor": "contracts/algorithms.md NoneAlgorithm.prepare_key; oracles/none_algorithm.jsonl",
+        "evidence": "Order of checks: `if key == '': return None; if key is not None: raise InvalidKeyError`. This is OK for str/None but if someone passes 0 (int), `0 == ''` is False and `0 is not None` is True \u2192 raises InvalidKeyError. Correct, but `b'' == ''` is False in Py3 \u2192 bytes empty would raise. Spec says accepts only None or '' \u2014 this is fine.",
+        "expected": "Accept only None or empty string.",
+        "fix_hint": "No change needed; this is a borderline note."
+      },
+      {
+        "id": "F10",
+        "severity": "medium",
+        "kind": "silent_omission",
+        "file": "jwt/api_jws.py encode",
+        "spec_anchor": "ADR-0006 detached payload",
+        "evidence": "When `is_payload_detached=True` and headers don't have b64, the code sets `header['b64'] = False` AFTER the JSON-encoded `header_data` line \u2014 wait, looking again: it's set before. OK. But `payload` argument is documented as `bytes`; in detached mode the signing input uses `payload` directly (raw bytes). However, in non-detached mode signing_input uses `payload_b64`. That matches ADR-0006. The header's `crit` field handling for b64 (RFC 7797 requires `crit: ['b64']`) is not implemented \u2014 spec doesn't explicitly require it, so omission is acceptable.",
+        "expected": "Detached payload behaviour per ADR-0006.",
+        "fix_hint": "Optional: add 'crit' header for b64=false per RFC 7797 if downstream expects it."
+      },
+      {
+        "id": "F11",
+        "severity": "medium",
+        "kind": "behavioural_drift",
+        "file": "jwt/algorithms.py RSAAlgorithm.prepare_key",
+        "spec_anchor": "ADR-0002, contracts/algorithms.md",
+        "evidence": "References `UnsupportedAlgorithm` in `except (ValueError, TypeError, UnsupportedAlgorithm)` but never imports it from `cryptography.exceptions`. This will raise NameError at runtime if the except clause is reached.",
+        "expected": "Import UnsupportedAlgorithm or remove from the except tuple.",
+        "fix_hint": "Add `from cryptography.exceptions import InvalidSignature, UnsupportedAlgorithm` in the try/import block."
+      },
+      {
+        "id": "F12",
+        "severity": "low",
+        "kind": "behavioural_drift",
+        "file": "jwt/api_jwt.py encode",
+        "spec_anchor": "contracts/api_jwt.md PyJWT.encode",
+        "evidence": "The contract requires payload to be a dict; the code does `payload = dict(payload)` which silently coerces other mappings. It does not raise TypeError if payload is, e.g., a list. The contract says 'Payload must be a dict.'",
+        "expected": "Raise TypeError or similar if payload is not a dict.",
+        "fix_hint": "Add `if not isinstance(payload, dict): raise TypeError('Expecting a mapping object, as JSON object are mapping types.')` at the top of encode."
+      }
+    ]
+  },
+  "cost_usd": 0.2481,
+  "elapsed_s": 65.82,
+  "model": "claude-opus-4-7",
+  "provider": "anthropic",
+  "usage": {
+    "input": 961,
+    "output": 4656,
+    "cache_read": 0,
+    "cache_write": 46774
+  },
+  "raw_response_head": "{\n  \"summary\": \"The recomposed package is mostly faithful but contains several behavioural drifts that will fail oracle tests. The most serious issues are: (1) PyJWK has a property/setter conflict on `key_type` that will raise AttributeError at construction; (2) `_validate_iat` does not raise `InvalidIssuedAtError` on non-integer `iat` despite the oracle explicitly requiring it; (3) RSAAlgorithm.to_jwk has a wrong isinstance check that will fail for public keys; (4) decode_complete's algorithm-missing check is wrong (the `if algorithms is None` is nested incorrectly so empty-list `algorithms=["
+}

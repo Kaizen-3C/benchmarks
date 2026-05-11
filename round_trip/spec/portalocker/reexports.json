@@ -1,0 +1,41 @@
+{
+  "from . import __about__, constants, exceptions, portalocker": ["__about__", "constants", "exceptions", "portalocker"],
+  "from .utils import BoundedSemaphore, Lock, NamedBoundedSemaphore, RLock, TemporaryFileLock, open_atomic": ["BoundedSemaphore", "Lock", "NamedBoundedSemaphore", "RLock", "TemporaryFileLock", "open_atomic"],
+  "from .redis import RedisLock": ["RedisLock"],
+  "__all__": [
+    "lock",
+    "unlock",
+    "LOCK_EX",
+    "LOCK_SH",
+    "LOCK_NB",
+    "LOCK_UN",
+    "LockFlags",
+    "LockException",
+    "Lock",
+    "RLock",
+    "AlreadyLocked",
+    "BoundedSemaphore",
+    "NamedBoundedSemaphore",
+    "TemporaryFileLock",
+    "open_atomic",
+    "RedisLock"
+  ],
+  "module_level_aliases": {
+    "__package_name__": "__about__.__package_name__",
+    "__author__": "__about__.__author__",
+    "__email__": "__about__.__email__",
+    "__version__": "__about__.__version__",
+    "__description__": "__about__.__description__",
+    "__url__": "__about__.__url__",
+    "AlreadyLocked": "exceptions.AlreadyLocked",
+    "LockException": "exceptions.LockException",
+    "lock": "portalocker.lock",
+    "unlock": "portalocker.unlock",
+    "LOCK_EX": "constants.LockFlags.EXCLUSIVE",
+    "LOCK_SH": "constants.LockFlags.SHARED",
+    "LOCK_NB": "constants.LockFlags.NON_BLOCKING",
+    "LOCK_UN": "constants.LockFlags.UNBLOCK",
+    "LockFlags": "constants.LockFlags",
+    "RedisLock": "None if redis import fails"
+  }
+}

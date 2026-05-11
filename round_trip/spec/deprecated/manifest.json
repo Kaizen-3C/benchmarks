@@ -1,0 +1,9 @@
+```json
+{
+  "package_name": "deprecated",
+  "version": "1.2.15",
+  "install_requires": [],
+  "python_requires": ">=2.7",
+  "modules": ["__init__.py", "classic.py", "sphinx.py"]
+}
+```

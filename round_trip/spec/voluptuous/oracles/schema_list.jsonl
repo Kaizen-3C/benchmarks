@@ -1,0 +1,6 @@
+{"name": "list_int_pass", "input": {"schema": ["int"], "data": [1, 2, 3]}, "expected": [1, 2, 3]}
+{"name": "list_int_fail", "input": {"schema": ["int"], "data": [1, "a"]}, "expected": "raises MultipleInvalid"}
+{"name": "list_empty_schema_empty_data", "input": {"schema": [], "data": []}, "expected": []}
+{"name": "list_multi_validator", "input": {"schema": ["int", "str"], "data": [1, "a", 2]}, "expected": [1, "a", 2]}
+{"name": "list_tuple_input", "input": {"schema": ["int"], "data": [1, 2]}, "expected": [1, 2]}
+{"name": "list_not_sequence", "input": {"schema": ["int"], "data": 42}, "expected": "raises MultipleInvalid"}

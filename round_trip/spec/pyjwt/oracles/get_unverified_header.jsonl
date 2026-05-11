@@ -1,0 +1,5 @@
+{"name": "valid_hs256_header", "input": {"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0In0.abc"}, "expected": {"alg": "HS256", "typ": "JWT"}}
+{"name": "invalid_segments", "input": {"token": "notavalidtoken"}, "expected": {"raises": "DecodeError"}}
+{"name": "kid_as_integer_raises", "input": {"token_with_kid_int": true}, "expected": {"raises": "InvalidTokenError"}}
+{"name": "kid_as_string_ok", "input": {"header_fields": {"alg": "HS256", "kid": "mykey123"}}, "expected": {"kid": "mykey123"}}
+{"name": "two_segments_only_raises", "input": {"token": "part1.part2"}, "expected": {"raises": "DecodeError"}}

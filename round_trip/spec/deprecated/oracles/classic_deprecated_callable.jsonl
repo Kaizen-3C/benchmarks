@@ -1,0 +1,8 @@
+{"name": "bare_decorator_emits_warning", "input": {"decorator_args": [], "function_name": "old_func", "call_args": []}, "expected": {"warning_category": "DeprecationWarning", "message_contains": "Call to deprecated function (or staticmethod) old_func."}}
+{"name": "with_reason_and_version", "input": {"decorator_args": [], "reason": "use new_func", "version": "1.0", "function_name": "old_func", "call_args": []}, "expected": {"warning_category": "DeprecationWarning", "message_contains": "Deprecated in version 1.0."}}
+{"name": "custom_category", "input": {"reason": "old", "category": "UserWarning", "function_name": "f", "call_args": []}, "expected": {"warning_category": "UserWarning"}}
+{"name": "action_error_raises", "input": {"reason": "bad", "action": "error", "function_name": "g", "call_args": []}, "expected": {"raises": "DeprecationWarning"}}
+{"name": "action_ignore_suppresses", "input": {"reason": "old", "action": "ignore", "function_name": "h", "call_args": []}, "expected": {"warning_count": 0}}
+{"name": "return_value_preserved", "input": {"reason": null, "function_name": "add", "call_args": [1, 2]}, "expected": {"return_value": 3}}
+{"name": "functools_wraps_preserves_name", "input": {"reason": "x", "function_name": "named_fn"}, "expected": {"__name__": "named_fn"}}
+{"name": "invalid_reason_type_raises_typeerror", "input": {"reason": 123, "function_name": "f"}, "expected": {"raises": "TypeError"}}

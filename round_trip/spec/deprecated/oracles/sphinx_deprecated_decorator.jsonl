@@ -1,0 +1,5 @@
+{"name": "docstring_contains_directive", "input": {"reason": "old", "version": "1.0", "existing_doc": "Docstring."}, "expected_doc_contains": ".. deprecated:: 1.0"}
+{"name": "runtime_warning_emitted", "input": {"reason": "old", "version": "1.0"}, "expected": {"warning_category": "DeprecationWarning"}}
+{"name": "sphinx_role_stripped_in_warning", "input": {"reason": "use :func:`bar`", "version": "1.0"}, "expected": {"message_contains": "`bar`", "message_not_contains": ":func:"}}
+{"name": "sphinx_role_kept_in_docstring", "input": {"reason": "use :func:`bar`", "version": "1.0"}, "expected_doc_contains": ":func:`bar`"}
+{"name": "bare_decorator_works", "input": {"bare": true, "function_name": "old_fn"}, "expected": {"warning_category": "DeprecationWarning"}}

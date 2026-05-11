@@ -1,0 +1,5 @@
+{"name": "cachedmethod_caches_per_instance", "input": {"cache_factory": "lambda: {}", "calls": 2, "same_args": true}, "expected_method_call_count": 1}
+{"name": "cachedmethod_none_cache_calls_through", "input": {"cache_factory": "lambda: None", "calls": 2}, "expected_method_call_count": 2}
+{"name": "cachedmethod_cache_clear_clears", "input": {"ops": [["call"], ["clear"], ["call"]]}, "expected_method_call_count": 2}
+{"name": "cachedmethod_cache_attribute", "input": {}, "expected_attr": "cache"}
+{"name": "cachedmethod_cache_key_attribute", "input": {}, "expected_attr": "cache_key"}

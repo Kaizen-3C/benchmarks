@@ -1,0 +1,3 @@
+{"name": "methodkey_drops_self", "input": {"self": "ignored", "args": [1, 2], "kwargs": {}}, "expected": [1, 2]}
+{"name": "methodkey_equals_hashkey", "input": {"self": "x", "args": [1], "kwargs": {"a": 2}}, "expected": "same as hashkey(1, a=2)"}
+{"name": "methodkey_no_args", "input": {"self": "obj", "args": [], "kwargs": {}}, "expected": []}

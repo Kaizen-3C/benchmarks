@@ -1,0 +1,10 @@
+{"name": "lru_cache_caches", "input": {"maxsize": 128, "typed": false, "calls": 2, "same_args": true}, "expected_call_count": 1}
+{"name": "lru_cache_info_present", "input": {"maxsize": 128}, "expected_attr": "cache_info"}
+{"name": "lru_cache_parameters", "input": {"maxsize": 64, "typed": true}, "expected": {"maxsize": 64, "typed": true}}
+{"name": "ttl_cache_expires", "input": {"maxsize": 128, "ttl": 1}, "expected": "value absent after ttl seconds"}
+{"name": "lru_cache_typed_distinguishes_types", "input": {"typed": true, "args_a": [1], "args_b": [1.0]}, "expected_call_count": 2}
+{"name": "fifo_cache_default_maxsize", "input": {}, "expected_maxsize": 128}
+{"name": "rr_cache_basic", "input": {"maxsize": 2, "calls": 3}, "expected": "no exception"}
+{"name": "lfu_cache_basic", "input": {"maxsize": 2}, "expected": "evicts least frequent"}
+{"name": "ttl_cache_unbounded", "input": {"maxsize": null}, "expected": "uses _UnboundTTLCache"}
+{"name": "lru_cache_bare_decorator", "input": {"bare": true}, "expected": "works as @lru_cache without parens"}

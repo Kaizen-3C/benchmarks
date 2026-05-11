@@ -1,0 +1,46 @@
+{
+  "deprecated": {
+    "metric": "q1_test_parity",
+    "value": 0.4386,
+    "detail": {
+      "passed": 75,
+      "failed": 96,
+      "errors": 0,
+      "skipped": 0,
+      "attempted": 171,
+      "collected": 171,
+      "test_suite_executed": true,
+      "pytest_returncode": 1,
+      "inventory": {
+        "recomposed_files": 3,
+        "test_files": 18,
+        "toplevel_files": 4,
+        "package_name": "deprecated"
+      },
+      "cov_changes": {},
+      "output_tail": "changed-version]\nFAILED tests/test_sphinx.py::test_has_sphinx_docstring[D212_long_docstring-versionadded-reason&version]\nFAILED tests/test_sphinx.py::test_has_sphinx_docstring[D212_long_docstring-versionadded-version]\nFAILED tests/test_sphinx.py::test_cls_has_sphinx_docstring[D212_long_docstring-versionadded-reason&version]\nFAILED tests/test_sphinx.py::test_cls_has_sphinx_docstring[D212_long_docstring-versionadded-version]\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter[versionchanged-wrapped]\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter[versionchanged-long]\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter[versionadded-wrapped]\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter[versionadded-long]\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter[deprecated-wrapped]\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter[deprecated-long] - A...\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter__empty_docstring[versionchanged]\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter__empty_docstring[versionadded]\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter__empty_docstring[deprecated]\nFAILED tests/test_sphinx_adapter.py::test_decorator_accept_line_length[versionadded-versionadded]\nFAILED tests/test_sphinx_adapter.py::test_decorator_accept_line_length[versionchanged-versionchanged]\nFAILED tests/test_sphinx_adapter.py::test_decorator_accept_line_length[deprecated-deprecated]\n96 failed, 75 passed, 4 warnings in 0.21s\n\n"
+    }
+  },
+  "pyjwt": {
+    "metric": "q1_test_parity",
+    "value": 0.8299,
+    "detail": {
+      "passed": 122,
+      "failed": 25,
+      "errors": 0,
+      "skipped": 114,
+      "attempted": 147,
+      "collected": 261,
+      "test_suite_executed": true,
+      "pytest_returncode": 1,
+      "inventory": {
+        "recomposed_files": 12,
+        "test_files": 57,
+        "toplevel_files": 4,
+        "package_name": "jwt"
+      },
+      "cov_changes": {},
+      "output_tail": "WS::test_decode_detached_content_without_proper_argument\nFAILED tests/test_api_jws.py::TestJWS::test_decode_warns_on_unsupported_kwarg\nFAILED tests/test_api_jws.py::TestJWS::test_decode_complete_warns_on_unuspported_kwarg\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_with_invalid_audience_param_throws_exception\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_with_nonlist_aud_claim_throws_exception\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_with_invalid_aud_list_member_throws_exception\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_raises_exception_if_exp_is_not_int\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_works_if_iat_is_str_of_a_number\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_raises_exception_if_nbf_is_not_int\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_raises_exception_if_aud_is_none\nFAILED tests/test_api_jwt.py::TestJWT::test_raise_exception_token_with_aud_none_and_without_audience\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_with_verify_exp_option_and_signature_off\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_warns_on_unsupported_kwarg\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_complete_warns_on_unsupported_kwarg\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_strict_aud_forbids_list_audience\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_strict_aud_forbids_list_claim\nFAILED tests/test_api_jwt.py::TestJWT::test_decode_strict_aud_does_not_match\n25 failed, 122 passed, 114 skipped, 1 xfailed in 0.22s\n\n"
+    }
+  }
+}

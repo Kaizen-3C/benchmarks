@@ -1,0 +1,22 @@
+{
+  "package_name": "jwt",
+  "version": "2.8.0",
+  "install_requires": [
+    "cryptography>=3.4.0"
+  ],
+  "python_requires": ">=3.7",
+  "modules": [
+    "__init__.py",
+    "algorithms.py",
+    "api_jwk.py",
+    "api_jws.py",
+    "api_jwt.py",
+    "exceptions.py",
+    "help.py",
+    "jwk_set_cache.py",
+    "jwks_client.py",
+    "types.py",
+    "utils.py",
+    "warnings.py"
+  ]
+}

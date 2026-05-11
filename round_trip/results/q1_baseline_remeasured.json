@@ -1,0 +1,18 @@
+{
+  "deprecated": {
+    "Q1": 0.4386,
+    "passed": 75,
+    "failed": 96,
+    "errors": 0,
+    "skipped": 0,
+    "collected": 171
+  },
+  "pyjwt": {
+    "Q1": 0.8503,
+    "passed": 125,
+    "failed": 22,
+    "errors": 0,
+    "skipped": 114,
+    "collected": 261
+  }
+}

@@ -1,0 +1,5 @@
+{"name": "temp_lock_file_deleted_after_context", "input": {"scenario": "use TemporaryFileLock as context manager"}, "expected": "file does not exist after exit"}
+{"name": "temp_lock_file_deleted_after_del", "input": {"scenario": "acquire then del lock"}, "expected": "file does not exist after del"}
+{"name": "temp_lock_fail_when_locked_default", "input": {"scenario": "two TemporaryFileLock on same file"}, "expected": "AlreadyLocked on second acquire"}
+{"name": "temp_lock_default_filename", "input": {"scenario": "TemporaryFileLock() no args"}, "expected": "filename == '.lock'"}
+{"name": "temp_lock_release_idempotent", "input": {"scenario": "release() called twice"}, "expected": "no exception on second call"}

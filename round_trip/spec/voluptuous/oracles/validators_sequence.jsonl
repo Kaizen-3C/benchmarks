@@ -1,0 +1,9 @@
+{"name": "exact_sequence_pass", "input": {"validators": ["int", "str"], "data": [1, "a"]}, "expected": [1, "a"]}
+{"name": "exact_sequence_wrong_length", "input": {"validators": ["int", "str"], "data": [1]}, "expected": "raises ExactSequenceInvalid"}
+{"name": "exact_sequence_wrong_type", "input": {"validators": ["int", "str"], "data": ["a", "b"]}, "expected": "raises Invalid"}
+{"name": "unique_pass", "input": {"data": [1, 2, 3]}, "expected": [1, 2, 3]}
+{"name": "unique_fail", "input": {"data": [1, 2, 1]}, "expected": "raises Invalid"}
+{"name": "equal_pass", "input": {"target": 5, "data": 5}, "expected": 5}
+{"name": "equal_fail", "input": {"target": 5, "data": 6}, "expected": "raises Invalid"}
+{"name": "unordered_pass", "input": {"validators": ["int", "str"], "data": ["a", 1]}, "expected": ["a", 1]}
+{"name": "unordered_fail_length", "input": {"validators": ["int"], "data": [1, 2]}, "expected": "raises Invalid"}

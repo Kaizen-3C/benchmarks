@@ -1,0 +1,18 @@
+{"name": "encode_decode_hs256_basic", "input": {"payload": {"sub": "1234567890", "name": "John Doe"}, "key": "secret", "algorithm": "HS256"}, "expected": {"type": "round_trip", "decode_key": "secret", "algorithms": ["HS256"], "payload_contains": {"sub": "1234567890", "name": "John Doe"}}}
+{"name": "encode_produces_three_segments", "input": {"payload": {"sub": "test"}, "key": "secret", "algorithm": "HS256"}, "expected": {"segment_count": 3}}
+{"name": "encode_none_algorithm_no_key", "input": {"payload": {"sub": "test"}, "key": null, "algorithm": "none"}, "expected": {"third_segment": ""}}
+{"name": "decode_wrong_key_raises", "input": {"token_key": "correct", "decode_key": "wrong", "algorithm": "HS256", "payload": {"sub": "test"}}, "expected": {"raises": "InvalidSignatureError"}}
+{"name": "decode_missing_algorithms_raises", "input": {"token": "some.valid.token", "key": "secret", "algorithms": null}, "expected": {"raises": "DecodeError"}}
+{"name": "decode_not_enough_segments", "input": {"token": "onlyone", "key": "secret", "algorithms": ["HS256"]}, "expected": {"raises": "DecodeError"}}
+{"name": "decode_invalid_header_padding", "input": {"token": "!!!.payload.sig", "key": "secret", "algorithms": ["HS256"]}, "expected": {"raises": "DecodeError"}}
+{"name": "encode_with_exp_datetime", "input": {"payload": {"exp": "datetime:2030-01-01T00:00:00Z"}, "key": "secret", "algorithm": "HS256"}, "expected": {"payload_field_type": {"exp": "int"}}}
+{"name": "decode_expired_token_raises", "input": {"payload": {"exp": 1}, "key": "secret", "algorithm": "HS256"}, "expected": {"raises": "ExpiredSignatureError"}}
+{"name": "decode_with_leeway_allows_slight_expiry", "input": {"payload": {"exp": -1}, "key": "secret", "algorithm": "HS256", "leeway_seconds": 100}, "expected": {"success": true}}
+{"name": "decode_nbf_future_raises", "input": {"payload": {"nbf": 9999999999}, "key": "secret", "algorithm": "HS256"}, "expected": {"raises": "ImmatureSignatureError"}}
+{"name": "decode_aud_match_succeeds", "input": {"payload": {"aud": "myapp"}, "key": "secret", "algorithm": "HS256", "audience": "myapp"}, "expected": {"success": true}}
+{"name": "decode_aud_mismatch_raises", "input": {"payload": {"aud": "myapp"}, "key": "secret", "algorithm": "HS256", "audience": "otherapp"}, "expected": {"raises": "InvalidAudienceError"}}
+{"name": "decode_missing_aud_claim_raises", "input": {"payload": {"sub": "test"}, "key": "secret", "algorithm": "HS256", "audience": "myapp"}, "expected": {"raises": "MissingRequiredClaimError"}}
+{"name": "decode_iss_match_succeeds", "input": {"payload": {"iss": "myissuer"}, "key": "secret", "algorithm": "HS256", "issuer": "myissuer"}, "expected": {"success": true}}
+{"name": "decode_iss_mismatch_raises", "input": {"payload": {"iss": "badissuer"}, "key": "secret", "algorithm": "HS256", "issuer": "myissuer"}, "expected": {"raises": "InvalidIssuerError"}}
+{"name": "decode_require_claim_missing_raises", "input": {"payload": {"sub": "test"}, "key": "secret", "algorithm": "HS256", "options": {"require": ["exp"]}}, "expected": {"raises": "MissingRequiredClaimError"}}
+{"name": "decode_no_verify_signature", "input": {"payload": {"sub": "test"}, "key": "secret", "algorithm": "HS256", "decode_options": {"verify_signature": false}}, "expected": {"success": true, "no_algorithms_needed": true}}

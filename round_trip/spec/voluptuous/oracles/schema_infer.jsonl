@@ -1,0 +1,6 @@
+{"name": "infer_int", "input": {"data": 42}, "expected": "Schema that accepts 42 (type int)"}
+{"name": "infer_str", "input": {"data": "hello"}, "expected": "Schema that accepts 'hello' (type str)"}
+{"name": "infer_dict", "input": {"data": {"a": 1}}, "expected": "Schema with Required('a') -> int"}
+{"name": "infer_list_nonempty", "input": {"data": [1, 2]}, "expected": "Schema with [int]"}
+{"name": "infer_list_empty", "input": {"data": []}, "expected": "Schema accepting any list"}
+{"name": "infer_nested", "input": {"data": {"a": {"b": 1}}}, "expected": "Schema with Required('a') -> Required('b') -> int"}

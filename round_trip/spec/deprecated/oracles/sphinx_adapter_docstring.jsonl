@@ -1,0 +1,6 @@
+{"name": "no_existing_doc", "input": {"directive": "deprecated", "version": "1.0", "reason": null, "existing_doc": null}, "expected_doc_contains": ".. deprecated:: 1.0"}
+{"name": "existing_doc_appended", "input": {"directive": "versionadded", "version": "2.0", "reason": "New feature", "existing_doc": "Summary."}, "expected_doc_contains": ".. versionadded:: 2.0"}
+{"name": "reason_indented", "input": {"directive": "deprecated", "version": "1.0", "reason": "old api", "existing_doc": null}, "expected_doc_contains": "   old api"}
+{"name": "reason_wrapped_at_line_length", "input": {"directive": "deprecated", "version": "1.0", "reason": "this is a very long reason that should be wrapped because it exceeds seventy characters in total", "existing_doc": null, "line_length": 70}, "expected": "lines_indented_3_spaces"}
+{"name": "existing_doc_preserved", "input": {"directive": "versionchanged", "version": "1.1", "reason": "changed", "existing_doc": "Original docstring."}, "expected_doc_starts_with": "Original docstring."}
+{"name": "zero_line_length_no_wrap", "input": {"directive": "deprecated", "version": "1.0", "reason": "a long reason that would normally wrap", "existing_doc": null, "line_length": 0}, "expected": "single_indented_line"}

@@ -1,0 +1,10 @@
+{"name": "hashkey_no_args", "input": {"args": [], "kwargs": {}}, "expected": []}
+{"name": "hashkey_positional", "input": {"args": [1, 2, 3], "kwargs": {}}, "expected": [1, 2, 3]}
+{"name": "hashkey_kwargs_only", "input": {"args": [], "kwargs": {"a": 1}}, "expected": "__kwmark_present_then_sorted_items"}
+{"name": "hashkey_mixed", "input": {"args": [1], "kwargs": {"b": 2}}, "expected": "__kwmark_present_after_positional"}
+{"name": "hashkey_is_tuple_subclass", "input": {"args": [1], "kwargs": {}}, "expected_type": "_HashedTuple"}
+{"name": "hashkey_hash_stable", "input": {"args": [1, 2], "kwargs": {}}, "expected": "hash(hashkey(1,2)) == hash(hashkey(1,2))"}
+{"name": "hashkey_kwarg_order_independent", "input": {"args": [], "kwargs": {"a": 1, "b": 2}}, "expected": "same as kwargs b=2,a=1"}
+{"name": "hashkey_string_args", "input": {"args": ["x", "y"], "kwargs": {}}, "expected": ["x", "y"]}
+{"name": "hashkey_no_kwargs_no_kwmark", "input": {"args": [1], "kwargs": {}}, "expected_length": 1}
+{"name": "hashkey_with_kwargs_has_kwmark", "input": {"args": [1], "kwargs": {"a": 2}}, "expected_length_gt": 1}

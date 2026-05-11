@@ -1,0 +1,11 @@
+{
+  "__init__.py": {
+    "from . import keys": "internal"
+  },
+  "keys.py": {},
+  "func.py": {
+    "from . import FIFOCache, LFUCache, LRUCache, MRUCache, RRCache, TTLCache": "internal",
+    "from . import cached": "internal",
+    "from . import keys": "internal"
+  }
+}

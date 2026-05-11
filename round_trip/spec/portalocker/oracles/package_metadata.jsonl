@@ -1,0 +1,8 @@
+{"name": "version_string", "input": {"attr": "__version__"}, "expected": "2.10.1"}
+{"name": "package_name", "input": {"attr": "__package_name__"}, "expected": "portalocker"}
+{"name": "author", "input": {"attr": "__author__"}, "expected": "Rick van Hattem"}
+{"name": "email", "input": {"attr": "__email__"}, "expected": "wolph@wol.ph"}
+{"name": "description", "input": {"attr": "__description__"}, "expected": "Wraps the portalocker recipe for easy usage"}
+{"name": "url", "input": {"attr": "__url__"}, "expected": "https://github.com/WoLpH/portalocker"}
+{"name": "redis_lock_none_without_redis", "input": {"scenario": "import portalocker without redis installed"}, "expected": "portalocker.RedisLock is None"}
+{"name": "all_exports_present", "input": {"check": "__all__ contents"}, "expected": ["lock","unlock","LOCK_EX","LOCK_SH","LOCK_NB","LOCK_UN","LockFlags","LockException","Lock","RLock","AlreadyLocked","BoundedSemaphore","NamedBoundedSemaphore","TemporaryFileLock","open_atomic","RedisLock"]}

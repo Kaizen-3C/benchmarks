@@ -1,0 +1,7 @@
+{"name": "none_prepare_key_none", "input": {"key": null}, "expected": {"result": null}}
+{"name": "none_prepare_key_empty_string", "input": {"key": ""}, "expected": {"result": null}}
+{"name": "none_prepare_key_non_none_raises", "input": {"key": "something"}, "expected": {"raises": "InvalidKeyError"}}
+{"name": "none_sign_returns_empty", "input": {"msg": "hello", "key": null}, "expected": {"result": ""}}
+{"name": "none_verify_always_false", "input": {"msg": "hello", "key": null, "sig": ""}, "expected": {"result": false}}
+{"name": "none_to_jwk_raises", "input": {}, "expected": {"raises": "NotImplementedError"}}
+{"name": "none_from_jwk_raises", "input": {"jwk": "{}"}, "expected": {"raises": "NotImplementedError"}}

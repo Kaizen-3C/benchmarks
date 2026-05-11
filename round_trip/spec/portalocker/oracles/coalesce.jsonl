@@ -1,0 +1,10 @@
+{"name": "coalesce_first_non_none", "input": {"args": [1, 2, 3], "test_value": null}, "expected": 1}
+{"name": "coalesce_skip_none", "input": {"args": [null, null, 42], "test_value": null}, "expected": 42}
+{"name": "coalesce_all_none", "input": {"args": [null, null, null], "test_value": null}, "expected": null}
+{"name": "coalesce_empty", "input": {"args": [], "test_value": null}, "expected": null}
+{"name": "coalesce_custom_test_value", "input": {"args": [0, 1, 2], "test_value": 0}, "expected": 1}
+{"name": "coalesce_false_not_skipped", "input": {"args": [false, 1], "test_value": null}, "expected": false}
+{"name": "coalesce_zero_not_skipped", "input": {"args": [0, 1], "test_value": null}, "expected": 0}
+{"name": "coalesce_string", "input": {"args": ["", "hello"], "test_value": null}, "expected": ""}
+{"name": "coalesce_single_none", "input": {"args": [null], "test_value": null}, "expected": null}
+{"name": "coalesce_single_value", "input": {"args": [99], "test_value": null}, "expected": 99}

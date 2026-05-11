@@ -1,0 +1,8 @@
+{"name": "semaphore_acquire_within_max", "input": {"maximum": 2, "concurrent": 2}, "expected": "both acquire succeed"}
+{"name": "semaphore_acquire_exceeds_max", "input": {"maximum": 1, "concurrent": 2, "fail_when_locked": true}, "expected": "second acquire raises AlreadyLocked"}
+{"name": "semaphore_filename_format", "input": {"name": "test", "number": 3, "pattern": "{name}.{number:02d}.lock"}, "expected": "test.03.lock"}
+{"name": "semaphore_release_deletes_file", "input": {"scenario": "acquire then release"}, "expected": "lock file deleted"}
+{"name": "semaphore_get_filenames_count", "input": {"maximum": 5}, "expected": "5 filenames returned"}
+{"name": "named_semaphore_auto_name", "input": {"maximum": 1, "name": null}, "expected": "name starts with 'bounded_semaphore.'"}
+{"name": "semaphore_lock_attribute_after_acquire", "input": {"scenario": "acquire BoundedSemaphore"}, "expected": "self.lock is a Lock instance"}
+{"name": "semaphore_lock_attribute_after_release", "input": {"scenario": "release BoundedSemaphore"}, "expected": "self.lock is None"}

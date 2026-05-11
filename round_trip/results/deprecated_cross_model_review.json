@@ -1,0 +1,26 @@
+{
+  "lib": "deprecated",
+  "executor_model": "claude-sonnet-4-6",
+  "reviewer_model": "claude-opus-4-7",
+  "review_reused_from": "benchmarks\\round_trip\\results\\deprecated_review_only.json",
+  "review_findings": 8,
+  "re_recompose": {
+    "ok": true,
+    "cost_usd": 0.063,
+    "elapsed_s": 24.722,
+    "files_emitted": 3,
+    "model": "claude-sonnet-4-6",
+    "provider": "anthropic",
+    "usage": {
+      "input": 702,
+      "output": 2095,
+      "cache_read": 0,
+      "cache_write": 7870
+    },
+    "critique_findings": 8
+  },
+  "totals": {
+    "cost_usd": 0.1497,
+    "note": "review cost is Sonnet-priced for an Opus call; real ~5x"
+  }
+}

@@ -1,0 +1,10 @@
+{"name": "hmac_prepare_key_str", "input": {"key": "mysecret"}, "expected": {"type": "bytes", "value": "mysecret"}}
+{"name": "hmac_prepare_key_bytes", "input": {"key": "c2VjcmV0"}, "expected": {"type": "bytes"}}
+{"name": "hmac_prepare_key_pem_raises", "input": {"key": "-----BEGIN PUBLIC KEY-----\nMIIBIjAN\n-----END PUBLIC KEY-----\n"}, "expected": {"raises": "InvalidKeyError"}}
+{"name": "hmac_sign_verify_roundtrip", "input": {"msg": "hello world", "key": "secret", "alg": "HS256"}, "expected": {"verify": true}}
+{"name": "hmac_verify_wrong_sig", "input": {"msg": "hello", "key": "secret", "sig": "wrongsig", "alg": "HS256"}, "expected": {"verify": false}}
+{"name": "hmac_to_jwk_bytes", "input": {"key": "mysecretkey"}, "expected": {"kty": "oct", "has_k": true}}
+{"name": "hmac_to_jwk_as_dict", "input": {"key": "mysecretkey", "as_dict": true}, "expected": {"type": "dict", "kty": "oct"}}
+{"name": "hmac_from_jwk_valid", "input": {"jwk": "{\"kty\": \"oct\", \"k\": \"c2VjcmV0\"}"}, "expected": {"type": "bytes"}}
+{"name": "hmac_from_jwk_wrong_kty", "input": {"jwk": "{\"kty\": \"RSA\", \"k\": \"c2VjcmV0\"}"}, "expected": {"raises": "InvalidKeyError"}}
+{"name": "hmac_from_jwk_missing_k", "input": {"jwk": "{\"kty\": \"oct\"}"}, "expected": {"raises": "InvalidKeyError"}}

@@ -1,0 +1,7 @@
+{
+  "package_name": "cachetools",
+  "version": "5.5.0",
+  "install_requires": [],
+  "python_requires": ">=3.7",
+  "modules": ["__init__.py", "keys.py", "func.py"]
+}

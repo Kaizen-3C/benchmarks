@@ -1,0 +1,46 @@
+{
+  "__init__.py": {
+    "from .api_jwk import PyJWK, PyJWKSet": "re-export",
+    "from .api_jws import PyJWS, get_algorithm_by_name, get_unverified_header, register_algorithm, unregister_algorithm": "re-export",
+    "from .api_jwt import PyJWT, decode, decode_complete, encode": "re-export",
+    "from .exceptions import DecodeError, ExpiredSignatureError, ImmatureSignatureError, InvalidAlgorithmError, InvalidAudienceError, InvalidIssuedAtError, InvalidIssuerError, InvalidKeyError, InvalidSignatureError, InvalidTokenError, MissingRequiredClaimError, PyJWKClientConnectionError, PyJWKClientError, PyJWKError, PyJWKSetError, PyJWTError": "re-export",
+    "from .jwks_client import PyJWKClient": "re-export"
+  },
+  "algorithms.py": {
+    "from .exceptions import InvalidKeyError": "internal",
+    "from .types import HashlibHash, JWKDict": "internal",
+    "from .utils import base64url_decode, base64url_encode, der_to_raw_signature, force_bytes, from_base64url_uint, is_pem_format, is_ssh_key, raw_to_der_signature, to_base64url_uint": "internal"
+  },
+  "api_jwk.py": {
+    "from .algorithms import get_default_algorithms, has_crypto, requires_cryptography": "internal",
+    "from .exceptions import InvalidKeyError, PyJWKError, PyJWKSetError, PyJWTError": "internal",
+    "from .types import JWKDict": "internal"
+  },
+  "api_jws.py": {
+    "from .algorithms import Algorithm, get_default_algorithms, has_crypto, requires_cryptography": "internal",
+    "from .exceptions import DecodeError, InvalidAlgorithmError, InvalidSignatureError, InvalidTokenError": "internal",
+    "from .utils import base64url_decode, base64url_encode": "internal",
+    "from .warnings import RemovedInPyjwt3Warning": "internal"
+  },
+  "api_jwt.py": {
+    "from . import api_jws": "internal",
+    "from .exceptions import DecodeError, ExpiredSignatureError, ImmatureSignatureError, InvalidAudienceError, InvalidIssuedAtError, InvalidIssuerError, MissingRequiredClaimError": "internal",
+    "from .warnings import RemovedInPyjwt3Warning": "internal"
+  },
+  "exceptions.py": {},
+  "help.py": {
+    "from . import __version__ as pyjwt_version": "internal"
+  },
+  "jwk_set_cache.py": {
+    "from .api_jwk import PyJWTSetWithTimestamp": "internal"
+  },
+  "jwks_client.py": {
+    "from .api_jwk import PyJWK, PyJWKSet": "internal",
+    "from .api_jwt import decode_complete as decode_token": "internal",
+    "from .exceptions import PyJWKClientConnectionError, PyJWKClientError": "internal",
+    "from .jwk_set_cache import JWKSetCache": "internal"
+  },
+  "types.py": {},
+  "utils.py": {},
+  "warnings.py": {}
+}

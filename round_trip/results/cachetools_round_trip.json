@@ -1,0 +1,825 @@
+{
+  "lib": "cachetools",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "preflight": {
+    "pass": true,
+    "inputs": {
+      "original_dir_exists": true,
+      "spec_dir_pre_existing": false,
+      "py_files_seen": 21,
+      "test_files_seen": 13
+    },
+    "pre_decompose_gates": {},
+    "reason": "ok"
+  },
+  "decompose": {
+    "cost_usd": 0.1635,
+    "elapsed_s": 120.836,
+    "files_in_spec": 25,
+    "files_in_source": 5,
+    "model": "claude-sonnet-4-6",
+    "provider": "anthropic",
+    "usage": {
+      "input": 998,
+      "output": 8668,
+      "cache_read": 0,
+      "cache_write": 8138
+    },
+    "intent_capture": {
+      "package_root": "cachetools",
+      "static_attr_chains": 9,
+      "runtime_modules": 0
+    }
+  },
+  "gates": {
+    "coverage": {
+      "pass": true,
+      "failures": [],
+      "stats": {
+        "symbols_total": 8,
+        "symbols_covered": 8,
+        "symbols_total_unscoped": 21,
+        "coverage_pct": 100.0
+      }
+    },
+    "specificity": {
+      "pass": false,
+      "failures": [
+        {
+          "adr": "adrs/ADR-0001-cache-base-class.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0001-cache-base-class.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0003-timed-cache-timer.md",
+          "score": 0.5,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0003-timed-cache-timer.md scored 0.5 (threshold 1.0). Add: named algorithm/library references, vague modals (1 hits \u2014 replace 'may'/'should'/'typically' with concrete decisions)."
+        },
+        {
+          "adr": "adrs/ADR-0006-cached-decorator.md",
+          "score": 0.5,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0006-cached-decorator.md scored 0.5 (threshold 1.0). Add: named algorithm/library references, vague modals (1 hits \u2014 replace 'may'/'should'/'typically' with concrete decisions)."
+        },
+        {
+          "adr": "adrs/ADR-0007-cachedmethod-decorator.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0007-cachedmethod-decorator.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0008-keys-module.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0008-keys-module.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0009-func-module.md",
+          "score": 0.5,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 1
+          },
+          "remediation": "ADR adrs/ADR-0009-func-module.md scored 0.5 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0010-deprecation-mru.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0010-deprecation-mru.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        }
+      ],
+      "stats": {
+        "adrs_scored": 10,
+        "adrs_passed": 3,
+        "scores": [
+          {
+            "adr": "adrs/ADR-0001-cache-base-class.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0002-eviction-policies.md",
+            "score": 4.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 1,
+            "named_refs": 8,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0003-timed-cache-timer.md",
+            "score": 0.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0004-ttlcache-expiry-ring.md",
+            "score": 3.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 4,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0005-tlrucache-heap.md",
+            "score": 4.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 2,
+            "named_refs": 3,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0006-cached-decorator.md",
+            "score": 0.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0007-cachedmethod-decorator.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0008-keys-module.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0009-func-module.md",
+            "score": 0.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 1
+          },
+          {
+            "adr": "adrs/ADR-0010-deprecation-mru.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          }
+        ]
+      }
+    },
+    "consistency": {
+      "pass": true,
+      "failures": [],
+      "stats": {
+        "refs_checked": 27,
+        "refs_dangling": 0,
+        "targets_indexed": {
+          "adrs": 10,
+          "contracts": 3,
+          "oracles": 9
+        }
+      }
+    },
+    "test_oracle_alignment": {
+      "pass": false,
+      "failures": [
+        {
+          "test": "test_hashkey",
+          "source": "tests/test_keys.py:7",
+          "remediation": "No oracle covers `test_hashkey` (tests/test_keys.py:7). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_hashkey\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_typedkey",
+          "source": "tests/test_keys.py:42",
+          "remediation": "No oracle covers `test_typedkey` (tests/test_keys.py:42). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_typedkey\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_typedmethodkey",
+          "source": "tests/test_keys.py:58",
+          "remediation": "No oracle covers `test_typedmethodkey` (tests/test_keys.py:58). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_typedmethodkey\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_addkeys",
+          "source": "tests/test_keys.py:75",
+          "remediation": "No oracle covers `test_addkeys` (tests/test_keys.py:75). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_addkeys\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_pickle",
+          "source": "tests/test_keys.py:81",
+          "remediation": "No oracle covers `test_pickle` (tests/test_keys.py:81). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_pickle\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttu",
+          "source": "tests/test_tlru.py:34",
+          "remediation": "No oracle covers `test_ttu` (tests/test_tlru.py:34). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttu\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttu_lru",
+          "source": "tests/test_tlru.py:111",
+          "remediation": "No oracle covers `test_ttu_lru` (tests/test_tlru.py:111). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttu_lru\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttu_expire",
+          "source": "tests/test_tlru.py:141",
+          "remediation": "No oracle covers `test_ttu_expire` (tests/test_tlru.py:141). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttu_expire\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttu_expired",
+          "source": "tests/test_tlru.py:191",
+          "remediation": "No oracle covers `test_ttu_expired` (tests/test_tlru.py:191). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttu_expired\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttu_atomic",
+          "source": "tests/test_tlru.py:206",
+          "remediation": "No oracle covers `test_ttu_atomic` (tests/test_tlru.py:206). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttu_atomic\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttu_tuple_key",
+          "source": "tests/test_tlru.py:220",
+          "remediation": "No oracle covers `test_ttu_tuple_key` (tests/test_tlru.py:220). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttu_tuple_key\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttu_reverse_insert",
+          "source": "tests/test_tlru.py:230",
+          "remediation": "No oracle covers `test_ttu_reverse_insert` (tests/test_tlru.py:230). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttu_reverse_insert\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_dict",
+          "source": "tests/test_cachedmethod.py:58",
+          "remediation": "No oracle covers `test_dict` (tests/test_cachedmethod.py:58). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_dict\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_typedmethod_dict",
+          "source": "tests/test_cachedmethod.py:70",
+          "remediation": "No oracle covers `test_typedmethod_dict` (tests/test_cachedmethod.py:70). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_typedmethod_dict\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_lru",
+          "source": "tests/test_cachedmethod.py:81",
+          "remediation": "No oracle covers `test_lru` (tests/test_cachedmethod.py:81). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_lru\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_typedmethod_lru",
+          "source": "tests/test_cachedmethod.py:93",
+          "remediation": "No oracle covers `test_typedmethod_lru` (tests/test_cachedmethod.py:93). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_typedmethod_lru\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_nospace",
+          "source": "tests/test_cachedmethod.py:104",
+          "remediation": "No oracle covers `test_nospace` (tests/test_cachedmethod.py:104). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_nospace\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_nocache",
+          "source": "tests/test_cachedmethod.py:113",
+          "remediation": "No oracle covers `test_nocache` (tests/test_cachedmethod.py:113). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_nocache\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_weakref",
+          "source": "tests/test_cachedmethod.py:122",
+          "remediation": "No oracle covers `test_weakref` (tests/test_cachedmethod.py:122). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_weakref\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_locked_dict",
+          "source": "tests/test_cachedmethod.py:152",
+          "remediation": "No oracle covers `test_locked_dict` (tests/test_cachedmethod.py:152). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_locked_dict\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_locked_nocache",
+          "source": "tests/test_cachedmethod.py:161",
+          "remediation": "No oracle covers `test_locked_nocache` (tests/test_cachedmethod.py:161). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_locked_nocache\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_locked_nospace",
+          "source": "tests/test_cachedmethod.py:170",
+          "remediation": "No oracle covers `test_locked_nospace` (tests/test_cachedmethod.py:170). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_locked_nospace\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_unhashable",
+          "source": "tests/test_cachedmethod.py:179",
+          "remediation": "No oracle covers `test_unhashable` (tests/test_cachedmethod.py:179). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_unhashable\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_wrapped",
+          "source": "tests/test_cachedmethod.py:188",
+          "remediation": "No oracle covers `test_wrapped` (tests/test_cachedmethod.py:188). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_wrapped\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_attributes",
+          "source": "tests/test_cachedmethod.py:200",
+          "remediation": "No oracle covers `test_attributes` (tests/test_cachedmethod.py:200). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_attributes\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_attributes_lock",
+          "source": "tests/test_cachedmethod.py:208",
+          "remediation": "No oracle covers `test_attributes_lock` (tests/test_cachedmethod.py:208). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_attributes_lock\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_clear",
+          "source": "tests/test_cachedmethod.py:216",
+          "remediation": "No oracle covers `test_clear` (tests/test_cachedmethod.py:216). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_clear\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_clear_locked",
+          "source": "tests/test_cachedmethod.py:225",
+          "remediation": "No oracle covers `test_clear_locked` (tests/test_cachedmethod.py:225). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_clear_locked\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_fifo",
+          "source": "tests/test_fifo.py:11",
+          "remediation": "No oracle covers `test_fifo` (tests/test_fifo.py:11). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_fifo\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_fifo_getsizeof",
+          "source": "tests/test_fifo.py:36",
+          "remediation": "No oracle covers `test_fifo_getsizeof` (tests/test_fifo.py:36). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_fifo_getsizeof\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_evict__writes_only",
+          "source": "tests/test_mru.py:13",
+          "remediation": "No oracle covers `test_evict__writes_only` (tests/test_mru.py:13). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_evict__writes_only\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_evict__with_access",
+          "source": "tests/test_mru.py:29",
+          "remediation": "No oracle covers `test_evict__with_access` (tests/test_mru.py:29). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_evict__with_access\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_evict__with_delete",
+          "source": "tests/test_mru.py:45",
+          "remediation": "No oracle covers `test_evict__with_delete` (tests/test_mru.py:45). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_evict__with_delete\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator",
+          "source": "tests/test_cached.py:29",
+          "remediation": "No oracle covers `test_decorator` (tests/test_cached.py:29). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_typed",
+          "source": "tests/test_cached.py:55",
+          "remediation": "No oracle covers `test_decorator_typed` (tests/test_cached.py:55). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_typed\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_lock",
+          "source": "tests/test_cached.py:85",
+          "remediation": "No oracle covers `test_decorator_lock` (tests/test_cached.py:85). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_lock\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_wrapped",
+          "source": "tests/test_cached.py:98",
+          "remediation": "No oracle covers `test_decorator_wrapped` (tests/test_cached.py:98). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_wrapped\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_attributes",
+          "source": "tests/test_cached.py:112",
+          "remediation": "No oracle covers `test_decorator_attributes` (tests/test_cached.py:112). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_attributes\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_attributes_lock",
+          "source": "tests/test_cached.py:120",
+          "remediation": "No oracle covers `test_decorator_attributes_lock` (tests/test_cached.py:120). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_attributes_lock\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_clear",
+          "source": "tests/test_cached.py:129",
+          "remediation": "No oracle covers `test_decorator_clear` (tests/test_cached.py:129). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_clear\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_clear_lock",
+          "source": "tests/test_cached.py:137",
+          "remediation": "No oracle covers `test_decorator_clear_lock` (tests/test_cached.py:137). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_clear_lock\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_info",
+          "source": "tests/test_cached.py:153",
+          "remediation": "No oracle covers `test_decorator_info` (tests/test_cached.py:153). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_info\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_zero_size_cache_decorator",
+          "source": "tests/test_cached.py:167",
+          "remediation": "No oracle covers `test_zero_size_cache_decorator` (tests/test_cached.py:167). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_zero_size_cache_decorator\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_zero_size_cache_decorator_lock",
+          "source": "tests/test_cached.py:175",
+          "remediation": "No oracle covers `test_zero_size_cache_decorator_lock` (tests/test_cached.py:175). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_zero_size_cache_decorator_lock\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_zero_size_cache_decorator_info",
+          "source": "tests/test_cached.py:185",
+          "remediation": "No oracle covers `test_zero_size_cache_decorator_info` (tests/test_cached.py:185). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_zero_size_cache_decorator_info\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_info",
+          "source": "tests/test_cached.py:198",
+          "remediation": "No oracle covers `test_decorator_info` (tests/test_cached.py:198). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_info\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator",
+          "source": "tests/test_cached.py:217",
+          "remediation": "No oracle covers `test_decorator` (tests/test_cached.py:217). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_attributes",
+          "source": "tests/test_cached.py:224",
+          "remediation": "No oracle covers `test_decorator_attributes` (tests/test_cached.py:224). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_attributes\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_clear",
+          "source": "tests/test_cached.py:231",
+          "remediation": "No oracle covers `test_decorator_clear` (tests/test_cached.py:231). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_clear\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_info",
+          "source": "tests/test_cached.py:236",
+          "remediation": "No oracle covers `test_decorator_info` (tests/test_cached.py:236). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_info\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_rr",
+          "source": "tests/test_rr.py:11",
+          "remediation": "No oracle covers `test_rr` (tests/test_rr.py:11). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_rr\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_lfu",
+          "source": "tests/test_lfu.py:11",
+          "remediation": "No oracle covers `test_lfu` (tests/test_lfu.py:11). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_lfu\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_lfu_getsizeof",
+          "source": "tests/test_lfu.py:29",
+          "remediation": "No oracle covers `test_lfu_getsizeof` (tests/test_lfu.py:29). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_lfu_getsizeof\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_lru",
+          "source": "tests/test_lru.py:11",
+          "remediation": "No oracle covers `test_lru` (tests/test_lru.py:11). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_lru\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_lru_getsizeof",
+          "source": "tests/test_lru.py:36",
+          "remediation": "No oracle covers `test_lru_getsizeof` (tests/test_lru.py:36). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_lru_getsizeof\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator",
+          "source": "tests/test_func.py:10",
+          "remediation": "No oracle covers `test_decorator` (tests/test_func.py:10). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_clear",
+          "source": "tests/test_func.py:21",
+          "remediation": "No oracle covers `test_decorator_clear` (tests/test_func.py:21). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_clear\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_nocache",
+          "source": "tests/test_func.py:32",
+          "remediation": "No oracle covers `test_decorator_nocache` (tests/test_func.py:32). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_nocache\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_unbound",
+          "source": "tests/test_func.py:43",
+          "remediation": "No oracle covers `test_decorator_unbound` (tests/test_func.py:43). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_unbound\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_typed",
+          "source": "tests/test_func.py:54",
+          "remediation": "No oracle covers `test_decorator_typed` (tests/test_func.py:54). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_typed\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_user_function",
+          "source": "tests/test_func.py:67",
+          "remediation": "No oracle covers `test_decorator_user_function` (tests/test_func.py:67). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_user_function\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_needs_rlock",
+          "source": "tests/test_func.py:78",
+          "remediation": "No oracle covers `test_decorator_needs_rlock` (tests/test_func.py:78). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_decorator_needs_rlock\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttl",
+          "source": "tests/test_ttl.py:31",
+          "remediation": "No oracle covers `test_ttl` (tests/test_ttl.py:31). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttl\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttl_lru",
+          "source": "tests/test_ttl.py:87",
+          "remediation": "No oracle covers `test_ttl_lru` (tests/test_ttl.py:87). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttl_lru\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttl_expire",
+          "source": "tests/test_ttl.py:115",
+          "remediation": "No oracle covers `test_ttl_expire` (tests/test_ttl.py:115). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttl_expire\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttl_atomic",
+          "source": "tests/test_ttl.py:166",
+          "remediation": "No oracle covers `test_ttl_atomic` (tests/test_ttl.py:166). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttl_atomic\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttl_tuple_key",
+          "source": "tests/test_ttl.py:180",
+          "remediation": "No oracle covers `test_ttl_tuple_key` (tests/test_ttl.py:180). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttl_tuple_key\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_ttl_datetime",
+          "source": "tests/test_ttl.py:191",
+          "remediation": "No oracle covers `test_ttl_datetime` (tests/test_ttl.py:191). Append a JSONL row to cachetools/oracles/ with `{\"name\": \"test_ttl_datetime\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        }
+      ],
+      "stats": {
+        "tests_total": 68,
+        "oracles_total": 61,
+        "tests_aligned": 0,
+        "alignment_pct": 0.0
+      }
+    },
+    "implementation_leak": {
+      "pass": false,
+      "failures": [
+        {
+          "adr": "adrs/ADR-0001-cache-base-class.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_DefaultSize",
+          "remediation": "adrs/ADR-0001-cache-base-class.md references private symbol `_DefaultSize`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0002-eviction-policies.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_TimedCache",
+          "remediation": "adrs/ADR-0002-eviction-policies.md references private symbol `_TimedCache`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0003-timed-cache-timer.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_TimedCache",
+          "remediation": "adrs/ADR-0003-timed-cache-timer.md references private symbol `_TimedCache`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0003-timed-cache-timer.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_Timer",
+          "remediation": "adrs/ADR-0003-timed-cache-timer.md references private symbol `_Timer`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0003-timed-cache-timer.md",
+          "leak_kind": "inline_python_statement",
+          "preview": "return the same snapshot, decrements on exit.",
+          "remediation": "adrs/ADR-0003-timed-cache-timer.md contains a Python statement outside a fenced block: `return the same snapshot, decrements on exit.`. Reword as a behavioral description or move into a contract file."
+        },
+        {
+          "adr": "adrs/ADR-0004-ttlcache-expiry-ring.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_Link",
+          "remediation": "adrs/ADR-0004-ttlcache-expiry-ring.md references private symbol `_Link`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0005-tlrucache-heap.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_Item",
+          "remediation": "adrs/ADR-0005-tlrucache-heap.md references private symbol `_Item`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0007-cachedmethod-decorator.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_cache",
+          "remediation": "adrs/ADR-0007-cachedmethod-decorator.md references private symbol `_cache`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0008-keys-module.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_kwmark_singleton",
+          "remediation": "adrs/ADR-0008-keys-module.md references private symbol `_kwmark_singleton`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0008-keys-module.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_HashedTuple",
+          "remediation": "adrs/ADR-0008-keys-module.md references private symbol `_HashedTuple`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0008-keys-module.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_KWMark",
+          "remediation": "adrs/ADR-0008-keys-module.md references private symbol `_KWMark`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0009-func-module.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_UnboundTTLCache",
+          "remediation": "adrs/ADR-0009-func-module.md references private symbol `_UnboundTTLCache`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0009-func-module.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_cache",
+          "remediation": "adrs/ADR-0009-func-module.md references private symbol `_cache`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        }
+      ],
+      "stats": {
+        "code_blocks_seen": 0,
+        "private_symbols_indexed": 11,
+        "leaks_total": 13
+      }
+    }
+  },
+  "remediation": null,
+  "smoke_test": {
+    "ok": true,
+    "import_ok": true,
+    "collect_ok": true,
+    "first_traceback": "",
+    "package_name": "cachetools"
+  },
+  "smoke_remediation": null,
+  "code_edit_loop": null,
+  "post_remediation_gates": null,
+  "recompose": {
+    "cost_usd": 0.1728,
+    "elapsed_s": 99.763,
+    "files_emitted": 3,
+    "model": "claude-sonnet-4-6",
+    "provider": "anthropic",
+    "usage": {
+      "input": 702,
+      "output": 9206,
+      "cache_read": 0,
+      "cache_write": 8701
+    }
+  },
+  "metrics": {
+    "q1_test_parity": {
+      "value": 0.7209,
+      "detail": {
+        "passed": 155,
+        "failed": 60,
+        "errors": 0,
+        "skipped": 0,
+        "attempted": 215,
+        "collected": 215,
+        "test_suite_executed": true,
+        "pytest_returncode": 1,
+        "inventory": {
+          "recomposed_files": 3,
+          "test_files": 26,
+          "toplevel_files": 5,
+          "package_name": "cachetools"
+        },
+        "cov_changes": {},
+        "output_tail": "t_popitem_exception_context - Assert...\nFAILED tests/test_tlru.py::TLRUCacheTest::test_getsizeof_param - AssertionErr...\nFAILED tests/test_tlru.py::TLRUCacheTest::test_getsizeof_subclass - Assertion...\nFAILED tests/test_tlru.py::TLRUCacheTest::test_missing - KeyError: 1\nFAILED tests/test_tlru.py::TLRUCacheTest::test_missing_getsizeof - KeyError: 1\nFAILED tests/test_tlru.py::TLRUCacheTest::test_popitem_exception_context - As...\nFAILED tests/test_tlru.py::TLRUCacheTest::test_ttu - AttributeError: '_Timer'...\nFAILED tests/test_tlru.py::TLRUCacheTest::test_ttu_expire - AttributeError: '...\nFAILED tests/test_tlru.py::TLRUCacheTest::test_ttu_reverse_insert - Attribute...\nFAILED tests/test_tlru.py::TLRUCacheTest::test_ttu_tuple_key - AttributeError...\nFAILED tests/test_ttl.py::TTLCacheTest::test_getsizeof_param - AssertionError...\nFAILED tests/test_ttl.py::TTLCacheTest::test_getsizeof_subclass - AssertionEr...\nFAILED tests/test_ttl.py::TTLCacheTest::test_missing - KeyError: 1\nFAILED tests/test_ttl.py::TTLCacheTest::test_missing_getsizeof - KeyError: 1\nFAILED tests/test_ttl.py::TTLCacheTest::test_popitem_exception_context - Asse...\nFAILED tests/test_ttl.py::TTLCacheTest::test_ttl - AttributeError: '_Timer' o...\nFAILED tests/test_ttl.py::TTLCacheTest::test_ttl_atomic - KeyError: 1\nFAILED tests/test_ttl.py::TTLCacheTest::test_ttl_expire - AttributeError: '_T...\nFAILED tests/test_ttl.py::TTLCacheTest::test_ttl_tuple_key - AttributeError: ...\n60 failed, 155 passed, 15 warnings in 0.24s\n\n"
+      }
+    },
+    "q2_behavioral_parity": {
+      "value": null,
+      "detail": {
+        "todo": "phase 2: execute curated (input,output) pairs on both impls"
+      }
+    },
+    "q3_structural_parity": {
+      "value": 0.0,
+      "detail": {
+        "signatures_in_original": 114,
+        "signatures_in_recomposed": 104,
+        "intersection": 0,
+        "missing_from_recomposed": [
+          "docs.conf.get_version()",
+          "src.cachetools.Cache.__contains__(self,key)",
+          "src.cachetools.Cache.__getitem__(self,key)",
+          "src.cachetools.Cache.__init__(self,maxsize,getsizeof)",
+          "src.cachetools.Cache.__iter__(self)",
+          "src.cachetools.Cache.__len__(self)",
+          "src.cachetools.Cache.__setitem__(self,key,value)",
+          "src.cachetools.Cache.currsize(self)",
+          "src.cachetools.Cache.get(self,key,default)",
+          "src.cachetools.Cache.getsizeof(value)",
+          "src.cachetools.Cache.maxsize(self)",
+          "src.cachetools.Cache.pop(self,key,default)",
+          "src.cachetools.Cache.setdefault(self,key,default)",
+          "src.cachetools.FIFOCache.__init__(self,maxsize,getsizeof)",
+          "src.cachetools.FIFOCache.__setitem__(self,key,value,cache_setitem)",
+          "src.cachetools.FIFOCache.popitem(self)",
+          "src.cachetools.LFUCache.__getitem__(self,key,cache_getitem)",
+          "src.cachetools.LFUCache.__init__(self,maxsize,getsizeof)",
+          "src.cachetools.LFUCache.__setitem__(self,key,value,cache_setitem)",
+          "src.cachetools.LFUCache.popitem(self)",
+          "src.cachetools.LRUCache.__getitem__(self,key,cache_getitem)",
+          "src.cachetools.LRUCache.__init__(self,maxsize,getsizeof)",
+          "src.cachetools.LRUCache.__setitem__(self,key,value,cache_setitem)",
+          "src.cachetools.LRUCache.popitem(self)",
+          "src.cachetools.MRUCache.__getitem__(self,key,cache_getitem)"
+        ],
+        "extra_in_recomposed": [
+          "__init__.Cache.__contains__(self,key)",
+          "__init__.Cache.__getitem__(self,key)",
+          "__init__.Cache.__init__(self,maxsize,getsizeof)",
+          "__init__.Cache.__iter__(self)",
+          "__init__.Cache.__len__(self)",
+          "__init__.Cache.__setitem__(self,key,value)",
+          "__init__.Cache.currsize(self)",
+          "__init__.Cache.getsizeof(value)",
+          "__init__.Cache.maxsize(self)",
+          "__init__.Cache.popitem(self)",
+          "__init__.FIFOCache.__init__(self,maxsize,getsizeof)",
+          "__init__.FIFOCache.__setitem__(self,key,value)",
+          "__init__.FIFOCache.popitem(self)",
+          "__init__.LFUCache.__getitem__(self,key)",
+          "__init__.LFUCache.__init__(self,maxsize,getsizeof)",
+          "__init__.LFUCache.__setitem__(self,key,value)",
+          "__init__.LFUCache.popitem(self)",
+          "__init__.LRUCache.__getitem__(self,key)",
+          "__init__.LRUCache.__init__(self,maxsize,getsizeof)",
+          "__init__.LRUCache.__setitem__(self,key,value)",
+          "__init__.LRUCache.popitem(self)",
+          "__init__.MRUCache.__getitem__(self,key)",
+          "__init__.MRUCache.__init__(self,maxsize,getsizeof)",
+          "__init__.MRUCache.__setitem__(self,key,value)",
+          "__init__.MRUCache.popitem(self)"
+        ],
+        "missing_count": 114,
+        "extra_count": 104
+      }
+    },
+    "q4_information_loss": {
+      "value": 0.9286,
+      "detail": {
+        "symbols_in_original": 42,
+        "symbols_mentioned_in_spec": 39,
+        "orphans": [
+          "__call__",
+          "get_version",
+          "unlink"
+        ],
+        "orphan_count": 3
+      }
+    }
+  },
+  "totals": {
+    "cost_usd": 0.3363,
+    "elapsed_s": 222.26
+  }
+}

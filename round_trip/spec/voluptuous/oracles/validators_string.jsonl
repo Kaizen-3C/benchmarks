@@ -1,0 +1,11 @@
+{"name": "email_valid", "input": {"data": "user@example.com"}, "expected": "user@example.com"}
+{"name": "email_no_at", "input": {"data": "notanemail"}, "expected": "raises EmailInvalid"}
+{"name": "email_empty", "input": {"data": ""}, "expected": "raises EmailInvalid"}
+{"name": "url_valid", "input": {"data": "http://example.com"}, "expected": "http://example.com"}
+{"name": "url_no_scheme", "input": {"data": "example.com"}, "expected": "raises UrlInvalid"}
+{"name": "fqdnurl_valid", "input": {"data": "https://example.com/path"}, "expected": "https://example.com/path"}
+{"name": "fqdnurl_ip_netloc", "input": {"data": "http://192.168.1.1/path"}, "expected": "raises UrlInvalid"}
+{"name": "match_pass", "input": {"pattern": "^\\d+$", "data": "123"}, "expected": "123"}
+{"name": "match_fail", "input": {"pattern": "^\\d+$", "data": "abc"}, "expected": "raises MatchInvalid"}
+{"name": "match_type_error", "input": {"pattern": "^\\d+$", "data": 123}, "expected": "raises MatchInvalid"}
+{"name": "replace_sub", "input": {"pattern": "a", "substitution": "b", "data": "banana"}, "expected": "bbnbnb"}

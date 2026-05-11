@@ -1,0 +1,22 @@
+{
+  "from .api_jwk import PyJWK, PyJWKSet": ["PyJWK", "PyJWKSet"],
+  "from .api_jws import PyJWS, get_algorithm_by_name, get_unverified_header, register_algorithm, unregister_algorithm": ["PyJWS", "get_algorithm_by_name", "get_unverified_header", "register_algorithm", "unregister_algorithm"],
+  "from .api_jwt import PyJWT, decode, decode_complete, encode": ["PyJWT", "decode", "decode_complete", "encode"],
+  "from .exceptions import DecodeError, ExpiredSignatureError, ImmatureSignatureError, InvalidAlgorithmError, InvalidAudienceError, InvalidIssuedAtError, InvalidIssuerError, InvalidKeyError, InvalidSignatureError, InvalidTokenError, MissingRequiredClaimError, PyJWKClientConnectionError, PyJWKClientError, PyJWKError, PyJWKSetError, PyJWTError": [
+    "DecodeError", "ExpiredSignatureError", "ImmatureSignatureError", "InvalidAlgorithmError",
+    "InvalidAudienceError", "InvalidIssuedAtError", "InvalidIssuerError", "InvalidKeyError",
+    "InvalidSignatureError", "InvalidTokenError", "MissingRequiredClaimError",
+    "PyJWKClientConnectionError", "PyJWKClientError", "PyJWKError", "PyJWKSetError", "PyJWTError"
+  ],
+  "from .jwks_client import PyJWKClient": ["PyJWKClient"],
+  "__all__": [
+    "PyJWS", "PyJWT", "PyJWKClient", "PyJWK", "PyJWKSet",
+    "decode", "decode_complete", "encode",
+    "get_unverified_header", "register_algorithm", "unregister_algorithm", "get_algorithm_by_name",
+    "DecodeError", "ExpiredSignatureError", "ImmatureSignatureError", "InvalidAlgorithmError",
+    "InvalidAudienceError", "InvalidIssuedAtError", "InvalidIssuerError", "InvalidKeyError",
+    "InvalidSignatureError", "InvalidTokenError", "MissingRequiredClaimError",
+    "PyJWKClientConnectionError", "PyJWKClientError", "PyJWKError", "PyJWKSetError", "PyJWTError"
+  ],
+  "__version__": "2.8.0"
+}

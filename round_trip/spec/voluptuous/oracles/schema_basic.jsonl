@@ -1,0 +1,11 @@
+{"name": "schema_int_pass", "input": {"schema": "int", "data": 42}, "expected": 42}
+{"name": "schema_int_fail", "input": {"schema": "int", "data": "hello"}, "expected": "raises MultipleInvalid"}
+{"name": "schema_str_pass", "input": {"schema": "str", "data": "hello"}, "expected": "hello"}
+{"name": "schema_literal_pass", "input": {"schema": 42, "data": 42}, "expected": 42}
+{"name": "schema_literal_fail", "input": {"schema": 42, "data": 43}, "expected": "raises MultipleInvalid"}
+{"name": "schema_callable_pass", "input": {"schema": "lambda x: x+1", "data": 5}, "expected": 6}
+{"name": "schema_callable_valueerror", "input": {"schema": "int", "data": "abc"}, "expected": "raises MultipleInvalid"}
+{"name": "schema_none_literal", "input": {"schema": null, "data": null}, "expected": null}
+{"name": "schema_none_fail", "input": {"schema": null, "data": 1}, "expected": "raises MultipleInvalid"}
+{"name": "schema_bool_literal_true", "input": {"schema": true, "data": true}, "expected": true}
+{"name": "schema_bool_literal_false_fail", "input": {"schema": true, "data": false}, "expected": "raises MultipleInvalid"}

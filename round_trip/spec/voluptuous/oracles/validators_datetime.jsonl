@@ -1,0 +1,6 @@
+{"name": "datetime_pass", "input": {"data": "2023-01-15T10:30:00.000000Z"}, "expected": "2023-01-15T10:30:00.000000Z"}
+{"name": "datetime_fail", "input": {"data": "not-a-date"}, "expected": "raises DatetimeInvalid"}
+{"name": "datetime_custom_format_pass", "input": {"format": "%Y/%m/%d", "data": "2023/01/15"}, "expected": "2023/01/15"}
+{"name": "datetime_custom_format_fail", "input": {"format": "%Y/%m/%d", "data": "2023-01-15"}, "expected": "raises DatetimeInvalid"}
+{"name": "date_pass", "input": {"data": "2023-01-15"}, "expected": "2023-01-15"}
+{"name": "date_fail", "input": {"data": "01/15/2023"}, "expected": "raises DateInvalid"}

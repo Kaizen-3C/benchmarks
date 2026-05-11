@@ -1,0 +1,10 @@
+{"name": "returns_list", "input": {}, "expected_type": "list"}
+{"name": "first_version", "input": {}, "expected_first": "4.1.0"}
+{"name": "last_version", "input": {}, "expected_last": "15.1.0"}
+{"name": "length", "input": {}, "expected_length": 19}
+{"name": "contains_9_0_0", "input": {}, "expected_contains": "9.0.0"}
+{"name": "contains_13_0_0", "input": {}, "expected_contains": "13.0.0"}
+{"name": "is_sorted_ascending", "input": {}, "expected_sorted": true}
+{"name": "excludes_2_0_0", "input": {}, "expected_excludes": "2.0.0"}
+{"name": "excludes_4_0_0", "input": {}, "expected_excludes": "4.0.0"}
+{"name": "new_call_new_list", "input": {}, "expected_same_object_on_repeat": false}

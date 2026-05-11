@@ -1,0 +1,10 @@
+{"name": "pyjwk_oct_default_hs256", "input": {"jwk": {"kty": "oct", "k": "c2VjcmV0"}}, "expected": {"algorithm_name": "HS256"}}
+{"name": "pyjwk_ec_p256_default_es256", "input": {"jwk": {"kty": "EC", "crv": "P-256", "x": "...", "y": "..."}}, "expected": {"algorithm_name": "ES256"}}
+{"name": "pyjwk_rsa_default_rs256", "input": {"jwk": {"kty": "RSA", "n": "...", "e": "AQAB"}}, "expected": {"algorithm_name": "RS256"}}
+{"name": "pyjwk_missing_kty_raises", "input": {"jwk": {"k": "c2VjcmV0"}}, "expected": {"raises": "InvalidKeyError"}}
+{"name": "pyjwk_unsupported_kty_raises", "input": {"jwk": {"kty": "UNKNOWN"}}, "expected": {"raises": "InvalidKeyError"}}
+{"name": "pyjwk_kid_property", "input": {"jwk": {"kty": "oct", "k": "c2VjcmV0", "kid": "mykey"}}, "expected": {"key_id": "mykey"}}
+{"name": "pyjwk_kid_integer_raises", "input": {"jwk": {"kty": "oct", "k": "c2VjcmV0", "kid": 123}}, "expected": {"raises": "InvalidKeyError"}}
+{"name": "pyjwk_okp_ed25519", "input": {"jwk": {"kty": "OKP", "crv": "Ed25519", "x": "..."}}, "expected": {"algorithm_name": "EdDSA"}}
+{"name": "pyjwk_okp_no_crv_raises", "input": {"jwk": {"kty": "OKP"}}, "expected": {"raises": "InvalidKeyError"}}
+{"name": "pyjwk_explicit_algorithm_override", "input": {"jwk": {"kty": "oct", "k": "c2VjcmV0"}, "algorithm": "HS512"}, "expected": {"algorithm_name": "HS512"}}

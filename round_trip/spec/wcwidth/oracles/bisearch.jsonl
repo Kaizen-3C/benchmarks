@@ -1,0 +1,12 @@
+{"name": "found_exact_start", "input": {"ucs": 768, "table": [[768, 879]]}, "expected": 1}
+{"name": "found_exact_end", "input": {"ucs": 879, "table": [[768, 879]]}, "expected": 1}
+{"name": "found_mid", "input": {"ucs": 800, "table": [[768, 879]]}, "expected": 1}
+{"name": "not_found_below", "input": {"ucs": 767, "table": [[768, 879]]}, "expected": 0}
+{"name": "not_found_above", "input": {"ucs": 880, "table": [[768, 879]]}, "expected": 0}
+{"name": "multi_range_found_first", "input": {"ucs": 100, "table": [[100, 200], [300, 400], [500, 600]]}, "expected": 1}
+{"name": "multi_range_found_last", "input": {"ucs": 550, "table": [[100, 200], [300, 400], [500, 600]]}, "expected": 1}
+{"name": "multi_range_gap", "input": {"ucs": 250, "table": [[100, 200], [300, 400], [500, 600]]}, "expected": 0}
+{"name": "single_entry_match", "input": {"ucs": 9001, "table": [[9001, 9002]]}, "expected": 1}
+{"name": "single_entry_no_match", "input": {"ucs": 9003, "table": [[9001, 9002]]}, "expected": 0}
+{"name": "empty_adjacent_ranges", "input": {"ucs": 5, "table": [[1, 3], [5, 5], [7, 9]]}, "expected": 1}
+{"name": "between_adjacent_ranges", "input": {"ucs": 4, "table": [[1, 3], [5, 5], [7, 9]]}, "expected": 0}

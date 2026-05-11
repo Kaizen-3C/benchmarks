@@ -1,0 +1,6 @@
+{"name": "number_precision_pass", "input": {"precision": 4, "scale": 2, "data": "12.34"}, "expected": "12.34"}
+{"name": "number_precision_fail", "input": {"precision": 3, "scale": 2, "data": "12.34"}, "expected": "raises Invalid"}
+{"name": "number_scale_fail", "input": {"precision": 4, "scale": 1, "data": "12.34"}, "expected": "raises Invalid"}
+{"name": "number_yield_decimal", "input": {"precision": 4, "scale": 2, "yield_decimal": true, "data": "12.34"}, "expected": "Decimal('12.34')"}
+{"name": "number_integer", "input": {"precision": 2, "scale": 0, "data": "42"}, "expected": "42"}
+{"name": "number_invalid", "input": {"precision": 2, "scale": 0, "data": "abc"}, "expected": "raises Invalid"}

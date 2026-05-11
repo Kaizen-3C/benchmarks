@@ -1,0 +1,9 @@
+{"name": "any_first_passes", "input": {"validators": ["int", "str"], "data": 1}, "expected": 1}
+{"name": "any_second_passes", "input": {"validators": ["int", "str"], "data": "hello"}, "expected": "hello"}
+{"name": "any_none_pass", "input": {"validators": ["int", "float"], "data": "hello"}, "expected": "raises AnyInvalid"}
+{"name": "any_custom_msg", "input": {"validators": ["int"], "msg": "bad", "data": "x"}, "expected": "raises AnyInvalid('bad')"}
+{"name": "all_chain", "input": {"validators": ["str", "Lower"], "data": "HELLO"}, "expected": "hello"}
+{"name": "all_first_fails", "input": {"validators": ["int", "str"], "data": "x"}, "expected": "raises Invalid"}
+{"name": "all_custom_msg", "input": {"validators": ["int"], "msg": "bad", "data": "x"}, "expected": "raises AllInvalid('bad')"}
+{"name": "or_alias", "input": {"validators": ["int", "str"], "data": 1}, "expected": 1}
+{"name": "and_alias", "input": {"validators": ["str"], "data": "x"}, "expected": "x"}

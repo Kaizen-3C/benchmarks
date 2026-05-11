@@ -1,0 +1,10 @@
+{"name": "cache_setget", "input": {"maxsize": 10, "ops": [["set", "k", 1], ["get", "k"]]}, "expected": 1}
+{"name": "cache_evicts_on_full", "input": {"maxsize": 2, "ops": [["set", "a", 1], ["set", "b", 2], ["set", "c", 3]]}, "expected_len": 2}
+{"name": "cache_value_too_large", "input": {"maxsize": 1, "getsizeof": "lambda v: 2", "ops": [["set", "k", 99]]}, "expected_exception": "ValueError"}
+{"name": "cache_maxsize_property", "input": {"maxsize": 5}, "expected_maxsize": 5}
+{"name": "cache_currsize_zero_initially", "input": {"maxsize": 5}, "expected_currsize": 0}
+{"name": "cache_delitem", "input": {"maxsize": 5, "ops": [["set", "k", 1], ["del", "k"]]}, "expected_len": 0}
+{"name": "cache_missing_raises_keyerror", "input": {"maxsize": 5, "ops": [["get", "missing"]]}, "expected_exception": "KeyError"}
+{"name": "cache_contains", "input": {"maxsize": 5, "ops": [["set", "k", 1]]}, "expected_contains": "k"}
+{"name": "cache_pop_missing_raises", "input": {"maxsize": 5, "ops": [["pop", "nope"]]}, "expected_exception": "KeyError"}
+{"name": "cache_pop_with_default", "input": {"maxsize": 5, "ops": [["pop_default", "nope", 42]]}, "expected": 42}

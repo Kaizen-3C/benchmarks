@@ -1,0 +1,10 @@
+{"name": "dict_required_present", "input": {"schema": {"x": "int"}, "required": true, "data": {"x": 1}}, "expected": {"x": 1}}
+{"name": "dict_required_missing", "input": {"schema": {"x": "int"}, "required": true, "data": {}}, "expected": "raises MultipleInvalid with RequiredFieldInvalid"}
+{"name": "dict_optional_absent", "input": {"schema": {"x": "int"}, "required": false, "data": {}}, "expected": {}}
+{"name": "dict_extra_prevent", "input": {"schema": {}, "extra": 0, "data": {"a": 1}}, "expected": "raises MultipleInvalid"}
+{"name": "dict_extra_allow", "input": {"schema": {}, "extra": 1, "data": {"a": 1}}, "expected": {"a": 1}}
+{"name": "dict_extra_remove", "input": {"schema": {}, "extra": 2, "data": {"a": 1}}, "expected": {}}
+{"name": "dict_nested_pass", "input": {"schema": {"a": {"b": "int"}}, "data": {"a": {"b": 3}}}, "expected": {"a": {"b": 3}}}
+{"name": "dict_nested_fail", "input": {"schema": {"a": {"b": "int"}}, "data": {"a": {"b": "x"}}}, "expected": "raises MultipleInvalid"}
+{"name": "dict_type_key", "input": {"schema": {"str_key": "int"}, "data": {"hello": 1}}, "expected": {"hello": 1}}
+{"name": "dict_default_required", "input": {"schema": {"Required('x', default=0)": "int"}, "data": {}}, "expected": {"x": 0}}

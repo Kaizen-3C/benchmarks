@@ -1,0 +1,15 @@
+{"name": "exp_in_future_ok", "input": {"exp": 9999999999, "now": "current"}, "expected": {"raises": null}}
+{"name": "exp_in_past_raises", "input": {"exp": 1, "now": "current"}, "expected": {"raises": "ExpiredSignatureError"}}
+{"name": "exp_equal_now_raises", "input": {"exp": "==now", "leeway": 0}, "expected": {"raises": "ExpiredSignatureError"}}
+{"name": "exp_equal_now_with_leeway_ok", "input": {"exp": "==now", "leeway": 1}, "expected": {"raises": null}}
+{"name": "nbf_past_ok", "input": {"nbf": 1}, "expected": {"raises": null}}
+{"name": "nbf_future_raises", "input": {"nbf": 9999999999}, "expected": {"raises": "ImmatureSignatureError"}}
+{"name": "iat_non_integer_raises", "input": {"iat": "notanint"}, "expected": {"raises": "InvalidIssuedAtError"}}
+{"name": "aud_list_partial_match_ok", "input": {"aud": ["app1", "app2"], "audience": "app2"}, "expected": {"raises": null}}
+{"name": "aud_list_no_match_raises", "input": {"aud": ["app1", "app2"], "audience": "app3"}, "expected": {"raises": "InvalidAudienceError"}}
+{"name": "aud_present_no_audience_arg_raises", "input": {"aud": "myapp", "audience": null}, "expected": {"raises": "InvalidAudienceError"}}
+{"name": "strict_aud_string_match_ok", "input": {"aud": "myapp", "audience": "myapp", "strict": true}, "expected": {"raises": null}}
+{"name": "strict_aud_list_in_payload_raises", "input": {"aud": ["myapp"], "audience": "myapp", "strict": true}, "expected": {"raises": "InvalidAudienceError"}}
+{"name": "iss_none_no_validation", "input": {"iss": "anything", "issuer": null}, "expected": {"raises": null}}
+{"name": "iss_missing_with_issuer_arg_raises", "input": {"payload_has_iss": false, "issuer": "expected"}, "expected": {"raises": "MissingRequiredClaimError"}}
+{"name": "require_present_claim_ok", "input": {"payload": {"sub": "test", "exp": 9999999999}, "require": ["exp"]}, "expected": {"raises": null}}

@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "lib": "deprecated",
+  "executor_model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "findings_count": 8,
+  "findings_used": 8,
+  "files_edited": [
+    "sphinx.py"
+  ],
+  "cost_usd": 0.0325,
+  "elapsed_s": 10.662,
+  "usage": {
+    "input": 611,
+    "output": 1118,
+    "cache_read": 0,
+    "cache_write": 3704
+  },
+  "raw_response_head": "=== sphinx.py ===\n```python\nimport re\nimport textwrap\nfrom . import classic\n\n\ndef _clean_reason(reason):\n    if reason is None:\n        return None\n    # Replace :role:`content` or :domain:role:`content` with `content`\n    pattern = r':(?:[A-Za-z0-9_]+:)?[A-Za-z0-9_]+:`([^`]*)`'\n    return re.sub(pattern, r'`\\1`', reason)\n\n\nclass SphinxAdapter:\n    def __init__(self, directive, reason=None, version=None, line_length=70):\n        classic._validate_reason(reason)\n        self.directive = directive\n        self.reason = reason\n        self.version = version\n        self.line_length = line_length\n"
+}

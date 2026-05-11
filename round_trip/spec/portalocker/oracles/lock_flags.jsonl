@@ -1,0 +1,13 @@
+{"name": "lock_flags_shared_value", "input": {"flag": "SHARED"}, "expected": 1}
+{"name": "lock_flags_exclusive_value", "input": {"flag": "EXCLUSIVE"}, "expected": 2}
+{"name": "lock_flags_non_blocking_value", "input": {"flag": "NON_BLOCKING"}, "expected": 4}
+{"name": "lock_flags_unblock_value", "input": {"flag": "UNBLOCK"}, "expected": 8}
+{"name": "lock_flags_ex_nb_or", "input": {"op": "EXCLUSIVE | NON_BLOCKING"}, "expected": 6}
+{"name": "lock_flags_sh_nb_or", "input": {"op": "SHARED | NON_BLOCKING"}, "expected": 5}
+{"name": "lock_flags_is_intflag", "input": {"check": "isinstance(LockFlags.EXCLUSIVE, int)"}, "expected": true}
+{"name": "lock_flags_nb_in_ex_nb", "input": {"op": "LockFlags.NON_BLOCKING & (LockFlags.EXCLUSIVE | LockFlags.NON_BLOCKING)"}, "expected": 4}
+{"name": "lock_flags_sh_not_in_ex", "input": {"op": "LockFlags.SHARED & LockFlags.EXCLUSIVE"}, "expected": 0}
+{"name": "lock_flags_alias_lock_ex", "input": {"alias": "LOCK_EX"}, "expected": 2}
+{"name": "lock_flags_alias_lock_sh", "input": {"alias": "LOCK_SH"}, "expected": 1}
+{"name": "lock_flags_alias_lock_nb", "input": {"alias": "LOCK_NB"}, "expected": 4}
+{"name": "lock_flags_alias_lock_un", "input": {"alias": "LOCK_UN"}, "expected": 8}

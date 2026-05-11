@@ -1,0 +1,8 @@
+{"name": "cached_returns_cached_value", "input": {"cache": {}, "f_calls": 2, "same_args": true}, "expected_f_call_count": 1}
+{"name": "cached_none_cache_always_calls", "input": {"cache": null, "f_calls": 3, "same_args": true}, "expected_f_call_count": 3}
+{"name": "cached_cache_attribute_present", "input": {"cache": {}}, "expected_attr": "cache"}
+{"name": "cached_cache_clear_resets", "input": {"cache": {}, "ops": [["call", 1], ["clear"], ["call", 1]]}, "expected_f_call_count": 2}
+{"name": "cached_info_true_returns_info", "input": {"info": true}, "expected_attr": "cache_info"}
+{"name": "cached_info_false_no_attr", "input": {"info": false}, "expected_no_attr": "cache_info"}
+{"name": "cached_value_error_ignored", "input": {"cache": "size1dict", "large_value": true}, "expected": "no exception raised"}
+{"name": "cached_preserves_wrapped", "input": {}, "expected": "__wrapped__ present on wrapper"}

@@ -1,0 +1,5 @@
+{"name": "coerce_str_to_int", "input": {"type": "int", "data": "42"}, "expected": 42}
+{"name": "coerce_invalid", "input": {"type": "int", "data": "abc"}, "expected": "raises CoerceInvalid"}
+{"name": "coerce_float_to_int", "input": {"type": "int", "data": 3.7}, "expected": 3}
+{"name": "coerce_custom_msg", "input": {"type": "int", "msg": "need int", "data": "x"}, "expected": "raises CoerceInvalid('need int')"}
+{"name": "coerce_bool", "input": {"type": "bool", "data": 0}, "expected": false}

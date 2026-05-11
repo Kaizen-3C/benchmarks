@@ -1,0 +1,18 @@
+{
+  "package_name": "portalocker",
+  "version": "2.10.1",
+  "install_requires": [
+    "pywin32>=226; platform_system == \"Windows\""
+  ],
+  "python_requires": ">=3.8",
+  "modules": [
+    "__about__.py",
+    "__init__.py",
+    "__main__.py",
+    "constants.py",
+    "exceptions.py",
+    "portalocker.py",
+    "redis.py",
+    "utils.py"
+  ]
+}

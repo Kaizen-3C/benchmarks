@@ -1,0 +1,9 @@
+{"name": "exclusive_one_present", "input": {"schema": "Exclusive('x','g') Exclusive('y','g')", "data": {"x": 1}}, "expected": {"x": 1}}
+{"name": "exclusive_both_present", "input": {"schema": "Exclusive('x','g') Exclusive('y','g')", "data": {"x": 1, "y": 2}}, "expected": "raises ExclusiveInvalid"}
+{"name": "inclusive_both_present", "input": {"schema": "Inclusive('x','g') Inclusive('y','g')", "data": {"x": 1, "y": 2}}, "expected": {"x": 1, "y": 2}}
+{"name": "inclusive_partial_present", "input": {"schema": "Inclusive('x','g') Inclusive('y','g')", "data": {"x": 1}}, "expected": "raises InclusiveInvalid"}
+{"name": "inclusive_none_present", "input": {"schema": "Inclusive('x','g') Inclusive('y','g')", "data": {}}, "expected": {}}
+{"name": "remove_key_validates", "input": {"schema": "Remove('x'): int, 'y': str", "data": {"x": 1, "y": "a"}}, "expected": {"y": "a"}}
+{"name": "required_default_applied", "input": {"schema": "Required('x', default=0): int", "data": {}}, "expected": {"x": 0}}
+{"name": "optional_default_applied", "input": {"schema": "Optional('x', default=0): int", "data": {}}, "expected": {"x": 0}}
+{"name": "msg_custom_error", "input": {"schema": "Msg(int, 'need int')", "data": "x"}, "expected": "raises Invalid('need int')"}

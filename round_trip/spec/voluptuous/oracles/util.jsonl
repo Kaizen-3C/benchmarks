@@ -1,0 +1,12 @@
+{"name": "lower", "input": {"data": "HELLO"}, "expected": "hello"}
+{"name": "upper", "input": {"data": "hello"}, "expected": "HELLO"}
+{"name": "capitalize", "input": {"data": "hello world"}, "expected": "Hello world"}
+{"name": "title", "input": {"data": "hello world"}, "expected": "Hello World"}
+{"name": "strip", "input": {"data": "  hello  "}, "expected": "hello"}
+{"name": "default_to_none", "input": {"default": 42, "data": null}, "expected": 42}
+{"name": "default_to_non_none", "input": {"default": 42, "data": 99}, "expected": 99}
+{"name": "set_to", "input": {"value": 7, "data": "anything"}, "expected": 7}
+{"name": "set_from_list", "input": {"data": [1, 2, 2, 3]}, "expected": [1, 2, 3]}
+{"name": "set_unhashable", "input": {"data": [[1, 2]]}, "expected": "raises TypeInvalid"}
+{"name": "literal_match", "input": {"lit": "foo", "data": "foo"}, "expected": "foo"}
+{"name": "literal_mismatch", "input": {"lit": "foo", "data": "bar"}, "expected": "raises LiteralInvalid"}

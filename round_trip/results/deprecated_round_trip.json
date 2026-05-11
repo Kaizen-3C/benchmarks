@@ -1,0 +1,558 @@
+{
+  "lib": "deprecated",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "preflight": {
+    "pass": true,
+    "inputs": {
+      "original_dir_exists": true,
+      "spec_dir_pre_existing": false,
+      "py_files_seen": 30,
+      "test_files_seen": 7
+    },
+    "pre_decompose_gates": {},
+    "reason": "ok"
+  },
+  "decompose": {
+    "cost_usd": 0.1219,
+    "elapsed_s": 85.325,
+    "files_in_spec": 20,
+    "files_in_source": 20,
+    "model": "claude-sonnet-4-6",
+    "provider": "anthropic",
+    "usage": {
+      "input": 998,
+      "output": 6036,
+      "cache_read": 0,
+      "cache_write": 7564
+    }
+  },
+  "gates": {
+    "coverage": {
+      "pass": true,
+      "failures": [],
+      "stats": {
+        "symbols_total": 5,
+        "symbols_covered": 5,
+        "symbols_total_unscoped": 22,
+        "coverage_pct": 100.0
+      }
+    },
+    "specificity": {
+      "pass": false,
+      "failures": [
+        {
+          "adr": "adrs/ADR-0002-warning-action-override.md",
+          "score": 0.5,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0002-warning-action-override.md scored 0.5 (threshold 1.0). Add: named algorithm/library references, vague modals (1 hits \u2014 replace 'may'/'should'/'typically' with concrete decisions)."
+        },
+        {
+          "adr": "adrs/ADR-0003-stacklevel-calculation.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0003-stacklevel-calculation.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0007-sphinx-role-stripping.md",
+          "score": 0.5,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0007-sphinx-role-stripping.md scored 0.5 (threshold 1.0). Add: named algorithm/library references, vague modals (1 hits \u2014 replace 'may'/'should'/'typically' with concrete decisions)."
+        }
+      ],
+      "stats": {
+        "adrs_scored": 8,
+        "adrs_passed": 5,
+        "scores": [
+          {
+            "adr": "adrs/ADR-0001-decorator-dual-mode.md",
+            "score": 3.0,
+            "digit_runs": 3,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0002-warning-action-override.md",
+            "score": 0.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0003-stacklevel-calculation.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0004-class-decoration.md",
+            "score": 2.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 1,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0005-kind-detection.md",
+            "score": 2.5,
+            "digit_runs": 3,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0006-sphinx-docstring-injection.md",
+            "score": 2.0,
+            "digit_runs": 2,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0007-sphinx-role-stripping.md",
+            "score": 0.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0008-message-format.md",
+            "score": 3.0,
+            "digit_runs": 3,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          }
+        ]
+      }
+    },
+    "consistency": {
+      "pass": true,
+      "failures": [],
+      "stats": {
+        "refs_checked": 18,
+        "refs_dangling": 0,
+        "targets_indexed": {
+          "adrs": 8,
+          "contracts": 2,
+          "oracles": 7
+        }
+      }
+    },
+    "test_oracle_alignment": {
+      "pass": false,
+      "failures": [
+        {
+          "test": "test_with_init",
+          "source": "tests/test_sphinx_metaclass.py:24",
+          "remediation": "No oracle covers `test_with_init` (tests/test_sphinx_metaclass.py:24). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_with_init\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_with_new",
+          "source": "tests/test_sphinx_metaclass.py:41",
+          "remediation": "No oracle covers `test_with_new` (tests/test_sphinx_metaclass.py:41). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_with_new\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_with_metaclass",
+          "source": "tests/test_sphinx_metaclass.py:64",
+          "remediation": "No oracle covers `test_with_metaclass` (tests/test_sphinx_metaclass.py:64). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_with_metaclass\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_with_singleton_metaclass",
+          "source": "tests/test_sphinx_metaclass.py:88",
+          "remediation": "No oracle covers `test_with_singleton_metaclass` (tests/test_sphinx_metaclass.py:88). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_with_singleton_metaclass\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_class_deprecation_using_a_simple_decorator",
+          "source": "tests/test_sphinx_class.py:14",
+          "remediation": "No oracle covers `test_class_deprecation_using_a_simple_decorator` (tests/test_sphinx_class.py:14). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_class_deprecation_using_a_simple_decorator\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_class_deprecation_using_deprecated_decorator",
+          "source": "tests/test_sphinx_class.py:47",
+          "remediation": "No oracle covers `test_class_deprecation_using_deprecated_decorator` (tests/test_sphinx_class.py:47). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_class_deprecation_using_deprecated_decorator\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_subclass_deprecation_using_deprecated_decorator",
+          "source": "tests/test_sphinx_class.py:68",
+          "remediation": "No oracle covers `test_subclass_deprecation_using_deprecated_decorator` (tests/test_sphinx_class.py:68). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_subclass_deprecation_using_deprecated_decorator\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_isinstance_versionadded",
+          "source": "tests/test_sphinx_class.py:90",
+          "remediation": "No oracle covers `test_isinstance_versionadded` (tests/test_sphinx_class.py:90). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_isinstance_versionadded\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_isinstance_versionchanged",
+          "source": "tests/test_sphinx_class.py:108",
+          "remediation": "No oracle covers `test_isinstance_versionchanged` (tests/test_sphinx_class.py:108). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_isinstance_versionchanged\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_isinstance_deprecated",
+          "source": "tests/test_sphinx_class.py:125",
+          "remediation": "No oracle covers `test_isinstance_deprecated` (tests/test_sphinx_class.py:125). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_isinstance_deprecated\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_isinstance_versionadded_versionchanged",
+          "source": "tests/test_sphinx_class.py:142",
+          "remediation": "No oracle covers `test_isinstance_versionadded_versionchanged` (tests/test_sphinx_class.py:142). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_isinstance_versionadded_versionchanged\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_with_init",
+          "source": "tests/test_deprecated_metaclass.py:24",
+          "remediation": "No oracle covers `test_with_init` (tests/test_deprecated_metaclass.py:24). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_with_init\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_with_new",
+          "source": "tests/test_deprecated_metaclass.py:41",
+          "remediation": "No oracle covers `test_with_new` (tests/test_deprecated_metaclass.py:41). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_with_new\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_with_metaclass",
+          "source": "tests/test_deprecated_metaclass.py:64",
+          "remediation": "No oracle covers `test_with_metaclass` (tests/test_deprecated_metaclass.py:64). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_with_metaclass\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_with_singleton_metaclass",
+          "source": "tests/test_deprecated_metaclass.py:88",
+          "remediation": "No oracle covers `test_with_singleton_metaclass` (tests/test_deprecated_metaclass.py:88). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_with_singleton_metaclass\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_has_sphinx_docstring",
+          "source": "tests/test_sphinx.py:70",
+          "remediation": "No oracle covers `test_has_sphinx_docstring` (tests/test_sphinx.py:70). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_has_sphinx_docstring\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_cls_has_sphinx_docstring",
+          "source": "tests/test_sphinx.py:137",
+          "remediation": "No oracle covers `test_cls_has_sphinx_docstring` (tests/test_sphinx.py:137). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_cls_has_sphinx_docstring\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_sphinx_deprecated_function__warns",
+          "source": "tests/test_sphinx.py:248",
+          "remediation": "No oracle covers `test_sphinx_deprecated_function__warns` (tests/test_sphinx.py:248). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_sphinx_deprecated_function__warns\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_sphinx_deprecated_class__warns",
+          "source": "tests/test_sphinx.py:262",
+          "remediation": "No oracle covers `test_sphinx_deprecated_class__warns` (tests/test_sphinx.py:262). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_sphinx_deprecated_class__warns\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_sphinx_deprecated_method__warns",
+          "source": "tests/test_sphinx.py:273",
+          "remediation": "No oracle covers `test_sphinx_deprecated_method__warns` (tests/test_sphinx.py:273). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_sphinx_deprecated_method__warns\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_sphinx_deprecated_static_method__warns",
+          "source": "tests/test_sphinx.py:285",
+          "remediation": "No oracle covers `test_sphinx_deprecated_static_method__warns` (tests/test_sphinx.py:285). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_sphinx_deprecated_static_method__warns\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_sphinx_deprecated_class_method__warns",
+          "source": "tests/test_sphinx.py:296",
+          "remediation": "No oracle covers `test_sphinx_deprecated_class_method__warns` (tests/test_sphinx.py:296). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_sphinx_deprecated_class_method__warns\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_should_raise_type_error",
+          "source": "tests/test_sphinx.py:310",
+          "remediation": "No oracle covers `test_should_raise_type_error` (tests/test_sphinx.py:310). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_should_raise_type_error\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_warning_msg_has_reason",
+          "source": "tests/test_sphinx.py:321",
+          "remediation": "No oracle covers `test_warning_msg_has_reason` (tests/test_sphinx.py:321). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_warning_msg_has_reason\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_warning_msg_has_version",
+          "source": "tests/test_sphinx.py:334",
+          "remediation": "No oracle covers `test_warning_msg_has_version` (tests/test_sphinx.py:334). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_warning_msg_has_version\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_warning_is_ignored",
+          "source": "tests/test_sphinx.py:347",
+          "remediation": "No oracle covers `test_warning_is_ignored` (tests/test_sphinx.py:347). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_warning_is_ignored\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_specific_warning_cls_is_used",
+          "source": "tests/test_sphinx.py:357",
+          "remediation": "No oracle covers `test_specific_warning_cls_is_used` (tests/test_sphinx.py:357). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_specific_warning_cls_is_used\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_can_catch_warnings",
+          "source": "tests/test_sphinx.py:368",
+          "remediation": "No oracle covers `test_can_catch_warnings` (tests/test_sphinx.py:368). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_can_catch_warnings\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_sphinx_syntax_trimming",
+          "source": "tests/test_sphinx.py:382",
+          "remediation": "No oracle covers `test_sphinx_syntax_trimming` (tests/test_sphinx.py:382). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_sphinx_syntax_trimming\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_get_deprecated_msg",
+          "source": "tests/test_sphinx.py:421",
+          "remediation": "No oracle covers `test_get_deprecated_msg` (tests/test_sphinx.py:421). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_get_deprecated_msg\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_simple_class_deprecation",
+          "source": "tests/test_deprecated_class.py:11",
+          "remediation": "No oracle covers `test_simple_class_deprecation` (tests/test_deprecated_class.py:11). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_simple_class_deprecation\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_class_deprecation_using_wrapper",
+          "source": "tests/test_deprecated_class.py:32",
+          "remediation": "No oracle covers `test_class_deprecation_using_wrapper` (tests/test_deprecated_class.py:32). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_class_deprecation_using_wrapper\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_class_deprecation_using_a_simple_decorator",
+          "source": "tests/test_deprecated_class.py:61",
+          "remediation": "No oracle covers `test_class_deprecation_using_a_simple_decorator` (tests/test_deprecated_class.py:61). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_class_deprecation_using_a_simple_decorator\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_class_deprecation_using_deprecated_decorator",
+          "source": "tests/test_deprecated_class.py:91",
+          "remediation": "No oracle covers `test_class_deprecation_using_deprecated_decorator` (tests/test_deprecated_class.py:91). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_class_deprecation_using_deprecated_decorator\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_class_respect_global_filter",
+          "source": "tests/test_deprecated_class.py:109",
+          "remediation": "No oracle covers `test_class_respect_global_filter` (tests/test_deprecated_class.py:109). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_class_respect_global_filter\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_subclass_deprecation_using_deprecated_decorator",
+          "source": "tests/test_deprecated_class.py:122",
+          "remediation": "No oracle covers `test_subclass_deprecation_using_deprecated_decorator` (tests/test_deprecated_class.py:122). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_subclass_deprecation_using_deprecated_decorator\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_simple_class_deprecation_with_args",
+          "source": "tests/test_deprecated_class.py:141",
+          "remediation": "No oracle covers `test_simple_class_deprecation_with_args` (tests/test_deprecated_class.py:141). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_simple_class_deprecation_with_args\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_sphinx_adapter",
+          "source": "tests/test_sphinx_adapter.py:51",
+          "remediation": "No oracle covers `test_sphinx_adapter` (tests/test_sphinx_adapter.py:51). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_sphinx_adapter\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_sphinx_adapter__empty_docstring",
+          "source": "tests/test_sphinx_adapter.py:74",
+          "remediation": "No oracle covers `test_sphinx_adapter__empty_docstring` (tests/test_sphinx_adapter.py:74). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_sphinx_adapter__empty_docstring\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_decorator_accept_line_length",
+          "source": "tests/test_sphinx_adapter.py:110",
+          "remediation": "No oracle covers `test_decorator_accept_line_length` (tests/test_sphinx_adapter.py:110). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_decorator_accept_line_length\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_classic_deprecated_function__warns",
+          "source": "tests/test_deprecated.py:131",
+          "remediation": "No oracle covers `test_classic_deprecated_function__warns` (tests/test_deprecated.py:131). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_classic_deprecated_function__warns\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_classic_deprecated_class__warns",
+          "source": "tests/test_deprecated.py:143",
+          "remediation": "No oracle covers `test_classic_deprecated_class__warns` (tests/test_deprecated.py:143). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_classic_deprecated_class__warns\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_classic_deprecated_method__warns",
+          "source": "tests/test_deprecated.py:155",
+          "remediation": "No oracle covers `test_classic_deprecated_method__warns` (tests/test_deprecated.py:155). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_classic_deprecated_method__warns\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_classic_deprecated_static_method__warns",
+          "source": "tests/test_deprecated.py:168",
+          "remediation": "No oracle covers `test_classic_deprecated_static_method__warns` (tests/test_deprecated.py:168). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_classic_deprecated_static_method__warns\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_classic_deprecated_class_method__warns",
+          "source": "tests/test_deprecated.py:180",
+          "remediation": "No oracle covers `test_classic_deprecated_class_method__warns` (tests/test_deprecated.py:180). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_classic_deprecated_class_method__warns\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_should_raise_type_error",
+          "source": "tests/test_deprecated.py:195",
+          "remediation": "No oracle covers `test_should_raise_type_error` (tests/test_deprecated.py:195). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_should_raise_type_error\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_warning_msg_has_reason",
+          "source": "tests/test_deprecated.py:203",
+          "remediation": "No oracle covers `test_warning_msg_has_reason` (tests/test_deprecated.py:203). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_warning_msg_has_reason\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_warning_msg_has_version",
+          "source": "tests/test_deprecated.py:216",
+          "remediation": "No oracle covers `test_warning_msg_has_version` (tests/test_deprecated.py:216). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_warning_msg_has_version\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_warning_is_ignored",
+          "source": "tests/test_deprecated.py:229",
+          "remediation": "No oracle covers `test_warning_is_ignored` (tests/test_deprecated.py:229). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_warning_is_ignored\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_specific_warning_cls_is_used",
+          "source": "tests/test_deprecated.py:239",
+          "remediation": "No oracle covers `test_specific_warning_cls_is_used` (tests/test_deprecated.py:239). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_specific_warning_cls_is_used\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_respect_global_filter",
+          "source": "tests/test_deprecated.py:250",
+          "remediation": "No oracle covers `test_respect_global_filter` (tests/test_deprecated.py:250). Append a JSONL row to deprecated/oracles/ with `{\"name\": \"test_respect_global_filter\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        }
+      ],
+      "stats": {
+        "tests_total": 51,
+        "oracles_total": 44,
+        "tests_aligned": 0,
+        "alignment_pct": 0.0
+      }
+    },
+    "implementation_leak": {
+      "pass": false,
+      "failures": [
+        {
+          "adr": "adrs/ADR-0003-stacklevel-calculation.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_decorate_class",
+          "remediation": "adrs/ADR-0003-stacklevel-calculation.md references private symbol `_decorate_class`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0003-stacklevel-calculation.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_warn",
+          "remediation": "adrs/ADR-0003-stacklevel-calculation.md references private symbol `_warn`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0004-class-decoration.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_decorate_class",
+          "remediation": "adrs/ADR-0004-class-decoration.md references private symbol `_decorate_class`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0005-kind-detection.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_kind_for_callable",
+          "remediation": "adrs/ADR-0005-kind-detection.md references private symbol `_kind_for_callable`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0007-sphinx-role-stripping.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_clean_reason",
+          "remediation": "adrs/ADR-0007-sphinx-role-stripping.md references private symbol `_clean_reason`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0008-message-format.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_build_message",
+          "remediation": "adrs/ADR-0008-message-format.md references private symbol `_build_message`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        }
+      ],
+      "stats": {
+        "code_blocks_seen": 2,
+        "private_symbols_indexed": 9,
+        "leaks_total": 6
+      }
+    }
+  },
+  "recompose": {
+    "cost_usd": 0.0562,
+    "elapsed_s": 21.985,
+    "files_emitted": 3,
+    "model": "claude-sonnet-4-6",
+    "provider": "anthropic",
+    "usage": {
+      "input": 702,
+      "output": 2086,
+      "cache_read": 0,
+      "cache_write": 6069
+    }
+  },
+  "metrics": {
+    "q1_test_parity": {
+      "value": 0.6433,
+      "detail": {
+        "passed": 110,
+        "failed": 61,
+        "errors": 0,
+        "skipped": 0,
+        "attempted": 171,
+        "collected": 171,
+        "test_suite_executed": true,
+        "pytest_returncode": 1,
+        "inventory": {
+          "recomposed_files": 3,
+          "test_files": 18,
+          "toplevel_files": 4,
+          "package_name": "deprecated"
+        },
+        "cov_changes": {},
+        "output_tail": "AILED tests/test_sphinx.py::test_has_sphinx_docstring[D212_long_docstring-versionadded-reason&version]\r\nFAILED tests/test_sphinx.py::test_has_sphinx_docstring[D212_long_docstring-versionadded-version]\r\nFAILED tests/test_sphinx.py::test_cls_has_sphinx_docstring[D212_long_docstring-versionadded-reason&version]\r\nFAILED tests/test_sphinx.py::test_cls_has_sphinx_docstring[D212_long_docstring-versionadded-version]\r\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter[versionchanged-wrapped]\r\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter[versionchanged-long]\r\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter[versionadded-wrapped]\r\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter[versionadded-long]\r\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter[deprecated-wrapped]\r\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter[deprecated-long] - A...\r\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter__empty_docstring[versionchanged]\r\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter__empty_docstring[versionadded]\r\nFAILED tests/test_sphinx_adapter.py::test_sphinx_adapter__empty_docstring[deprecated]\r\nFAILED tests/test_sphinx_adapter.py::test_decorator_accept_line_length[versionadded-versionadded]\r\nFAILED tests/test_sphinx_adapter.py::test_decorator_accept_line_length[versionchanged-versionchanged]\r\nFAILED tests/test_sphinx_adapter.py::test_decorator_accept_line_length[deprecated-deprecated]\r\n61 failed, 110 passed, 6 warnings in 1.14s\r\n\n"
+      }
+    },
+    "q2_behavioral_parity": {
+      "value": null,
+      "detail": {
+        "todo": "phase 2: execute curated (input,output) pairs on both impls"
+      }
+    },
+    "q3_structural_parity": {
+      "value": 1.0,
+      "detail": {
+        "signatures_in_original": 15,
+        "signatures_in_recomposed": 15,
+        "intersection": 15,
+        "missing_from_recomposed": [],
+        "extra_in_recomposed": [],
+        "missing_count": 0,
+        "extra_count": 0
+      }
+    },
+    "q4_information_loss": {
+      "value": 0.9,
+      "detail": {
+        "symbols_in_original": 10,
+        "symbols_mentioned_in_spec": 9,
+        "orphans": [
+          "__init__"
+        ],
+        "orphan_count": 1
+      }
+    }
+  },
+  "totals": {
+    "cost_usd": 0.1781,
+    "elapsed_s": 110.823
+  }
+}

@@ -1,0 +1,5 @@
+{"name": "instantiation_emits_warning", "input": {"class_name": "OldClass", "reason": null, "version": null}, "expected": {"warning_category": "DeprecationWarning", "message_contains": "Call to deprecated class OldClass."}}
+{"name": "instantiation_with_version", "input": {"class_name": "OldClass", "reason": null, "version": "2.0"}, "expected": {"message_contains": "Deprecated in version 2.0."}}
+{"name": "action_error_on_class", "input": {"class_name": "Bad", "reason": "gone", "action": "error"}, "expected": {"raises": "DeprecationWarning"}}
+{"name": "instance_is_correct_type", "input": {"class_name": "OldClass", "reason": null}, "expected": {"instance_of": "OldClass"}}
+{"name": "subclass_instantiation_also_warns", "input": {"class_name": "OldClass", "subclass": true, "reason": null}, "expected": {"warning_category": "DeprecationWarning"}}

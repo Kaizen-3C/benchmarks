@@ -1,0 +1,11 @@
+{"name": "encode_decode_roundtrip", "input": {"data": "hello world"}, "expected": {"roundtrip": true}}
+{"name": "encode_no_padding", "input": {"data": "a"}, "expected": {"no_equals_sign": true}}
+{"name": "decode_with_missing_padding", "input": {"b64url": "aGVsbG8"}, "expected": {"decoded": "hello"}}
+{"name": "to_base64url_uint_zero", "input": {"val": 0}, "expected": {"result": "AA"}}
+{"name": "to_base64url_uint_negative_raises", "input": {"val": -1}, "expected": {"raises": "ValueError"}}
+{"name": "from_base64url_uint_roundtrip", "input": {"val": 65537}, "expected": {"roundtrip": true}}
+{"name": "force_bytes_str", "input": {"value": "hello"}, "expected": {"result": "hello", "type": "bytes"}}
+{"name": "force_bytes_bytes", "input": {"value": "aGVsbG8="}, "expected": {"type": "bytes"}}
+{"name": "force_bytes_invalid_type_raises", "input": {"value": 42}, "expected": {"raises": "TypeError"}}
+{"name": "number_to_bytes_big_endian", "input": {"num": 256, "num_bytes": 2}, "expected": {"result": [1, 0]}}
+{"name": "bytes_to_number_big_endian", "input": {"bytes": [1, 0]}, "expected": {"result": 256}}

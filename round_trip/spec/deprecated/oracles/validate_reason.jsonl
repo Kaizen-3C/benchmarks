@@ -1,0 +1,6 @@
+{"name": "none_is_valid", "input": {"reason": null}, "expected": "no_exception"}
+{"name": "string_is_valid", "input": {"reason": "some reason"}, "expected": "no_exception"}
+{"name": "empty_string_is_valid", "input": {"reason": ""}, "expected": "no_exception"}
+{"name": "int_raises", "input": {"reason": 42}, "expected": "TypeError"}
+{"name": "list_raises", "input": {"reason": ["a"]}, "expected": "TypeError"}
+{"name": "callable_raises", "input": {"reason": "__lambda__"}, "expected": "TypeError"}

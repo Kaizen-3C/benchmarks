@@ -2,43 +2,828 @@
   "lib": "wcwidth",
   "provider": "anthropic",
   "model": "claude-sonnet-4-6",
+  "preflight": {
+    "pass": true,
+    "inputs": {
+      "original_dir_exists": true,
+      "spec_dir_pre_existing": true,
+      "py_files_seen": 18,
+      "test_files_seen": 4
+    },
+    "pre_decompose_gates": {
+      "coverage": {
+        "pass": true,
+        "failures": [],
+        "stats": {
+          "symbols_total": 1,
+          "symbols_covered": 1,
+          "symbols_total_unscoped": 43,
+          "coverage_pct": 100.0
+        }
+      },
+      "specificity": {
+        "pass": true,
+        "failures": [],
+        "stats": {
+          "adrs_scored": 9,
+          "adrs_passed": 9,
+          "scores": [
+            {
+              "adr": "adrs/ADR-0001-unicode-version-table-structure.md",
+              "score": 5.0,
+              "digit_runs": 3,
+              "quantitative_phrases": 0,
+              "named_refs": 5,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0002-binary-search-lookup.md",
+              "score": 3.0,
+              "digit_runs": 3,
+              "quantitative_phrases": 0,
+              "named_refs": 1,
+              "vague_modals": 1,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0003-version-matching-strategy.md",
+              "score": 1.5,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 2,
+              "vague_modals": 1,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0004-lru-cache-policy.md",
+              "score": 6.5,
+              "digit_runs": 7,
+              "quantitative_phrases": 1,
+              "named_refs": 3,
+              "vague_modals": 0,
+              "hedges": 2
+            },
+            {
+              "adr": "adrs/ADR-0005-zero-width-joiner-and-vs16-handling.md",
+              "score": 6.0,
+              "digit_runs": 7,
+              "quantitative_phrases": 0,
+              "named_refs": 4,
+              "vague_modals": 2,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0006-supported-unicode-versions.md",
+              "score": 8.0,
+              "digit_runs": 34,
+              "quantitative_phrases": 1,
+              "named_refs": 4,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0007-table-generation-and-provenance.md",
+              "score": 7.0,
+              "digit_runs": 10,
+              "quantitative_phrases": 0,
+              "named_refs": 6,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0008-public-api-surface.md",
+              "score": 2.5,
+              "digit_runs": 2,
+              "quantitative_phrases": 1,
+              "named_refs": 0,
+              "vague_modals": 1,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0009-c0-c1-control-character-handling.md",
+              "score": 6.5,
+              "digit_runs": 6,
+              "quantitative_phrases": 0,
+              "named_refs": 3,
+              "vague_modals": 0,
+              "hedges": 0
+            }
+          ]
+        }
+      },
+      "consistency": {
+        "pass": true,
+        "failures": [],
+        "stats": {
+          "refs_checked": 26,
+          "refs_dangling": 0,
+          "targets_indexed": {
+            "adrs": 9,
+            "contracts": 3,
+            "oracles": 5
+          }
+        }
+      },
+      "test_oracle_alignment": {
+        "pass": false,
+        "failures": [
+          {
+            "test": "test_package_version",
+            "source": "tests/test_core.py:21",
+            "remediation": "No oracle covers `test_package_version` (tests/test_core.py:21). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_package_version\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_empty_string",
+            "source": "tests/test_core.py:33",
+            "remediation": "No oracle covers `test_empty_string` (tests/test_core.py:33). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_empty_string\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_hello_jp",
+            "source": "tests/test_core.py:72",
+            "remediation": "No oracle covers `test_hello_jp` (tests/test_core.py:72). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_hello_jp\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_wcswidth_substr",
+            "source": "tests/test_core.py:94",
+            "remediation": "No oracle covers `test_wcswidth_substr` (tests/test_core.py:94). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_wcswidth_substr\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_null_width_0",
+            "source": "tests/test_core.py:116",
+            "remediation": "No oracle covers `test_null_width_0` (tests/test_core.py:116). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_null_width_0\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_control_c0_width_negative_1",
+            "source": "tests/test_core.py:132",
+            "remediation": "No oracle covers `test_control_c0_width_negative_1` (tests/test_core.py:132). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_control_c0_width_negative_1\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_combining_width",
+            "source": "tests/test_core.py:156",
+            "remediation": "No oracle covers `test_combining_width` (tests/test_core.py:156). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_combining_width\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_combining_cafe",
+            "source": "tests/test_core.py:172",
+            "remediation": "No oracle covers `test_combining_cafe` (tests/test_core.py:172). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_combining_cafe\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_combining_enclosing",
+            "source": "tests/test_core.py:187",
+            "remediation": "No oracle covers `test_combining_enclosing` (tests/test_core.py:187). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_combining_enclosing\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_balinese_script",
+            "source": "tests/test_core.py:202",
+            "remediation": "No oracle covers `test_balinese_script` (tests/test_core.py:202). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_balinese_script\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_kr_jamo",
+            "source": "tests/test_core.py:225",
+            "remediation": "No oracle covers `test_kr_jamo` (tests/test_core.py:225). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_kr_jamo\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_kr_jamo_filler",
+            "source": "tests/test_core.py:255",
+            "remediation": "No oracle covers `test_kr_jamo_filler` (tests/test_core.py:255). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_kr_jamo_filler\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_devanagari_script",
+            "source": "tests/test_core.py:277",
+            "remediation": "No oracle covers `test_devanagari_script` (tests/test_core.py:277). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_devanagari_script\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_tamil_script",
+            "source": "tests/test_core.py:326",
+            "remediation": "No oracle covers `test_tamil_script` (tests/test_core.py:326). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_tamil_script\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_kannada_script",
+            "source": "tests/test_core.py:347",
+            "remediation": "No oracle covers `test_kannada_script` (tests/test_core.py:347). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_kannada_script\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_kannada_script_2",
+            "source": "tests/test_core.py:369",
+            "remediation": "No oracle covers `test_kannada_script_2` (tests/test_core.py:369). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_kannada_script_2\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_zero_wide_conflict",
+            "source": "tests/test_core.py:391",
+            "remediation": "No oracle covers `test_zero_wide_conflict` (tests/test_core.py:391). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_zero_wide_conflict\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_unfinished_zwj_sequence",
+            "source": "tests/test_emojis.py:56",
+            "remediation": "No oracle covers `test_unfinished_zwj_sequence` (tests/test_emojis.py:56). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_unfinished_zwj_sequence\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_non_recommended_zwj_sequence",
+            "source": "tests/test_emojis.py:76",
+            "remediation": "No oracle covers `test_non_recommended_zwj_sequence` (tests/test_emojis.py:76). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_non_recommended_zwj_sequence\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_another_emoji_zwj_sequence",
+            "source": "tests/test_emojis.py:96",
+            "remediation": "No oracle covers `test_another_emoji_zwj_sequence` (tests/test_emojis.py:96). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_another_emoji_zwj_sequence\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_longer_emoji_zwj_sequence",
+            "source": "tests/test_emojis.py:116",
+            "remediation": "No oracle covers `test_longer_emoji_zwj_sequence` (tests/test_emojis.py:116). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_longer_emoji_zwj_sequence\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_recommended_emoji_zwj_sequences",
+            "source": "tests/test_emojis.py:159",
+            "remediation": "No oracle covers `test_recommended_emoji_zwj_sequences` (tests/test_emojis.py:159). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_recommended_emoji_zwj_sequences\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_recommended_variation_16_sequences",
+            "source": "tests/test_emojis.py:185",
+            "remediation": "No oracle covers `test_recommended_variation_16_sequences` (tests/test_emojis.py:185). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_recommended_variation_16_sequences\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_unicode_9_vs16",
+            "source": "tests/test_emojis.py:213",
+            "remediation": "No oracle covers `test_unicode_9_vs16` (tests/test_emojis.py:213). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_unicode_9_vs16\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_unicode_8_vs16",
+            "source": "tests/test_emojis.py:229",
+            "remediation": "No oracle covers `test_unicode_8_vs16` (tests/test_emojis.py:229). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_unicode_8_vs16\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_latest",
+            "source": "tests/test_ucslevel.py:13",
+            "remediation": "No oracle covers `test_latest` (tests/test_ucslevel.py:13). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_latest\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_exact_410_str",
+            "source": "tests/test_ucslevel.py:25",
+            "remediation": "No oracle covers `test_exact_410_str` (tests/test_ucslevel.py:25). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_exact_410_str\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_exact_410_unicode",
+            "source": "tests/test_ucslevel.py:37",
+            "remediation": "No oracle covers `test_exact_410_unicode` (tests/test_ucslevel.py:37). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_exact_410_unicode\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_nearest_505_str",
+            "source": "tests/test_ucslevel.py:49",
+            "remediation": "No oracle covers `test_nearest_505_str` (tests/test_ucslevel.py:49). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_505_str\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_nearest_505_unicode",
+            "source": "tests/test_ucslevel.py:61",
+            "remediation": "No oracle covers `test_nearest_505_unicode` (tests/test_ucslevel.py:61). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_505_unicode\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_nearest_lowint40_str",
+            "source": "tests/test_ucslevel.py:73",
+            "remediation": "No oracle covers `test_nearest_lowint40_str` (tests/test_ucslevel.py:73). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_lowint40_str\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_nearest_lowint40_unicode",
+            "source": "tests/test_ucslevel.py:89",
+            "remediation": "No oracle covers `test_nearest_lowint40_unicode` (tests/test_ucslevel.py:89). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_lowint40_unicode\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_nearest_800_str",
+            "source": "tests/test_ucslevel.py:105",
+            "remediation": "No oracle covers `test_nearest_800_str` (tests/test_ucslevel.py:105). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_800_str\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_nearest_800_unicode",
+            "source": "tests/test_ucslevel.py:117",
+            "remediation": "No oracle covers `test_nearest_800_unicode` (tests/test_ucslevel.py:117). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_800_unicode\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_nearest_999_str",
+            "source": "tests/test_ucslevel.py:129",
+            "remediation": "No oracle covers `test_nearest_999_str` (tests/test_ucslevel.py:129). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_999_str\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_nearest_999_unicode",
+            "source": "tests/test_ucslevel.py:141",
+            "remediation": "No oracle covers `test_nearest_999_unicode` (tests/test_ucslevel.py:141). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_999_unicode\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_nonint_unicode",
+            "source": "tests/test_ucslevel.py:153",
+            "remediation": "No oracle covers `test_nonint_unicode` (tests/test_ucslevel.py:153). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nonint_unicode\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_nonint_str",
+            "source": "tests/test_ucslevel.py:169",
+            "remediation": "No oracle covers `test_nonint_str` (tests/test_ucslevel.py:169). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nonint_str\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_verify_table_integrity",
+            "source": "tests/test_table_integrity.py:11",
+            "remediation": "No oracle covers `test_verify_table_integrity` (tests/test_table_integrity.py:11). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_verify_table_integrity\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          }
+        ],
+        "stats": {
+          "tests_total": 39,
+          "oracles_total": 66,
+          "tests_aligned": 0,
+          "alignment_pct": 0.0
+        }
+      },
+      "implementation_leak": {
+        "pass": false,
+        "failures": [
+          {
+            "adr": "adrs/ADR-0002-binary-search-lookup.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_bisearch",
+            "remediation": "adrs/ADR-0002-binary-search-lookup.md references private symbol `_bisearch`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0003-version-matching-strategy.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_wcmatch_version",
+            "remediation": "adrs/ADR-0003-version-matching-strategy.md references private symbol `_wcmatch_version`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0003-version-matching-strategy.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_wcversion_value",
+            "remediation": "adrs/ADR-0003-version-matching-strategy.md references private symbol `_wcversion_value`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0004-lru-cache-policy.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_wcmatch_version",
+            "remediation": "adrs/ADR-0004-lru-cache-policy.md references private symbol `_wcmatch_version`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0004-lru-cache-policy.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_wcversion_value",
+            "remediation": "adrs/ADR-0004-lru-cache-policy.md references private symbol `_wcversion_value`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0008-public-api-surface.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_wcmatch_version",
+            "remediation": "adrs/ADR-0008-public-api-surface.md references private symbol `_wcmatch_version`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0008-public-api-surface.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_wcversion_value",
+            "remediation": "adrs/ADR-0008-public-api-surface.md references private symbol `_wcversion_value`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0008-public-api-surface.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_bisearch",
+            "remediation": "adrs/ADR-0008-public-api-surface.md references private symbol `_bisearch`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          }
+        ],
+        "stats": {
+          "code_blocks_seen": 0,
+          "private_symbols_indexed": 11,
+          "leaks_total": 8
+        }
+      }
+    },
+    "reason": "ok"
+  },
   "decompose": {
     "cost_usd": 0.0,
-    "elapsed_s": 0.003,
-    "files_in_spec": 1
+    "elapsed_s": 0.0,
+    "files_in_spec": -1,
+    "skipped": true
   },
   "gates": {
     "coverage": {
-      "pass": null,
-      "failures": []
+      "pass": true,
+      "failures": [],
+      "stats": {
+        "symbols_total": 1,
+        "symbols_covered": 1,
+        "symbols_total_unscoped": 43,
+        "coverage_pct": 100.0
+      }
     },
     "specificity": {
-      "pass": null,
-      "failures": []
+      "pass": true,
+      "failures": [],
+      "stats": {
+        "adrs_scored": 9,
+        "adrs_passed": 9,
+        "scores": [
+          {
+            "adr": "adrs/ADR-0001-unicode-version-table-structure.md",
+            "score": 5.0,
+            "digit_runs": 3,
+            "quantitative_phrases": 0,
+            "named_refs": 5,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0002-binary-search-lookup.md",
+            "score": 3.0,
+            "digit_runs": 3,
+            "quantitative_phrases": 0,
+            "named_refs": 1,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0003-version-matching-strategy.md",
+            "score": 1.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 2,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0004-lru-cache-policy.md",
+            "score": 6.5,
+            "digit_runs": 7,
+            "quantitative_phrases": 1,
+            "named_refs": 3,
+            "vague_modals": 0,
+            "hedges": 2
+          },
+          {
+            "adr": "adrs/ADR-0005-zero-width-joiner-and-vs16-handling.md",
+            "score": 6.0,
+            "digit_runs": 7,
+            "quantitative_phrases": 0,
+            "named_refs": 4,
+            "vague_modals": 2,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0006-supported-unicode-versions.md",
+            "score": 8.0,
+            "digit_runs": 34,
+            "quantitative_phrases": 1,
+            "named_refs": 4,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0007-table-generation-and-provenance.md",
+            "score": 7.0,
+            "digit_runs": 10,
+            "quantitative_phrases": 0,
+            "named_refs": 6,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0008-public-api-surface.md",
+            "score": 2.5,
+            "digit_runs": 2,
+            "quantitative_phrases": 1,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0009-c0-c1-control-character-handling.md",
+            "score": 6.5,
+            "digit_runs": 6,
+            "quantitative_phrases": 0,
+            "named_refs": 3,
+            "vague_modals": 0,
+            "hedges": 0
+          }
+        ]
+      }
     },
     "consistency": {
-      "pass": null,
-      "failures": []
+      "pass": true,
+      "failures": [],
+      "stats": {
+        "refs_checked": 26,
+        "refs_dangling": 0,
+        "targets_indexed": {
+          "adrs": 9,
+          "contracts": 3,
+          "oracles": 5
+        }
+      }
     },
     "test_oracle_alignment": {
-      "pass": null,
-      "failures": []
+      "pass": false,
+      "failures": [
+        {
+          "test": "test_package_version",
+          "source": "tests/test_core.py:21",
+          "remediation": "No oracle covers `test_package_version` (tests/test_core.py:21). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_package_version\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_empty_string",
+          "source": "tests/test_core.py:33",
+          "remediation": "No oracle covers `test_empty_string` (tests/test_core.py:33). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_empty_string\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_hello_jp",
+          "source": "tests/test_core.py:72",
+          "remediation": "No oracle covers `test_hello_jp` (tests/test_core.py:72). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_hello_jp\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_wcswidth_substr",
+          "source": "tests/test_core.py:94",
+          "remediation": "No oracle covers `test_wcswidth_substr` (tests/test_core.py:94). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_wcswidth_substr\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_null_width_0",
+          "source": "tests/test_core.py:116",
+          "remediation": "No oracle covers `test_null_width_0` (tests/test_core.py:116). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_null_width_0\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_control_c0_width_negative_1",
+          "source": "tests/test_core.py:132",
+          "remediation": "No oracle covers `test_control_c0_width_negative_1` (tests/test_core.py:132). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_control_c0_width_negative_1\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_combining_width",
+          "source": "tests/test_core.py:156",
+          "remediation": "No oracle covers `test_combining_width` (tests/test_core.py:156). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_combining_width\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_combining_cafe",
+          "source": "tests/test_core.py:172",
+          "remediation": "No oracle covers `test_combining_cafe` (tests/test_core.py:172). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_combining_cafe\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_combining_enclosing",
+          "source": "tests/test_core.py:187",
+          "remediation": "No oracle covers `test_combining_enclosing` (tests/test_core.py:187). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_combining_enclosing\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_balinese_script",
+          "source": "tests/test_core.py:202",
+          "remediation": "No oracle covers `test_balinese_script` (tests/test_core.py:202). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_balinese_script\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_kr_jamo",
+          "source": "tests/test_core.py:225",
+          "remediation": "No oracle covers `test_kr_jamo` (tests/test_core.py:225). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_kr_jamo\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_kr_jamo_filler",
+          "source": "tests/test_core.py:255",
+          "remediation": "No oracle covers `test_kr_jamo_filler` (tests/test_core.py:255). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_kr_jamo_filler\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_devanagari_script",
+          "source": "tests/test_core.py:277",
+          "remediation": "No oracle covers `test_devanagari_script` (tests/test_core.py:277). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_devanagari_script\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_tamil_script",
+          "source": "tests/test_core.py:326",
+          "remediation": "No oracle covers `test_tamil_script` (tests/test_core.py:326). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_tamil_script\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_kannada_script",
+          "source": "tests/test_core.py:347",
+          "remediation": "No oracle covers `test_kannada_script` (tests/test_core.py:347). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_kannada_script\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_kannada_script_2",
+          "source": "tests/test_core.py:369",
+          "remediation": "No oracle covers `test_kannada_script_2` (tests/test_core.py:369). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_kannada_script_2\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_zero_wide_conflict",
+          "source": "tests/test_core.py:391",
+          "remediation": "No oracle covers `test_zero_wide_conflict` (tests/test_core.py:391). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_zero_wide_conflict\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_unfinished_zwj_sequence",
+          "source": "tests/test_emojis.py:56",
+          "remediation": "No oracle covers `test_unfinished_zwj_sequence` (tests/test_emojis.py:56). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_unfinished_zwj_sequence\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_non_recommended_zwj_sequence",
+          "source": "tests/test_emojis.py:76",
+          "remediation": "No oracle covers `test_non_recommended_zwj_sequence` (tests/test_emojis.py:76). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_non_recommended_zwj_sequence\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_another_emoji_zwj_sequence",
+          "source": "tests/test_emojis.py:96",
+          "remediation": "No oracle covers `test_another_emoji_zwj_sequence` (tests/test_emojis.py:96). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_another_emoji_zwj_sequence\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_longer_emoji_zwj_sequence",
+          "source": "tests/test_emojis.py:116",
+          "remediation": "No oracle covers `test_longer_emoji_zwj_sequence` (tests/test_emojis.py:116). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_longer_emoji_zwj_sequence\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_recommended_emoji_zwj_sequences",
+          "source": "tests/test_emojis.py:159",
+          "remediation": "No oracle covers `test_recommended_emoji_zwj_sequences` (tests/test_emojis.py:159). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_recommended_emoji_zwj_sequences\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_recommended_variation_16_sequences",
+          "source": "tests/test_emojis.py:185",
+          "remediation": "No oracle covers `test_recommended_variation_16_sequences` (tests/test_emojis.py:185). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_recommended_variation_16_sequences\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_unicode_9_vs16",
+          "source": "tests/test_emojis.py:213",
+          "remediation": "No oracle covers `test_unicode_9_vs16` (tests/test_emojis.py:213). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_unicode_9_vs16\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_unicode_8_vs16",
+          "source": "tests/test_emojis.py:229",
+          "remediation": "No oracle covers `test_unicode_8_vs16` (tests/test_emojis.py:229). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_unicode_8_vs16\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_latest",
+          "source": "tests/test_ucslevel.py:13",
+          "remediation": "No oracle covers `test_latest` (tests/test_ucslevel.py:13). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_latest\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_exact_410_str",
+          "source": "tests/test_ucslevel.py:25",
+          "remediation": "No oracle covers `test_exact_410_str` (tests/test_ucslevel.py:25). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_exact_410_str\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_exact_410_unicode",
+          "source": "tests/test_ucslevel.py:37",
+          "remediation": "No oracle covers `test_exact_410_unicode` (tests/test_ucslevel.py:37). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_exact_410_unicode\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_nearest_505_str",
+          "source": "tests/test_ucslevel.py:49",
+          "remediation": "No oracle covers `test_nearest_505_str` (tests/test_ucslevel.py:49). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_505_str\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_nearest_505_unicode",
+          "source": "tests/test_ucslevel.py:61",
+          "remediation": "No oracle covers `test_nearest_505_unicode` (tests/test_ucslevel.py:61). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_505_unicode\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_nearest_lowint40_str",
+          "source": "tests/test_ucslevel.py:73",
+          "remediation": "No oracle covers `test_nearest_lowint40_str` (tests/test_ucslevel.py:73). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_lowint40_str\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_nearest_lowint40_unicode",
+          "source": "tests/test_ucslevel.py:89",
+          "remediation": "No oracle covers `test_nearest_lowint40_unicode` (tests/test_ucslevel.py:89). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_lowint40_unicode\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_nearest_800_str",
+          "source": "tests/test_ucslevel.py:105",
+          "remediation": "No oracle covers `test_nearest_800_str` (tests/test_ucslevel.py:105). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_800_str\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_nearest_800_unicode",
+          "source": "tests/test_ucslevel.py:117",
+          "remediation": "No oracle covers `test_nearest_800_unicode` (tests/test_ucslevel.py:117). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_800_unicode\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_nearest_999_str",
+          "source": "tests/test_ucslevel.py:129",
+          "remediation": "No oracle covers `test_nearest_999_str` (tests/test_ucslevel.py:129). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_999_str\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_nearest_999_unicode",
+          "source": "tests/test_ucslevel.py:141",
+          "remediation": "No oracle covers `test_nearest_999_unicode` (tests/test_ucslevel.py:141). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nearest_999_unicode\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_nonint_unicode",
+          "source": "tests/test_ucslevel.py:153",
+          "remediation": "No oracle covers `test_nonint_unicode` (tests/test_ucslevel.py:153). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nonint_unicode\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_nonint_str",
+          "source": "tests/test_ucslevel.py:169",
+          "remediation": "No oracle covers `test_nonint_str` (tests/test_ucslevel.py:169). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_nonint_str\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_verify_table_integrity",
+          "source": "tests/test_table_integrity.py:11",
+          "remediation": "No oracle covers `test_verify_table_integrity` (tests/test_table_integrity.py:11). Append a JSONL row to wcwidth/oracles/ with `{\"name\": \"test_verify_table_integrity\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        }
+      ],
+      "stats": {
+        "tests_total": 39,
+        "oracles_total": 66,
+        "tests_aligned": 0,
+        "alignment_pct": 0.0
+      }
     },
     "implementation_leak": {
-      "pass": null,
-      "failures": []
+      "pass": false,
+      "failures": [
+        {
+          "adr": "adrs/ADR-0002-binary-search-lookup.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_bisearch",
+          "remediation": "adrs/ADR-0002-binary-search-lookup.md references private symbol `_bisearch`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0003-version-matching-strategy.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_wcmatch_version",
+          "remediation": "adrs/ADR-0003-version-matching-strategy.md references private symbol `_wcmatch_version`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0003-version-matching-strategy.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_wcversion_value",
+          "remediation": "adrs/ADR-0003-version-matching-strategy.md references private symbol `_wcversion_value`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0004-lru-cache-policy.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_wcmatch_version",
+          "remediation": "adrs/ADR-0004-lru-cache-policy.md references private symbol `_wcmatch_version`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0004-lru-cache-policy.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_wcversion_value",
+          "remediation": "adrs/ADR-0004-lru-cache-policy.md references private symbol `_wcversion_value`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0008-public-api-surface.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_wcmatch_version",
+          "remediation": "adrs/ADR-0008-public-api-surface.md references private symbol `_wcmatch_version`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0008-public-api-surface.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_wcversion_value",
+          "remediation": "adrs/ADR-0008-public-api-surface.md references private symbol `_wcversion_value`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0008-public-api-surface.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_bisearch",
+          "remediation": "adrs/ADR-0008-public-api-surface.md references private symbol `_bisearch`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        }
+      ],
+      "stats": {
+        "code_blocks_seen": 0,
+        "private_symbols_indexed": 11,
+        "leaks_total": 8
+      }
     }
   },
+  "remediation": null,
+  "smoke_test": {
+    "ok": true,
+    "import_ok": true,
+    "collect_ok": true,
+    "first_traceback": "",
+    "package_name": "wcwidth"
+  },
+  "smoke_remediation": null,
+  "code_edit_loop": null,
+  "post_remediation_gates": null,
   "recompose": {
-    "cost_usd": 0.0,
-    "elapsed_s": 0.001,
-    "files_emitted": 1
+    "cost_usd": 0.1073,
+    "elapsed_s": 68.909,
+    "files_emitted": 6,
+    "model": "claude-sonnet-4-6",
+    "provider": "anthropic",
+    "usage": {
+      "input": 702,
+      "output": 5028,
+      "cache_read": 0,
+      "cache_write": 7933
+    }
   },
   "metrics": {
     "q1_test_parity": {
-      "value": null,
+      "value": 0.8205,
       "detail": {
-        "todo": "phase 2: run canonical pytest against recomposed_dir"
+        "passed": 32,
+        "failed": 7,
+        "errors": 0,
+        "skipped": 0,
+        "attempted": 39,
+        "collected": 39,
+        "test_suite_executed": true,
+        "pytest_returncode": 1,
+        "inventory": {
+          "recomposed_files": 6,
+          "test_files": 12,
+          "toplevel_files": 3,
+          "package_name": "wcwidth"
+        },
+        "cov_changes": {
+          "tox.ini": "stripped --cov-* flags from addopts"
+        },
+        "output_tail": ".................FFFFFF..F.............                                  [100%]\n=========================== short test summary info ============================\nFAILED tests/test_emojis.py::test_unfinished_zwj_sequence - assert (2, 2, 0) == (2, 0, 0)\nFAILED tests/test_emojis.py::test_non_recommended_zwj_sequence - assert (2, 2, 0) == (2, 0, 0)\nFAILED tests/test_emojis.py::test_another_emoji_zwj_sequence - assert (1, 2, 0, 1, 0) == (1, 0, 0, 1, 0)\nFAILED tests/test_emojis.py::test_longer_emoji_zwj_sequence - assert (2, 2, 0, 1, 0, 0, ...) == (2, 0, 0, 1, 0, 0, ...)\nFAILED tests/test_emojis.py::test_recommended_emoji_zwj_sequences - AssertionError: assert [{'expected_w...200d\ud83d\udc68\ud83c\udffb'}, ...] == []\nFAILED tests/test_emojis.py::test_recommended_variation_16_sequences - AssertionError: assert [{'expected_w...': '\u23ec\ufe0f'}, ...] == []\nFAILED tests/test_table_integrity.py::test_verify_table_integrity - subprocess.CalledProcessError: Command '['/home/aadame/kaizen-commit0/.venv...\n7 failed, 32 passed in 1.58s\n\n"
       }
     },
     "q2_behavioral_parity": {
@@ -48,21 +833,31 @@
       }
     },
     "q3_structural_parity": {
-      "value": null,
+      "value": 0.75,
       "detail": {
-        "todo": "phase 2: AST walk + node-level diff count"
+        "signatures_in_original": 3,
+        "signatures_in_recomposed": 4,
+        "intersection": 3,
+        "missing_from_recomposed": [],
+        "extra_in_recomposed": [
+          "wcwidth.make_ranges(cps)"
+        ],
+        "missing_count": 0,
+        "extra_count": 1
       }
     },
     "q4_information_loss": {
-      "value": null,
+      "value": 1.0,
       "detail": {
-        "todo": "phase 2: public-symbol coverage in ADR text",
-        "spec_dir": "C:\\RepoEx\\Kaizen-delta\\benchmarks\\round_trip\\spec\\wcwidth"
+        "symbols_in_original": 3,
+        "symbols_mentioned_in_spec": 3,
+        "orphans": [],
+        "orphan_count": 0
       }
     }
   },
   "totals": {
-    "cost_usd": 0.0,
-    "elapsed_s": 0.004
+    "cost_usd": 0.1073,
+    "elapsed_s": 75.494
   }
 }

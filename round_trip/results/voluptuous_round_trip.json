@@ -1,0 +1,1057 @@
+{
+  "lib": "voluptuous",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "preflight": {
+    "pass": true,
+    "inputs": {
+      "original_dir_exists": true,
+      "spec_dir_pre_existing": true,
+      "py_files_seen": 9,
+      "test_files_seen": 0
+    },
+    "pre_decompose_gates": {
+      "coverage": {
+        "pass": true,
+        "failures": [],
+        "stats": {
+          "symbols_total": 57,
+          "symbols_covered": 57,
+          "symbols_total_unscoped": 95,
+          "coverage_pct": 100.0
+        }
+      },
+      "specificity": {
+        "pass": false,
+        "failures": [
+          {
+            "adr": "adrs/ADR-0001-error-hierarchy.md",
+            "score": 1.0,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0001-error-hierarchy.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+          },
+          {
+            "adr": "adrs/ADR-0002-schema-compilation.md",
+            "score": 0.5,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 1,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0002-schema-compilation.md scored 0.5 (threshold 1.0). Add: named algorithm/library references, vague modals (1 hits \u2014 replace 'may'/'should'/'typically' with concrete decisions)."
+          },
+          {
+            "adr": "adrs/ADR-0003-mapping-validation-order.md",
+            "score": 1.0,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0003-mapping-validation-order.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+          },
+          {
+            "adr": "adrs/ADR-0005-extra-and-self-sentinels.md",
+            "score": 1.0,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0005-extra-and-self-sentinels.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+          },
+          {
+            "adr": "adrs/ADR-0006-decorator-helpers.md",
+            "score": 1.0,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0006-decorator-helpers.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+          },
+          {
+            "adr": "adrs/ADR-0007-with-subvalidators.md",
+            "score": 0.5,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 1
+            },
+            "remediation": "ADR adrs/ADR-0007-with-subvalidators.md scored 0.5 (threshold 1.0). Add: named algorithm/library references."
+          },
+          {
+            "adr": "adrs/ADR-0008-object-schema.md",
+            "score": 0.5,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 1
+            },
+            "remediation": "ADR adrs/ADR-0008-object-schema.md scored 0.5 (threshold 1.0). Add: named algorithm/library references."
+          },
+          {
+            "adr": "adrs/ADR-0010-schema-extend.md",
+            "score": 1.0,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0010-schema-extend.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+          },
+          {
+            "adr": "adrs/ADR-0012-number-validator.md",
+            "score": 1.0,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0012-number-validator.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+          },
+          {
+            "adr": "adrs/ADR-0013-url-email-regex.md",
+            "score": 0.5,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 1,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0013-url-email-regex.md scored 0.5 (threshold 1.0). Add: named algorithm/library references, vague modals (1 hits \u2014 replace 'may'/'should'/'typically' with concrete decisions)."
+          },
+          {
+            "adr": "adrs/ADR-0014-coerce-and-enum.md",
+            "score": 0.5,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 1,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0014-coerce-and-enum.md scored 0.5 (threshold 1.0). Add: named algorithm/library references, vague modals (1 hits \u2014 replace 'may'/'should'/'typically' with concrete decisions)."
+          },
+          {
+            "adr": "adrs/ADR-0015-virtual-path-component.md",
+            "score": 0.5,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 1
+            },
+            "remediation": "ADR adrs/ADR-0015-virtual-path-component.md scored 0.5 (threshold 1.0). Add: named algorithm/library references."
+          }
+        ],
+        "stats": {
+          "adrs_scored": 15,
+          "adrs_passed": 3,
+          "scores": [
+            {
+              "adr": "adrs/ADR-0001-error-hierarchy.md",
+              "score": 1.0,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0002-schema-compilation.md",
+              "score": 0.5,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 1,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0003-mapping-validation-order.md",
+              "score": 1.0,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0004-markers-and-required-optional.md",
+              "score": 1.0,
+              "digit_runs": 1,
+              "quantitative_phrases": 1,
+              "named_refs": 0,
+              "vague_modals": 2,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0005-extra-and-self-sentinels.md",
+              "score": 1.0,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0006-decorator-helpers.md",
+              "score": 1.0,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0007-with-subvalidators.md",
+              "score": 0.5,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 1
+            },
+            {
+              "adr": "adrs/ADR-0008-object-schema.md",
+              "score": 0.5,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 1
+            },
+            {
+              "adr": "adrs/ADR-0009-sequence-validation.md",
+              "score": 4.0,
+              "digit_runs": 1,
+              "quantitative_phrases": 4,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0010-schema-extend.md",
+              "score": 1.0,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0011-humanize.md",
+              "score": 2.5,
+              "digit_runs": 3,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 1,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0012-number-validator.md",
+              "score": 1.0,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0013-url-email-regex.md",
+              "score": 0.5,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 1,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0014-coerce-and-enum.md",
+              "score": 0.5,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 1,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0015-virtual-path-component.md",
+              "score": 0.5,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 1
+            }
+          ]
+        }
+      },
+      "consistency": {
+        "pass": true,
+        "failures": [],
+        "stats": {
+          "refs_checked": 45,
+          "refs_dangling": 0,
+          "targets_indexed": {
+            "adrs": 15,
+            "contracts": 5,
+            "oracles": 16
+          }
+        }
+      },
+      "test_oracle_alignment": {
+        "pass": true,
+        "failures": [],
+        "stats": {
+          "tests_total": 0,
+          "oracles_total": 139,
+          "tests_aligned": 0,
+          "alignment_pct": 100.0
+        }
+      },
+      "implementation_leak": {
+        "pass": false,
+        "failures": [
+          {
+            "adr": "adrs/ADR-0002-schema-compilation.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_compile_scalar",
+            "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile_scalar`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0002-schema-compilation.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_compile_object",
+            "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile_object`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0002-schema-compilation.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_compile",
+            "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0002-schema-compilation.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_compile_list",
+            "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile_list`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0002-schema-compilation.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_compile_set",
+            "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile_set`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0002-schema-compilation.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_compile_dict",
+            "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile_dict`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0002-schema-compilation.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_compile_tuple",
+            "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile_tuple`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0003-mapping-validation-order.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_compile_itemsort",
+            "remediation": "adrs/ADR-0003-mapping-validation-order.md references private symbol `_compile_itemsort`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0005-extra-and-self-sentinels.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_compile",
+            "remediation": "adrs/ADR-0005-extra-and-self-sentinels.md references private symbol `_compile`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0007-with-subvalidators.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_WithSubValidators",
+            "remediation": "adrs/ADR-0007-with-subvalidators.md references private symbol `_WithSubValidators`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0007-with-subvalidators.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_exec",
+            "remediation": "adrs/ADR-0007-with-subvalidators.md references private symbol `_exec`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0007-with-subvalidators.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_run",
+            "remediation": "adrs/ADR-0007-with-subvalidators.md references private symbol `_run`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0008-object-schema.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_compile_object",
+            "remediation": "adrs/ADR-0008-object-schema.md references private symbol `_compile_object`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0008-object-schema.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_compile",
+            "remediation": "adrs/ADR-0008-object-schema.md references private symbol `_compile`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0008-object-schema.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_iterate_object",
+            "remediation": "adrs/ADR-0008-object-schema.md references private symbol `_iterate_object`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0009-sequence-validation.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_compile_sequence",
+            "remediation": "adrs/ADR-0009-sequence-validation.md references private symbol `_compile_sequence`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          }
+        ],
+        "stats": {
+          "code_blocks_seen": 0,
+          "private_symbols_indexed": 19,
+          "leaks_total": 16
+        }
+      }
+    },
+    "reason": "ok"
+  },
+  "decompose": {
+    "cost_usd": 0.0,
+    "elapsed_s": 0.0,
+    "files_in_spec": -1,
+    "skipped": true
+  },
+  "gates": {
+    "coverage": {
+      "pass": true,
+      "failures": [],
+      "stats": {
+        "symbols_total": 57,
+        "symbols_covered": 57,
+        "symbols_total_unscoped": 95,
+        "coverage_pct": 100.0
+      }
+    },
+    "specificity": {
+      "pass": false,
+      "failures": [
+        {
+          "adr": "adrs/ADR-0001-error-hierarchy.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0001-error-hierarchy.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0002-schema-compilation.md",
+          "score": 0.5,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0002-schema-compilation.md scored 0.5 (threshold 1.0). Add: named algorithm/library references, vague modals (1 hits \u2014 replace 'may'/'should'/'typically' with concrete decisions)."
+        },
+        {
+          "adr": "adrs/ADR-0003-mapping-validation-order.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0003-mapping-validation-order.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0005-extra-and-self-sentinels.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0005-extra-and-self-sentinels.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0006-decorator-helpers.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0006-decorator-helpers.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0007-with-subvalidators.md",
+          "score": 0.5,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 1
+          },
+          "remediation": "ADR adrs/ADR-0007-with-subvalidators.md scored 0.5 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0008-object-schema.md",
+          "score": 0.5,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 1
+          },
+          "remediation": "ADR adrs/ADR-0008-object-schema.md scored 0.5 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0010-schema-extend.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0010-schema-extend.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0012-number-validator.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0012-number-validator.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0013-url-email-regex.md",
+          "score": 0.5,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0013-url-email-regex.md scored 0.5 (threshold 1.0). Add: named algorithm/library references, vague modals (1 hits \u2014 replace 'may'/'should'/'typically' with concrete decisions)."
+        },
+        {
+          "adr": "adrs/ADR-0014-coerce-and-enum.md",
+          "score": 0.5,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0014-coerce-and-enum.md scored 0.5 (threshold 1.0). Add: named algorithm/library references, vague modals (1 hits \u2014 replace 'may'/'should'/'typically' with concrete decisions)."
+        },
+        {
+          "adr": "adrs/ADR-0015-virtual-path-component.md",
+          "score": 0.5,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 1
+          },
+          "remediation": "ADR adrs/ADR-0015-virtual-path-component.md scored 0.5 (threshold 1.0). Add: named algorithm/library references."
+        }
+      ],
+      "stats": {
+        "adrs_scored": 15,
+        "adrs_passed": 3,
+        "scores": [
+          {
+            "adr": "adrs/ADR-0001-error-hierarchy.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0002-schema-compilation.md",
+            "score": 0.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0003-mapping-validation-order.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0004-markers-and-required-optional.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 1,
+            "named_refs": 0,
+            "vague_modals": 2,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0005-extra-and-self-sentinels.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0006-decorator-helpers.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0007-with-subvalidators.md",
+            "score": 0.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 1
+          },
+          {
+            "adr": "adrs/ADR-0008-object-schema.md",
+            "score": 0.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 1
+          },
+          {
+            "adr": "adrs/ADR-0009-sequence-validation.md",
+            "score": 4.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 4,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0010-schema-extend.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0011-humanize.md",
+            "score": 2.5,
+            "digit_runs": 3,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0012-number-validator.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0013-url-email-regex.md",
+            "score": 0.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0014-coerce-and-enum.md",
+            "score": 0.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0015-virtual-path-component.md",
+            "score": 0.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 1
+          }
+        ]
+      }
+    },
+    "consistency": {
+      "pass": true,
+      "failures": [],
+      "stats": {
+        "refs_checked": 45,
+        "refs_dangling": 0,
+        "targets_indexed": {
+          "adrs": 15,
+          "contracts": 5,
+          "oracles": 16
+        }
+      }
+    },
+    "test_oracle_alignment": {
+      "pass": true,
+      "failures": [],
+      "stats": {
+        "tests_total": 0,
+        "oracles_total": 139,
+        "tests_aligned": 0,
+        "alignment_pct": 100.0
+      }
+    },
+    "implementation_leak": {
+      "pass": false,
+      "failures": [
+        {
+          "adr": "adrs/ADR-0002-schema-compilation.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_compile_scalar",
+          "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile_scalar`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0002-schema-compilation.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_compile_object",
+          "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile_object`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0002-schema-compilation.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_compile",
+          "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0002-schema-compilation.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_compile_list",
+          "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile_list`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0002-schema-compilation.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_compile_set",
+          "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile_set`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0002-schema-compilation.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_compile_dict",
+          "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile_dict`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0002-schema-compilation.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_compile_tuple",
+          "remediation": "adrs/ADR-0002-schema-compilation.md references private symbol `_compile_tuple`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0003-mapping-validation-order.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_compile_itemsort",
+          "remediation": "adrs/ADR-0003-mapping-validation-order.md references private symbol `_compile_itemsort`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0005-extra-and-self-sentinels.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_compile",
+          "remediation": "adrs/ADR-0005-extra-and-self-sentinels.md references private symbol `_compile`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0007-with-subvalidators.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_WithSubValidators",
+          "remediation": "adrs/ADR-0007-with-subvalidators.md references private symbol `_WithSubValidators`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0007-with-subvalidators.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_exec",
+          "remediation": "adrs/ADR-0007-with-subvalidators.md references private symbol `_exec`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0007-with-subvalidators.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_run",
+          "remediation": "adrs/ADR-0007-with-subvalidators.md references private symbol `_run`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0008-object-schema.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_compile_object",
+          "remediation": "adrs/ADR-0008-object-schema.md references private symbol `_compile_object`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0008-object-schema.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_compile",
+          "remediation": "adrs/ADR-0008-object-schema.md references private symbol `_compile`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0008-object-schema.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_iterate_object",
+          "remediation": "adrs/ADR-0008-object-schema.md references private symbol `_iterate_object`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0009-sequence-validation.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_compile_sequence",
+          "remediation": "adrs/ADR-0009-sequence-validation.md references private symbol `_compile_sequence`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        }
+      ],
+      "stats": {
+        "code_blocks_seen": 0,
+        "private_symbols_indexed": 19,
+        "leaks_total": 16
+      }
+    }
+  },
+  "remediation": null,
+  "smoke_test": {
+    "ok": false,
+    "import_ok": false,
+    "collect_ok": false,
+    "first_traceback": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/tmp/smoke_voluptuous_miizvjte/voluptuous/__init__.py\", line 2, in <module>\n    from voluptuous.util import Capitalize, DefaultTo, Literal, Lower, Set, SetTo, Strip, Title, Upper\n  File \"/tmp/smoke_voluptuous_miizvjte/voluptuous/util.py\", line 1, in <module>\n    from voluptuous import validators\n  File \"/tmp/smoke_voluptuous_miizvjte/voluptuous/validators.py\", line 14\n    from voluptuous.schema_builder import Schema, Schemable if False else None, VirtualPathComponent, message, raises\n                                                            ^^\nSyntaxError: invalid syntax\n",
+    "package_name": "voluptuous"
+  },
+  "smoke_remediation": null,
+  "code_edit_loop": null,
+  "post_remediation_gates": null,
+  "recompose": {
+    "cost_usd": 0.2671,
+    "elapsed_s": 171.62,
+    "files_emitted": 6,
+    "model": "claude-sonnet-4-6",
+    "provider": "anthropic",
+    "usage": {
+      "input": 2,
+      "output": 17276,
+      "cache_read": 17682,
+      "cache_write": 700
+    }
+  },
+  "metrics": {
+    "q1_test_parity": {
+      "value": 0.0,
+      "detail": {
+        "passed": 0,
+        "failed": 0,
+        "errors": 1,
+        "skipped": 0,
+        "attempted": 1,
+        "collected": 0,
+        "test_suite_executed": true,
+        "pytest_returncode": 2,
+        "inventory": {
+          "recomposed_files": 6,
+          "test_files": 5,
+          "toplevel_files": 3,
+          "package_name": "voluptuous"
+        },
+        "cov_changes": {},
+        "output_tail": "============================= test session starts ==============================\ncollected 1 item / 1 error\n\n=========================== short test summary info ============================\nERROR tests/tests.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.13s ===============================\n\n"
+      }
+    },
+    "q2_behavioral_parity": {
+      "value": null,
+      "detail": {
+        "todo": "phase 2: execute curated (input,output) pairs on both impls"
+      }
+    },
+    "q3_structural_parity": {
+      "value": 0.4606,
+      "detail": {
+        "signatures_in_original": 225,
+        "signatures_in_recomposed": 146,
+        "intersection": 117,
+        "missing_from_recomposed": [
+          "schema_builder.Exclusive.__init__(self,schema,group_of_exclusion,msg,description)",
+          "schema_builder.Inclusive.__init__(self,schema,group_of_inclusion,msg,description,default)",
+          "schema_builder.Optional.__init__(self,schema,msg,default,description)",
+          "schema_builder.Remove.__call__(self,schema)",
+          "schema_builder.Required.__init__(self,schema,msg,default,description)",
+          "schema_builder.Self()",
+          "schema_builder.__call__(self,schema)",
+          "schema_builder.__init__(self,schema,group_of_exclusion,msg,description)",
+          "schema_builder.__init__(self,schema,group_of_inclusion,msg,description,default)",
+          "schema_builder.__init__(self,schema,msg,default,description)",
+          "schema_builder.check(msg,clsoverride)",
+          "schema_builder.class:Undefined",
+          "schema_builder.is_callable(item)",
+          "schema_builder.is_extra(item)",
+          "schema_builder.is_marker(item)",
+          "schema_builder.is_remove(item)",
+          "schema_builder.is_type(item)",
+          "schema_builder.key_matches(skey,data_key)",
+          "schema_builder.marker_key_identity(key)",
+          "schema_builder.message(default,cls)",
+          "schema_builder.raises(exc,msg,regex)",
+          "schema_builder.sort_key(item)",
+          "schema_builder.validate(*a,**kw)",
+          "schema_builder.validate_list(path,data)",
+          "schema_builder.validate_mapping(path,iterable,out)"
+        ],
+        "extra_in_recomposed": [
+          "error.Invalid.error_message(self,value)",
+          "error.Invalid.path(self,value)",
+          "error.MultipleInvalid.error_message(self,value)",
+          "error.MultipleInvalid.path(self,value)",
+          "error.error_message(self,value)",
+          "error.path(self,value)",
+          "schema_builder.DefaultFactory.__call__(self)",
+          "schema_builder.DefaultFactory.__init__(self,factory)",
+          "schema_builder.Exclusive.__init__(self,schema_,group_of_exclusion,msg,description)",
+          "schema_builder.Inclusive.__init__(self,schema_,group_of_inclusion,msg,description)",
+          "schema_builder.Optional.__init__(self,schema_,msg,description,default)",
+          "schema_builder.Remove.__init__(self,schema_)",
+          "schema_builder.Required.__init__(self,schema_,msg,description,default)",
+          "schema_builder.__call__(self)",
+          "schema_builder.__init__(self,factory)",
+          "schema_builder.__init__(self,schema_)",
+          "schema_builder.__init__(self,schema_,group_of_exclusion,msg,description)",
+          "schema_builder.__init__(self,schema_,group_of_inclusion,msg,description)",
+          "schema_builder.__init__(self,schema_,msg,description,default)",
+          "schema_builder.class:DefaultFactory",
+          "schema_builder.key_id(k)",
+          "schema_builder.message(msg,cls)",
+          "schema_builder.raises(exc,msg,cls)",
+          "schema_builder.validate(*args,**kwargs)",
+          "schema_builder.validate(path,data)"
+        ],
+        "missing_count": 108,
+        "extra_count": 29
+      }
+    },
+    "q4_information_loss": {
+      "value": 0.8492,
+      "detail": {
+        "symbols_in_original": 126,
+        "symbols_mentioned_in_spec": 107,
+        "orphans": [
+          "is_callable",
+          "is_extra",
+          "is_marker",
+          "is_remove",
+          "is_type",
+          "key_matches",
+          "marker_key_identity",
+          "sort_key",
+          "validate_callable",
+          "validate_dict",
+          "validate_list",
+          "validate_mapping",
+          "validate_object",
+          "validate_sequence",
+          "validate_set",
+          "validate_tuple",
+          "validate_type",
+          "validate_value",
+          "wrapper"
+        ],
+        "orphan_count": 19
+      }
+    }
+  },
+  "totals": {
+    "cost_usd": 0.2671,
+    "elapsed_s": 173.96
+  }
+}

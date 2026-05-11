@@ -1,0 +1,6 @@
+{"name": "extend_add_key", "input": {"base": {"x": "int"}, "extension": {"y": "str"}}, "expected": "schema with both x:int and y:str"}
+{"name": "extend_override_key", "input": {"base": {"x": "int"}, "extension": {"x": "str"}}, "expected": "schema with x:str"}
+{"name": "extend_merge_nested", "input": {"base": {"a": {"x": "int"}}, "extension": {"a": {"y": "str"}}}, "expected": "schema with a having both x:int and y:str"}
+{"name": "extend_non_dict_raises", "input": {"base_schema": "int", "extension": {"x": "int"}}, "expected": "raises SchemaError"}
+{"name": "extend_preserves_required", "input": {"base_required": true, "extension": {}}, "expected": "new schema has required=True"}
+{"name": "extend_overrides_extra", "input": {"base_extra": 0, "extension_extra": 1}, "expected": "new schema has extra=1"}

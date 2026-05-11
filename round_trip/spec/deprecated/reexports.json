@@ -1,0 +1,7 @@
+```json
+{
+  "from .classic import deprecated": ["deprecated"],
+  "__all__": ["deprecated", "__version__"],
+  "__version__": "1.2.15"
+}
+```

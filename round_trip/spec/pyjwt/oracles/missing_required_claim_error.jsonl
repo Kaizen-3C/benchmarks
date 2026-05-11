@@ -1,0 +1,4 @@
+{"name": "str_representation", "input": {"claim": "exp"}, "expected": {"str": "Token is missing the \"exp\" claim"}}
+{"name": "claim_attribute", "input": {"claim": "iss"}, "expected": {"claim_attr": "iss"}}
+{"name": "is_invalid_token_error", "input": {"claim": "sub"}, "expected": {"is_instance": "InvalidTokenError"}}
+{"name": "is_pyjwt_error", "input": {"claim": "sub"}, "expected": {"is_instance": "PyJWTError"}}

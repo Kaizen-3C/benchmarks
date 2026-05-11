@@ -1,0 +1,5 @@
+{"name": "ttlcache_item_present_before_expiry", "input": {"maxsize": 10, "ttl": 10, "ops": [["set", "k", 1, 0], ["get", "k", 5]]}, "expected": 1}
+{"name": "ttlcache_item_absent_after_expiry", "input": {"maxsize": 10, "ttl": 10, "ops": [["set", "k", 1, 0], ["get", "k", 11]]}, "expected_exception": "KeyError"}
+{"name": "ttlcache_expire_returns_expired", "input": {"maxsize": 10, "ttl": 5, "insert_time": 0, "expire_time": 6}, "expected_len": 1}
+{"name": "ttlcache_ttl_property", "input": {"maxsize": 10, "ttl": 30}, "expected_ttl": 30}
+{"name": "ttlcache_contains_false_after_ttl", "input": {"maxsize": 10, "ttl": 1, "insert_time": 0, "check_time": 2}, "expected_contains": false}

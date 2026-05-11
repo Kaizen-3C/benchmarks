@@ -1,0 +1,203 @@
+{
+  "wcwidth": {
+    "gate": "oracle_executable",
+    "pass": true,
+    "failures": [],
+    "stats": {
+      "oracle_files": 5,
+      "rows_total": 66,
+      "rows_executed": 59,
+      "rows_skipped": 7,
+      "rows_passed": 59,
+      "rows_failed": 0,
+      "skip_reasons": {
+        "no_expected_field": 7
+      },
+      "files": [
+        {
+          "file": "oracles/bisearch.jsonl",
+          "rows": 12,
+          "resolved": "bin.update-tables._bisearch",
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0
+        },
+        {
+          "file": "oracles/list_versions.jsonl",
+          "rows": 10,
+          "resolved": "wcwidth.unicode_versions.list_versions",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 7
+        },
+        {
+          "file": "oracles/wcmatch_version.jsonl",
+          "rows": 10,
+          "resolved": "wcwidth.wcwidth._wcmatch_version",
+          "passed": 10,
+          "failed": 0,
+          "skipped": 0
+        },
+        {
+          "file": "oracles/wcswidth.jsonl",
+          "rows": 15,
+          "resolved": "wcwidth.wcwidth.wcswidth",
+          "passed": 15,
+          "failed": 0,
+          "skipped": 0
+        },
+        {
+          "file": "oracles/wcwidth.jsonl",
+          "rows": 19,
+          "resolved": "wcwidth.wcwidth.wcwidth",
+          "passed": 19,
+          "failed": 0,
+          "skipped": 0
+        }
+      ]
+    }
+  },
+  "deprecated": {
+    "gate": "oracle_executable",
+    "pass": true,
+    "failures": [],
+    "stats": {
+      "oracle_files": 7,
+      "rows_total": 44,
+      "rows_executed": 12,
+      "rows_skipped": 32,
+      "rows_passed": 12,
+      "rows_failed": 0,
+      "skip_reasons": {
+        "no_matching_symbol": 31,
+        "sentinel_input": 1
+      },
+      "files": [
+        {
+          "file": "oracles/build_message.jsonl",
+          "rows": 7,
+          "resolved": "deprecated.classic._build_message",
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0
+        },
+        {
+          "file": "oracles/classic_deprecated_callable.jsonl",
+          "rows": 8,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/classic_deprecated_class.jsonl",
+          "rows": 5,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/sphinx_adapter_docstring.jsonl",
+          "rows": 6,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/sphinx_clean_reason.jsonl",
+          "rows": 7,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/sphinx_deprecated_decorator.jsonl",
+          "rows": 5,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/validate_reason.jsonl",
+          "rows": 6,
+          "resolved": "deprecated.classic._validate_reason",
+          "passed": 5,
+          "failed": 0,
+          "skipped": 1
+        }
+      ]
+    }
+  },
+  "pyjwt": {
+    "gate": "oracle_executable",
+    "pass": true,
+    "failures": [],
+    "stats": {
+      "oracle_files": 10,
+      "rows_total": 95,
+      "rows_executed": 0,
+      "rows_skipped": 95,
+      "rows_passed": 0,
+      "rows_failed": 0,
+      "skip_reasons": {
+        "no_matching_symbol": 95
+      },
+      "files": [
+        {
+          "file": "oracles/base64url_utils.jsonl",
+          "rows": 11,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/claim_validation.jsonl",
+          "rows": 15,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/encode_decode.jsonl",
+          "rows": 18,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/get_unverified_header.jsonl",
+          "rows": 5,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/hmac_algorithm.jsonl",
+          "rows": 10,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/jwk_set_cache.jsonl",
+          "rows": 6,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/missing_required_claim_error.jsonl",
+          "rows": 4,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/none_algorithm.jsonl",
+          "rows": 7,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/pyjwk.jsonl",
+          "rows": 10,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        },
+        {
+          "file": "oracles/pyjwkset.jsonl",
+          "rows": 9,
+          "resolved": null,
+          "skip_reason": "no_matching_symbol"
+        }
+      ]
+    }
+  }
+}

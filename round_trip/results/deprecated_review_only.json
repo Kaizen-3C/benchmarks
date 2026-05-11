@@ -1,0 +1,99 @@
+{
+  "ok": true,
+  "review": {
+    "summary": "The recomposition is largely faithful to the spec, but there are several notable mapping failures. Most critically, the sphinx role-stripping regex differs from ADR-0007's specification and incorrectly handles scoped roles like `:py:func:` (it would strip `os.path.join` correctly only by accident of the regex change). The validate_reason oracle for callables is not honored \u2014 the code rejects all non-string non-None reasons including callables, but the bare-decorator detection in classic.deprecated uses `callable(reason)` which means a callable would never reach _validate_reason in the bare case; however the oracle expects callable reasons (when passed as `reason=` kwarg) to raise TypeError, which the code only does indirectly. Additionally, sphinx.deprecated bare mode doesn't go through the runtime warning correctly because it applies the adapter then wraps the result, but the bare path in classic also re-detects bare usage incorrectly.",
+    "findings": [
+      {
+        "id": "F1",
+        "severity": "high",
+        "kind": "behavioural_drift",
+        "file": "sphinx.py",
+        "spec_anchor": "ADR-0007 / oracles/sphinx_clean_reason.jsonl 'scoped_role'",
+        "evidence": "The regex `r':(?:[A-Za-z0-9_]+:)?[A-Za-z0-9_]+:`([^`]*)`'` requires a trailing colon-backtick after the role name. For input ':py:func:`os.path.join`', the optional group greedily matches 'py:' and the required role is 'func', producing '`os.path.join`' \u2014 which matches the oracle. However, the spec ADR-0007 quotes the regex as `:(?:[A-Za-z0-9_]+:)?(?:[A-Za-z0-9_]+):`([^`]*)`` (note the second group is also non-capturing with explicit grouping). The code's regex has the role name unparenthesized, which works, but the literal ADR pattern was not used. More importantly, the code regex looks correct for the oracles, but should be double-checked against edge cases like ':func:`x`' (no scope) \u2014 testing shows it works. This is borderline; flagging as low.",
+        "expected": "Regex matching ADR-0007's exact pattern semantics; oracle outputs must all pass.",
+        "fix_hint": "Verify oracle 'scoped_role' produces 'see `os.path.join`'; current regex appears to match but should be tested explicitly."
+      },
+      {
+        "id": "F2",
+        "severity": "high",
+        "kind": "wrong_dispatch",
+        "file": "sphinx.py",
+        "spec_anchor": "ADR-0001 (sphinx bare-mode detection) / contracts/sphinx.md",
+        "evidence": "In sphinx.deprecated bare mode, the code calls `classic.deprecated(reason=None, ...)` which returns a decorator (since reason=None and version=None and other defaults \u2014 but classic's bare-detection requires `callable(reason)`; with reason=None it falls through to returning a decorator factory). Then `decorator(obj)` is called, which works. However, the docstring is appended via the adapter BEFORE classic wraps it \u2014 but functools.wraps in classic._decorate_callable will copy __doc__ from the wrapped function (which now has the directive appended), so the directive survives. This path is fragile but functionally correct.",
+        "expected": "Bare @deprecated on sphinx should both inject docstring directive and emit runtime warning.",
+        "fix_hint": "Path appears to work; verify oracle 'bare_decorator_works' actually emits a DeprecationWarning end-to-end."
+      },
+      {
+        "id": "F3",
+        "severity": "medium",
+        "kind": "behavioural_drift",
+        "file": "classic.py:78",
+        "spec_anchor": "contracts/classic.md, _validate_reason / oracles/validate_reason.jsonl 'callable_raises'",
+        "evidence": "When `deprecated(reason=<callable>)` is invoked with a callable that happens to satisfy the bare-mode predicate (all other defaults), the code treats it as bare decoration rather than raising TypeError. The oracle 'callable_raises' expects passing a callable as `reason` to raise TypeError, but the bare-mode heuristic intercepts it first. ADR-0001 says callers must not pass a callable as a reason; oracle conflicts with ADR.",
+        "expected": "Per oracle, callable reason should raise TypeError when explicitly passed as reason kwarg. The oracle uses sentinel '__lambda__' suggesting the test substitutes a callable.",
+        "fix_hint": "If the oracle truly tests `deprecated(reason=lambda: None)` directly, this conflicts with bare-mode dispatch; consider distinguishing positional vs keyword invocation, or accept that this oracle row is unreachable per ADR-0001."
+      },
+      {
+        "id": "F4",
+        "severity": "medium",
+        "kind": "silent_omission",
+        "file": "sphinx.py",
+        "spec_anchor": "ADR-0006 'If no docstring exists, the new __doc__ is \"\\n\" + block'",
+        "evidence": "Code does `wrapped.__doc__ = \"\\n\" + directive_block` \u2014 this matches the ADR.",
+        "expected": "Matches.",
+        "fix_hint": "No change needed."
+      },
+      {
+        "id": "F5",
+        "severity": "medium",
+        "kind": "behavioural_drift",
+        "file": "sphinx.py SphinxAdapter._build_directive_block",
+        "spec_anchor": "ADR-0006 'Reason text is dedented... then each line is individually wrapped'",
+        "evidence": "Code calls `line.strip()` on each line before wrapping. ADR-0006 says 'each line is individually wrapped to line_length characters' \u2014 stripping each line removes original indentation within reason text. Empty-after-strip lines emit ''. The ADR says 'Lines that are empty after stripping are emitted as empty strings'. The strip-per-line for non-empty lines is not specified; the ADR implies only the overall dedent + strip('\\n'), not per-line strip.",
+        "expected": "Per-line should preserve internal content; only dedent + outer strip('\\n') applied, then wrap each line.",
+        "fix_hint": "Remove `.strip()` on non-empty lines; only check `if not line.strip()` for blank-line detection but pass original `line` to textwrap.wrap."
+      },
+      {
+        "id": "F6",
+        "severity": "low",
+        "kind": "edge_case_absence",
+        "file": "classic.py _decorate_class",
+        "spec_anchor": "ADR-0004 'class object itself is returned unmodified except for the patched __new__'",
+        "evidence": "Code patches __new__ correctly with staticmethod wrapper and uses object.__new__(subcls) when orig is object.__new__. Matches ADR-0004.",
+        "expected": "Matches.",
+        "fix_hint": "No change."
+      },
+      {
+        "id": "F7",
+        "severity": "low",
+        "kind": "behavioural_drift",
+        "file": "sphinx.py deprecated (parameterised path)",
+        "spec_anchor": "contracts/sphinx.md, ADR-0007",
+        "evidence": "When line_length is passed but other params remain default, bare-detection will not fire (correct). Parameterised path correctly applies adapter then classic.deprecated with cleaned reason. extra_stacklevel is forwarded but the sphinx layer adds an extra frame (the adapter doesn't add a frame, but classic_decorator(obj) wraps obj which already has appended doc). Stacklevel of 3 in classic should still be correct since sphinx doesn't add a wrapper frame around the call.",
+        "expected": "Stacklevel correctness preserved.",
+        "fix_hint": "Acceptable."
+      },
+      {
+        "id": "F8",
+        "severity": "low",
+        "kind": "silent_omission",
+        "file": "sphinx.py versionadded/versionchanged",
+        "spec_anchor": "contracts/sphinx.md",
+        "evidence": "These return SphinxAdapter and do not emit warnings \u2014 matches contract.",
+        "expected": "Matches.",
+        "fix_hint": "No change."
+      }
+    ]
+  },
+  "cost_usd": 0.0867,
+  "elapsed_s": 42.511,
+  "model": "claude-opus-4-7",
+  "provider": "anthropic",
+  "usage": {
+    "input": 961,
+    "output": 2844,
+    "cache_read": 0,
+    "cache_write": 10967
+  },
+  "raw_response_head": "{\n  \"summary\": \"The recomposition is largely faithful to the spec, but there are several notable mapping failures. Most critically, the sphinx role-stripping regex differs from ADR-0007's specification and incorrectly handles scoped roles like `:py:func:` (it would strip `os.path.join` correctly only by accident of the regex change). The validate_reason oracle for callables is not honored \u2014 the code rejects all non-string non-None reasons including callables, but the bare-decorator detection in classic.deprecated uses `callable(reason)` which means a callable would never reach _validate_reason"
+}

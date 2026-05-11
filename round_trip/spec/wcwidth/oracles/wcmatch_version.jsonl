@@ -1,0 +1,10 @@
+{"name": "exact_match", "input": {"given_version": "9.0.0"}, "expected": "9.0.0"}
+{"name": "latest_keyword", "input": {"given_version": "latest"}, "expected": "15.1.0"}
+{"name": "between_versions_low", "input": {"given_version": "4.9.9"}, "expected": "4.1.0"}
+{"name": "between_versions_mid", "input": {"given_version": "9.5.0"}, "expected": "9.0.0"}
+{"name": "partial_two_parts", "input": {"given_version": "8.0"}, "expected": "8.0.0"}
+{"name": "partial_one_part", "input": {"given_version": "1"}, "expected": "4.1.0"}
+{"name": "higher_than_all", "input": {"given_version": "99.0.0"}, "expected": "15.1.0"}
+{"name": "exact_match_15_1_0", "input": {"given_version": "15.1.0"}, "expected": "15.1.0"}
+{"name": "exact_match_4_1_0", "input": {"given_version": "4.1.0"}, "expected": "4.1.0"}
+{"name": "partial_match_15", "input": {"given_version": "15"}, "expected": "15.0.0"}

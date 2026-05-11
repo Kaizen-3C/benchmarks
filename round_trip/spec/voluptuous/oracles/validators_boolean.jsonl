@@ -1,0 +1,12 @@
+{"name": "boolean_true_string", "input": {"data": "true"}, "expected": true}
+{"name": "boolean_false_string", "input": {"data": "false"}, "expected": false}
+{"name": "boolean_1_string", "input": {"data": "1"}, "expected": true}
+{"name": "boolean_0_string", "input": {"data": "0"}, "expected": false}
+{"name": "boolean_yes", "input": {"data": "yes"}, "expected": true}
+{"name": "boolean_no", "input": {"data": "no"}, "expected": false}
+{"name": "boolean_invalid_string", "input": {"data": "maybe"}, "expected": "raises BooleanInvalid"}
+{"name": "boolean_int", "input": {"data": 1}, "expected": true}
+{"name": "istrue_pass", "input": {"data": 1}, "expected": 1}
+{"name": "istrue_fail", "input": {"data": 0}, "expected": "raises TrueInvalid"}
+{"name": "isfalse_pass", "input": {"data": 0}, "expected": 0}
+{"name": "isfalse_fail", "input": {"data": 1}, "expected": "raises FalseInvalid"}

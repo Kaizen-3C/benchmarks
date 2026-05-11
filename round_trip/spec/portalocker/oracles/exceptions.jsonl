@@ -1,0 +1,10 @@
+{"name": "base_lock_exception_fh_stored", "input": {"args": ["msg"], "fh": "mock_fh"}, "expected": {"fh": "mock_fh", "args": ["msg"]}}
+{"name": "base_lock_exception_fh_default_none", "input": {"args": ["msg"]}, "expected": {"fh": null}}
+{"name": "lock_exception_is_base", "input": {"check": "issubclass(LockException, BaseLockException)"}, "expected": true}
+{"name": "already_locked_is_lock_exception", "input": {"check": "issubclass(AlreadyLocked, LockException)"}, "expected": true}
+{"name": "lock_failed_constant", "input": {"check": "BaseLockException.LOCK_FAILED"}, "expected": 1}
+{"name": "already_locked_is_base", "input": {"check": "issubclass(AlreadyLocked, BaseLockException)"}, "expected": true}
+{"name": "exception_catch_as_lock_exception", "input": {"raise": "AlreadyLocked", "catch": "LockException"}, "expected": true}
+{"name": "exception_catch_as_base", "input": {"raise": "AlreadyLocked", "catch": "BaseLockException"}, "expected": true}
+{"name": "lock_exception_no_fh", "input": {"args": []}, "expected": {"fh": null}}
+{"name": "file_to_large_is_lock_exception", "input": {"check": "issubclass(FileToLarge, LockException)"}, "expected": true}

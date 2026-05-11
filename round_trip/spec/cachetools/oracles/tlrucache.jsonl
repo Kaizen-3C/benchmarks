@@ -1,0 +1,5 @@
+{"name": "tlrucache_item_present_before_expiry", "input": {"maxsize": 10, "ttu": "lambda k,v,t: t+10", "ops": [["set", "k", 1, 0], ["get", "k", 5]]}, "expected": 1}
+{"name": "tlrucache_item_absent_after_expiry", "input": {"maxsize": 10, "ttu": "lambda k,v,t: t+10", "ops": [["set", "k", 1, 0], ["get", "k", 11]]}, "expected_exception": "KeyError"}
+{"name": "tlrucache_immediate_expiry_not_stored", "input": {"maxsize": 10, "ttu": "lambda k,v,t: t", "ops": [["set", "k", 1, 0]]}, "expected_len": 0}
+{"name": "tlrucache_ttu_property", "input": {"maxsize": 10, "ttu": "some_callable"}, "expected": "ttu attribute equals constructor arg"}
+{"name": "tlrucache_expire_returns_expired_list", "input": {"maxsize": 10, "ttu": "lambda k,v,t: t+5"}, "expected_type": "list"}

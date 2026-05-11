@@ -1,0 +1,618 @@
+{
+  "lib": "portalocker",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-6",
+  "preflight": {
+    "pass": true,
+    "inputs": {
+      "original_dir_exists": true,
+      "spec_dir_pre_existing": true,
+      "py_files_seen": 17,
+      "test_files_seen": 3
+    },
+    "pre_decompose_gates": {
+      "coverage": {
+        "pass": true,
+        "failures": [],
+        "stats": {
+          "symbols_total": 1,
+          "symbols_covered": 1,
+          "symbols_total_unscoped": 50,
+          "coverage_pct": 100.0
+        }
+      },
+      "specificity": {
+        "pass": false,
+        "failures": [
+          {
+            "adr": "adrs/ADR-0001-platform-locking-strategy.md",
+            "score": 1.0,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0001-platform-locking-strategy.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+          },
+          {
+            "adr": "adrs/ADR-0002-lock-flags-enum.md",
+            "score": 0.5,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 1,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0002-lock-flags-enum.md scored 0.5 (threshold 1.0). Add: named algorithm/library references, vague modals (1 hits \u2014 replace 'may'/'should'/'typically' with concrete decisions)."
+          },
+          {
+            "adr": "adrs/ADR-0003-exception-hierarchy.md",
+            "score": 1.0,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0003-exception-hierarchy.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+          },
+          {
+            "adr": "adrs/ADR-0007-combine-cli.md",
+            "score": 1.0,
+            "threshold": 1.0,
+            "breakdown": {
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            "remediation": "ADR adrs/ADR-0007-combine-cli.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+          }
+        ],
+        "stats": {
+          "adrs_scored": 8,
+          "adrs_passed": 4,
+          "scores": [
+            {
+              "adr": "adrs/ADR-0001-platform-locking-strategy.md",
+              "score": 1.0,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0002-lock-flags-enum.md",
+              "score": 0.5,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 1,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0003-exception-hierarchy.md",
+              "score": 1.0,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0004-lock-class-design.md",
+              "score": 2.0,
+              "digit_runs": 2,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0005-bounded-semaphore-design.md",
+              "score": 4.5,
+              "digit_runs": 2,
+              "quantitative_phrases": 5,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 1
+            },
+            {
+              "adr": "adrs/ADR-0006-redis-lock-design.md",
+              "score": 3.5,
+              "digit_runs": 3,
+              "quantitative_phrases": 0,
+              "named_refs": 1,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0007-combine-cli.md",
+              "score": 1.0,
+              "digit_runs": 1,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            },
+            {
+              "adr": "adrs/ADR-0008-versioning.md",
+              "score": 3.0,
+              "digit_runs": 3,
+              "quantitative_phrases": 0,
+              "named_refs": 0,
+              "vague_modals": 0,
+              "hedges": 0
+            }
+          ]
+        }
+      },
+      "consistency": {
+        "pass": true,
+        "failures": [],
+        "stats": {
+          "refs_checked": 14,
+          "refs_dangling": 0,
+          "targets_indexed": {
+            "adrs": 8,
+            "contracts": 6,
+            "oracles": 7
+          }
+        }
+      },
+      "test_oracle_alignment": {
+        "pass": false,
+        "failures": [
+          {
+            "test": "test_bounded_semaphore",
+            "source": "tests/test_semaphore.py:11",
+            "remediation": "No oracle covers `test_bounded_semaphore` (tests/test_semaphore.py:11). Append a JSONL row to portalocker/oracles/ with `{\"name\": \"test_bounded_semaphore\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_redis_lock",
+            "source": "tests/test_redis.py:33",
+            "remediation": "No oracle covers `test_redis_lock` (tests/test_redis.py:33). Append a JSONL row to portalocker/oracles/ with `{\"name\": \"test_redis_lock\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_redis_lock_timeout",
+            "source": "tests/test_redis.py:52",
+            "remediation": "No oracle covers `test_redis_lock_timeout` (tests/test_redis.py:52). Append a JSONL row to portalocker/oracles/ with `{\"name\": \"test_redis_lock_timeout\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_redis_lock_context",
+            "source": "tests/test_redis.py:69",
+            "remediation": "No oracle covers `test_redis_lock_context` (tests/test_redis.py:69). Append a JSONL row to portalocker/oracles/ with `{\"name\": \"test_redis_lock_context\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_redis_relock",
+            "source": "tests/test_redis.py:80",
+            "remediation": "No oracle covers `test_redis_relock` (tests/test_redis.py:80). Append a JSONL row to portalocker/oracles/ with `{\"name\": \"test_redis_relock\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          },
+          {
+            "test": "test_combined",
+            "source": "tests/test_combined.py:6",
+            "remediation": "No oracle covers `test_combined` (tests/test_combined.py:6). Append a JSONL row to portalocker/oracles/ with `{\"name\": \"test_combined\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+          }
+        ],
+        "stats": {
+          "tests_total": 6,
+          "oracles_total": 69,
+          "tests_aligned": 0,
+          "alignment_pct": 0.0
+        }
+      },
+      "implementation_leak": {
+        "pass": false,
+        "failures": [
+          {
+            "adr": "adrs/ADR-0004-lock-class-design.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_cleanup_file",
+            "remediation": "adrs/ADR-0004-lock-class-design.md references private symbol `_cleanup_file`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0004-lock-class-design.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_get_fh",
+            "remediation": "adrs/ADR-0004-lock-class-design.md references private symbol `_get_fh`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0004-lock-class-design.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_get_lock",
+            "remediation": "adrs/ADR-0004-lock-class-design.md references private symbol `_get_lock`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0004-lock-class-design.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_prepare_fh",
+            "remediation": "adrs/ADR-0004-lock-class-design.md references private symbol `_prepare_fh`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0006-redis-lock-design.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_PubSubWorkerBase",
+            "remediation": "adrs/ADR-0006-redis-lock-design.md references private symbol `_PubSubWorkerBase`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          },
+          {
+            "adr": "adrs/ADR-0007-combine-cli.md",
+            "leak_kind": "private_symbol_reference",
+            "symbol": "_read_file",
+            "remediation": "adrs/ADR-0007-combine-cli.md references private symbol `_read_file`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+          }
+        ],
+        "stats": {
+          "code_blocks_seen": 0,
+          "private_symbols_indexed": 11,
+          "leaks_total": 6
+        }
+      }
+    },
+    "reason": "ok"
+  },
+  "decompose": {
+    "cost_usd": 0.0,
+    "elapsed_s": 0.0,
+    "files_in_spec": -1,
+    "skipped": true
+  },
+  "gates": {
+    "coverage": {
+      "pass": true,
+      "failures": [],
+      "stats": {
+        "symbols_total": 1,
+        "symbols_covered": 1,
+        "symbols_total_unscoped": 50,
+        "coverage_pct": 100.0
+      }
+    },
+    "specificity": {
+      "pass": false,
+      "failures": [
+        {
+          "adr": "adrs/ADR-0001-platform-locking-strategy.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0001-platform-locking-strategy.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0002-lock-flags-enum.md",
+          "score": 0.5,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0002-lock-flags-enum.md scored 0.5 (threshold 1.0). Add: named algorithm/library references, vague modals (1 hits \u2014 replace 'may'/'should'/'typically' with concrete decisions)."
+        },
+        {
+          "adr": "adrs/ADR-0003-exception-hierarchy.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0003-exception-hierarchy.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        },
+        {
+          "adr": "adrs/ADR-0007-combine-cli.md",
+          "score": 1.0,
+          "threshold": 1.0,
+          "breakdown": {
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          "remediation": "ADR adrs/ADR-0007-combine-cli.md scored 1.0 (threshold 1.0). Add: named algorithm/library references."
+        }
+      ],
+      "stats": {
+        "adrs_scored": 8,
+        "adrs_passed": 4,
+        "scores": [
+          {
+            "adr": "adrs/ADR-0001-platform-locking-strategy.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0002-lock-flags-enum.md",
+            "score": 0.5,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 1,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0003-exception-hierarchy.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0004-lock-class-design.md",
+            "score": 2.0,
+            "digit_runs": 2,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0005-bounded-semaphore-design.md",
+            "score": 4.5,
+            "digit_runs": 2,
+            "quantitative_phrases": 5,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 1
+          },
+          {
+            "adr": "adrs/ADR-0006-redis-lock-design.md",
+            "score": 3.5,
+            "digit_runs": 3,
+            "quantitative_phrases": 0,
+            "named_refs": 1,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0007-combine-cli.md",
+            "score": 1.0,
+            "digit_runs": 1,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          },
+          {
+            "adr": "adrs/ADR-0008-versioning.md",
+            "score": 3.0,
+            "digit_runs": 3,
+            "quantitative_phrases": 0,
+            "named_refs": 0,
+            "vague_modals": 0,
+            "hedges": 0
+          }
+        ]
+      }
+    },
+    "consistency": {
+      "pass": true,
+      "failures": [],
+      "stats": {
+        "refs_checked": 14,
+        "refs_dangling": 0,
+        "targets_indexed": {
+          "adrs": 8,
+          "contracts": 6,
+          "oracles": 7
+        }
+      }
+    },
+    "test_oracle_alignment": {
+      "pass": false,
+      "failures": [
+        {
+          "test": "test_bounded_semaphore",
+          "source": "tests/test_semaphore.py:11",
+          "remediation": "No oracle covers `test_bounded_semaphore` (tests/test_semaphore.py:11). Append a JSONL row to portalocker/oracles/ with `{\"name\": \"test_bounded_semaphore\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_redis_lock",
+          "source": "tests/test_redis.py:33",
+          "remediation": "No oracle covers `test_redis_lock` (tests/test_redis.py:33). Append a JSONL row to portalocker/oracles/ with `{\"name\": \"test_redis_lock\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_redis_lock_timeout",
+          "source": "tests/test_redis.py:52",
+          "remediation": "No oracle covers `test_redis_lock_timeout` (tests/test_redis.py:52). Append a JSONL row to portalocker/oracles/ with `{\"name\": \"test_redis_lock_timeout\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_redis_lock_context",
+          "source": "tests/test_redis.py:69",
+          "remediation": "No oracle covers `test_redis_lock_context` (tests/test_redis.py:69). Append a JSONL row to portalocker/oracles/ with `{\"name\": \"test_redis_lock_context\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_redis_relock",
+          "source": "tests/test_redis.py:80",
+          "remediation": "No oracle covers `test_redis_relock` (tests/test_redis.py:80). Append a JSONL row to portalocker/oracles/ with `{\"name\": \"test_redis_relock\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        },
+        {
+          "test": "test_combined",
+          "source": "tests/test_combined.py:6",
+          "remediation": "No oracle covers `test_combined` (tests/test_combined.py:6). Append a JSONL row to portalocker/oracles/ with `{\"name\": \"test_combined\", \"input\": ..., \"expected\": ...}` so Recompose is checked against the same contract the canonical test enforces."
+        }
+      ],
+      "stats": {
+        "tests_total": 6,
+        "oracles_total": 69,
+        "tests_aligned": 0,
+        "alignment_pct": 0.0
+      }
+    },
+    "implementation_leak": {
+      "pass": false,
+      "failures": [
+        {
+          "adr": "adrs/ADR-0004-lock-class-design.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_cleanup_file",
+          "remediation": "adrs/ADR-0004-lock-class-design.md references private symbol `_cleanup_file`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0004-lock-class-design.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_get_fh",
+          "remediation": "adrs/ADR-0004-lock-class-design.md references private symbol `_get_fh`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0004-lock-class-design.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_get_lock",
+          "remediation": "adrs/ADR-0004-lock-class-design.md references private symbol `_get_lock`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0004-lock-class-design.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_prepare_fh",
+          "remediation": "adrs/ADR-0004-lock-class-design.md references private symbol `_prepare_fh`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0006-redis-lock-design.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_PubSubWorkerBase",
+          "remediation": "adrs/ADR-0006-redis-lock-design.md references private symbol `_PubSubWorkerBase`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        },
+        {
+          "adr": "adrs/ADR-0007-combine-cli.md",
+          "leak_kind": "private_symbol_reference",
+          "symbol": "_read_file",
+          "remediation": "adrs/ADR-0007-combine-cli.md references private symbol `_read_file`. Private names are implementation detail; ADRs should reference only the public surface or rename the concept to a behavioral one."
+        }
+      ],
+      "stats": {
+        "code_blocks_seen": 0,
+        "private_symbols_indexed": 11,
+        "leaks_total": 6
+      }
+    }
+  },
+  "remediation": null,
+  "smoke_test": {
+    "ok": false,
+    "import_ok": true,
+    "collect_ok": false,
+    "first_traceback": "\n=============================== warnings summary ===============================\n../../home/aadame/kaizen-commit0/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1434\n  /home/aadame/kaizen-commit0/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1434: PytestConfigWarning: Unknown config option: timeout\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\nno tests collected in 0.02s\n",
+    "package_name": "portalocker"
+  },
+  "smoke_remediation": null,
+  "code_edit_loop": null,
+  "post_remediation_gates": null,
+  "recompose": {
+    "cost_usd": 0.125,
+    "elapsed_s": 93.687,
+    "files_emitted": 8,
+    "model": "claude-sonnet-4-6",
+    "provider": "anthropic",
+    "usage": {
+      "input": 2,
+      "output": 7947,
+      "cache_read": 10485,
+      "cache_write": 700
+    }
+  },
+  "metrics": {
+    "q1_test_parity": {
+      "value": 0.0,
+      "detail": {
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 1,
+        "attempted": 0,
+        "collected": 1,
+        "test_suite_executed": true,
+        "pytest_returncode": 5,
+        "inventory": {
+          "recomposed_files": 8,
+          "test_files": 18,
+          "toplevel_files": 4,
+          "package_name": "portalocker"
+        },
+        "cov_changes": {
+          "pytest.ini": "stripped --cov-* flags from addopts"
+        },
+        "output_tail": "\n=============================== warnings summary ===============================\n../../home/aadame/kaizen-commit0/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1434\n  /home/aadame/kaizen-commit0/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1434: PytestConfigWarning: Unknown config option: timeout\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n1 skipped, 1 warning in 0.01s\n\n"
+      }
+    },
+    "q2_behavioral_parity": {
+      "value": null,
+      "detail": {
+        "todo": "phase 2: execute curated (input,output) pairs on both impls"
+      }
+    },
+    "q3_structural_parity": {
+      "value": 0.7952,
+      "detail": {
+        "signatures_in_original": 78,
+        "signatures_in_recomposed": 71,
+        "intersection": 66,
+        "missing_from_recomposed": [
+          "__main__.combine(args)",
+          "__main__.main(argv)",
+          "redis.RedisLock.channel_handler(self,message)",
+          "redis.RedisLock.check_or_kill_lock(self,connection,timeout)",
+          "redis.__init__(self,pubsub,sleep_time,daemon,exception_handler)",
+          "redis.channel_handler(self,message)",
+          "redis.check_or_kill_lock(self,connection,timeout)",
+          "redis.stop(self)",
+          "utils.RLock.__init__(self,filename,mode,timeout,check_interval,fail_when_locked,flags)",
+          "utils.TemporaryFileLock.__init__(self,filename,timeout,check_interval,fail_when_locked,flags)",
+          "utils.__init__(self,filename,mode,timeout,check_interval,fail_when_locked,flags)",
+          "utils.__init__(self,filename,timeout,check_interval,fail_when_locked,flags)"
+        ],
+        "extra_in_recomposed": [
+          "__main__.combine(output)",
+          "__main__.main()",
+          "utils.RLock.__init__(self,filename,mode,timeout,check_interval,fail_when_locked,flags,**file_open_kwargs)",
+          "utils.TemporaryFileLock.__init__(self,filename,timeout,check_interval,fail_when_locked,flags,**file_open_kwargs)",
+          "utils.__init__(self,filename,timeout,check_interval,fail_when_locked,flags,**file_open_kwargs)"
+        ],
+        "missing_count": 12,
+        "extra_count": 5
+      }
+    },
+    "q4_information_loss": {
+      "value": 0.9143,
+      "detail": {
+        "symbols_in_original": 35,
+        "symbols_mentioned_in_spec": 32,
+        "orphans": [
+          "channel_handler",
+          "check_or_kill_lock",
+          "stop"
+        ],
+        "orphan_count": 3
+      }
+    }
+  },
+  "totals": {
+    "cost_usd": 0.125,
+    "elapsed_s": 95.429
+  }
+}

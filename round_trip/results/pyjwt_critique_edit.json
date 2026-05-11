@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "lib": "pyjwt",
+  "executor_model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "findings_count": 12,
+  "findings_used": 10,
+  "files_edited": [
+    "algorithms.py",
+    "api_jwk.py",
+    "api_jws.py",
+    "api_jwt.py"
+  ],
+  "cost_usd": 0.2868,
+  "elapsed_s": 126.789,
+  "usage": {
+    "input": 611,
+    "output": 13789,
+    "cache_read": 0,
+    "cache_write": 20842
+  },
+  "raw_response_head": "=== algorithms.py ===\n```python\nimport hashlib\nimport hmac\nimport json\nfrom typing import Any, Dict, Optional, Union\n\nfrom .exceptions import InvalidKeyError\nfrom .types import HashlibHash, JWKDict\nfrom .utils import (\n    base64url_decode,\n    base64url_encode,\n    der_to_raw_signature,\n    force_bytes,\n    from_base64url_uint,\n    is_pem_format,\n    is_ssh_key,\n    raw_to_der_signature,\n    to_base64url_uint,\n)\n\ntry:\n    from cryptography.hazmat.primitives import hashes, serialization\n    from cryptography.hazmat.primitives.asymmetric import ec, padding, rsa, ed25519, ed448\n    from cryptogr"
+}

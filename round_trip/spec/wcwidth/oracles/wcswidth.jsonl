@@ -1,0 +1,15 @@
+{"name": "empty_string", "input": {"pwcs": "", "n": null, "unicode_version": "latest"}, "expected": 0}
+{"name": "ascii_hello", "input": {"pwcs": "hello", "n": null, "unicode_version": "latest"}, "expected": 5}
+{"name": "ascii_with_n", "input": {"pwcs": "hello", "n": 3, "unicode_version": "latest"}, "expected": 3}
+{"name": "cjk_two_chars", "input": {"pwcs": "\u4e16\u754c", "n": null, "unicode_version": "latest"}, "expected": 4}
+{"name": "mixed_ascii_cjk", "input": {"pwcs": "a\u4e16", "n": null, "unicode_version": "latest"}, "expected": 3}
+{"name": "contains_control_char", "input": {"pwcs": "a\nb", "n": null, "unicode_version": "latest"}, "expected": -1}
+{"name": "contains_nul", "input": {"pwcs": "a\u0000b", "n": null, "unicode_version": "latest"}, "expected": 2}
+{"name": "combining_chars", "input": {"pwcs": "e\u0301", "n": null, "unicode_version": "latest"}, "expected": 1}
+{"name": "zwj_skip", "input": {"pwcs": "a\u200db", "n": null, "unicode_version": "latest"}, "expected": 1}
+{"name": "vs16_narrow_to_wide_hash", "input": {"pwcs": "#\ufe0f", "n": null, "unicode_version": "latest"}, "expected": 2}
+{"name": "vs16_no_effect_below_9", "input": {"pwcs": "#\ufe0f", "n": null, "unicode_version": "8.0.0"}, "expected": 1}
+{"name": "n_zero", "input": {"pwcs": "hello", "n": 0, "unicode_version": "latest"}, "expected": 0}
+{"name": "all_combining", "input": {"pwcs": "\u0300\u0301\u0302", "n": null, "unicode_version": "latest"}, "expected": 0}
+{"name": "soft_hyphen_str", "input": {"pwcs": "\u00ad", "n": null, "unicode_version": "latest"}, "expected": 0}
+{"name": "fullwidth_string", "input": {"pwcs": "\uff01\uff02\uff03", "n": null, "unicode_version": "latest"}, "expected": 6}

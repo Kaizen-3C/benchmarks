@@ -1,0 +1,24 @@
+{"name": "ascii_space", "input": {"wc": " ", "unicode_version": "latest"}, "expected": 1}
+{"name": "ascii_A", "input": {"wc": "A", "unicode_version": "latest"}, "expected": 1}
+{"name": "ascii_tilde", "input": {"wc": "~", "unicode_version": "latest"}, "expected": 1}
+{"name": "nul_character", "input": {"wc": "\u0000", "unicode_version": "latest"}, "expected": 0}
+{"name": "combining_grave", "input": {"wc": "\u0300", "unicode_version": "latest"}, "expected": 0}
+{"name": "c0_control_tab", "input": {"wc": "\t", "unicode_version": "latest"}, "expected": -1}
+{"name": "c0_control_newline", "input": {"wc": "\n", "unicode_version": "latest"}, "expected": -1}
+{"name": "c0_control_escape", "input": {"wc": "\x1b", "unicode_version": "latest"}, "expected": -1}
+{"name": "del_control", "input": {"wc": "\x7f", "unicode_version": "latest"}, "expected": -1}
+{"name": "c1_control_0x80", "input": {"wc": "\x80", "unicode_version": "latest"}, "expected": -1}
+{"name": "c1_control_0x9f", "input": {"wc": "\x9f", "unicode_version": "latest"}, "expected": -1}
+{"name": "cjk_unified_4e16", "input": {"wc": "\u4e16", "unicode_version": "latest"}, "expected": 2}
+{"name": "cjk_unified_754c", "input": {"wc": "\u754c", "unicode_version": "latest"}, "expected": 2}
+{"name": "fullwidth_exclamation", "input": {"wc": "\uff01", "unicode_version": "latest"}, "expected": 2}
+{"name": "halfwidth_katakana", "input": {"wc": "\uff65", "unicode_version": "latest"}, "expected": 1}
+{"name": "latin_small_a", "input": {"wc": "a", "unicode_version": "latest"}, "expected": 1}
+{"name": "soft_hyphen", "input": {"wc": "\u00ad", "unicode_version": "latest"}, "expected": 0}
+{"name": "zero_width_space", "input": {"wc": "\u200b", "unicode_version": "latest"}, "expected": 0}
+{"name": "hangul_syllable", "input": {"wc": "\uac00", "unicode_version": "latest"}, "expected": 2}
+{"name": "version_auto_resolves", "input": {"wc": "A", "unicode_version": "auto"}, "expected": 1}
+{"name": "version_latest_resolves", "input": {"wc": "\u4e16", "unicode_version": "latest"}, "expected": 2}
+{"name": "version_exact_900", "input": {"wc": "\u4e16", "unicode_version": "9.0.0"}, "expected": 2}
+{"name": "emoji_person_wide", "input": {"wc": "\U0001f600", "unicode_version": "latest"}, "expected": 2}
+{"name": "variation_selector_16", "input": {"wc": "\ufe0f", "unicode_version": "latest"}, "expected": 0}

@@ -1,0 +1,17 @@
+```json
+{
+  "__init__.py": {
+    "from .classic import deprecated": "re-export"
+  },
+  "classic.py": {
+    "import functools": "stdlib",
+    "import inspect": "stdlib",
+    "import warnings": "stdlib"
+  },
+  "sphinx.py": {
+    "import re": "stdlib",
+    "import textwrap": "stdlib",
+    "from . import classic": "internal"
+  }
+}
+```

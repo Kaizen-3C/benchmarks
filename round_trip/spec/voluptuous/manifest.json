@@ -1,0 +1,14 @@
+{
+  "package_name": "voluptuous",
+  "version": "0.15.2",
+  "install_requires": [],
+  "python_requires": ">=3.9",
+  "modules": [
+    "__init__.py",
+    "error.py",
+    "humanize.py",
+    "schema_builder.py",
+    "util.py",
+    "validators.py"
+  ]
+}

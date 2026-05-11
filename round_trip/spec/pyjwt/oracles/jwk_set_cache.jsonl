@@ -1,0 +1,6 @@
+{"name": "cache_empty_returns_none", "input": {"lifespan": 300, "action": "get"}, "expected": {"result": null}}
+{"name": "cache_put_and_get", "input": {"lifespan": 300, "action": "put_then_get", "data": {"keys": []}}, "expected": {"result_not_null": true}}
+{"name": "cache_put_none_clears", "input": {"lifespan": 300, "action": "put_none_after_data"}, "expected": {"result": null}}
+{"name": "cache_expired_returns_none", "input": {"lifespan": 0, "action": "put_then_get_after_expiry"}, "expected": {"result": null}}
+{"name": "cache_is_expired_empty", "input": {"lifespan": 300, "action": "is_expired_empty"}, "expected": {"result": true}}
+{"name": "cache_is_not_expired_fresh", "input": {"lifespan": 300, "action": "is_expired_after_put"}, "expected": {"result": false}}

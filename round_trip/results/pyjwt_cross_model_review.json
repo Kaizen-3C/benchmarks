@@ -1,0 +1,26 @@
+{
+  "lib": "pyjwt",
+  "executor_model": "claude-sonnet-4-6",
+  "reviewer_model": "claude-opus-4-7",
+  "review_reused_from": "benchmarks\\round_trip\\results\\pyjwt_review_only.json",
+  "review_findings": 12,
+  "re_recompose": {
+    "ok": true,
+    "cost_usd": 0.3637,
+    "elapsed_s": 213.065,
+    "files_emitted": 12,
+    "model": "claude-sonnet-4-6",
+    "provider": "anthropic",
+    "usage": {
+      "input": 702,
+      "output": 19161,
+      "cache_read": 0,
+      "cache_write": 19773
+    },
+    "critique_findings": 12
+  },
+  "totals": {
+    "cost_usd": 0.6118,
+    "note": "review cost is Sonnet-priced for an Opus call; real ~5x"
+  }
+}

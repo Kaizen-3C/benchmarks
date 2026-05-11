@@ -1,0 +1,6 @@
+{
+  "__all__": ["Cache", "FIFOCache", "LFUCache", "LRUCache", "MRUCache", "RRCache", "TLRUCache", "TTLCache", "cached", "cachedmethod"],
+  "__version__": "5.5.0",
+  "from . import keys": ["keys"],
+  "direct_definitions": ["Cache", "FIFOCache", "LFUCache", "LRUCache", "MRUCache", "RRCache", "TLRUCache", "TTLCache", "cached", "cachedmethod"]
+}

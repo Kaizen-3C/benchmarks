@@ -1,0 +1,20 @@
+{
+  "__about__.py": {},
+  "__init__.py": {
+    "from . import __about__, constants, exceptions, portalocker": "internal",
+    "from .utils import BoundedSemaphore, Lock, NamedBoundedSemaphore, RLock, TemporaryFileLock, open_atomic": "re-export",
+    "from .redis import RedisLock": "re-export (optional, guarded by ImportError)"
+  },
+  "__main__.py": {},
+  "constants.py": {},
+  "exceptions.py": {},
+  "portalocker.py": {
+    "from . import constants, exceptions": "internal"
+  },
+  "redis.py": {
+    "from . import exceptions, utils": "internal"
+  },
+  "utils.py": {
+    "from . import constants, exceptions, portalocker": "internal"
+  }
+}
