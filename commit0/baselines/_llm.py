@@ -27,6 +27,8 @@ changes.
 
 from __future__ import annotations
 
+import os
+
 
 # Sonnet 4.6 list pricing ($/MTok)
 SONNET_INPUT  = 3.00
@@ -61,6 +63,16 @@ class LLMClient:
                  max_retries: int = DEFAULT_RETRIES):
         self.provider = provider
         self.model = model or DEFAULT_MODELS[provider]
+        # Opt-in env-var override for max_tokens. Used by the local-calibration
+        # bench (benchmarks/_internal/experiments/round_trip/local_calibration/) to
+        # match commercial output budget against local Qwen's `num_predict` cap.
+        # Production behavior is unchanged when the env var is unset.
+        env_cap = os.environ.get("KAIZEN_LLM_MAX_TOKENS")
+        if env_cap:
+            try:
+                max_tokens = int(env_cap)
+            except ValueError:
+                pass
         self.max_tokens = max_tokens
         if provider == "anthropic":
             from anthropic import Anthropic
