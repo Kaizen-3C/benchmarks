@@ -1,0 +1,10 @@
+{"name": "number_from_f64_finite", "input": 1.5, "expected": {"is_some": true, "as_f64": 1.5}}
+{"name": "number_from_f64_nan", "input": "NaN", "expected": {"is_some": false}}
+{"name": "number_from_f64_inf", "input": "Infinity", "expected": {"is_some": false}}
+{"name": "number_u64_is_u64", "input": 42, "expected": {"is_u64": true, "is_i64": true, "is_f64": false}}
+{"name": "number_neg_is_i64", "input": -5, "expected": {"is_u64": false, "is_i64": true, "is_f64": false}}
+{"name": "number_float_is_f64", "input": 1.1, "expected": {"is_u64": false, "is_i64": false, "is_f64": true}}
+{"name": "number_u64_max_not_i64", "input": 18446744073709551615, "expected": {"is_u64": true, "is_i64": false}}
+{"name": "number_from_i128_in_i64_range", "input": -100, "expected": {"is_some": true}}
+{"name": "number_display_float", "input": 1.0, "expected": "1.0"}
+{"name": "number_display_large_float", "input": 1.2e41, "expected": "1.2e+41"}

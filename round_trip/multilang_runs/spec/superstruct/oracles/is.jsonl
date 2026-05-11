@@ -1,0 +1,5 @@
+{"name":"is returns true for valid","input":{"value":"hello","struct":"string()"},"expected":true}
+{"name":"is returns false for invalid","input":{"value":42,"struct":"string()"},"expected":false}
+{"name":"is returns true for optional undefined","input":{"value":null,"struct":"optional(string())"},"expected":false}
+{"name":"is returns true for optional undefined value","input":{"value":null},"expected":false}
+{"name":"is valid optional with undefined","input":{"value":"undefined_literal","struct":"optional(string())"},"expected":true}

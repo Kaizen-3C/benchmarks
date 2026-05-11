@@ -1,0 +1,23 @@
+{"name":"any passes any value","input":{"value":{"anything":true},"struct":"any()"},"expected":{"valid":true}}
+{"name":"array validates elements","input":{"value":[1,"b",3],"struct":"array(number())"},"expected":{"valid":false,"failurePath":[1],"failureType":"number"}}
+{"name":"boolean rejects non-boolean","input":{"value":"true","struct":"boolean()"},"expected":{"valid":false}}
+{"name":"date rejects invalid Date","input":{"value":"new Date('invalid')","struct":"date()"},"expected":{"valid":false}}
+{"name":"date accepts valid Date","input":{"value":"new Date(0)","struct":"date()"},"expected":{"valid":true}}
+{"name":"enums accepts value in set","input":{"value":"two","struct":"enums(['one','two'])"},"expected":{"valid":true}}
+{"name":"enums rejects value not in set","input":{"value":"three","struct":"enums(['one','two'])"},"expected":{"valid":false,"failureType":"enums"}}
+{"name":"integer rejects decimal","input":{"value":3.14,"struct":"integer()"},"expected":{"valid":false}}
+{"name":"literal uses strict equality","input":{"value":42,"struct":"literal(42)"},"expected":{"valid":true}}
+{"name":"literal rejects non-equal","input":{"value":43,"struct":"literal(42)"},"expected":{"valid":false}}
+{"name":"never always fails","input":{"value":true,"struct":"never()"},"expected":{"valid":false,"failureType":"never"}}
+{"name":"nullable accepts null","input":{"value":null,"struct":"nullable(number())"},"expected":{"valid":true}}
+{"name":"nullable rejects wrong type","input":{"value":"x","struct":"nullable(number())"},"expected":{"valid":false}}
+{"name":"object rejects arrays","input":{"value":[],"struct":"object()"},"expected":{"valid":false,"failureType":"object"}}
+{"name":"object rejects unknown keys","input":{"value":{"a":1,"b":2},"struct":"object({a:number()})"},"expected":{"valid":false,"failureType":"never","failurePath":["b"]}}
+{"name":"optional accepts undefined","input":{"value":"undefined","struct":"optional(number())"},"expected":{"valid":true}}
+{"name":"record validates all values","input":{"value":{"a":"x"},"struct":"record(string(),number())"},"expected":{"valid":false,"failureType":"number"}}
+{"name":"tuple rejects extra elements","input":{"value":["A",3,"extra"],"struct":"tuple([string(),number()])"},"expected":{"valid":false,"failureType":"never","failurePath":[2]}}
+{"name":"tuple rejects missing elements","input":{"value":["A"],"struct":"tuple([string(),number()])"},"expected":{"valid":false,"failureType":"number","failurePath":[1]}}
+{"name":"type allows unknown keys","input":{"value":{"name":"x","extra":1},"struct":"type({name:string()})"},"expected":{"valid":true}}
+{"name":"union accepts first matching","input":{"value":{"a":"ok"},"struct":"union([type({a:string()}),type({b:number()})])"},"expected":{"valid":true}}
+{"name":"union rejects if none match","input":{"value":{"b":"x"},"struct":"union([type({a:string()}),type({b:number()})])"},"expected":{"valid":false,"failureType":"union"}}
+{"name":"intersection requires all","input":{"value":{"a":"x","b":"not-a-number"},"struct":"intersection([type({a:string()}),type({b:number()})])"},"expected":{"valid":false,"failurePath":["b"]}}

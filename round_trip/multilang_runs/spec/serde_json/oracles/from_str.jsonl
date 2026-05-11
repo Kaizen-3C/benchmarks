@@ -1,0 +1,35 @@
+{"name": "parse_null", "input": "null", "expected": {"type": "Ok", "value": null}}
+{"name": "parse_true", "input": "true", "expected": {"type": "Ok", "value": true}}
+{"name": "parse_false", "input": "false", "expected": {"type": "Ok", "value": false}}
+{"name": "parse_integer_zero", "input": "0", "expected": {"type": "Ok", "value": 0}}
+{"name": "parse_integer_positive", "input": "42", "expected": {"type": "Ok", "value": 42}}
+{"name": "parse_integer_negative", "input": "-1234", "expected": {"type": "Ok", "value": -1234}}
+{"name": "parse_float", "input": "3.14", "expected": {"type": "Ok", "value": 3.14}}
+{"name": "parse_float_exp", "input": "1.5e10", "expected": {"type": "Ok", "value": 1.5e10}}
+{"name": "parse_string_empty", "input": "\"\"", "expected": {"type": "Ok", "value": ""}}
+{"name": "parse_string_hello", "input": "\"hello\"", "expected": {"type": "Ok", "value": "hello"}}
+{"name": "parse_string_escape_newline", "input": "\"\\n\"", "expected": {"type": "Ok", "value": "\n"}}
+{"name": "parse_string_escape_tab", "input": "\"\\t\"", "expected": {"type": "Ok", "value": "\t"}}
+{"name": "parse_string_escape_unicode", "input": "\"\\u0041\"", "expected": {"type": "Ok", "value": "A"}}
+{"name": "parse_array_empty", "input": "[]", "expected": {"type": "Ok", "value": []}}
+{"name": "parse_array_mixed", "input": "[1, \"two\", null, true]", "expected": {"type": "Ok", "value": [1, "two", null, true]}}
+{"name": "parse_object_empty", "input": "{}", "expected": {"type": "Ok", "value": {}}}
+{"name": "parse_object_simple", "input": "{\"a\":1,\"b\":2}", "expected": {"type": "Ok", "value": {"a": 1, "b": 2}}}
+{"name": "parse_nested", "input": "{\"x\":[1,{\"y\":null}]}", "expected": {"type": "Ok", "value": {"x": [1, {"y": null}]}}}
+{"name": "parse_leading_space", "input": "  true  ", "expected": {"type": "Ok", "value": true}}
+{"name": "error_trailing_chars", "input": "truetrue", "expected": {"type": "Err", "category": "Syntax", "message_contains": "trailing characters"}}
+{"name": "error_eof_value", "input": "", "expected": {"type": "Err", "category": "Eof"}}
+{"name": "error_invalid_escape", "input": "\"\\q\"", "expected": {"type": "Err", "category": "Syntax", "message_contains": "invalid escape"}}
+{"name": "error_control_char", "input": "\"\u0000\"", "expected": {"type": "Err", "category": "Syntax"}}
+{"name": "error_leading_zero", "input": "00", "expected": {"type": "Err", "category": "Syntax", "message_contains": "invalid number"}}
+{"name": "error_plus_sign", "input": "+1", "expected": {"type": "Err", "category": "Syntax"}}
+{"name": "error_missing_colon", "input": "{\"a\" 1}", "expected": {"type": "Err", "category": "Syntax", "message_contains": "expected `:`"}}
+{"name": "error_missing_comma_array", "input": "[1 2]", "expected": {"type": "Err", "category": "Syntax"}}
+{"name": "error_trailing_comma_array", "input": "[1,]", "expected": {"type": "Err", "category": "Syntax", "message_contains": "trailing comma"}}
+{"name": "error_key_not_string", "input": "{1: 2}", "expected": {"type": "Err", "category": "Syntax", "message_contains": "key must be a string"}}
+{"name": "u64_max", "input": "18446744073709551615", "expected": {"type": "Ok", "value": 18446744073709551615}}
+{"name": "i64_min", "input": "-9223372036854775808", "expected": {"type": "Ok", "value": -9223372036854775808}}
+{"name": "number_out_of_range", "input": "1e309", "expected": {"type": "Err", "category": "Syntax", "message_contains": "number out of range"}}
+{"name": "recursion_limit", "input": "[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[null]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]", "expected": {"type": "Err", "category": "Syntax", "message_contains": "recursion limit"}}
+{"name": "parse_negative_zero_f64", "input": "-0.0", "expected": {"type": "Ok", "is_sign_negative": true}}
+{"name": "parse_surrogate_pair", "input": "\"\\uD83D\\uDE00\"", "expected": {"type": "Ok", "value": "😀"}}

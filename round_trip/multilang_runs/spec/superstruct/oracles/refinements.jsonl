@@ -1,0 +1,19 @@
+{"name":"pattern valid","input":{"value":"123","struct":"pattern(string(),/\\d+/)"},"expected":{"valid":true}}
+{"name":"pattern invalid","input":{"value":"abc","struct":"pattern(string(),/\\d+/)"},"expected":{"valid":false,"refinement":"pattern"}}
+{"name":"min valid inclusive","input":{"value":0,"struct":"min(number(),0)"},"expected":{"valid":true}}
+{"name":"min invalid","input":{"value":-1,"struct":"min(number(),0)"},"expected":{"valid":false,"refinement":"min"}}
+{"name":"min exclusive invalid at boundary","input":{"value":0,"struct":"min(number(),0,{exclusive:true})"},"expected":{"valid":false,"refinement":"min"}}
+{"name":"max valid inclusive","input":{"value":0,"struct":"max(number(),0)"},"expected":{"valid":true}}
+{"name":"max invalid","input":{"value":1,"struct":"max(number(),0)"},"expected":{"valid":false,"refinement":"max"}}
+{"name":"max exclusive invalid at boundary","input":{"value":0,"struct":"max(number(),0,{exclusive:true})"},"expected":{"valid":false,"refinement":"max"}}
+{"name":"size string valid","input":{"value":"abc","struct":"size(string(),1,5)"},"expected":{"valid":true}}
+{"name":"size string invalid empty","input":{"value":"","struct":"size(string(),1,5)"},"expected":{"valid":false,"refinement":"size"}}
+{"name":"size number valid","input":{"value":3,"struct":"size(number(),1,5)"},"expected":{"valid":true}}
+{"name":"size number invalid","input":{"value":0,"struct":"size(number(),1,5)"},"expected":{"valid":false,"refinement":"size"}}
+{"name":"size exact valid","input":{"value":"abcd","struct":"size(string(),4)"},"expected":{"valid":true}}
+{"name":"nonempty valid","input":{"value":"x","struct":"nonempty(string())"},"expected":{"valid":true}}
+{"name":"nonempty invalid empty string","input":{"value":"","struct":"nonempty(string())"},"expected":{"valid":false,"refinement":"nonempty"}}
+{"name":"empty valid empty string","input":{"value":"","struct":"empty(string())"},"expected":{"valid":true}}
+{"name":"empty invalid non-empty string","input":{"value":"x","struct":"empty(string())"},"expected":{"valid":false,"refinement":"empty"}}
+{"name":"refine with custom name","input":{"value":"invalid","struct":"refine(string(),'email',v=>v.includes('@'))"},"expected":{"valid":false,"refinement":"email"}}
+{"name":"refine valid","input":{"value":"a@b.com","struct":"refine(string(),'email',v=>v.includes('@'))"},"expected":{"valid":true}}

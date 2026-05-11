@@ -1,0 +1,14 @@
+{"name":"define creates custom validator","input":{"value":"hello","struct":"define('word', v => typeof v === 'string')"},"expected":{"valid":true}}
+{"name":"define fails custom validation","input":{"value":42,"struct":"define('word', v => typeof v === 'string')"},"expected":{"valid":false,"failureType":"word"}}
+{"name":"assign merges schemas","input":{"value":{"a":1,"b":"x"},"struct":"assign(object({a:number()}),object({b:string()}))"},"expected":{"valid":true}}
+{"name":"assign rejects unknown keys (object base)","input":{"value":{"a":1,"b":"x","c":true},"struct":"assign(object({a:number()}),object({b:string()}))"},"expected":{"valid":false,"failureType":"never"}}
+{"name":"deprecated passes undefined without logging","input":{"value":"undefined","struct":"deprecated(any(),log)"},"expected":{"logged":false,"valid":true}}
+{"name":"deprecated logs and validates when value present","input":{"value":"present","struct":"deprecated(any(),log)"},"expected":{"logged":true,"valid":true}}
+{"name":"lazy caches struct","input":{"value":"ok","struct":"lazy(()=>string())"},"expected":{"valid":true}}
+{"name":"dynamic resolves struct at runtime","input":{"value":3,"struct":"dynamic(()=>string())"},"expected":{"valid":false,"failureType":"string"}}
+{"name":"omit removes key from schema","input":{"value":{"b":2},"struct":"omit(object({a:number(),b:number()}),['a'])"},"expected":{"valid":true}}
+{"name":"omit still rejects unknown key for removed field","input":{"value":{"a":1,"b":2},"struct":"omit(object({a:number(),b:number()}),['a'])"},"expected":{"valid":false,"failureType":"never"}}
+{"name":"partial makes all fields optional","input":{"value":{},"struct":"partial({name:string(),age:number()})"},"expected":{"valid":true}}
+{"name":"partial still rejects wrong type","input":{"value":{"age":"x"},"struct":"partial({name:string(),age:number()})"},"expected":{"valid":false}}
+{"name":"pick keeps only selected keys","input":{"value":{"name":"x"},"struct":"pick(object({name:string(),age:number()}),['name'])"},"expected":{"valid":true}}
+{"name":"pick rejects omitted key as unknown","input":{"value":{"name":"x","age":1},"struct":"pick(object({name:string(),age:number()}),['name'])"},"expected":{"valid":false,"failureType":"never"}}

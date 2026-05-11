@@ -1,0 +1,7 @@
+{"name": "error_is_eof_on_truncated_string", "input": "\"abc", "expected": {"is_eof": true, "category": "Eof"}}
+{"name": "error_is_syntax_on_invalid_escape", "input": "\"\\q\"", "expected": {"is_syntax": true, "category": "Syntax"}}
+{"name": "error_line_column_basic", "input": "{\n  \"x\": bad}", "expected": {"line": 2, "column": 9}}
+{"name": "error_is_data_on_type_mismatch", "input": {"deserialize_as": "bool", "json": "\"not a bool\""}, "expected": {"is_data": true, "category": "Data"}}
+{"name": "error_classify_eof_while_parsing_value", "input": "", "expected": {"category": "Eof"}}
+{"name": "error_classify_eof_while_parsing_string", "input": "\"unterminated", "expected": {"category": "Eof"}}
+{"name": "error_display_contains_line_col", "input": "{\"x\":}", "expected": {"display_contains": "line 1 column 6"}}

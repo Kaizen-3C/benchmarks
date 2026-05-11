@@ -1,0 +1,9 @@
+{"name":"validate returns [undefined, value] on success","input":{"value":"ok","struct":"string()"},"expected":{"error":null,"value":"ok"}}
+{"name":"validate returns [StructError, undefined] on failure","input":{"value":42,"struct":"string()"},"expected":{"error":{"type":"string","path":[],"value":42},"value":null}}
+{"name":"validate failures array has first failure","input":{"value":42,"struct":"string()"},"expected":{"firstFailure":{"type":"string","value":42,"path":[],"refinement":null}}}
+{"name":"validate with path prefix in message","input":{"value":{"author":{"name":42}},"struct":"object({author:object({name:string()})})"},"expected":{"errorMessage":"At path: author.name -- Expected a string, but received: 42"}}
+{"name":"validate custom message overrides","input":{"value":42,"struct":"string()","message":"Validation failed!"},"expected":{"errorMessage":"Validation failed!","cause":"Expected a string, but received: 42"}}
+{"name":"validate early exit - second validator not run if first fails","input":{"value":{"a":null,"b":null},"struct":"object({a:A,b:B})"},"expected":{"ranA":true,"ranB":false}}
+{"name":"validate refiners run after all children validated","input":{"value":{"a":null},"struct":"refine(object({a:A}),'B',refiner)"},"expected":{"order":["validator","refiner"]}}
+{"name":"validate outer refiner still runs if inner refiner fails","input":{"value":{"a":null},"struct":"refine(object({a:refine(any(),'A',()=>false)}),'B',refiner)"},"expected":{"ranOuterRefiner":true}}
+{"name":"validate outer refiner skipped if validator fails","input":{"value":{"a":null},"struct":"refine(object({a:define('A',()=>false)}),'B',refiner)"},"expected":{"ranRefiner":false}}

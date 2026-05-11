@@ -1,0 +1,230 @@
+{
+  "lib": "serde_json",
+  "lang": "rust",
+  "decompose": {
+    "files_in_spec": 30,
+    "cost_usd": 0.953,
+    "elapsed_s": 196.52
+  },
+  "recompose": {
+    "files_emitted": 38,
+    "multi_shot": {
+      "modules_listed": 37,
+      "per_file": [
+        {
+          "target": "Cargo.toml",
+          "wrote": 1,
+          "cost_usd": 0.0545
+        },
+        {
+          "target": "src/lib.rs",
+          "wrote": 1,
+          "cost_usd": 0.0539
+        },
+        {
+          "target": "src/de.rs",
+          "wrote": 1,
+          "cost_usd": 0.2956
+        },
+        {
+          "target": "src/error.rs",
+          "wrote": 1,
+          "cost_usd": 0.1013
+        },
+        {
+          "target": "src/io/mod.rs",
+          "wrote": 1,
+          "cost_usd": 0.0555
+        },
+        {
+          "target": "src/io/core.rs",
+          "wrote": 1,
+          "cost_usd": 0.056
+        },
+        {
+          "target": "src/iter.rs",
+          "wrote": 1,
+          "cost_usd": 0.0553
+        },
+        {
+          "target": "src/lexical/mod.rs",
+          "wrote": 1,
+          "cost_usd": 0.0544
+        },
+        {
+          "target": "src/lexical/algorithm.rs",
+          "wrote": 1,
+          "cost_usd": 0.0688
+        },
+        {
+          "target": "src/lexical/bhcomp.rs",
+          "wrote": 1,
+          "cost_usd": 0.0848
+        },
+        {
+          "target": "src/lexical/bignum.rs",
+          "wrote": 1,
+          "cost_usd": 0.0643
+        },
+        {
+          "target": "src/lexical/cached.rs",
+          "wrote": 1,
+          "cost_usd": 0.0582
+        },
+        {
+          "target": "src/lexical/cached_float80.rs",
+          "wrote": 1,
+          "cost_usd": 0.0872
+        },
+        {
+          "target": "src/lexical/digit.rs",
+          "wrote": 1,
+          "cost_usd": 0.051
+        },
+        {
+          "target": "src/lexical/errors.rs",
+          "wrote": 1,
+          "cost_usd": 0.0731
+        },
+        {
+          "target": "src/lexical/exponent.rs",
+          "wrote": 1,
+          "cost_usd": 0.0595
+        },
+        {
+          "target": "src/lexical/float.rs",
+          "wrote": 1,
+          "cost_usd": 0.076
+        },
+        {
+          "target": "src/lexical/large_powers.rs",
+          "wrote": 1,
+          "cost_usd": 0.0493
+        },
+        {
+          "target": "src/lexical/large_powers32.rs",
+          "wrote": 1,
+          "cost_usd": 0.0588
+        },
+        {
+          "target": "src/lexical/large_powers64.rs",
+          "wrote": 1,
+          "cost_usd": 0.0893
+        },
+        {
+          "target": "src/lexical/math.rs",
+          "wrote": 1,
+          "cost_usd": 0.1456
+        },
+        {
+          "target": "src/lexical/num.rs",
+          "wrote": 1,
+          "cost_usd": 0.0783
+        },
+        {
+          "target": "src/lexical/parse.rs",
+          "wrote": 1,
+          "cost_usd": 0.0677
+        },
+        {
+          "target": "src/lexical/rounding.rs",
+          "wrote": 1,
+          "cost_usd": 0.0685
+        },
+        {
+          "target": "src/lexical/shift.rs",
+          "wrote": 1,
+          "cost_usd": 0.0539
+        },
+        {
+          "target": "src/lexical/small_powers.rs",
+          "wrote": 1,
+          "cost_usd": 0.0555
+        },
+        {
+          "target": "src/macros.rs",
+          "wrote": 1,
+          "cost_usd": 0.0942
+        },
+        {
+          "target": "src/map.rs",
+          "wrote": 1,
+          "cost_usd": 0.1923
+        },
+        {
+          "target": "src/number.rs",
+          "wrote": 1,
+          "cost_usd": 0.105
+        },
+        {
+          "target": "src/raw.rs",
+          "wrote": 1,
+          "cost_usd": 0.0991
+        },
+        {
+          "target": "src/read.rs",
+          "wrote": 1,
+          "cost_usd": 0.1976
+        },
+        {
+          "target": "src/ser.rs",
+          "wrote": 1,
+          "cost_usd": 0.3014
+        },
+        {
+          "target": "src/value/mod.rs",
+          "wrote": 1,
+          "cost_usd": 0.1467
+        },
+        {
+          "target": "src/value/de.rs",
+          "wrote": 1,
+          "cost_usd": 0.2888
+        },
+        {
+          "target": "src/value/from.rs",
+          "wrote": 1,
+          "cost_usd": 0.0671
+        },
+        {
+          "target": "src/value/index.rs",
+          "wrote": 1,
+          "cost_usd": 0.0767
+        },
+        {
+          "target": "src/value/partial_eq.rs",
+          "wrote": 1,
+          "cost_usd": 0.0605
+        },
+        {
+          "target": "src/value/ser.rs",
+          "wrote": 1,
+          "cost_usd": 0.1824
+        }
+      ]
+    },
+    "cost_usd": 3.8281,
+    "elapsed_s": 1361.99
+  },
+  "smoke": {
+    "ok": false,
+    "build_ok": false,
+    "collect_ok": false,
+    "first_traceback": "ound for `V`: associated type `Value` not found\nsrc\\de.rs:1690:20: error[E0220]: associated type `Value` not found for `V`: associated type `Value` not found\nsrc\\de.rs:1728:65: error[E0220]: associated type `Value` not found for `V`: associated type `Value` not found\nsrc\\de.rs:1735:66: error[E0220]: associated type `Value` not found for `V`: associated type `Value` not found\nsrc\\map.rs:411:56: error[E0220]: associated type `Ok` not found for `S`: associated type `Ok` not found\nsrc\\map.rs:411:63: error[E0220]: associated type `Error` not found for `S`: associated type `Error` not found\nsrc\\map.rs:426:59: error[E0220]: associated type `Error` not found for `D`: associated type `Error` not found\nsrc\\value\\from.rs:141:1: error[E0119]: conflicting implementations of trait `FromIterator<(_, _)>` for type `Value`: conflicting implementation for `Value`\nsrc\\value\\mod.rs:409:1: error[E0119]: conflicting implementations of trait `std::ops::Index<_>` for type `Value`: conflicting implementation for `Value`\nsrc\\value\\mod.rs:428:1: error[E0119]: conflicting implementations of trait `IndexMut<_>` for type `Value`: conflicting implementation for `Value`\nsrc\\value\\mod.rs:576:25: error[E0277]: the trait bound `Value: serde::de::Deserializer<'de>` is not satisfied: unsatisfied trait bound\nsrc\\value\\ser.rs:11:6: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `serde_core`: use of unresolved module or unlinked crate `serde_core`\nsrc\\value\\ser.rs:461:6: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `serde_core`: use of unresolved module or unlinked crate `serde_core`\nwarning: `serde_json` (lib) generated 11 warnings\nerror: could not compile `serde_json` (lib) due to 134 previous errors; 11 warnings emitted\nwarning: build failed, waiting for other jobs to finish...\nwarning: `serde_json` (lib test) generated 11 warnings (11 duplicates)\nerror: could not compile `serde_json` (lib test) due to 134 previous errors; 11 warnings emitted\n",
+    "package_name": "serde_json"
+  },
+  "metrics": {
+    "q1_test_parity": {
+      "metric": "q1_test_parity",
+      "value": 0.0,
+      "detail": {
+        "error": "smoke failed",
+        "smoke_traceback": " error[E0220]: associated type `Error` not found for `S`: associated type `Error` not found\nsrc\\map.rs:426:59: error[E0220]: associated type `Error` not found for `D`: associated type `Error` not found\nsrc\\value\\from.rs:141:1: error[E0119]: conflicting implementations of trait `FromIterator<(_, _)>` for type `Value`: conflicting implementation for `Value`\nsrc\\value\\mod.rs:409:1: error[E0119]: conflicting implementations of trait `std::ops::Index<_>` for type `Value`: conflicting implementation for `Value`\nsrc\\value\\mod.rs:428:1: error[E0119]: conflicting implementations of trait `IndexMut<_>` for type `Value`: conflicting implementation for `Value`\nsrc\\value\\mod.rs:576:25: error[E0277]: the trait bound `Value: serde::de::Deserializer<'de>` is not satisfied: unsatisfied trait bound\nsrc\\value\\ser.rs:11:6: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `serde_core`: use of unresolved module or unlinked crate `serde_core`\nsrc\\value\\ser.rs:461:6: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `serde_core`: use of unresolved module or unlinked crate `serde_core`\nwarning: `serde_json` (lib) generated 11 warnings\nerror: could not compile `serde_json` (lib) due to 134 previous errors; 11 warnings emitted\nwarning: build failed, waiting for other jobs to finish...\nwarning: `serde_json` (lib test) generated 11 warnings (11 duplicates)\nerror: could not compile `serde_json` (lib test) due to 134 previous errors; 11 warnings emitted\n"
+      }
+    }
+  },
+  "totals": {
+    "cost_usd": 4.7811,
+    "elapsed_s": 1566.43
+  }
+}

@@ -1,0 +1,25 @@
+{"name": "serialize_null", "input": null, "expected": "null"}
+{"name": "serialize_true", "input": true, "expected": "true"}
+{"name": "serialize_false", "input": false, "expected": "false"}
+{"name": "serialize_integer_zero", "input": 0, "expected": "0"}
+{"name": "serialize_integer_positive", "input": 42, "expected": "42"}
+{"name": "serialize_integer_negative", "input": -7, "expected": "-7"}
+{"name": "serialize_float_1_0", "input": 1.0, "expected": "1.0"}
+{"name": "serialize_float_3_1", "input": 3.1, "expected": "3.1"}
+{"name": "serialize_float_large", "input": 1.7976931348623157e308, "expected": "1.7976931348623157e+308"}
+{"name": "serialize_float_small", "input": 2.220446049250313e-16, "expected": "2.220446049250313e-16"}
+{"name": "serialize_nan_as_null", "input": "NaN", "is_float": true, "expected": "null"}
+{"name": "serialize_inf_as_null", "input": "Infinity", "is_float": true, "expected": "null"}
+{"name": "serialize_string_empty", "input": "", "expected": "\"\""}
+{"name": "serialize_string_hello", "input": "hello", "expected": "\"hello\""}
+{"name": "serialize_string_newline", "input": "\n", "expected": "\"\\n\""}
+{"name": "serialize_string_tab", "input": "\t", "expected": "\"\\t\""}
+{"name": "serialize_string_backslash", "input": "\\", "expected": "\"\\\\\""}
+{"name": "serialize_string_quote", "input": "\"", "expected": "\"\\\"\""}
+{"name": "serialize_string_control", "input": "\u001f", "expected": "\"\\u001f\""}
+{"name": "serialize_array_empty", "input": [], "expected": "[]"}
+{"name": "serialize_array_mixed", "input": [1, "two", null, true], "expected": "[1,\"two\",null,true]"}
+{"name": "serialize_object_empty", "input": {}, "expected": "{}"}
+{"name": "serialize_object_simple", "input": {"a": 1}, "expected": "{\"a\":1}"}
+{"name": "serialize_u64_max", "input": 18446744073709551615, "expected": "18446744073709551615"}
+{"name": "serialize_i64_min", "input": -9223372036854775808, "expected": "-9223372036854775808"}

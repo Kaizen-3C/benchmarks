@@ -1,0 +1,12 @@
+{"name": "index_object_by_str", "input": {"obj": {"a": 1}, "key": "a"}, "expected": 1}
+{"name": "index_object_missing_returns_null", "input": {"obj": {"a": 1}, "key": "b"}, "expected": null}
+{"name": "index_array_by_usize", "input": {"arr": [10, 20, 30], "idx": 1}, "expected": 20}
+{"name": "index_array_out_of_bounds_returns_null", "input": {"arr": [10, 20], "idx": 5}, "expected": null}
+{"name": "nested_index_chain", "input": {"obj": {"x": {"y": [1,2,3]}}, "path": ["x","y",2]}, "expected": 3}
+{"name": "index_null_by_str_returns_null", "input": {"obj": null, "key": "a"}, "expected": null}
+{"name": "pointer_basic", "input": {"json": {"a": {"b": 42}}, "ptr": "/a/b"}, "expected": 42}
+{"name": "pointer_array", "input": {"json": [1,2,3], "ptr": "/1"}, "expected": 2}
+{"name": "pointer_empty_string_returns_self", "input": {"json": 42, "ptr": ""}, "expected": 42}
+{"name": "pointer_missing_returns_none", "input": {"json": {"a": 1}, "ptr": "/b"}, "expected": null}
+{"name": "pointer_tilde_escape", "input": {"json": {"a~b": 1}, "ptr": "/a~0b"}, "expected": 1}
+{"name": "pointer_slash_escape", "input": {"json": {"a/b": 1}, "ptr": "/a~1b"}, "expected": 1}

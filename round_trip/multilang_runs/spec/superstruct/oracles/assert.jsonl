@@ -1,0 +1,7 @@
+{"name":"assert valid string","input":{"value":"hello","struct":"string()"},"expected":{"throws":false}}
+{"name":"assert invalid string (number)","input":{"value":42,"struct":"string()"},"expected":{"throws":true,"errorType":"StructError","message":"Expected a string, but received: 42"}}
+{"name":"assert valid number","input":{"value":0,"struct":"number()"},"expected":{"throws":false}}
+{"name":"assert invalid number (NaN)","input":{"value":"NaN","struct":"number()"},"expected":{"throws":true,"errorType":"StructError"}}
+{"name":"assert custom message","input":{"value":42,"struct":"string()","message":"Not a string!"},"expected":{"throws":true,"errorMessage":"Not a string!","cause":"Expected a string, but received: 42"}}
+{"name":"assert valid object","input":{"value":{"id":1,"name":"Jane"},"struct":"object({id:number(),name:string()})"},"expected":{"throws":false}}
+{"name":"assert object with unknown key","input":{"value":{"id":1,"name":"Jane","extra":true},"struct":"object({id:number(),name:string()})"},"expected":{"throws":true,"failureType":"never","failurePath":["extra"]}}

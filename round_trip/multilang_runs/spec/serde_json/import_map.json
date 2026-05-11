@@ -1,0 +1,175 @@
+{
+  "src/lib.rs": [
+    "pub mod de",
+    "pub mod error",
+    "pub mod map",
+    "pub mod ser",
+    "pub mod value",
+    "mod io",
+    "mod iter",
+    "mod lexical",
+    "mod macros",
+    "mod number",
+    "mod raw",
+    "mod read"
+  ],
+  "src/de.rs": [
+    "use crate::error::{Error, ErrorCode, Result}",
+    "use crate::lexical",
+    "use crate::number::Number",
+    "use crate::read::{self, Fused, Reference}",
+    "use crate::number::NumberDeserializer"
+  ],
+  "src/error.rs": [
+    "use crate::io"
+  ],
+  "src/io/mod.rs": [
+    "mod imp (core.rs or std::io)"
+  ],
+  "src/io/core.rs": [],
+  "src/iter.rs": [
+    "use crate::io"
+  ],
+  "src/lexical/mod.rs": [
+    "pub mod algorithm",
+    "mod bhcomp",
+    "mod bignum",
+    "mod cached",
+    "mod cached_float80",
+    "mod digit",
+    "mod errors",
+    "pub mod exponent",
+    "pub mod float",
+    "mod large_powers",
+    "pub mod math",
+    "pub mod num",
+    "pub mod parse",
+    "pub mod rounding",
+    "mod shift",
+    "mod small_powers",
+    "mod large_powers32",
+    "mod large_powers64"
+  ],
+  "src/lexical/algorithm.rs": [
+    "use super::bhcomp::*",
+    "use super::cached::*",
+    "use super::errors::*",
+    "use super::float::ExtendedFloat",
+    "use super::num::*",
+    "use super::small_powers::*"
+  ],
+  "src/lexical/bhcomp.rs": [
+    "use super::bignum::*",
+    "use super::digit::*",
+    "use super::exponent::*",
+    "use super::float::*",
+    "use super::math::*",
+    "use super::num::*",
+    "use super::rounding::*"
+  ],
+  "src/lexical/bignum.rs": [
+    "use super::math::*"
+  ],
+  "src/lexical/cached.rs": [
+    "use super::cached_float80",
+    "use super::float::ExtendedFloat"
+  ],
+  "src/lexical/cached_float80.rs": [
+    "use super::cached::{ExtendedFloatArray, ModeratePathPowers}"
+  ],
+  "src/lexical/errors.rs": [
+    "use super::float::*",
+    "use super::num::*",
+    "use super::rounding::*"
+  ],
+  "src/lexical/float.rs": [
+    "use super::num::*",
+    "use super::rounding::*",
+    "use super::shift::*"
+  ],
+  "src/lexical/large_powers.rs": [
+    "use super::large_powers32::*",
+    "use super::large_powers64::*"
+  ],
+  "src/lexical/math.rs": [
+    "use super::large_powers",
+    "use super::num::*",
+    "use super::small_powers::*"
+  ],
+  "src/lexical/parse.rs": [
+    "use super::algorithm::*",
+    "use super::bhcomp::*",
+    "use super::digit::*",
+    "use super::exponent::*",
+    "use super::num::*"
+  ],
+  "src/lexical/rounding.rs": [
+    "use super::float::ExtendedFloat",
+    "use super::num::*",
+    "use super::shift::*"
+  ],
+  "src/lexical/shift.rs": [
+    "use super::float::ExtendedFloat"
+  ],
+  "src/map.rs": [
+    "use crate::error::Error",
+    "use crate::value::Value"
+  ],
+  "src/number.rs": [
+    "use crate::de::ParserNumber",
+    "use crate::error::Error",
+    "use crate::error::ErrorCode"
+  ],
+  "src/raw.rs": [
+    "use crate::error::Error"
+  ],
+  "src/read.rs": [
+    "use crate::error::{Error, ErrorCode, Result}",
+    "use crate::io",
+    "use crate::iter::LineColIterator",
+    "use crate::raw::BorrowedRawDeserializer",
+    "use crate::raw::OwnedRawDeserializer"
+  ],
+  "src/ser.rs": [
+    "use crate::error::{Error, ErrorCode, Result}",
+    "use crate::io"
+  ],
+  "src/value/mod.rs": [
+    "use crate::error::Error",
+    "use crate::io",
+    "pub use self::index::Index",
+    "pub use self::ser::Serializer",
+    "pub use crate::map::Map",
+    "pub use crate::number::Number",
+    "pub use crate::raw::{to_raw_value, RawValue}",
+    "mod de",
+    "mod from",
+    "mod index",
+    "mod partial_eq",
+    "mod ser"
+  ],
+  "src/value/de.rs": [
+    "use crate::error::{Error, ErrorCode}",
+    "use crate::map::Map",
+    "use crate::number::Number",
+    "use crate::value::Value",
+    "use crate::number::NumberFromString"
+  ],
+  "src/value/from.rs": [
+    "use super::Value",
+    "use crate::map::Map",
+    "use crate::number::Number"
+  ],
+  "src/value/index.rs": [
+    "use super::Value",
+    "use crate::map::Map"
+  ],
+  "src/value/partial_eq.rs": [
+    "use super::Value"
+  ],
+  "src/value/ser.rs": [
+    "use crate::error::{Error, ErrorCode, Result}",
+    "use crate::map::Map",
+    "use crate::value::{to_value, Value}"
+  ]
+}

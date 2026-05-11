@@ -1,0 +1,75 @@
+{
+  "language": "typescript",
+  "package_name": "superstruct",
+  "version": "2.0.2",
+  "modules": [
+    "src/index.ts",
+    "src/error.ts",
+    "src/struct.ts",
+    "src/utils.ts",
+    "src/structs/coercions.ts",
+    "src/structs/refinements.ts",
+    "src/structs/types.ts",
+    "src/structs/utilities.ts"
+  ],
+  "test_command": "vitest run",
+  "package_json": {
+    "package.json": {
+      "name": "superstruct",
+      "description": "A simple and composable way to validate data in JavaScript (and TypeScript).",
+      "version": "2.0.2",
+      "license": "MIT",
+      "repository": "git://github.com/ianstormtaylor/superstruct.git",
+      "type": "module",
+      "main": "./dist/index.cjs",
+      "module": "./dist/index.mjs",
+      "types": "./dist/index.d.ts",
+      "sideEffects": false,
+      "files": ["dist"],
+      "publishConfig": { "registry": "https://registry.npmjs.org" },
+      "engines": { "node": ">=14.0.0" },
+      "devDependencies": {
+        "@rollup/plugin-typescript": "^11.1.6",
+        "@types/expect": "^24.3.0",
+        "@types/lodash": "^4.14.144",
+        "@types/node": "^18.7.14",
+        "@typescript-eslint/eslint-plugin": "^7.1.1",
+        "@typescript-eslint/parser": "^7.1.1",
+        "eslint": "^8.57.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.1.3",
+        "lodash": "^4.17.15",
+        "np": "^10.0.0",
+        "prettier": "^3.2.5",
+        "rollup": "^4.12.1",
+        "typescript": "^4.8.3",
+        "vitest": "^1.6.0"
+      },
+      "scripts": {
+        "build": "rm -rf ./{dist} && rollup --config ./rollup.config.js",
+        "clean": "rm -rf ./{dist,node_modules}",
+        "test": "npm run build && npm run test:types && npm run test:vitest",
+        "test:types": "tsc --noEmit && tsc --project ./test/tsconfig.json --noEmit",
+        "test:vitest": "vitest run",
+        "test:watch": "vitest"
+      }
+    },
+    "tsconfig.json": {
+      "include": ["./src/**/*.ts"],
+      "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "declaration": true,
+        "declarationMap": true,
+        "esModuleInterop": true,
+        "lib": ["esnext"],
+        "module": "esnext",
+        "moduleResolution": "node",
+        "outDir": "./dist",
+        "sourceMap": true,
+        "strict": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "target": "es2020"
+      }
+    }
+  }
+}

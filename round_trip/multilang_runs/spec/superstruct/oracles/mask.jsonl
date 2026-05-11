@@ -1,0 +1,5 @@
+{"name":"mask strips unknown keys from object","input":{"value":{"id":"1","unknown":true},"struct":"object({id:string()})"},"expected":{"id":"1"}}
+{"name":"mask deep strips nested object unknown keys","input":{"value":{"id":"1","unknown":true,"sub":[{"prop":"2","unknown":true}]},"struct":"object({id:string(),sub:array(object({prop:string()}))})"},"expected":{"id":"1","sub":[{"prop":"2"}]}}
+{"name":"mask does not mutate original","input":{"value":{"id":"1","unknown":true},"struct":"object({id:string()})"},"expected":{"maskedResult":{"id":"1"},"originalUnchanged":{"id":"1","unknown":true}}}
+{"name":"mask throws for invalid value","input":{"value":"notanobject","struct":"object({id:string()})"},"expected":{"throws":true,"errorType":"StructError"}}
+{"name":"mask type struct leaves unknown keys","input":{"value":{"id":"1","unknown":true},"struct":"type({id:string()})"},"expected":{"id":"1","unknown":true}}

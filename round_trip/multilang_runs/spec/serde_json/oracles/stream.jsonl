@@ -1,0 +1,6 @@
+{"name": "stream_two_objects", "input": "{\"x\":1}{\"x\":2}", "expected": [{"x": 1}, {"x": 2}]}
+{"name": "stream_with_whitespace", "input": "{\"a\":1}   {\"b\":2}", "expected": [{"a": 1}, {"b": 2}]}
+{"name": "stream_byte_offset_after_first", "input": "{\"x\":1}{\"y\":2}", "expected": {"first_offset": 7}}
+{"name": "stream_empty_input", "input": "", "expected": []}
+{"name": "stream_truncated_yields_eof_error", "input": "{\"x\":", "expected": {"first_is_eof_error": true}}
+{"name": "stream_error_stops_iteration", "input": "true wrong false", "expected": {"count_before_error": 1, "error_then_none": true}}

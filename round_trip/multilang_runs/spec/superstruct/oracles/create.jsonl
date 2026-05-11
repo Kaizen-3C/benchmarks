@@ -1,0 +1,6 @@
+{"name":"create applies defaulted coercion","input":{"value":null,"struct":"defaulted(string(),'default')","coerce":true},"expected":{"result":null}}
+{"name":"create applies defaulted for undefined","input":{"value":null,"struct":"defaulted(string(),'default')"},"expected":{"result":"default"}}
+{"name":"create trimmed string","input":{"value":"  hello  ","struct":"trimmed(string())"},"expected":{"result":"hello"}}
+{"name":"create object with default values","input":{"value":{"version":0},"struct":"defaulted(object({title:string(),version:number()}),{title:'Untitled'})"},"expected":{"result":{"title":"Untitled","version":0}}}
+{"name":"create does not coerce with assert","input":{"value":null,"struct":"defaulted(string(),'default')","useAssert":true},"expected":{"throws":true}}
+{"name":"create nested defaulted","input":{"value":{},"struct":"object({title:defaulted(string(),'Untitled')})"},"expected":{"result":{"title":"Untitled"}}}

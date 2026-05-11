@@ -1,0 +1,38 @@
+{
+  "src/index.ts": [
+    "export * from './error.js'",
+    "export * from './struct.js'",
+    "export * from './structs/coercions.js'",
+    "export * from './structs/refinements.js'",
+    "export * from './structs/types.js'",
+    "export * from './structs/utilities.js'"
+  ],
+  "src/error.ts": [],
+  "src/struct.ts": [
+    "import { toFailures, shiftIterator, StructSchema, run } from './utils.js'",
+    "import { StructError, Failure } from './error.js'"
+  ],
+  "src/utils.ts": [
+    "import { Struct, Infer, Result, Context, Describe } from './struct.js'",
+    "import { Failure } from './error.js'"
+  ],
+  "src/structs/coercions.ts": [
+    "import { Struct, is, Coercer } from '../struct.js'",
+    "import { isPlainObject } from '../utils.js'",
+    "import { string, unknown } from './types.js'"
+  ],
+  "src/structs/refinements.ts": [
+    "import { Struct, Refiner } from '../struct.js'",
+    "import { toFailures } from '../utils.js'"
+  ],
+  "src/structs/types.ts": [
+    "import { Infer, Struct } from '../struct.js'",
+    "import { define } from './utilities.js'",
+    "import { ObjectSchema, ObjectType, print, run, isObject, isNonArrayObject, AnyStruct, InferStructTuple, UnionToIntersection } from '../utils.js'"
+  ],
+  "src/structs/utilities.ts": [
+    "import { Context, Struct, Validator } from '../struct.js'",
+    "import { Assign, ObjectSchema, ObjectType, PartialObjectSchema } from '../utils.js'",
+    "import { object, optional, type } from './types.js'"
+  ]
+}

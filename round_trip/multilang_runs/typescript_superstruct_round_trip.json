@@ -1,0 +1,36 @@
+{
+  "lib": "superstruct",
+  "lang": "typescript",
+  "decompose": {
+    "files_in_spec": 24,
+    "cost_usd": 0.3559,
+    "elapsed_s": 152.0
+  },
+  "recompose": {
+    "files_emitted": 12,
+    "multi_shot": null,
+    "cost_usd": 0.3044,
+    "elapsed_s": 168.25
+  },
+  "smoke": {
+    "ok": false,
+    "build_ok": false,
+    "collect_ok": false,
+    "first_traceback": " any, Struct<never, null>], void, undefined>' is not assignable to type '(value: unknown, ctx: Context) => Iterable<[string | number, unknown, Struct<any, any>]>'.\r\n  Call signature return types 'Generator<[number, any, [...T][number]] | [number, any, Struct<never, null>], void, undefined>' and 'Iterable<[string | number, unknown, Struct<any, any>]>' are incompatible.\r\n    The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.\r\n      Type 'IteratorResult<[number, any, [...T][number]] | [number, any, Struct<never, null>], void>' is not assignable to type 'IteratorResult<[string | number, unknown, Struct<any, any>], any>'.\r\n        Type 'IteratorYieldResult<[number, any, [...T][number]] | [number, any, Struct<never, null>]>' is not assignable to type 'IteratorResult<[string | number, unknown, Struct<any, any>], any>'.\r\n          Type 'IteratorYieldResult<[number, any, [...T][number]] | [number, any, Struct<never, null>]>' is not assignable to type 'IteratorYieldResult<[string | number, unknown, Struct<any, any>]>'.\r\n            Type '[number, any, [...T][number]] | [number, any, Struct<never, null>]' is not assignable to type '[string | number, unknown, Struct<any, any>]'.\r\n              Type '[number, any, Struct<never, null>]' is not assignable to type '[string | number, unknown, Struct<any, any>]'.\r\n                Type at position 2 in source is not compatible with type at position 2 in target.\r\n                  Type 'Struct<never, null>' is not assignable to type 'Struct<any, any>'.\r\nsrc/utils.ts(60,17): error TS2393: Duplicate function implementation.\r\nsrc/utils.ts(198,9): error TS18004: No value exists in scope for the shorthand property 'mask'. Either declare one or provide an initializer.\r\nsrc/utils.ts(262,10): error TS2393: Duplicate function implementation.\r\n../../../../../kaizen-ts-corpus/repos/superstruct/node_modules/jest-mock/build/index.d.ts(8,21): error TS2726: Cannot find lib definition for 'esnext.disposable'.\r\n",
+    "package_name": "superstruct"
+  },
+  "metrics": {
+    "q1_test_parity": {
+      "metric": "q1_test_parity",
+      "value": 0.0,
+      "detail": {
+        "error": "smoke failed",
+        "smoke_traceback": "ber, any, [...T][number]] | [number, any, Struct<never, null>], void>' is not assignable to type 'IteratorResult<[string | number, unknown, Struct<any, any>], any>'.\r\n        Type 'IteratorYieldResult<[number, any, [...T][number]] | [number, any, Struct<never, null>]>' is not assignable to type 'IteratorResult<[string | number, unknown, Struct<any, any>], any>'.\r\n          Type 'IteratorYieldResult<[number, any, [...T][number]] | [number, any, Struct<never, null>]>' is not assignable to type 'IteratorYieldResult<[string | number, unknown, Struct<any, any>]>'.\r\n            Type '[number, any, [...T][number]] | [number, any, Struct<never, null>]' is not assignable to type '[string | number, unknown, Struct<any, any>]'.\r\n              Type '[number, any, Struct<never, null>]' is not assignable to type '[string | number, unknown, Struct<any, any>]'.\r\n                Type at position 2 in source is not compatible with type at position 2 in target.\r\n                  Type 'Struct<never, null>' is not assignable to type 'Struct<any, any>'.\r\nsrc/utils.ts(60,17): error TS2393: Duplicate function implementation.\r\nsrc/utils.ts(198,9): error TS18004: No value exists in scope for the shorthand property 'mask'. Either declare one or provide an initializer.\r\nsrc/utils.ts(262,10): error TS2393: Duplicate function implementation.\r\n../../../../../kaizen-ts-corpus/repos/superstruct/node_modules/jest-mock/build/index.d.ts(8,21): error TS2726: Cannot find lib definition for 'esnext.disposable'.\r\n"
+      }
+    }
+  },
+  "totals": {
+    "cost_usd": 0.6603,
+    "elapsed_s": 329.44
+  }
+}
