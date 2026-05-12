@@ -1,0 +1,46 @@
+# Build artifacts — never commit
+# (the upstream sync script also blocks these; this is defense-in-depth
+#  in case someone runs cargo/npm/pip locally inside the public clone)
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Rust
+target/
+*.rlib
+*.rmeta
+*.pdb
+
+# Node.js / TypeScript
+node_modules/
+dist/
+.next/
+.nuxt/
+*.tsbuildinfo
+
+# Native binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.class
+*.jar
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
