@@ -46,7 +46,7 @@ To save everyone time, the following are **not** security issues for this reposi
 
 ## What IS in scope
 
-- Code-execution vulnerabilities in the benchmark runners or analysis scripts.
+- Code-execution vulnerabilities in the benchmark runners or analysis scripts. Sandbox / host-execution policy is governed by [ADR-0042: Sandbox Bypass Policy](https://github.com/Kaizen-3C/kaizen-staging/blob/main/.architecture/decisions/ADR-0042-sandbox-bypass-policy.md) in the staging repository — cite ADR-0042 in any disclosure that touches host-execution semantics.
 - Credential or API-key leakage in scripts, CI configs, or committed artifacts.
 - Supply-chain risks (e.g., dependency confusion, typosquatted packages we depend on).
 - Vulnerabilities in any future hosted infrastructure (dashboards, leaderboards) that ship from this org.
