@@ -14,6 +14,7 @@ authors:
     family-names: Adame
     affiliation: "Kaizen-3C"
     email: aadame@kaizen-3c.dev
+    orcid: "https://orcid.org/0009-0001-7659-7806"
 repository-code: "https://github.com/Kaizen-3C/benchmarks"
 url: "https://kaizen-3c.dev"
 license: MIT
@@ -51,6 +52,7 @@ preferred-citation:
       family-names: Adame
       affiliation: "Kaizen-3C"
       email: aadame@kaizen-3c.dev
+      orcid: "https://orcid.org/0009-0001-7659-7806"
   year: 2026
   notes: "Preprint forthcoming; update with the arXiv/Zenodo identifier on release."
   # doi: "10.48550/arXiv.XXXX.XXXXX"   # ADD on arXiv release
