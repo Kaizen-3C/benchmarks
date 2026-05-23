@@ -4,7 +4,7 @@
 
 This repo holds the methodology, data, and analysis scripts for evaluating coding-agent architectures on the dimensions that matter for production use: not just "did the test pass?" but *what did the architecture contribute beyond the LLM that powers it?*
 
-We measure **value-add per dollar**, **LLM-leanness**, **architectural blockers**, and **cost-shape** across a 10-architecture × 16-library matrix on the [commit0](https://github.com/wentingzhao/commit0) lite split — and we publish the per-cell raw data, the analysis code, and the named architectural ceilings we hit.
+We measure **value-add per dollar**, **LLM-leanness**, **architectural blockers**, and **cost-shape** across a 10-cell (architecture × provider) × 16-library matrix on the [commit0](https://github.com/wentingzhao/commit0) lite split — and we publish the per-cell raw data, the analysis code, and the named architectural ceilings we hit.
 
 > **3C lineage.** This work sits under the [Kaizen-3C](https://github.com/Kaizen-3C) org. The "3C" reframes the original Kaizen 3C method (*Concern · Cause · Countermeasure*) for the software industry as **Code · Compose · Compliance**. Benchmarks are how we measure the **Code** layer honestly.
 
@@ -14,7 +14,7 @@ We measure **value-add per dollar**, **LLM-leanness**, **architectural blockers*
 
 | Benchmark | Status | Purpose |
 |---|---|---|
-| **[`commit0/`](commit0/)** | Complete (2026-04 campaign + 2026-05 Phase 1) — 10 archs × 16 libs × 2 models | Greenfield code generation against pinned golden tests. Produces the **value-add fingerprint** methodology. |
+| **[`commit0/`](commit0/)** | Complete (2026-04 campaign + 2026-05 Phase 1) — 10-cell (architecture × provider) × 16 libs | Greenfield code generation against pinned golden tests. Produces the **value-add fingerprint** methodology. |
 | **[`round_trip/`](round_trip/)** | Phase 1 scaffolded | Code → ADR → Code round-trip fidelity. Measures whether an architecture preserves semantics across decompose/recompose cycles. |
 | **[`realworld/`](realworld/)** | Protocol only — no runs yet | Disaster-recovery / "real-world" rebuilds against production codebases. |
 
@@ -88,9 +88,12 @@ cd benchmarks/commit0
 
 ### Just-the-analysis (no model spend)
 
-If you want to inspect the methodology without re-running the whole sweep, all our raw `results/` JSONs are checked in. The analysis scripts are self-contained:
+If you want to inspect the methodology without re-running the whole sweep, all our raw `results/` JSONs are checked in. The analysis scripts are self-contained — set up the (tiny) analysis env first:
 
 ```bash
+python -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt        # Tier-1 analysis needs only numpy + matplotlib
+
 python commit0/baselines/value_add_fingerprint.py   # 10 × 16 weakness matrix (10 = 5 archs × 2 providers)
 python commit0/baselines/phase1_summary.py          # Phase 1 (Aider + smolagents) aggregate table
 python commit0/baselines/compare_baselines.py       # per-arch aggregates
@@ -104,11 +107,19 @@ The fingerprint heatmap (Figure 1 in the methodology paper) regenerates from the
 python paper/figures/figure1_fingerprint_heatmap.py   # → paper/figures/figure1.{pdf,png}
 ```
 
+### Environment & pinning
+
+- **Install:** [`requirements.txt`](requirements.txt). Tier-1 analysis above needs only `numpy` + `matplotlib`; a full re-run additionally pulls the `commit0` CLI, the LLM SDKs, and the baseline packages.
+- **Full-rerun environment:** WSL2 (Ubuntu 24.04), Python 3.10–<3.13 (we ran 3.12). The `commit0` CLI is unreliable on native Windows — run inside WSL with the workspace on the ext4 filesystem (`~/kaizen-commit0/`), not `/mnt/c/...`. See [`commit0/PROTOCOL.md`](commit0/PROTOCOL.md) §6.
+- **Models:** exact strings, no aliases — `claude-sonnet-4-6`, `gpt-5.4`. Set `ANTHROPIC_API_KEY` / `OPENAI_API_KEY`.
+- **Per-run pins:** each cell's commit0 dataset revision SHA and model string are recorded in that run's manifest under [`commit0/results/`](commit0/results/) (`dataset_sha`, `model`). The campaign did **not** capture a single dependency lockfile; for byte-exact reproduction, freeze your env (`pip freeze > requirements.lock`).
+- **Cost:** a full re-run is ≈ **$247.53**; the committed `results/` reproduce every paper number and figure with **no model spend**.
+
 ---
 
 ## Methodology paper (forthcoming)
 
-A whitepaper covering the value-add fingerprint methodology, the 10-cell (architecture × provider) reference matrix, the named architectural ceilings (attribute-access invisibility, relative-import resolution), and a concrete decompose-then-tool-use composability proposal is in late draft. Target: arXiv preprint 2026-05-22; ICLR 2027 Datasets & Benchmarks Track when the CFP opens (Sep–Oct 2026).
+A whitepaper covering the value-add fingerprint methodology, the 10-cell (architecture × provider) reference matrix, the named architectural ceilings (attribute-access invisibility, relative-import resolution), and a concrete decompose-then-tool-use composability proposal is in late draft. Target: arXiv preprint forthcoming; a 2027 ML evaluation venue (the NeurIPS **Evaluations & Datasets** track — formerly Datasets & Benchmarks — or ICLR / ICML) once the relevant CFP opens.
 
 Figure 1 (the fingerprint heatmap) is already rendered at [`paper/figures/figure1.pdf`](paper/figures/figure1.pdf).
 
@@ -122,7 +133,7 @@ If you want to be notified when the preprint drops, watch this repo or follow [@
 benchmarks/
 ├── README.md                          (this file)
 ├── LICENSE                            (MIT)
-├── commit0/                           (the 2026-04 campaign + 2026-05 Phase 1 — 10 archs × 16 libs)
+├── commit0/                           (the 2026-04 campaign + 2026-05 Phase 1 — 10-cell (arch × provider) × 16 libs)
 │   ├── PROTOCOL.md                    (per-architecture run procedure)
 │   ├── PLAN_2026-04-21.md             (symmetric-coverage tiers + value-add framework)
 │   ├── AAR_2026-04-21.md              (mid-campaign post-mortem)
@@ -142,13 +153,15 @@ benchmarks/
 │   └── (metrics, gates, run_one.py — Phase 1 scaffolding)
 ├── realworld/                         (real-world disaster-recovery benchmark)
 │   └── PROTOCOL.md
+├── humaneval/  mbpp/  swebench/  terminalbench/   (stub adapters on the shared harness — implementation welcome via PR)
 ├── paper/                             (methodology paper companion artifacts)
 │   └── figures/                       (Figure 1 — value-add fingerprint heatmap)
 └── docs/
     └── architectural-context/         (mirrored ADRs from kaizen-delta)
         ├── ADR-0059-realworld-dr-benchmark.md
         ├── ADR-0060-commit0-greenfield-benchmark.md
-        └── ADR-0063-round-trip-fidelity-benchmark.md
+        ├── ADR-0063-round-trip-fidelity-benchmark.md
+        └── ADR-0064-composed-architecture-decompose-plus-tooluse.md
 ```
 
 ---

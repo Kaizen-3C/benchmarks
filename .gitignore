@@ -36,6 +36,7 @@ dist/
 .DS_Store
 Thumbs.db
 .vscode/
+.vs/
 .idea/
 
 # Environment / secrets

@@ -1,0 +1,57 @@
+# Citation metadata for Kaizen-3C / benchmarks.
+# Enables GitHub's "Cite this repository" button.
+#
+# FILL ON RELEASE (when you tag a version + mint the Zenodo DOI — see README):
+#   - uncomment `version` + `date-released` to match the git tag
+#   - uncomment `doi` with the repo's Zenodo DOI
+#   - in preferred-citation, uncomment `doi`/`url` with the arXiv preprint id
+cff-version: 1.2.0
+message: "If you use this benchmark or the value-add fingerprint methodology, please cite both this repository and the paper below."
+title: "Kaizen-3C / benchmarks: value-add fingerprinting for AI software-engineering agents"
+type: software
+authors:
+  - given-names: Anthony
+    family-names: Adame
+    affiliation: "Kaizen-3C"
+    email: aadame@kaizen-3c.dev
+repository-code: "https://github.com/Kaizen-3C/benchmarks"
+url: "https://kaizen-3c.dev"
+license: MIT
+# version: "1.0.0"              # ADD on release — match the git tag
+# date-released: "2026-05-XX"   # ADD on release
+# doi: "10.5281/zenodo.XXXXXXX" # ADD after the Zenodo deposit (repository DOI)
+keywords:
+  - agent architectures
+  - code generation
+  - LLM evaluation
+  - benchmark
+  - commit0
+  - reproducibility
+  - software engineering
+  - value-add fingerprinting
+abstract: >-
+  Library-from-spec benchmarks like commit0 are typically scored by aggregate
+  pass-rate, which collapses architectural strengths and weaknesses into a single
+  number; two architectures with the same pass-rate may have entirely disjoint
+  per-library failure sets. We introduce value-add fingerprinting: a
+  per-(architecture x library) measurement reporting value-add over a single-shot
+  LLM baseline, the LLM-lean cost ratio, and a per-library weakness signature. We
+  apply it across a 10-cell matrix (6 architectures x 2 providers) on 16
+  commit0-lite libraries, identifying complementary-weakness patterns, two named
+  architectural ceilings on text-based scanning (attribute-access invisibility,
+  relative-import resolution failure), and a 31x cost gap traceable to scaffold
+  trajectory length rather than caching. We release the methodology, the 10-cell
+  reference matrix, and a reproducibility package under MIT, reproducible
+  end-to-end at $247.53.
+preferred-citation:
+  type: article
+  title: "Kaizen-3C: Value-Add Fingerprinting for Library-from-Spec Agent Architectures"
+  authors:
+    - given-names: Anthony
+      family-names: Adame
+      affiliation: "Kaizen-3C"
+      email: aadame@kaizen-3c.dev
+  year: 2026
+  notes: "Preprint forthcoming; update with the arXiv/Zenodo identifier on release."
+  # doi: "10.48550/arXiv.XXXX.XXXXX"   # ADD on arXiv release
+  # url: "https://arxiv.org/abs/XXXX.XXXXX"

@@ -1,0 +1,34 @@
+# Kaizen-3C / benchmarks — Python dependencies.
+#
+# Two tiers (see README "Environment & pinning"):
+#   Tier 1 — analysis from the committed results/ JSON, no API spend: numpy + matplotlib.
+#   Tier 2 — full re-run of the matrix (API keys + WSL2): everything below.
+#
+# PINNING NOTE: the 2026-04/05 campaign did not capture a version lockfile.
+# This declares the dependency *surface* (derived from the actual imports) plus
+# the version floors that are documented. For byte-exact reproduction, build the
+# env then `pip freeze > requirements.lock`. The per-run pins that ARE recorded
+# — the commit0 dataset revision SHA and exact model strings — live in each
+# result file's manifest under commit0/results/ (fields: dataset_sha, model).
+#
+# Python: >=3.10,<3.13   (campaign ran 3.12 under WSL2 Ubuntu 24.04)
+
+# --- Tier 1: analysis & figures (no API keys) ---
+numpy
+matplotlib
+
+# --- Tier 2: full matrix re-run (API keys + WSL2) ---
+commit0>=0.1.8        # benchmark CLI (build/test); run under WSL2, not Windows
+datasets              # HuggingFace loader for wentingzhao/commit0_combined
+anthropic             # Claude SDK (claude-sonnet-4-6)
+openai                # OpenAI SDK (gpt-5.4) + OpenAI-compatible endpoints
+litellm               # provider abstraction used by the Aider baseline
+aider-chat            # Aider baseline (Phase 1)
+smolagents            # smolagents CodeAct baseline (Phase 1)
+python-dotenv         # .env loading in the runners
+pypdf                 # PDF parsing in tooling (legacy alias: PyPDF2)
+
+# --- OpenHands V1 baseline (B6): NOT pip-managed here ---
+# OH runs were executed via the OpenHands/benchmarks harness, not as a simple
+# dependency. Pin the OpenHands SDK + runner SHA separately — see
+# commit0/PROTOCOL.md §5.

@@ -1,12 +1,13 @@
 # Architectural context — mirrored ADRs
 
-The three ADRs in this directory are **mirrored from the private `kaizen-delta` dev monorepo** so this benchmarks repo is self-explanatory. They document the architectural decisions that produced the benchmark protocols you'll find in `commit0/`, `round_trip/`, and `realworld/`.
+The four ADRs in this directory are **mirrored from the private `kaizen-delta` dev monorepo** so this benchmarks repo is self-explanatory. They document the architectural decisions that produced the benchmark protocols you'll find in `commit0/`, `round_trip/`, and `realworld/` — and (ADR-0064) the composability proposal the methodology paper points to as future work.
 
 | ADR | Subject | Authoritative source |
 |---|---|---|
 | [`ADR-0059-realworld-dr-benchmark.md`](ADR-0059-realworld-dr-benchmark.md) | Real-world disaster-recovery benchmark — protocol and rationale | kaizen-delta `.architecture/decisions/` |
 | [`ADR-0060-commit0-greenfield-benchmark.md`](ADR-0060-commit0-greenfield-benchmark.md) | commit0 adoption + amendments — gate criteria, lite-first decision, post-AAR findings | kaizen-delta `.architecture/decisions/` |
 | [`ADR-0063-round-trip-fidelity-benchmark.md`](ADR-0063-round-trip-fidelity-benchmark.md) | Code → ADR → Code round-trip benchmark — Q1–Q4 metrics, 5 gates, remediation engine | kaizen-delta `.architecture/decisions/` |
+| [`ADR-0064-composed-architecture-decompose-plus-tooluse.md`](ADR-0064-composed-architecture-decompose-plus-tooluse.md) | Composed architecture (decompose → gated tool-use) for the two named ceilings — design sketch + validating experiment (paper §6 / §9 future work) | kaizen-delta `.architecture/decisions/` |
 
 ## On mirroring
 
