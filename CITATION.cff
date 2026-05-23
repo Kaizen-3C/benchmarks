@@ -17,9 +17,9 @@ authors:
 repository-code: "https://github.com/Kaizen-3C/benchmarks"
 url: "https://kaizen-3c.dev"
 license: MIT
-# version: "1.0.0"              # ADD on release — match the git tag
-# date-released: "2026-05-XX"   # ADD on release
-# doi: "10.5281/zenodo.XXXXXXX" # ADD after the Zenodo deposit (repository DOI)
+version: "1.0.0"                 # matches git tag v1.0.0
+date-released: "2026-05-23"
+doi: "10.5281/zenodo.20357185"   # Zenodo concept DOI (all versions / always-latest)
 keywords:
   - agent architectures
   - code generation

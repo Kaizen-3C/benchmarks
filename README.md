@@ -2,6 +2,8 @@
 
 **Architectural-weakness fingerprinting for AI software-engineering agents.**
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20357185.svg)](https://doi.org/10.5281/zenodo.20357185)
+
 This repo holds the methodology, data, and analysis scripts for evaluating coding-agent architectures on the dimensions that matter for production use: not just "did the test pass?" but *what did the architecture contribute beyond the LLM that powers it?*
 
 We measure **value-add per dollar**, **LLM-leanness**, **architectural blockers**, and **cost-shape** across a 10-cell (architecture × provider) × 16-library matrix on the [commit0](https://github.com/wentingzhao/commit0) lite split — and we publish the per-cell raw data, the analysis code, and the named architectural ceilings we hit.
@@ -197,6 +199,7 @@ If you use this benchmark methodology in research:
   author       = {Adame, Anthony},
   year         = {2026},
   howpublished = {Kaizen-3C project, \url{https://kaizen-3c.dev}},
+  doi          = {10.5281/zenodo.20357185},
   url          = {https://github.com/Kaizen-3C/benchmarks}
 }
 ```
