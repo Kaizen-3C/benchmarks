@@ -113,6 +113,7 @@ def _start_branch(repo_dir: Path, branch: str) -> None:
     so the generated code is recoverable and scoreable via `commit0 test --branch`.
     """
     git(repo_dir, "checkout", "commit0")
+    git(repo_dir, "clean", "-fd")           # drop prior-run artifacts (spec.md, agent caches)
     git(repo_dir, "branch", "-D", branch)   # no-op if it doesn't exist (check=False)
     git(repo_dir, "checkout", "-b", branch)
 
@@ -160,7 +161,11 @@ def _persist_and_score(
     # 3. Export the generated diff into THIS repo (workspace-independent artifact).
     patch_rel = patch_sha = None
     try:
-        diff = git(repo_dir, "diff", "commit0", branch)
+        # exclude non-code noise so the saved patch is pure generated code
+        diff = git(repo_dir, "diff", "commit0", branch, "--", ".",
+                   ":(exclude)spec.md",
+                   ":(exclude,glob).aider**",
+                   ":(exclude,glob)**/__pycache__/**")
         patch_dir = out_path.parent / "patches"
         patch_dir.mkdir(parents=True, exist_ok=True)
         patch_path = patch_dir / f"{out_path.stem}.patch"
