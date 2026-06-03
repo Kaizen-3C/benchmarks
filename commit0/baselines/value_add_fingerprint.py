@@ -37,6 +37,20 @@ def lib_passrate(per_lib: dict, lib: str) -> tuple[int, int, float | None]:
     return p, a, ((100 * p / a) if a else 0)
 
 
+# Cells stamped by the patched runners are full-suite; an untagged competitor cell
+# is `-x`-truncated legacy data whose rate/value-add are not comparable. See
+# ../RE-VALIDATION.md.
+VALID_SCORING = {"commit0-test-full-suite", "full-suite-local-pytest"}
+
+
+def is_pending(per_lib: dict, lib: str) -> bool:
+    """True if this (already-run) competitor cell lacks a valid scoring tag."""
+    d = (per_lib or {}).get(lib, {}) or {}
+    if not (d.get("counts") or d.get("final_counts")):
+        return False  # not run — nothing to flag
+    return d.get("scoring") not in VALID_SCORING
+
+
 def lib_cost(per_lib: dict, lib: str, source_provider: str) -> float | None:
     """Cost from per-library JSON. Some baselines store cost differently."""
     d = (per_lib or {}).get(lib, {}) or {}
@@ -208,7 +222,7 @@ def compute_oh_cell(oh_dict, lib, single_shot_per_lib, source_provider):
 
 
 # ----- Print the table -----
-def fmt_cell(c, kind="kd"):
+def fmt_cell(c, kind="kd", pending=False):
     if c is None:
         return f"{'  --':>16}"
     if kind == "oh":
@@ -220,12 +234,24 @@ def fmt_cell(c, kind="kd"):
     # KD-style
     va = c['value_add_pp']
     sign = "+" if va >= 0 else ""
-    return f"{c['rate']:>3.0f}% {sign}{va:>+4.0f}pp x{c['llm_lean']:>4.1f}"
+    mark = "‡" if pending else ""   # ‡ = -x-truncated, pending re-validation
+    return f"{c['rate']:>3.0f}% {sign}{va:>+4.0f}pp x{c['llm_lean']:>4.1f}{mark}"
 
 
 print("=" * 200)
 print("VALUE-ADD FINGERPRINT — each cell shows: pass-rate, value_add_pp vs same-model B2, llm_lean (cost ratio vs B2)")
 print("=" * 200)
+
+_pending_total = sum(
+    is_pending(d, lib)
+    for d in (aiders, aiderg, smols, smolg) for lib in LIBS
+)
+if _pending_total:
+    print(f"⚠  WARNING: {_pending_total} Aider/smolagents cells (marked ‡) were scored under "
+          f"`pytest -x` (denominator truncated) and are NOT comparable to the full-suite cells.")
+    print("   Their rates and value_add_pp are upper-biased and pending re-validation — "
+          "see commit0/RE-VALIDATION.md. Do not cite ‡ cells.")
+    print("=" * 200)
 hdr = (
     f"{'lib':12} {'F?':>2} | "
     f"{'KD-S':>16} {'KD-G':>16} | "
@@ -253,8 +279,10 @@ for lib in LIBS:
     print(
         f"{lib:12} {f:>2} | "
         f"{fmt_cell(kds_cell, 'kd'):>16} {fmt_cell(kdg_cell, 'kd'):>16} | "
-        f"{fmt_cell(aiders_cell, 'kd'):>16} {fmt_cell(aiderg_cell, 'kd'):>16} | "
-        f"{fmt_cell(smols_cell, 'kd'):>16} {fmt_cell(smolg_cell, 'kd'):>16} | "
+        f"{fmt_cell(aiders_cell, 'kd', is_pending(aiders, lib)):>16} "
+        f"{fmt_cell(aiderg_cell, 'kd', is_pending(aiderg, lib)):>16} | "
+        f"{fmt_cell(smols_cell, 'kd', is_pending(smols, lib)):>16} "
+        f"{fmt_cell(smolg_cell, 'kd', is_pending(smolg, lib)):>16} | "
         f"{fmt_cell(ohs_cell, 'oh'):>17} {fmt_cell(ohg_cell, 'oh'):>17}"
     )
 
@@ -280,6 +308,8 @@ print("  KD cells: pass% +pp vs same-model B2 xN llm_lean (cost ratio)")
 print("  OH cells: RES = resolved 100% / no = unresolved / FAIL = didn't complete")
 print("  +/- pp:   value-add over the LLM's single-shot baseline (same model)")
 print("  llm_lean: cost ratio -- 1x means 'spent same as just calling the LLM once'")
+print("  ‡:        Aider/smolagents cell scored under `pytest -x` (denominator truncated);")
+print("            rate + value_add_pp NOT comparable, pending re-validation (RE-VALIDATION.md)")
 print()
 
 # ----- Architectural-weakness signatures -----
