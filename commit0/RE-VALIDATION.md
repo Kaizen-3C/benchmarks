@@ -93,6 +93,20 @@ Prereqs are the standard Phase-1 environment — WSL2, the `kaizen-commit0` venv
 [`CAMPAIGN_README.md`](CAMPAIGN_README.md). The scoring fix is already in the runners (see §5),
 so a plain re-run produces full-suite numbers.
 
+**One-command (recommended):** [`baselines/run_revalidation.sh`](baselines/run_revalidation.sh)
+runs the whole gated sequence — preflight (incl. a stale-runner check so it refuses the old
+`-x` code), smoke gate, confirm, archive, the four sweeps, sync into the repo, `--strict` guard,
+and analysis regen. Validate it spend-free first, then run for real:
+
+```bash
+cd ~/kaizen-commit0
+bash baselines/run_revalidation.sh --dry-run                  # print the plan, spend nothing
+bash baselines/run_revalidation.sh --smoke-only               # preflight + 1-lib smoke (cents)
+bash baselines/run_revalidation.sh --repo ~/path/to/benchmarks  # full re-run (prompts before spend)
+```
+
+The equivalent manual steps (what the driver automates):
+
 ```bash
 # inside WSL, kaizen-commit0 venv
 cd ~/kaizen-commit0/baselines
