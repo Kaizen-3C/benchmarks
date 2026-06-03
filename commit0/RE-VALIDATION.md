@@ -97,6 +97,12 @@ so a plain re-run produces full-suite numbers.
 # inside WSL, kaizen-commit0 venv
 cd ~/kaizen-commit0/baselines
 
+# STEP 0 — 1-lib smoke FIRST (a few cents): runs one small lib and asserts the new
+# branch/patch/full-suite-scoring wiring before committing to the full sweep.
+python commit0/baselines/smoke_revalidation.py --arch aider      --provider anthropic   # --lib wcwidth
+python commit0/baselines/smoke_revalidation.py --arch smolagents --provider openai
+# Proceed only if both print "READY". If "NOT READY", fix the runner (§5) — do NOT spend.
+
 # Aider — both providers (move existing JSONs aside first; do not overwrite blind)
 python aider/run_lite_aider.py --provider anthropic
 python aider/run_lite_aider.py --provider openai
@@ -105,6 +111,12 @@ python aider/run_lite_aider.py --provider openai
 python smolagents/run_lite_smolagents.py --provider anthropic
 python smolagents/run_lite_smolagents.py --provider openai
 ```
+
+The smoke harness ([`baselines/smoke_revalidation.py`](baselines/smoke_revalidation.py)) checks
+the produced JSON for: tests actually ran, a valid `"scoring"` tag (warns if it fell back to
+local pytest), `code_branch` set, a non-empty `patch_file` whose `patch_sha256` matches, and a
+collected count consistent with the known full-suite size. `--check-only` validates an existing
+JSON with no spend.
 
 **Budget:** original Phase 1 was **$65.12** for exactly these four sweeps
 ([`AAR_2026-05-05_PHASE1_ADDENDUM.md`](AAR_2026-05-05_PHASE1_ADDENDUM.md)). Full-suite scoring
