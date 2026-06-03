@@ -58,11 +58,20 @@ The harness is benchmark-agnostic by design; adding a new benchmark is a matter 
 
 ¹ KD-Sonnet's denominator inflated by the babel collection unlock (22 errors → 1,281 collected tests).
 
+> ⚠ **Aider & smolagents (Phase 1) rows are pending re-validation.** Their authoritative
+> counts were scored with `pytest -x` (stop at first failure), which truncates the
+> denominator — unlike every other architecture here, which scores the full suite via
+> `commit0 test`. The Phase-1 `passed / attempted` figures and any per-lib rate or
+> "floor-lib unlock" derived from them are therefore **not comparable** to the other rows
+> and **not reproducible** under [`commit0/PROTOCOL.md`](commit0/PROTOCOL.md) §6. Fix and
+> ≈$65 re-run plan: [`commit0/RE-VALIDATION.md`](commit0/RE-VALIDATION.md). The
+> single-shot, reflexion, KD, and OpenHands rows are unaffected.
+
 ### What we proved
 
 1. **The value-add fingerprint methodology works.** Each architecture has a measurable *contribution beyond its LLM* — and that contribution is per-library, not uniform.
 2. **No best architecture across the matrix.** 5 of 6 architectures show *both* +90 pp wins and ≤−50 pp regressions on different libraries. Aggregate pass-rate hides architecture-shaped failures.
-3. **Floor libraries reveal architectural blockers.** Three libraries (voluptuous, marshmallow, jinja) collapse on every legacy baseline at 0%. Phase 1 architectures (Aider, smolagents) unlock most of them.
+3. **Floor libraries reveal architectural blockers.** Three libraries (voluptuous, marshmallow, jinja) collapse on every legacy baseline at 0%. Phase 1 architectures (Aider, smolagents) get *past test collection* on them where KD collects 0 tests — the genuine, reproducible Phase-1 contribution. The *magnitude* of the unlock (the "+Npp" figures) is pending re-validation, as it derives from `-x`-truncated denominators — see [`commit0/RE-VALIDATION.md`](commit0/RE-VALIDATION.md).
 4. **One floor lib unlocked by KD.** Kaizen-delta cracked voluptuous from 0% → 39% at $0.71 via three small fixes (test-import scanning, file exclusion, syntax-validated retry).
 5. **Two architectural ceilings named.** Marshmallow → attribute-access patterns invisible to text-based import scanners. Jinja → relative-import resolution (`from .X import Y`). Both require either AST-level walking or runtime introspection. See [`commit0/AAR_2026-04-22_B3_ADDENDUM.md`](commit0/AAR_2026-04-22_B3_ADDENDUM.md).
 6. **9.8× cache-configuration cost gap.** Cached architectures (KD, Aider) show 92% Anthropic ephemeral cache hit; uncached (OH local-Docker, smolagents) show 0%. Same libraries, same model — config, not quality.

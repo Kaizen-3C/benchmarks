@@ -1,0 +1,27 @@
+name: scoring-provenance-guard
+
+# Fails the build if a denominator-truncated (`pytest -x`) competitor cell
+# re-enters the result matrix. See commit0/RE-VALIDATION.md.
+
+on:
+  push:
+    paths:
+      - "commit0/results/**"
+      - "commit0/baselines/**"
+  pull_request:
+    paths:
+      - "commit0/results/**"
+      - "commit0/baselines/**"
+  workflow_dispatch: {}
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Stdlib only — no pip install needed.
+      - name: Check scoring provenance
+        run: python commit0/baselines/check_scoring_provenance.py

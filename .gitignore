@@ -38,6 +38,7 @@ Thumbs.db
 .vscode/
 .vs/
 .idea/
+.claude/
 
 # Environment / secrets
 .env

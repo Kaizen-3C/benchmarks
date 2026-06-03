@@ -306,6 +306,13 @@ A library can fail in several ways. Each is recorded distinctly so they're not c
 
 Aggregate pass rate is **(sum of tests_passed) / (sum of tests_total across all 16)**, regardless of build_status. A library that fails to build contributes 0 to the numerator and its full test count to the denominator — there are no "free" exclusions.
 
+> ⚠ **Known violation (pending re-validation):** the Phase-1 Aider & smolagents runners
+> scored with `pytest -x` (stop at first failure), so their `tests_total` is truncated to the
+> tests that ran before the first failure — not the full suite this rule requires. Their cells
+> are therefore non-compliant and non-comparable. Runners are now fixed (full-suite
+> `SCORING_TEST_CMD`, JSONs stamped `"scoring"`); the committed data is re-run pending. See
+> [`RE-VALIDATION.md`](RE-VALIDATION.md).
+
 ### 6.1 Host environment bugs (Windows)
 
 commit0 0.1.8's local backend has three independent bugs when run directly on a Windows host (outside WSL). These were all discovered during Phase 0 on 2026-04-20 and patched in-tree to complete the validation spike; the supported path forward is **WSL2, not Windows patches**.
