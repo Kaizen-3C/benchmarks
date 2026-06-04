@@ -37,9 +37,10 @@ RESULTS = Path(__file__).resolve().parents[1] / "results"
 VALID_SCORING = {"commit0-test-full-suite", "full-suite-local-pytest"}
 COMPETITOR_ARCHS = {"aider", "smolagents"}
 
-# Known `-x`-truncated cells committed before the scoring fix (see RE-VALIDATION.md).
-# Lower this to 0 once the Phase-1 re-run replaces them with tagged, full-suite JSONs.
-EXPECTED_PENDING = 68
+# Known `-x`-truncated cells still pending re-validation (see RE-VALIDATION.md).
+# 2026-06-04: OpenAI cells (32 per-lib + 2 aggregates) re-scored full-suite -> 34 remain
+# (the Anthropic cells, pending a real re-run). Lower to 0 once Anthropic lands.
+EXPECTED_PENDING = 34
 
 
 def classify(path: Path) -> tuple[str, bool]:

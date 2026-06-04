@@ -2,20 +2,24 @@
   "repo": "babel",
   "model": "openai/gpt-5.4",
   "branch": "smolagents",
-  "elapsed_s": 191.9,
-  "final_summary": "1 error in 0.06s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/babel_smolagents_openai.patch",
+  "patch_sha256": "2f5d90330dff7af23c230bd9f5e99d9a726372f54fa7318ee3c847703c6a24b8",
+  "elapsed_s": 318.9,
+  "final_summary": "======================== 1 skipped, 22 errors in 1.60s =========================",
   "final_counts": {
     "passed": 0,
     "failed": 0,
-    "skipped": 0,
-    "errors": 1
+    "skipped": 1,
+    "errors": 22
   },
   "totals": {
-    "input_tokens": 527645,
-    "output_tokens": 13403,
-    "cache_read_tokens": 452480,
+    "input_tokens": 801786,
+    "output_tokens": 26563,
+    "cache_read_tokens": 692736,
     "cache_write_tokens": 0,
-    "cost_usd": 0.5021
+    "cost_usd": 0.8443
   },
   "smolagents_diagnostics": {
     "llm_calls": 21,
@@ -24,5 +28,6 @@
     "wall_clock_capped": false,
     "cost_capped": false,
     "callback_errors": []
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

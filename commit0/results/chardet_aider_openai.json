@@ -2,26 +2,31 @@
   "repo": "chardet",
   "model": "openai/gpt-5.4",
   "branch": "aider",
-  "elapsed_s": 20.8,
-  "final_summary": "=============================== 1 error in 0.24s ===============================",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/chardet_aider_openai.patch",
+  "patch_sha256": "ff45708a9e7fc55f44028a96a29040b02744615d1eae89d90d230afeb6ada31c",
+  "elapsed_s": 904.9,
+  "final_summary": "================= 188 failed, 188 passed, 7 xfailed in 10.04s ==================",
   "final_counts": {
-    "passed": 0,
-    "failed": 0,
+    "passed": 188,
+    "failed": 188,
     "skipped": 0,
-    "errors": 1
+    "errors": 0
   },
   "totals": {
-    "input_tokens": 312133,
-    "output_tokens": 202,
+    "input_tokens": 1453107,
+    "output_tokens": 20768,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 1.5652
+    "cost_usd": 6.0849
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
     "malformed_responses": 0,
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
-    "cost_capped": false
-  }
+    "cost_capped": true
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

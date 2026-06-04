@@ -2,20 +2,24 @@
   "repo": "simpy",
   "model": "openai/gpt-5.4",
   "branch": "aider",
-  "elapsed_s": 323.7,
-  "final_summary": "1 error in 0.01s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/simpy_aider_openai.patch",
+  "patch_sha256": "1976b8cb12526cdf94c8ae11e4ffb1ab06a5d028cf5523e19be531d08fbfdb21",
+  "elapsed_s": 185.2,
+  "final_summary": "================ 12 failed, 128 passed, 10 deselected in 0.64s =================",
   "final_counts": {
-    "passed": 0,
-    "failed": 0,
+    "passed": 128,
+    "failed": 12,
     "skipped": 0,
-    "errors": 1
+    "errors": 0
   },
   "totals": {
-    "input_tokens": 345790,
-    "output_tokens": 25376,
+    "input_tokens": 356135,
+    "output_tokens": 16616,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.7653
+    "cost_usd": 0.6897
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
@@ -23,5 +27,6 @@
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

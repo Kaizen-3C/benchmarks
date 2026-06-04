@@ -2,20 +2,24 @@
   "repo": "chardet",
   "model": "openai/gpt-5.4",
   "branch": "smolagents",
-  "elapsed_s": 285.1,
-  "final_summary": "========================= 1 failed, 6 passed in 0.16s ==========================",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/chardet_smolagents_openai.patch",
+  "patch_sha256": "f1ae3c193a8e314055a0e578c7e5f3e4c9b57267bdf2ad5639ad38fb00cb53ae",
+  "elapsed_s": 514.2,
+  "final_summary": "============= 82 failed, 312 passed, 2 xfailed, 5 xpassed in 8.21s =============",
   "final_counts": {
-    "passed": 6,
-    "failed": 1,
+    "passed": 312,
+    "failed": 82,
     "skipped": 0,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 1070722,
-    "output_tokens": 20845,
-    "cache_read_tokens": 894848,
+    "input_tokens": 829078,
+    "output_tokens": 44876,
+    "cache_read_tokens": 720256,
     "cache_write_tokens": 0,
-    "cost_usd": 0.9761
+    "cost_usd": 1.1253
   },
   "smolagents_diagnostics": {
     "llm_calls": 21,
@@ -24,5 +28,6 @@
     "wall_clock_capped": false,
     "cost_capped": false,
     "callback_errors": []
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

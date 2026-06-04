@@ -1,0 +1,27 @@
+{
+  "repo": "pyjwt",
+  "model": "openai/gpt-5.4",
+  "branch": "aider",
+  "elapsed_s": 302.5,
+  "final_summary": "1 failed, 105 passed, 94 skipped in 0.16s",
+  "final_counts": {
+    "passed": 105,
+    "failed": 1,
+    "skipped": 94,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 349907,
+    "output_tokens": 22975,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.7788
+  },
+  "aider_diagnostics": {
+    "exhausted_context_windows": 0,
+    "malformed_responses": 0,
+    "test_cmd": "pytest -x --tb=no -q",
+    "wall_clock_capped": false,
+    "cost_capped": false
+  }
+}

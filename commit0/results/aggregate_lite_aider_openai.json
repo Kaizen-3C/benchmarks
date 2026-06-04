@@ -25,20 +25,24 @@
       "repo": "wcwidth",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 9.5,
-      "final_summary": "\u001b[32m\u001b[32m\u001b[1m39 passed\u001b[0m\u001b[32m in 1.02s\u001b[0m\u001b[0m",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/wcwidth_aider_openai.patch",
+      "patch_sha256": "b6463f2928fcafca33aca508c1408d730c364d3551fc79c6d09170c5c8691e3a",
+      "elapsed_s": 109.2,
+      "final_summary": "=================== 3 failed, 35 passed, 1 skipped in 0.67s ====================",
       "final_counts": {
-        "passed": 39,
-        "failed": 0,
-        "skipped": 0,
+        "passed": 35,
+        "failed": 3,
+        "skipped": 1,
         "errors": 0
       },
       "totals": {
-        "input_tokens": 78251,
-        "output_tokens": 137,
+        "input_tokens": 337137,
+        "output_tokens": 9854,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.1977
+        "cost_usd": 0.8397
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -47,27 +51,30 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 16.4
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "deprecated": {
       "repo": "deprecated",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 57.0,
-      "final_summary": "1 error in 0.03s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/deprecated_aider_openai.patch",
+      "patch_sha256": "3b818615ee82d188cc02e86300e0074086460d5edf30ea32dcfc83e63d32697c",
+      "elapsed_s": 25.9,
+      "final_summary": "======================= 171 passed, 5 warnings in 0.35s ========================",
       "final_counts": {
-        "passed": 0,
+        "passed": 171,
         "failed": 0,
         "skipped": 0,
-        "errors": 1
+        "errors": 0
       },
       "totals": {
-        "input_tokens": 84302,
-        "output_tokens": 4802,
+        "input_tokens": 39747,
+        "output_tokens": 2225,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.205
+        "cost_usd": 0.1327
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -76,27 +83,30 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 61.6
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "cachetools": {
       "repo": "cachetools",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 243.7,
-      "final_summary": "1 error in 0.02s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/cachetools_aider_openai.patch",
+      "patch_sha256": "eaffb224b87684b1e0e951bb99c2949228dce399fb5a7b53043d52bdf9db2c7e",
+      "elapsed_s": 321.7,
+      "final_summary": "================== 8 failed, 207 passed, 15 warnings in 0.32s ==================",
       "final_counts": {
-        "passed": 0,
-        "failed": 0,
+        "passed": 207,
+        "failed": 8,
         "skipped": 0,
-        "errors": 1
+        "errors": 0
       },
       "totals": {
-        "input_tokens": 202649,
-        "output_tokens": 19201,
+        "input_tokens": 208995,
+        "output_tokens": 28301,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.5245
+        "cost_usd": 0.6711
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -105,27 +115,30 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 270.7
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "voluptuous": {
       "repo": "voluptuous",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 357.8,
-      "final_summary": "============================== 1 failed in 0.03s ===============================",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/voluptuous_aider_openai.patch",
+      "patch_sha256": "48cc1e921c21b0e92a14f779e8e65075fe73e483dc764affb4fd57677d7e031f",
+      "elapsed_s": 232.8,
+      "final_summary": "======================== 23 failed, 126 passed in 1.94s ========================",
       "final_counts": {
-        "passed": 0,
-        "failed": 1,
+        "passed": 126,
+        "failed": 23,
         "skipped": 0,
         "errors": 0
       },
       "totals": {
-        "input_tokens": 220584,
-        "output_tokens": 30945,
+        "input_tokens": 215080,
+        "output_tokens": 19597,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.9114
+        "cost_usd": 0.7274
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -134,27 +147,30 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 391.4
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "portalocker": {
       "repo": "portalocker",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 194.0,
-      "final_summary": "1 failed, 1 passed, 2 skipped, 1 warning in 0.38s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/portalocker_aider_openai.patch",
+      "patch_sha256": "4dfe8e8850514b5920f723231cd58e828a20db4ee78a74089c92709005fe4037",
+      "elapsed_s": 159.5,
+      "final_summary": "============= 11 failed, 29 passed, 2 skipped, 4 warnings in 4.18s =============",
       "final_counts": {
-        "passed": 1,
-        "failed": 1,
+        "passed": 29,
+        "failed": 11,
         "skipped": 2,
         "errors": 0
       },
       "totals": {
-        "input_tokens": 127090,
-        "output_tokens": 15318,
+        "input_tokens": 121641,
+        "output_tokens": 14223,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.4248
+        "cost_usd": 0.4069
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -163,27 +179,30 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 222.3
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "pyjwt": {
       "repo": "pyjwt",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 302.5,
-      "final_summary": "1 failed, 105 passed, 94 skipped in 0.16s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/pyjwt_aider_openai.patch",
+      "patch_sha256": "24d791fe0b82b41bc2be10470d5f2bc9e6c970b2a372a2e00ffae551fe21a909",
+      "elapsed_s": 10.1,
+      "final_summary": "============= 1 failed, 258 passed, 2 skipped, 1 xfailed in 5.36s ==============",
       "final_counts": {
-        "passed": 105,
+        "passed": 258,
         "failed": 1,
-        "skipped": 94,
+        "skipped": 2,
         "errors": 0
       },
       "totals": {
-        "input_tokens": 349907,
-        "output_tokens": 22975,
+        "input_tokens": 69756,
+        "output_tokens": 309,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.7788
+        "cost_usd": 0.179
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -192,56 +211,62 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 328.7
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "chardet": {
       "repo": "chardet",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 20.8,
-      "final_summary": "=============================== 1 error in 0.24s ===============================",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/chardet_aider_openai.patch",
+      "patch_sha256": "ff45708a9e7fc55f44028a96a29040b02744615d1eae89d90d230afeb6ada31c",
+      "elapsed_s": 904.9,
+      "final_summary": "================= 188 failed, 188 passed, 7 xfailed in 10.04s ==================",
       "final_counts": {
-        "passed": 0,
-        "failed": 0,
+        "passed": 188,
+        "failed": 188,
         "skipped": 0,
-        "errors": 1
+        "errors": 0
       },
       "totals": {
-        "input_tokens": 312133,
-        "output_tokens": 202,
+        "input_tokens": 1453107,
+        "output_tokens": 20768,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 1.5652
+        "cost_usd": 6.0849
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
         "malformed_responses": 0,
         "test_cmd": "pytest -x --tb=no -q",
         "wall_clock_capped": false,
-        "cost_capped": false
+        "cost_capped": true
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 27.4
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "tinydb": {
       "repo": "tinydb",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 300.7,
-      "final_summary": "============================= 201 passed in 1.52s ==============================",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/tinydb_aider_openai.patch",
+      "patch_sha256": "c942d08cedc5d56e7864bee474940bd25611154a9e534afd9edc91951e44d84f",
+      "elapsed_s": 159.6,
+      "final_summary": "======================== 3 failed, 198 passed in 2.02s =========================",
       "final_counts": {
-        "passed": 201,
-        "failed": 0,
+        "passed": 198,
+        "failed": 3,
         "skipped": 0,
         "errors": 0
       },
       "totals": {
-        "input_tokens": 233878,
-        "output_tokens": 20758,
+        "input_tokens": 194272,
+        "output_tokens": 12381,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.6075
+        "cost_usd": 0.4105
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -250,27 +275,30 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 333.7
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "simpy": {
       "repo": "simpy",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 323.7,
-      "final_summary": "1 error in 0.01s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/simpy_aider_openai.patch",
+      "patch_sha256": "1976b8cb12526cdf94c8ae11e4ffb1ab06a5d028cf5523e19be531d08fbfdb21",
+      "elapsed_s": 185.2,
+      "final_summary": "================ 12 failed, 128 passed, 10 deselected in 0.64s =================",
       "final_counts": {
-        "passed": 0,
-        "failed": 0,
+        "passed": 128,
+        "failed": 12,
         "skipped": 0,
-        "errors": 1
+        "errors": 0
       },
       "totals": {
-        "input_tokens": 345790,
-        "output_tokens": 25376,
+        "input_tokens": 356135,
+        "output_tokens": 16616,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.7653
+        "cost_usd": 0.6897
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -279,27 +307,30 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 370.9
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "imapclient": {
       "repo": "imapclient",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 467.8,
-      "final_summary": "1 failed in 0.06s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/imapclient_aider_openai.patch",
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_s": 6.7,
+      "final_summary": "============================== 18 errors in 0.25s ==============================",
       "final_counts": {
         "passed": 0,
-        "failed": 1,
+        "failed": 0,
         "skipped": 0,
-        "errors": 0
+        "errors": 18
       },
       "totals": {
-        "input_tokens": 420045,
-        "output_tokens": 40537,
+        "input_tokens": 74352,
+        "output_tokens": 300,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 1.1392
+        "cost_usd": 0.1904
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -308,27 +339,30 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 499.3
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "parsel": {
       "repo": "parsel",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 124.4,
-      "final_summary": "1 error in 0.01s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/parsel_aider_openai.patch",
+      "patch_sha256": "0c7ad520ad2bfead624584954454f97da2899d64428c984f009e5c2c3a743a4a",
+      "elapsed_s": 204.1,
+      "final_summary": "================== 54 failed, 152 passed, 2 skipped in 1.38s ===================",
       "final_counts": {
-        "passed": 0,
-        "failed": 0,
-        "skipped": 0,
-        "errors": 1
+        "passed": 152,
+        "failed": 54,
+        "skipped": 2,
+        "errors": 0
       },
       "totals": {
-        "input_tokens": 204318,
-        "output_tokens": 9144,
+        "input_tokens": 208014,
+        "output_tokens": 20734,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.3893
+        "cost_usd": 0.5491
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -337,15 +371,18 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 147.4
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "marshmallow": {
       "repo": "marshmallow",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 607.8,
-      "final_summary": "",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/marshmallow_aider_openai.patch",
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_s": 10.6,
+      "final_summary": "dule>\n    from marshmallow import Schema, fields, missing, post_load, validate\nsrc/marshmallow/__init__.py:17: in <module>\n    from marshmallow.schema import Schema, SchemaOpts\nsrc/marshmallow/schema.py:15: in <module>\n    from marshmallow import fields as ma_fields\nsrc/marshmallow/fields.py:18: in <module>\n    from marshmallow.utils import is_aware, is_collection, resolve_field_instance\nE   ImportError: cannot import name 'is_aware' from 'marshmallow.utils' (/testbed/src/marshmallow/utils.py)\n\n",
       "final_counts": {
         "passed": 0,
         "failed": 0,
@@ -353,11 +390,11 @@
         "errors": 0
       },
       "totals": {
-        "input_tokens": 200730,
-        "output_tokens": 205,
+        "input_tokens": 193989,
+        "output_tokens": 321,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.0539
+        "cost_usd": 0.4898
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -366,27 +403,30 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 616.7
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "cookiecutter": {
       "repo": "cookiecutter",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 236.3,
-      "final_summary": "========================= 1 failed, 15 passed in 1.38s =========================",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/cookiecutter_aider_openai.patch",
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_s": 7.8,
+      "final_summary": "============= 325 failed, 16 passed, 4 skipped, 26 errors in 6.67s =============",
       "final_counts": {
-        "passed": 15,
-        "failed": 1,
-        "skipped": 0,
-        "errors": 0
+        "passed": 16,
+        "failed": 325,
+        "skipped": 4,
+        "errors": 26
       },
       "totals": {
-        "input_tokens": 486553,
-        "output_tokens": 16448,
+        "input_tokens": 103015,
+        "output_tokens": 197,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.769
+        "cost_usd": 0.2605
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -395,27 +435,30 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 262.4
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "babel": {
       "repo": "babel",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 18.9,
-      "final_summary": "1 error in 0.06s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/babel_aider_openai.patch",
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_s": 12.2,
+      "final_summary": "======================== 1 skipped, 22 errors in 1.63s =========================",
       "final_counts": {
         "passed": 0,
         "failed": 0,
-        "skipped": 0,
-        "errors": 1
+        "skipped": 1,
+        "errors": 22
       },
       "totals": {
-        "input_tokens": 227608,
-        "output_tokens": 513,
+        "input_tokens": 196850,
+        "output_tokens": 313,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.5767
+        "cost_usd": 0.4968
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -424,27 +467,30 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 26.7
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "jinja": {
       "repo": "jinja",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 18.3,
-      "final_summary": "1 failed, 24 passed in 0.17s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/jinja_aider_openai.patch",
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_s": 16.6,
+      "final_summary": " jinja2 import loaders\nsrc/jinja2/__init__.py:9: in <module>\n    from .environment import Environment as Environment\nsrc/jinja2/environment.py:14: in <module>\n    from . import nodes\nE     File \"/testbed/src/jinja2/nodes.py\", line 80\nE       raise TypeError(f'{type(self).__name__!r} takes 0 or {len(self.fields)} argument{('s' if len(self.fields) != 1 else '')}')\nE                                                                                          ^\nE   SyntaxError: f-string: unmatched '('\n\n",
       "final_counts": {
-        "passed": 24,
-        "failed": 1,
+        "passed": 0,
+        "failed": 0,
         "skipped": 0,
         "errors": 0
       },
       "totals": {
-        "input_tokens": 170473,
-        "output_tokens": 795,
+        "input_tokens": 145926,
+        "output_tokens": 455,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.4381
+        "cost_usd": 0.3716
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -453,27 +499,30 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 26.8
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     },
     "minitorch": {
       "repo": "minitorch",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "elapsed_s": 17.6,
-      "final_summary": "1 error in 0.07s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider",
+      "patch_file": "patches/minitorch_aider_openai.patch",
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_s": 10.3,
+      "final_summary": "============================== 10 errors in 1.44s ==============================",
       "final_counts": {
         "passed": 0,
         "failed": 0,
         "skipped": 0,
-        "errors": 1
+        "errors": 10
       },
       "totals": {
-        "input_tokens": 110720,
-        "output_tokens": 250,
+        "input_tokens": 85506,
+        "output_tokens": 370,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.2806
+        "cost_usd": 0.2193
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -482,19 +531,18 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 30.1
+      "recovered_from": "openai-sweep-rescore-2026-06-04"
     }
   },
   "aggregate": {
     "libraries_total": 16,
-    "tests_passed": 385,
-    "tests_failed": 6,
-    "tests_skipped": 96,
-    "tests_errored": 7,
-    "tests_attempted_total": 398,
-    "pass_rate_attempted": 0.9673,
-    "cost_usd_total": 9.63,
-    "wall_seconds_total": 3300.8
+    "tests_passed": 1508,
+    "tests_failed": 628,
+    "tests_skipped": 12,
+    "tests_errored": 76,
+    "tests_attempted_total": 2212,
+    "pass_rate_attempted": 0.6817,
+    "cost_usd_total": 12.72,
+    "wall_seconds_total": 2377.2
   }
 }

@@ -2,20 +2,24 @@
   "repo": "wcwidth",
   "model": "openai/gpt-5.4",
   "branch": "aider",
-  "elapsed_s": 9.5,
-  "final_summary": "\u001b[32m\u001b[32m\u001b[1m39 passed\u001b[0m\u001b[32m in 1.02s\u001b[0m\u001b[0m",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/wcwidth_aider_openai.patch",
+  "patch_sha256": "b6463f2928fcafca33aca508c1408d730c364d3551fc79c6d09170c5c8691e3a",
+  "elapsed_s": 109.2,
+  "final_summary": "=================== 3 failed, 35 passed, 1 skipped in 0.67s ====================",
   "final_counts": {
-    "passed": 39,
-    "failed": 0,
-    "skipped": 0,
+    "passed": 35,
+    "failed": 3,
+    "skipped": 1,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 78251,
-    "output_tokens": 137,
+    "input_tokens": 337137,
+    "output_tokens": 9854,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.1977
+    "cost_usd": 0.8397
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
@@ -23,5 +27,6 @@
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

@@ -40,6 +40,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -136,6 +137,22 @@ def _final_pytest(repo_dir: Path) -> tuple[str, dict[str, int]]:
     return summary, _counts_from_summary(summary)
 
 
+def _strip_agent_noise(repo_dir: Path) -> None:
+    """Remove non-code agent artifacts before committing the branch.
+
+    Committing binary/noise files (e.g. .aider.tags.cache, spec.md) makes commit0's
+    container-side patch application fail, silently scoring the baseline. Strip them
+    so the branch — and thus commit0's patch.diff — is clean code only.
+    """
+    for n in list(repo_dir.glob(".aider*")) + [repo_dir / "spec.md"]:
+        if n.is_dir():
+            shutil.rmtree(n, ignore_errors=True)
+        elif n.exists():
+            n.unlink()
+    for pyc in repo_dir.rglob("__pycache__"):
+        shutil.rmtree(pyc, ignore_errors=True)
+
+
 def _persist_and_score(
     lib_name: str, repo_dir: Path, branch: str, out_path: Path,
 ) -> tuple[str, dict[str, int], str, str | None, str | None]:
@@ -144,6 +161,9 @@ def _persist_and_score(
     Returns (summary, counts, scoring_provenance, patch_rel_path, patch_sha256).
     """
     # 1. Persist generated code onto the arch branch (recoverable in the workspace).
+    #    Strip agent noise FIRST (see _strip_agent_noise) so commit0's patch.diff is
+    #    clean code only — committing binaries silently scores the baseline.
+    _strip_agent_noise(repo_dir)
     git(repo_dir, "add", "-A")
     git(repo_dir, "commit", "--allow-empty", "-m", f"{branch} generated output ({lib_name})")
 

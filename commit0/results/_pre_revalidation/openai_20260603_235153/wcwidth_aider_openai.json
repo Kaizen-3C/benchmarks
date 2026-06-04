@@ -1,0 +1,27 @@
+{
+  "repo": "wcwidth",
+  "model": "openai/gpt-5.4",
+  "branch": "aider",
+  "elapsed_s": 9.5,
+  "final_summary": "\u001b[32m\u001b[32m\u001b[1m39 passed\u001b[0m\u001b[32m in 1.02s\u001b[0m\u001b[0m",
+  "final_counts": {
+    "passed": 39,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 78251,
+    "output_tokens": 137,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.1977
+  },
+  "aider_diagnostics": {
+    "exhausted_context_windows": 0,
+    "malformed_responses": 0,
+    "test_cmd": "pytest -x --tb=no -q",
+    "wall_clock_capped": false,
+    "cost_capped": false
+  }
+}

@@ -2,20 +2,24 @@
   "repo": "voluptuous",
   "model": "openai/gpt-5.4",
   "branch": "aider",
-  "elapsed_s": 357.8,
-  "final_summary": "============================== 1 failed in 0.03s ===============================",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/voluptuous_aider_openai.patch",
+  "patch_sha256": "48cc1e921c21b0e92a14f779e8e65075fe73e483dc764affb4fd57677d7e031f",
+  "elapsed_s": 232.8,
+  "final_summary": "======================== 23 failed, 126 passed in 1.94s ========================",
   "final_counts": {
-    "passed": 0,
-    "failed": 1,
+    "passed": 126,
+    "failed": 23,
     "skipped": 0,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 220584,
-    "output_tokens": 30945,
+    "input_tokens": 215080,
+    "output_tokens": 19597,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.9114
+    "cost_usd": 0.7274
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
@@ -23,5 +27,6 @@
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

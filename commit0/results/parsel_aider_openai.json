@@ -2,20 +2,24 @@
   "repo": "parsel",
   "model": "openai/gpt-5.4",
   "branch": "aider",
-  "elapsed_s": 124.4,
-  "final_summary": "1 error in 0.01s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/parsel_aider_openai.patch",
+  "patch_sha256": "0c7ad520ad2bfead624584954454f97da2899d64428c984f009e5c2c3a743a4a",
+  "elapsed_s": 204.1,
+  "final_summary": "================== 54 failed, 152 passed, 2 skipped in 1.38s ===================",
   "final_counts": {
-    "passed": 0,
-    "failed": 0,
-    "skipped": 0,
-    "errors": 1
+    "passed": 152,
+    "failed": 54,
+    "skipped": 2,
+    "errors": 0
   },
   "totals": {
-    "input_tokens": 204318,
-    "output_tokens": 9144,
+    "input_tokens": 208014,
+    "output_tokens": 20734,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.3893
+    "cost_usd": 0.5491
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
@@ -23,5 +27,6 @@
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

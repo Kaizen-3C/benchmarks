@@ -2,27 +2,32 @@
   "repo": "marshmallow",
   "model": "openai/gpt-5.4",
   "branch": "smolagents",
-  "elapsed_s": 196.2,
-  "final_summary": "========================= 1 failed, 11 passed in 0.18s =========================",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/marshmallow_smolagents_openai.patch",
+  "patch_sha256": "850f8534d916bca25d798de3004836403e1c6cd156dd4cfbddae92a8b2c5ddcf",
+  "elapsed_s": 519.7,
+  "final_summary": "======================= 831 failed, 398 passed in 26.95s =======================",
   "final_counts": {
-    "passed": 11,
-    "failed": 1,
+    "passed": 398,
+    "failed": 831,
     "skipped": 0,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 817467,
-    "output_tokens": 13750,
-    "cache_read_tokens": 763136,
+    "input_tokens": 1211434,
+    "output_tokens": 48461,
+    "cache_read_tokens": 1049600,
     "cache_write_tokens": 0,
-    "cost_usd": 0.5329
+    "cost_usd": 1.3939
   },
   "smolagents_diagnostics": {
-    "llm_calls": 19,
+    "llm_calls": 21,
     "max_steps": 20,
     "executor_type": "local",
     "wall_clock_capped": false,
     "cost_capped": false,
     "callback_errors": []
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

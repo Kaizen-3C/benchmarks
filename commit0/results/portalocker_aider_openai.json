@@ -2,20 +2,24 @@
   "repo": "portalocker",
   "model": "openai/gpt-5.4",
   "branch": "aider",
-  "elapsed_s": 194.0,
-  "final_summary": "1 failed, 1 passed, 2 skipped, 1 warning in 0.38s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/portalocker_aider_openai.patch",
+  "patch_sha256": "4dfe8e8850514b5920f723231cd58e828a20db4ee78a74089c92709005fe4037",
+  "elapsed_s": 159.5,
+  "final_summary": "============= 11 failed, 29 passed, 2 skipped, 4 warnings in 4.18s =============",
   "final_counts": {
-    "passed": 1,
-    "failed": 1,
+    "passed": 29,
+    "failed": 11,
     "skipped": 2,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 127090,
-    "output_tokens": 15318,
+    "input_tokens": 121641,
+    "output_tokens": 14223,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.4248
+    "cost_usd": 0.4069
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
@@ -23,5 +27,6 @@
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

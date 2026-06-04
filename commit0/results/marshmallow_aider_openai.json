@@ -2,8 +2,12 @@
   "repo": "marshmallow",
   "model": "openai/gpt-5.4",
   "branch": "aider",
-  "elapsed_s": 607.8,
-  "final_summary": "",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/marshmallow_aider_openai.patch",
+  "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "elapsed_s": 10.6,
+  "final_summary": "dule>\n    from marshmallow import Schema, fields, missing, post_load, validate\nsrc/marshmallow/__init__.py:17: in <module>\n    from marshmallow.schema import Schema, SchemaOpts\nsrc/marshmallow/schema.py:15: in <module>\n    from marshmallow import fields as ma_fields\nsrc/marshmallow/fields.py:18: in <module>\n    from marshmallow.utils import is_aware, is_collection, resolve_field_instance\nE   ImportError: cannot import name 'is_aware' from 'marshmallow.utils' (/testbed/src/marshmallow/utils.py)\n\n",
   "final_counts": {
     "passed": 0,
     "failed": 0,
@@ -11,11 +15,11 @@
     "errors": 0
   },
   "totals": {
-    "input_tokens": 200730,
-    "output_tokens": 205,
+    "input_tokens": 193989,
+    "output_tokens": 321,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.0539
+    "cost_usd": 0.4898
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
@@ -23,5 +27,6 @@
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

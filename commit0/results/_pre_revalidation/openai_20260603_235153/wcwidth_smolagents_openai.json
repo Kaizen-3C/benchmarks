@@ -1,0 +1,28 @@
+{
+  "repo": "wcwidth",
+  "model": "openai/gpt-5.4",
+  "branch": "smolagents",
+  "elapsed_s": 47.1,
+  "final_summary": "\u001b[32m\u001b[32m\u001b[1m39 passed\u001b[0m\u001b[32m in 1.11s\u001b[0m\u001b[0m",
+  "final_counts": {
+    "passed": 39,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 390369,
+    "output_tokens": 2669,
+    "cache_read_tokens": 317056,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.3026
+  },
+  "smolagents_diagnostics": {
+    "llm_calls": 9,
+    "max_steps": 20,
+    "executor_type": "local",
+    "wall_clock_capped": false,
+    "cost_capped": false,
+    "callback_errors": []
+  }
+}

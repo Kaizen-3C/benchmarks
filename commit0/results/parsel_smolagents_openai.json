@@ -2,20 +2,24 @@
   "repo": "parsel",
   "model": "openai/gpt-5.4",
   "branch": "smolagents",
-  "elapsed_s": 217.1,
-  "final_summary": "1 error in 0.01s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/parsel_smolagents_openai.patch",
+  "patch_sha256": "bff336c1eda7e48bba5b5b5cbdb07b92a5de38df8ca68b6460cb1ec0d569f63f",
+  "elapsed_s": 367.8,
+  "final_summary": "================== 75 failed, 131 passed, 2 skipped in 1.43s ===================",
   "final_counts": {
-    "passed": 0,
-    "failed": 0,
-    "skipped": 0,
-    "errors": 1
+    "passed": 131,
+    "failed": 75,
+    "skipped": 2,
+    "errors": 0
   },
   "totals": {
-    "input_tokens": 499013,
-    "output_tokens": 14275,
-    "cache_read_tokens": 430592,
+    "input_tokens": 654297,
+    "output_tokens": 30706,
+    "cache_read_tokens": 578304,
     "cache_write_tokens": 0,
-    "cost_usd": 0.4928
+    "cost_usd": 0.7951
   },
   "smolagents_diagnostics": {
     "llm_calls": 21,
@@ -24,5 +28,6 @@
     "wall_clock_capped": false,
     "cost_capped": false,
     "callback_errors": []
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

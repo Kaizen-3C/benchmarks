@@ -33,6 +33,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -139,6 +140,22 @@ def _start_branch(repo_dir: Path, branch: str) -> None:
     git(repo_dir, "checkout", "-b", branch)
 
 
+def _strip_agent_noise(repo_dir: Path) -> None:
+    """Remove non-code agent artifacts before committing the branch.
+
+    `.aider.tags.cache.v4/*` are sqlite BINARIES; committing them makes commit0's
+    container-side `git apply` of the branch patch fail, which silently falls back
+    to the baseline score. spec.md / __pycache__ are also non-code noise.
+    """
+    for n in list(repo_dir.glob(".aider*")) + [repo_dir / "spec.md"]:
+        if n.is_dir():
+            shutil.rmtree(n, ignore_errors=True)
+        elif n.exists():
+            n.unlink()
+    for pyc in repo_dir.rglob("__pycache__"):
+        shutil.rmtree(pyc, ignore_errors=True)
+
+
 def _persist_and_score(
     lib_name: str, repo_dir: Path, branch: str, out_path: Path,
 ) -> tuple[str, dict[str, int], str, str | None, str | None]:
@@ -147,6 +164,10 @@ def _persist_and_score(
     Returns (summary, counts, scoring_provenance, patch_rel_path, patch_sha256).
     """
     # 1. Persist generated code onto the arch branch (recoverable in the workspace).
+    #    Strip agent noise FIRST so the branch — and thus commit0's patch.diff — is
+    #    clean code only. Binary caches (.aider.tags.cache/*) make the container's
+    #    patch application fail, silently scoring the baseline. See ../../RE-VALIDATION.md.
+    _strip_agent_noise(repo_dir)
     git(repo_dir, "add", "-A")
     git(repo_dir, "commit", "--allow-empty", "-m", f"{branch} generated output ({lib_name})")
 

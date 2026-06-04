@@ -2,20 +2,24 @@
   "repo": "voluptuous",
   "model": "openai/gpt-5.4",
   "branch": "smolagents",
-  "elapsed_s": 796.3,
-  "final_summary": "========================= 1 failed, 11 passed in 0.04s =========================",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/voluptuous_smolagents_openai.patch",
+  "patch_sha256": "666606d59078b21762fce1188cf9aa921a0619dc8802b30a4a6f2fba18214d40",
+  "elapsed_s": 285.2,
+  "final_summary": "======================== 17 failed, 132 passed in 1.80s ========================",
   "final_counts": {
-    "passed": 11,
-    "failed": 1,
+    "passed": 132,
+    "failed": 17,
     "skipped": 0,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 1024165,
-    "output_tokens": 14450,
-    "cache_read_tokens": 925312,
+    "input_tokens": 986729,
+    "output_tokens": 26196,
+    "cache_read_tokens": 877440,
     "cache_write_tokens": 0,
-    "cost_usd": 0.6952
+    "cost_usd": 0.8855
   },
   "smolagents_diagnostics": {
     "llm_calls": 21,
@@ -24,5 +28,6 @@
     "wall_clock_capped": false,
     "cost_capped": false,
     "callback_errors": []
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }
