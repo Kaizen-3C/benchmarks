@@ -80,7 +80,7 @@ def one_rep(arch, provider, lib, k, temperature, seed, dry):
         "score_attempts": sc["attempts"],
     }
 
-def run_cell(arch, provider, lib, reps, max_redraws, temperature, seed, dry, out_dir):
+def run_cell(arch, provider, lib, reps, max_redraws, temperature, seed, dry, out_dir, sleep_s=0):
     print(f"  cell {lib}/{arch}/{provider}: target {reps} valid reps")
     valid = 0; draw = 0; invalid = 0
     while valid < reps and draw < reps + max_redraws:
@@ -94,6 +94,9 @@ def run_cell(arch, provider, lib, reps, max_redraws, temperature, seed, dry, out
             d["rep_invalid"] = True
             (out_dir / f"{lib}_{arch}_{provider}_INVALID{draw}.json").write_text(json.dumps(d, indent=2))
             print(f"      -> INVALID (cost={d['totals']['cost_usd']}, collected={d['collected']}), re-drawing")
+            if sleep_s and (valid < reps and draw < reps + max_redraws):
+                print(f"         pacing: sleep {sleep_s}s to let a bad provider window clear")
+                time.sleep(sleep_s)
             continue
         (out_dir / f"{lib}_{arch}_{provider}_rep{valid}.json").write_text(json.dumps(d, indent=2))
         print(f"      -> rep{valid} valid: {d['final_counts']['passed']}/{d['collected']} ${d['totals']['cost_usd']:.2f}")
@@ -109,6 +112,7 @@ def main():
     ap.add_argument("--libs", nargs="+", required=True)
     ap.add_argument("--reps", type=int, default=5)
     ap.add_argument("--max-redraws", type=int, default=3, help="extra draws allowed per cell for invalid reps")
+    ap.add_argument("--sleep", type=int, default=0, help="seconds to pace between re-draws (let a bad provider window clear)")
     ap.add_argument("--temperature", type=float, default=None)
     ap.add_argument("--seed", type=int, default=None)
     ap.add_argument("--out-dir", default=str(OUT_DIR))
@@ -127,7 +131,7 @@ def main():
     tot_valid = tot_invalid = 0
     for lib in a.libs:
         v, iv = run_cell(a.arch, a.provider, lib, a.reps, a.max_redraws,
-                         a.temperature, a.seed, a.dry_run, out_dir)
+                         a.temperature, a.seed, a.dry_run, out_dir, a.sleep)
         tot_valid += v; tot_invalid += iv
     print(f"\n== done: {tot_valid} valid reps, {tot_invalid} invalid (discarded) ==")
     if not a.dry_run:
