@@ -1,0 +1,28 @@
+{
+  "repo": "tinydb",
+  "model": "anthropic/claude-sonnet-4-6",
+  "branch": "smolagents",
+  "elapsed_s": 21.4,
+  "final_summary": "============================= 201 passed in 1.53s ==============================",
+  "final_counts": {
+    "passed": 201,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 114563,
+    "output_tokens": 584,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.3524
+  },
+  "smolagents_diagnostics": {
+    "llm_calls": 10,
+    "max_steps": 20,
+    "executor_type": "local",
+    "wall_clock_capped": false,
+    "cost_capped": false,
+    "callback_errors": []
+  }
+}

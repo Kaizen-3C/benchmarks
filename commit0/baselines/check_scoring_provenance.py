@@ -38,9 +38,11 @@ VALID_SCORING = {"commit0-test-full-suite", "full-suite-local-pytest"}
 COMPETITOR_ARCHS = {"aider", "smolagents"}
 
 # Known `-x`-truncated cells still pending re-validation (see RE-VALIDATION.md).
-# 2026-06-04: OpenAI cells (32 per-lib + 2 aggregates) re-scored full-suite -> 34 remain
-# (the Anthropic cells, pending a real re-run). Lower to 0 once Anthropic lands.
-EXPECTED_PENDING = 34
+# 2026-06-04: OpenAI (all 32) + Anthropic smolagents (16) + Anthropic aider (7 valid) re-scored
+# full-suite. Remaining 10 = 9 aider/anthropic cells corrupted by provider timeouts (voluptuous,
+# chardet, simpy, imapclient, marshmallow, cookiecutter, babel, jinja, minitorch) + their
+# aggregate, pending a targeted re-run once Anthropic is stable. Lower to 0 then.
+EXPECTED_PENDING = 10
 
 
 def classify(path: Path) -> tuple[str, bool]:

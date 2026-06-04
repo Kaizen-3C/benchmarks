@@ -2,20 +2,24 @@
   "repo": "portalocker",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "aider",
-  "elapsed_s": 27.6,
-  "final_summary": "1 failed, 34 passed, 2 skipped, 3 warnings in 2.21s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/portalocker_aider_anthropic.patch",
+  "patch_sha256": "4d40a873fb9edecf576cb9c167e954e26833aaac34206503cf97fbd2e4232c89",
+  "elapsed_s": 274.9,
+  "final_summary": "=================== 13 failed, 27 passed, 2 skipped in 2.04s ===================",
   "final_counts": {
-    "passed": 34,
-    "failed": 1,
+    "passed": 27,
+    "failed": 13,
     "skipped": 2,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 29067,
-    "output_tokens": 2509,
+    "input_tokens": 143644,
+    "output_tokens": 12032,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.1248
+    "cost_usd": 0.6114
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,

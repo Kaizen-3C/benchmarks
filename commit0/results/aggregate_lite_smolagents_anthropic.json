@@ -3,6 +3,7 @@
   "provider": "anthropic",
   "split": "lite",
   "completed": [
+    "wcwidth",
     "deprecated",
     "cachetools",
     "voluptuous",
@@ -20,12 +21,48 @@
     "minitorch"
   ],
   "per_library": {
+    "wcwidth": {
+      "repo": "wcwidth",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/wcwidth_smolagents_anthropic.patch",
+      "patch_sha256": "da2bd689aa6c5fb3273a9020772ff38d772170236571735297b7d783b6fd9958",
+      "elapsed_s": 337.8,
+      "final_summary": "=================== 6 failed, 32 passed, 1 skipped in 0.62s ====================",
+      "final_counts": {
+        "passed": 32,
+        "failed": 6,
+        "skipped": 1,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 829738,
+        "output_tokens": 19355,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.7795
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      }
+    },
     "deprecated": {
       "repo": "deprecated",
       "model": "anthropic/claude-sonnet-4-6",
       "branch": "smolagents",
-      "elapsed_s": 49.8,
-      "final_summary": "171 passed, 4 warnings in 0.19s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/deprecated_smolagents_anthropic.patch",
+      "patch_sha256": "8cef7787160754fb58c1cec7573af3cb2f288f585452f10d80e338c067d11200",
+      "elapsed_s": 166.3,
+      "final_summary": "======================= 171 passed, 5 warnings in 0.32s ========================",
       "final_counts": {
         "passed": 171,
         "failed": 0,
@@ -33,191 +70,43 @@
         "errors": 0
       },
       "totals": {
-        "input_tokens": 319729,
-        "output_tokens": 1973,
+        "input_tokens": 513286,
+        "output_tokens": 9652,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.9888
+        "cost_usd": 1.6846
       },
       "smolagents_diagnostics": {
-        "llm_calls": 14,
+        "llm_calls": 15,
         "max_steps": 20,
         "executor_type": "local",
         "wall_clock_capped": false,
         "cost_capped": false,
         "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 58.3
+      }
     },
     "cachetools": {
       "repo": "cachetools",
       "model": "anthropic/claude-sonnet-4-6",
       "branch": "smolagents",
-      "elapsed_s": 251.9,
-      "final_summary": "1 failed, 58 passed in 0.11s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/cachetools_smolagents_anthropic.patch",
+      "patch_sha256": "903252435fcc8146d4b2b594eb00637eb7e7cb235b0dcac1c1803bdd091d5422",
+      "elapsed_s": 78.3,
+      "final_summary": "======================= 215 passed, 15 warnings in 0.26s =======================",
       "final_counts": {
-        "passed": 58,
-        "failed": 1,
-        "skipped": 0,
-        "errors": 0
-      },
-      "totals": {
-        "input_tokens": 726168,
-        "output_tokens": 14210,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 0,
-        "cost_usd": 2.3917
-      },
-      "smolagents_diagnostics": {
-        "llm_calls": 21,
-        "max_steps": 20,
-        "executor_type": "local",
-        "wall_clock_capped": false,
-        "cost_capped": false,
-        "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 257.7
-    },
-    "voluptuous": {
-      "repo": "voluptuous",
-      "model": "anthropic/claude-sonnet-4-6",
-      "branch": "smolagents",
-      "elapsed_s": 114.7,
-      "final_summary": "============================== 1 failed in 0.04s ===============================",
-      "final_counts": {
-        "passed": 0,
-        "failed": 1,
-        "skipped": 0,
-        "errors": 0
-      },
-      "totals": {
-        "input_tokens": 994999,
-        "output_tokens": 5222,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 0,
-        "cost_usd": 3.0633
-      },
-      "smolagents_diagnostics": {
-        "llm_calls": 21,
-        "max_steps": 20,
-        "executor_type": "local",
-        "wall_clock_capped": false,
-        "cost_capped": false,
-        "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 120.9
-    },
-    "portalocker": {
-      "repo": "portalocker",
-      "model": "anthropic/claude-sonnet-4-6",
-      "branch": "smolagents",
-      "elapsed_s": 158.3,
-      "final_summary": "1 failed, 2 passed, 2 skipped, 1 warning in 0.45s",
-      "final_counts": {
-        "passed": 2,
-        "failed": 1,
-        "skipped": 2,
-        "errors": 0
-      },
-      "totals": {
-        "input_tokens": 929698,
-        "output_tokens": 9791,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 0,
-        "cost_usd": 2.936
-      },
-      "smolagents_diagnostics": {
-        "llm_calls": 21,
-        "max_steps": 20,
-        "executor_type": "local",
-        "wall_clock_capped": false,
-        "cost_capped": false,
-        "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 165.6
-    },
-    "pyjwt": {
-      "repo": "pyjwt",
-      "model": "anthropic/claude-sonnet-4-6",
-      "branch": "smolagents",
-      "elapsed_s": 74.1,
-      "final_summary": "147 passed, 114 skipped, 1 xfailed in 0.19s",
-      "final_counts": {
-        "passed": 147,
-        "failed": 0,
-        "skipped": 114,
-        "errors": 0
-      },
-      "totals": {
-        "input_tokens": 837776,
-        "output_tokens": 2555,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 0,
-        "cost_usd": 2.5517
-      },
-      "smolagents_diagnostics": {
-        "llm_calls": 17,
-        "max_steps": 20,
-        "executor_type": "local",
-        "wall_clock_capped": false,
-        "cost_capped": false,
-        "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 79.0
-    },
-    "chardet": {
-      "repo": "chardet",
-      "model": "anthropic/claude-sonnet-4-6",
-      "branch": "smolagents",
-      "elapsed_s": 74.5,
-      "final_summary": "=============================== 1 error in 0.13s ===============================",
-      "final_counts": {
-        "passed": 0,
-        "failed": 0,
-        "skipped": 0,
-        "errors": 1
-      },
-      "totals": {
-        "input_tokens": 666203,
-        "output_tokens": 2789,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 0,
-        "cost_usd": 2.0404
-      },
-      "smolagents_diagnostics": {
-        "llm_calls": 21,
-        "max_steps": 20,
-        "executor_type": "local",
-        "wall_clock_capped": false,
-        "cost_capped": false,
-        "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 79.0
-    },
-    "tinydb": {
-      "repo": "tinydb",
-      "model": "anthropic/claude-sonnet-4-6",
-      "branch": "smolagents",
-      "elapsed_s": 21.4,
-      "final_summary": "============================= 201 passed in 1.53s ==============================",
-      "final_counts": {
-        "passed": 201,
+        "passed": 215,
         "failed": 0,
         "skipped": 0,
         "errors": 0
       },
       "totals": {
-        "input_tokens": 114563,
-        "output_tokens": 584,
+        "input_tokens": 349430,
+        "output_tokens": 4147,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.3524
+        "cost_usd": 1.1105
       },
       "smolagents_diagnostics": {
         "llm_calls": 10,
@@ -226,28 +115,190 @@
         "wall_clock_capped": false,
         "cost_capped": false,
         "callback_errors": []
+      }
+    },
+    "voluptuous": {
+      "repo": "voluptuous",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/voluptuous_smolagents_anthropic.patch",
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_s": 46.4,
+      "final_summary": "============================== 2 errors in 0.14s ===============================",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 2
       },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 28.0
+      "totals": {
+        "input_tokens": 687194,
+        "output_tokens": 1015,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.0768
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      }
+    },
+    "portalocker": {
+      "repo": "portalocker",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/portalocker_smolagents_anthropic.patch",
+      "patch_sha256": "8b962e1da3271dc9dfc79746f68d23d82f56628e5a7688d4c2431c22171d3dea",
+      "elapsed_s": 193.1,
+      "final_summary": "=================== 13 failed, 27 passed, 2 skipped in 3.98s ===================",
+      "final_counts": {
+        "passed": 27,
+        "failed": 13,
+        "skipped": 2,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 911614,
+        "output_tokens": 10545,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.893
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      }
+    },
+    "pyjwt": {
+      "repo": "pyjwt",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/pyjwt_smolagents_anthropic.patch",
+      "patch_sha256": "f881653d96af200cfbd9c8bbb6ff581ae7a21ca938eed4a0999590b54eace6fa",
+      "elapsed_s": 91.3,
+      "final_summary": "================== 259 passed, 2 skipped, 1 xfailed in 5.36s ===================",
+      "final_counts": {
+        "passed": 259,
+        "failed": 0,
+        "skipped": 2,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 500567,
+        "output_tokens": 4199,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 1.5647
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 19,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      }
+    },
+    "chardet": {
+      "repo": "chardet",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/chardet_smolagents_anthropic.patch",
+      "patch_sha256": "ffaf2eef75e505501ce89b7d03e52c5053c0f0ec677e8b066b7d1a64d3f27b44",
+      "elapsed_s": 86.6,
+      "final_summary": "============= 1 failed, 375 passed, 6 xfailed, 1 xpassed in 11.85s =============",
+      "final_counts": {
+        "passed": 375,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 725895,
+        "output_tokens": 3048,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.2234
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 21,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      }
+    },
+    "tinydb": {
+      "repo": "tinydb",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "smolagents",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/tinydb_smolagents_anthropic.patch",
+      "patch_sha256": "26c9f5a5b919f21951df7de9e8cce2550a5512f84b1489fdbb77ecbbe43d512f",
+      "elapsed_s": 252.6,
+      "final_summary": "======================== 201 passed, 1 warning in 1.51s ========================",
+      "final_counts": {
+        "passed": 201,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 1018652,
+        "output_tokens": 16769,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 3.3075
+      },
+      "smolagents_diagnostics": {
+        "llm_calls": 17,
+        "max_steps": 20,
+        "executor_type": "local",
+        "wall_clock_capped": false,
+        "cost_capped": false,
+        "callback_errors": []
+      }
     },
     "simpy": {
       "repo": "simpy",
       "model": "anthropic/claude-sonnet-4-6",
       "branch": "smolagents",
-      "elapsed_s": 137.1,
-      "final_summary": "1 error in 0.01s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/simpy_smolagents_anthropic.patch",
+      "patch_sha256": "3c5fa64facfc288dee540c2165bb41503f61681b14a39d4544ad6e254a9c58a3",
+      "elapsed_s": 335.6,
+      "final_summary": "================= 43 failed, 97 passed, 10 deselected in 2.28s =================",
       "final_counts": {
-        "passed": 0,
-        "failed": 0,
+        "passed": 97,
+        "failed": 43,
         "skipped": 0,
-        "errors": 1
+        "errors": 0
       },
       "totals": {
-        "input_tokens": 1063461,
-        "output_tokens": 7658,
+        "input_tokens": 1348616,
+        "output_tokens": 19813,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 3.3053
+        "cost_usd": 4.343
       },
       "smolagents_diagnostics": {
         "llm_calls": 21,
@@ -256,28 +307,30 @@
         "wall_clock_capped": false,
         "cost_capped": false,
         "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 148.5
+      }
     },
     "imapclient": {
       "repo": "imapclient",
       "model": "anthropic/claude-sonnet-4-6",
       "branch": "smolagents",
-      "elapsed_s": 170.0,
-      "final_summary": "1 failed, 22 passed in 0.09s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/imapclient_smolagents_anthropic.patch",
+      "patch_sha256": "f5d29573141e31d60c20e91d8363b43d5344f210d82a9c84cbefa30fa5ce18db",
+      "elapsed_s": 183.0,
+      "final_summary": "=================== 32 failed, 54 passed, 13 errors in 0.86s ===================",
       "final_counts": {
-        "passed": 22,
-        "failed": 1,
+        "passed": 54,
+        "failed": 32,
         "skipped": 0,
-        "errors": 0
+        "errors": 13
       },
       "totals": {
-        "input_tokens": 772401,
-        "output_tokens": 10006,
+        "input_tokens": 903326,
+        "output_tokens": 10206,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 2.4673
+        "cost_usd": 2.8631
       },
       "smolagents_diagnostics": {
         "llm_calls": 21,
@@ -286,28 +339,30 @@
         "wall_clock_capped": false,
         "cost_capped": false,
         "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 178.5
+      }
     },
     "parsel": {
       "repo": "parsel",
       "model": "anthropic/claude-sonnet-4-6",
       "branch": "smolagents",
-      "elapsed_s": 75.6,
-      "final_summary": "1 error in 0.01s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/parsel_smolagents_anthropic.patch",
+      "patch_sha256": "36c8747691711eac834f39ef3ac0654e8e2ff439742966ac991c4ea420fceb9f",
+      "elapsed_s": 393.3,
+      "final_summary": "================== 81 failed, 125 passed, 2 skipped in 1.59s ===================",
       "final_counts": {
-        "passed": 0,
-        "failed": 0,
-        "skipped": 0,
-        "errors": 1
+        "passed": 125,
+        "failed": 81,
+        "skipped": 2,
+        "errors": 0
       },
       "totals": {
-        "input_tokens": 786683,
-        "output_tokens": 3824,
+        "input_tokens": 1165521,
+        "output_tokens": 27016,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 2.4174
+        "cost_usd": 3.9018
       },
       "smolagents_diagnostics": {
         "llm_calls": 21,
@@ -316,16 +371,18 @@
         "wall_clock_capped": false,
         "cost_capped": false,
         "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 80.5
+      }
     },
     "marshmallow": {
       "repo": "marshmallow",
       "model": "anthropic/claude-sonnet-4-6",
       "branch": "smolagents",
-      "elapsed_s": 62.1,
-      "final_summary": "",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/marshmallow_smolagents_anthropic.patch",
+      "patch_sha256": "04d0ad805f0e8067b3f13b8fb73750b155c17bf0ad6edf183478270c59b749e3",
+      "elapsed_s": 429.2,
+      "final_summary": "est.py:5: in <module>\n    from tests.base import Blog, User, UserSchema\ntests/base.py:11: in <module>\n    from marshmallow import Schema, fields, missing, post_load, validate\nsrc/marshmallow/__init__.py:17: in <module>\n    from marshmallow.schema import Schema, SchemaOpts\nsrc/marshmallow/schema.py:128: in <module>\n    class Schema(base.SchemaABC, metaclass=SchemaMeta):\nsrc/marshmallow/schema.py:58: in __new__\n    for field_name, _ in cls_fields:\nE   TypeError: 'NoneType' object is not iterable\n\n",
       "final_counts": {
         "passed": 0,
         "failed": 0,
@@ -333,11 +390,11 @@
         "errors": 0
       },
       "totals": {
-        "input_tokens": 382967,
-        "output_tokens": 2414,
+        "input_tokens": 1003803,
+        "output_tokens": 30766,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 1.1851
+        "cost_usd": 3.4729
       },
       "smolagents_diagnostics": {
         "llm_calls": 21,
@@ -346,58 +403,62 @@
         "wall_clock_capped": false,
         "cost_capped": false,
         "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 70.0
+      }
     },
     "cookiecutter": {
       "repo": "cookiecutter",
       "model": "anthropic/claude-sonnet-4-6",
       "branch": "smolagents",
-      "elapsed_s": 98.7,
-      "final_summary": "========================= 1 failed, 14 passed in 1.35s =========================",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/cookiecutter_smolagents_anthropic.patch",
+      "patch_sha256": "4caf951803b4f8d98bf3b7bda792de47c71ebae35d014563d6990e1fffe24e12",
+      "elapsed_s": 74.0,
+      "final_summary": "======================== 367 passed, 4 skipped in 5.32s ========================",
       "final_counts": {
-        "passed": 14,
-        "failed": 1,
-        "skipped": 0,
+        "passed": 367,
+        "failed": 0,
+        "skipped": 4,
         "errors": 0
       },
       "totals": {
-        "input_tokens": 899229,
-        "output_tokens": 3823,
+        "input_tokens": 496512,
+        "output_tokens": 2659,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 2.755
+        "cost_usd": 1.5294
       },
       "smolagents_diagnostics": {
-        "llm_calls": 21,
+        "llm_calls": 17,
         "max_steps": 20,
         "executor_type": "local",
         "wall_clock_capped": false,
         "cost_capped": false,
         "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 106.2
+      }
     },
     "babel": {
       "repo": "babel",
       "model": "anthropic/claude-sonnet-4-6",
       "branch": "smolagents",
-      "elapsed_s": 65.8,
-      "final_summary": "1 error in 0.06s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/babel_smolagents_anthropic.patch",
+      "patch_sha256": "f12d5c8b508141f455c31a92b9dc32e972cc014f752fb4393dfb2c4d380201dd",
+      "elapsed_s": 77.8,
+      "final_summary": "====================== 5663 passed, 1043 skipped in 9.07s ======================",
       "final_counts": {
-        "passed": 0,
+        "passed": 5663,
         "failed": 0,
-        "skipped": 0,
-        "errors": 1
+        "skipped": 1043,
+        "errors": 0
       },
       "totals": {
-        "input_tokens": 251392,
-        "output_tokens": 2758,
+        "input_tokens": 231768,
+        "output_tokens": 3072,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.7955
+        "cost_usd": 0.7414
       },
       "smolagents_diagnostics": {
         "llm_calls": 21,
@@ -406,58 +467,62 @@
         "wall_clock_capped": false,
         "cost_capped": false,
         "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 72.6
+      }
     },
     "jinja": {
       "repo": "jinja",
       "model": "anthropic/claude-sonnet-4-6",
       "branch": "smolagents",
-      "elapsed_s": 97.8,
-      "final_summary": "1 failed, 24 passed in 0.21s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/jinja_smolagents_anthropic.patch",
+      "patch_sha256": "ec503486c2690989d2346737c61c1a1390c4b8ccfa562d16205a45d1c0686045",
+      "elapsed_s": 47.1,
+      "final_summary": "============================= 851 passed in 1.93s ==============================",
       "final_counts": {
-        "passed": 24,
-        "failed": 1,
+        "passed": 851,
+        "failed": 0,
         "skipped": 0,
         "errors": 0
       },
       "totals": {
-        "input_tokens": 279207,
-        "output_tokens": 5083,
+        "input_tokens": 138770,
+        "output_tokens": 1696,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 0.9139
+        "cost_usd": 0.4418
       },
       "smolagents_diagnostics": {
-        "llm_calls": 21,
+        "llm_calls": 13,
         "max_steps": 20,
         "executor_type": "local",
         "wall_clock_capped": false,
         "cost_capped": false,
         "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 106.5
+      }
     },
     "minitorch": {
       "repo": "minitorch",
       "model": "anthropic/claude-sonnet-4-6",
       "branch": "smolagents",
-      "elapsed_s": 48.9,
-      "final_summary": "1 error in 0.08s",
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "smolagents",
+      "patch_file": "patches/minitorch_smolagents_anthropic.patch",
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_s": 91.3,
+      "final_summary": "============================== 10 errors in 1.32s ==============================",
       "final_counts": {
         "passed": 0,
         "failed": 0,
         "skipped": 0,
-        "errors": 1
+        "errors": 10
       },
       "totals": {
-        "input_tokens": 353810,
-        "output_tokens": 1684,
+        "input_tokens": 313455,
+        "output_tokens": 5206,
         "cache_read_tokens": 0,
         "cache_write_tokens": 0,
-        "cost_usd": 1.0867
+        "cost_usd": 1.0185
       },
       "smolagents_diagnostics": {
         "llm_calls": 21,
@@ -466,20 +531,18 @@
         "wall_clock_capped": false,
         "cost_capped": false,
         "callback_errors": []
-      },
-      "runner_exit": 0,
-      "wrapper_elapsed_s": 62.2
+      }
     }
   },
   "aggregate": {
-    "libraries_total": 15,
-    "tests_passed": 639,
-    "tests_failed": 6,
-    "tests_skipped": 116,
-    "tests_errored": 5,
-    "tests_attempted_total": 650,
-    "pass_rate_attempted": 0.9831,
-    "cost_usd_total": 29.25,
-    "wall_seconds_total": 1500.7
+    "libraries_total": 16,
+    "tests_passed": 8437,
+    "tests_failed": 176,
+    "tests_skipped": 1054,
+    "tests_errored": 25,
+    "tests_attempted_total": 8638,
+    "pass_rate_attempted": 0.9767,
+    "cost_usd_total": 35.95,
+    "wall_seconds_total": 2883.7
   }
 }

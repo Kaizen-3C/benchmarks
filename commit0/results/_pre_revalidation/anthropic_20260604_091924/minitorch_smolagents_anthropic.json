@@ -1,0 +1,28 @@
+{
+  "repo": "minitorch",
+  "model": "anthropic/claude-sonnet-4-6",
+  "branch": "smolagents",
+  "elapsed_s": 48.9,
+  "final_summary": "1 error in 0.08s",
+  "final_counts": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 1
+  },
+  "totals": {
+    "input_tokens": 353810,
+    "output_tokens": 1684,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": 1.0867
+  },
+  "smolagents_diagnostics": {
+    "llm_calls": 21,
+    "max_steps": 20,
+    "executor_type": "local",
+    "wall_clock_capped": false,
+    "cost_capped": false,
+    "callback_errors": []
+  }
+}

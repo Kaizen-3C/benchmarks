@@ -2,20 +2,24 @@
   "repo": "babel",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "smolagents",
-  "elapsed_s": 65.8,
-  "final_summary": "1 error in 0.06s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/babel_smolagents_anthropic.patch",
+  "patch_sha256": "f12d5c8b508141f455c31a92b9dc32e972cc014f752fb4393dfb2c4d380201dd",
+  "elapsed_s": 77.8,
+  "final_summary": "====================== 5663 passed, 1043 skipped in 9.07s ======================",
   "final_counts": {
-    "passed": 0,
+    "passed": 5663,
     "failed": 0,
-    "skipped": 0,
-    "errors": 1
+    "skipped": 1043,
+    "errors": 0
   },
   "totals": {
-    "input_tokens": 251392,
-    "output_tokens": 2758,
+    "input_tokens": 231768,
+    "output_tokens": 3072,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.7955
+    "cost_usd": 0.7414
   },
   "smolagents_diagnostics": {
     "llm_calls": 21,

@@ -2,20 +2,24 @@
   "repo": "cachetools",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "aider",
-  "elapsed_s": 121.4,
-  "final_summary": "1 failed, 3 passed in 0.04s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/cachetools_aider_anthropic.patch",
+  "patch_sha256": "97747843951eeeed3ed5f11eaf99be836a2c3a777975e2e18c69056c608e453e",
+  "elapsed_s": 60.1,
+  "final_summary": "======================= 215 passed, 19 warnings in 0.27s =======================",
   "final_counts": {
-    "passed": 3,
-    "failed": 1,
+    "passed": 215,
+    "failed": 0,
     "skipped": 0,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 226502,
-    "output_tokens": 9862,
+    "input_tokens": 102298,
+    "output_tokens": 5117,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.8274
+    "cost_usd": 0.3836
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,

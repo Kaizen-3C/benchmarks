@@ -1,0 +1,470 @@
+{
+  "architecture": "aider",
+  "provider": "anthropic",
+  "split": "lite",
+  "completed": [
+    "deprecated",
+    "cachetools",
+    "voluptuous",
+    "portalocker",
+    "pyjwt",
+    "chardet",
+    "tinydb",
+    "simpy",
+    "imapclient",
+    "parsel",
+    "marshmallow",
+    "cookiecutter",
+    "babel",
+    "jinja",
+    "minitorch"
+  ],
+  "per_library": {
+    "deprecated": {
+      "repo": "deprecated",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 277.4,
+      "final_summary": "1 error in 0.03s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 208082,
+        "output_tokens": 16906,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.8778
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 303.2
+    },
+    "cachetools": {
+      "repo": "cachetools",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 121.4,
+      "final_summary": "1 failed, 3 passed in 0.04s",
+      "final_counts": {
+        "passed": 3,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 226502,
+        "output_tokens": 9862,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.8274
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 137.7
+    },
+    "voluptuous": {
+      "repo": "voluptuous",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 5444.5,
+      "final_summary": "========================= 1 failed, 11 passed in 0.05s =========================",
+      "final_counts": {
+        "passed": 11,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.0
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": true,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 5451.9
+    },
+    "portalocker": {
+      "repo": "portalocker",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 27.6,
+      "final_summary": "1 failed, 34 passed, 2 skipped, 3 warnings in 2.21s",
+      "final_counts": {
+        "passed": 34,
+        "failed": 1,
+        "skipped": 2,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 29067,
+        "output_tokens": 2509,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.1248
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 36.7
+    },
+    "pyjwt": {
+      "repo": "pyjwt",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 52.3,
+      "final_summary": "147 passed, 114 skipped, 1 xfailed in 0.19s",
+      "final_counts": {
+        "passed": 147,
+        "failed": 0,
+        "skipped": 114,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 89144,
+        "output_tokens": 4580,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.3361
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 58.3
+    },
+    "chardet": {
+      "repo": "chardet",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 1533.2,
+      "final_summary": "========================= 1 failed, 6 passed in 0.17s ==========================",
+      "final_counts": {
+        "passed": 6,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 1315166,
+        "output_tokens": 30978,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 4.4102
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 1559.9
+    },
+    "tinydb": {
+      "repo": "tinydb",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 94.5,
+      "final_summary": "============================= 201 passed in 0.71s ==============================",
+      "final_counts": {
+        "passed": 201,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 49894,
+        "output_tokens": 9194,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.2876
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 118.5
+    },
+    "simpy": {
+      "repo": "simpy",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 275.4,
+      "final_summary": "1 error in 0.01s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 471239,
+        "output_tokens": 17071,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 1.6698
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 288.1
+    },
+    "imapclient": {
+      "repo": "imapclient",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 3575.8,
+      "final_summary": "1 failed, 28 passed in 0.07s",
+      "final_counts": {
+        "passed": 28,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 483560,
+        "output_tokens": 50031,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.2011
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 1,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": true,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 3609.4
+    },
+    "parsel": {
+      "repo": "parsel",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 217.5,
+      "final_summary": "1 failed, 14 passed in 0.13s",
+      "final_counts": {
+        "passed": 14,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 249595,
+        "output_tokens": 17349,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 1.009
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 1,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 224.0
+    },
+    "marshmallow": {
+      "repo": "marshmallow",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 5450.4,
+      "final_summary": "========================= 1 failed, 11 passed in 0.16s =========================",
+      "final_counts": {
+        "passed": 11,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.0
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": true,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 5460.2
+    },
+    "cookiecutter": {
+      "repo": "cookiecutter",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 281.9,
+      "final_summary": "========================= 1 failed, 14 passed in 1.25s =========================",
+      "final_counts": {
+        "passed": 14,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 608599,
+        "output_tokens": 17892,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.0942
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 334.3
+    },
+    "babel": {
+      "repo": "babel",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 4955.7,
+      "final_summary": "1 error in 0.07s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.0
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": true,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 4963.1
+    },
+    "jinja": {
+      "repo": "jinja",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 12.2,
+      "final_summary": "1 failed, 24 passed in 0.18s",
+      "final_counts": {
+        "passed": 24,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 252983,
+        "output_tokens": 305,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.7635
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 19.7
+    },
+    "minitorch": {
+      "repo": "minitorch",
+      "model": "anthropic/claude-sonnet-4-6",
+      "branch": "aider",
+      "elapsed_s": 4033.8,
+      "final_summary": "1 error in 0.12s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 613986,
+        "output_tokens": 23844,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 2.1996
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 1,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": true,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 4128.3
+    }
+  },
+  "aggregate": {
+    "libraries_total": 15,
+    "tests_passed": 493,
+    "tests_failed": 9,
+    "tests_skipped": 116,
+    "tests_errored": 4,
+    "tests_attempted_total": 506,
+    "pass_rate_attempted": 0.9743,
+    "cost_usd_total": 16.8,
+    "wall_seconds_total": 26353.6
+  }
+}

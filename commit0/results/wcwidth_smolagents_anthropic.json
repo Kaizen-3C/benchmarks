@@ -2,23 +2,27 @@
   "repo": "wcwidth",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "smolagents",
-  "elapsed_s": 34.0,
-  "final_summary": "\u001b[32m\u001b[32m\u001b[1m39 passed\u001b[0m\u001b[32m in 1.09s\u001b[0m\u001b[0m",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/wcwidth_smolagents_anthropic.patch",
+  "patch_sha256": "da2bd689aa6c5fb3273a9020772ff38d772170236571735297b7d783b6fd9958",
+  "elapsed_s": 337.8,
+  "final_summary": "=================== 6 failed, 32 passed, 1 skipped in 0.62s ====================",
   "final_counts": {
-    "passed": 39,
-    "failed": 0,
-    "skipped": 0,
+    "passed": 32,
+    "failed": 6,
+    "skipped": 1,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 226675,
-    "output_tokens": 1064,
+    "input_tokens": 829738,
+    "output_tokens": 19355,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.696
+    "cost_usd": 2.7795
   },
   "smolagents_diagnostics": {
-    "llm_calls": 11,
+    "llm_calls": 21,
     "max_steps": 20,
     "executor_type": "local",
     "wall_clock_capped": false,
