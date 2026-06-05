@@ -254,6 +254,10 @@ def run_smolagents_on_lib(
     """Run smolagents.CodeAgent end-to-end on one commit0 library."""
     import litellm
     from smolagents import CodeAgent, LiteLLMModel
+    # #3 (sane retries): fail fast on a stalled provider call (litellm default 600s ->
+    # multi-hour thrash on a degraded window). 180s + bounded retries; the gate moves on.
+    litellm.request_timeout = 180
+    litellm.num_retries = 4
 
     # Open a fresh branch off the pinned commit0 starter BEFORE any edits, so the
     # agent's changes land on a clean tree and can be committed + scored + exported.

@@ -245,6 +245,14 @@ def run_aider_on_lib(
     from aider.io import InputOutput
     from aider.models import Model
 
+    # #3 (sane retries): fail fast on a stalled provider call — litellm's default is
+    # 600s, which turned a degraded-Anthropic window into multi-hour thrash. 180s is
+    # ample for large generations but cuts a hung call to ~3min; bounded retries +
+    # the repeat_runner valid-rep gate then move on instead of hanging.
+    import litellm
+    litellm.request_timeout = 180
+    litellm.num_retries = 4
+
     # Open a fresh branch off the pinned commit0 starter BEFORE any edits, so the
     # agent's changes land on a clean tree and can be committed + scored + exported.
     _start_branch(repo_dir, CODE_BRANCH)
