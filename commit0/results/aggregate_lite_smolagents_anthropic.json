@@ -377,7 +377,7 @@
       "repo": "marshmallow",
       "model": "anthropic/claude-sonnet-4-6",
       "branch": "smolagents",
-      "scoring": "commit0-test-full-suite",
+      "scoring": "pending-regeneration",
       "code_branch": "smolagents",
       "patch_file": "patches/marshmallow_smolagents_anthropic.patch",
       "patch_sha256": "04d0ad805f0e8067b3f13b8fb73750b155c17bf0ad6edf183478270c59b749e3",
@@ -403,7 +403,8 @@
         "wall_clock_capped": false,
         "cost_capped": false,
         "callback_errors": []
-      }
+      },
+      "scoring_note": "mis-stamped full-suite by pre-fix runner (0 collected); see CORRECTIONS.md"
     },
     "cookiecutter": {
       "repo": "cookiecutter",

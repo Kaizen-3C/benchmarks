@@ -157,7 +157,7 @@
       "repo": "portalocker",
       "model": "openai/gpt-5.4",
       "branch": "smolagents",
-      "scoring": "commit0-test-full-suite",
+      "scoring": "pending-regeneration",
       "code_branch": "smolagents",
       "patch_file": "patches/portalocker_smolagents_openai.patch",
       "patch_sha256": "00aee4cf4b19de77d9ee2a4774abf1801e75b202eb51c824559b52635d8872e8",
@@ -184,7 +184,8 @@
         "cost_capped": false,
         "callback_errors": []
       },
-      "recovered_from": "openai-sweep-rescore-2026-06-04"
+      "recovered_from": "openai-sweep-rescore-2026-06-04",
+      "scoring_note": "mis-stamped full-suite by pre-fix runner (0 collected); see CORRECTIONS.md"
     },
     "pyjwt": {
       "repo": "pyjwt",

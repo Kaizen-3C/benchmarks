@@ -377,7 +377,7 @@
       "repo": "marshmallow",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "scoring": "commit0-test-full-suite",
+      "scoring": "pending-regeneration",
       "code_branch": "aider",
       "patch_file": "patches/marshmallow_aider_openai.patch",
       "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -403,7 +403,8 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "recovered_from": "openai-sweep-rescore-2026-06-04"
+      "recovered_from": "openai-sweep-rescore-2026-06-04",
+      "scoring_note": "mis-stamped full-suite by pre-fix runner (0 collected); see CORRECTIONS.md"
     },
     "cookiecutter": {
       "repo": "cookiecutter",
@@ -473,7 +474,7 @@
       "repo": "jinja",
       "model": "openai/gpt-5.4",
       "branch": "aider",
-      "scoring": "commit0-test-full-suite",
+      "scoring": "pending-regeneration",
       "code_branch": "aider",
       "patch_file": "patches/jinja_aider_openai.patch",
       "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -499,7 +500,8 @@
         "wall_clock_capped": false,
         "cost_capped": false
       },
-      "recovered_from": "openai-sweep-rescore-2026-06-04"
+      "recovered_from": "openai-sweep-rescore-2026-06-04",
+      "scoring_note": "mis-stamped full-suite by pre-fix runner (0 collected); see CORRECTIONS.md"
     },
     "minitorch": {
       "repo": "minitorch",
