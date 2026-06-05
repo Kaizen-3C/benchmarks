@@ -1,8 +1,9 @@
 # Re-validation plan — Phase 1 (Aider + smolagents) full-suite re-scoring
 
-**Status:** OPEN — scoring fix landed in the runners; re-run not yet executed.
-**Owner:** (assign before spend)
-**Estimated model spend:** ~$65 (one Phase-1 re-run; see §4)
+**Status:** COMPLETE (2026-06-04) — see [`AAR_2026-06-04_REVALIDATION.md`](AAR_2026-06-04_REVALIDATION.md).
+OpenAI (32) recovered $0; smolagents×Sonnet (16) re-run; aider×Sonnet 7/16 valid, 9 a documented
+provider-limited gap. Figure 1 regenerated. This doc is retained as the method/plan of record.
+**Estimated model spend (original projection):** ~$65 (actual: OpenAI recovery $0 + Anthropic re-runs)
 **Canonical issue doc — link here from anywhere that quotes a Phase-1 number.**
 
 ---

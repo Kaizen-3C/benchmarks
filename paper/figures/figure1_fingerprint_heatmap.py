@@ -71,6 +71,18 @@ def lib_passrate(per_lib: dict, lib: str):
     return (100 * p / a) if a else 0
 
 
+# Cells re-scored by the fixed runners carry a full-suite "scoring" tag; an untagged
+# competitor cell is `-x`-truncated legacy data pending re-validation -> render as N/A
+# (do not plot its old value). See commit0/RE-VALIDATION.md.
+VALID_SCORING = {"commit0-test-full-suite", "full-suite-local-pytest"}
+
+def _is_pending_cell(per_lib: dict, lib: str) -> bool:
+    d = (per_lib or {}).get(lib, {}) or {}
+    if not (d.get("counts") or d.get("final_counts")):
+        return False
+    return d.get("scoring") not in VALID_SCORING
+
+
 def lib_cost(per_lib: dict, lib: str, provider: str):
     d = (per_lib or {}).get(lib, {}) or {}
     if not d:
@@ -214,6 +226,9 @@ def cell_for(lib: str, kind: str, provider: str):
         srate = lib_passrate(baseline, lib)
         if rate is None or srate is None:
             return {"missing": True}
+        if _is_pending_cell(per_lib, lib):   # -x legacy, not re-validated -> N/A
+            return {"missing": False, "status": "pending", "rate": None,
+                    "value_add_pp": None, "cost": 0, "llm_lean": None}
         cost = lib_cost(per_lib, lib, provider) or 0
         s_cost = lib_cost(baseline, lib, provider) or 0.001
         return {
@@ -257,6 +272,10 @@ for i, lib in enumerate(LIBS):
         if c["missing"]:
             status_grid[i][j] = "missing"
             annot_top[i][j] = "—"
+            continue
+        if c.get("status") == "pending":   # -x legacy, pending re-validation -> N/A
+            status_grid[i][j] = "pending"
+            annot_top[i][j] = "n/a"
             continue
         # status (OH-only)
         if c["status"] == "no":
@@ -324,6 +343,13 @@ for i in range(nrows):
             axA.text(j, i, "n/r", ha="center", va="center",
                      color="#888888", fontsize=8, style="italic")
             continue
+        if st == "pending":
+            rect = patches.Rectangle((j-0.5, i-0.5), 1, 1, linewidth=0,
+                                     facecolor="#fff3cd", hatch="...", edgecolor="white")
+            axA.add_patch(rect)
+            axA.text(j, i, "n/a", ha="center", va="center",
+                     color="#7a5b00", fontsize=7.5, style="italic")
+            continue
         if st == "unresolved":
             rect = patches.Rectangle((j-0.5, i-0.5), 1, 1, linewidth=0,
                                      facecolor="#f0e0e0", edgecolor="white")
@@ -379,6 +405,13 @@ for i in range(nrows):
             axB.text(j, i, "n/r", ha="center", va="center",
                      color="#888888", fontsize=8, style="italic")
             continue
+        if st == "pending":
+            rect = patches.Rectangle((j-0.5, i-0.5), 1, 1, linewidth=0,
+                                     facecolor="#fff3cd", hatch="...", edgecolor="white")
+            axB.add_patch(rect)
+            axB.text(j, i, "n/a", ha="center", va="center",
+                     color="#7a5b00", fontsize=7.5, style="italic")
+            continue
         v = lean_matrix[i, j]
         if np.isnan(v):
             continue
@@ -412,8 +445,10 @@ fig.text(
     0.5, 0.015,
     "Floor libraries (* and bold row labels): collection or import-graph problems that block most architectures at 0%. "
     "Cells marked 'n/r' = not run (e.g., OH-Sonnet covered 6 of 16 libs). "
-    "Cells marked 'no' = OpenHands ran but did not resolve.\n"
-    "Phase 1 columns Aider-S/G and Sm-S/G added 2026-05-05 (16-lib sweeps complete).",
+    "Cells marked 'no' = OpenHands ran but did not resolve. "
+    "Cells marked 'n/a' = pending full-suite re-validation (Aider-S, 9 provider-limited cells).\n"
+    "Aider/smolagents cells re-scored full-suite via commit0 test --branch (2026-06; corrects an "
+    "earlier pytest -x denominator-truncation). See commit0/RE-VALIDATION.md.",
     ha="center", fontsize=8.5, style="italic", color="#444444",
 )
 

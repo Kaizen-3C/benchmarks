@@ -306,12 +306,11 @@ A library can fail in several ways. Each is recorded distinctly so they're not c
 
 Aggregate pass rate is **(sum of tests_passed) / (sum of tests_total across all 16)**, regardless of build_status. A library that fails to build contributes 0 to the numerator and its full test count to the denominator — there are no "free" exclusions.
 
-> ⚠ **Known violation (pending re-validation):** the Phase-1 Aider & smolagents runners
-> scored with `pytest -x` (stop at first failure), so their `tests_total` is truncated to the
-> tests that ran before the first failure — not the full suite this rule requires. Their cells
-> are therefore non-compliant and non-comparable. Runners are now fixed (full-suite
-> `SCORING_TEST_CMD`, JSONs stamped `"scoring"`); the committed data is re-run pending. See
-> [`RE-VALIDATION.md`](RE-VALIDATION.md).
+> **Resolved (re-validated 2026-06-04):** the Phase-1 Aider & smolagents cells were originally
+> scored with `pytest -x` (truncated `tests_total`) plus a patch-noise scoring bug. Runners are
+> fixed (full-suite `commit0 test --branch`, noise-stripped, JSONs stamped `"scoring"`) and the
+> cells re-validated full-suite — except 9 aider×Sonnet cells (a documented provider-limited gap).
+> See [`AAR_2026-06-04_REVALIDATION.md`](AAR_2026-06-04_REVALIDATION.md).
 
 ### 6.1 Host environment bugs (Windows)
 

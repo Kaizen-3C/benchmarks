@@ -234,7 +234,7 @@ def fmt_cell(c, kind="kd", pending=False):
     # KD-style
     va = c['value_add_pp']
     sign = "+" if va >= 0 else ""
-    mark = "‡" if pending else ""   # ‡ = -x-truncated, pending re-validation
+    mark = "~" if pending else ""   # ~ = -x-truncated, pending re-validation
     return f"{c['rate']:>3.0f}% {sign}{va:>+4.0f}pp x{c['llm_lean']:>4.1f}{mark}"
 
 
@@ -247,10 +247,10 @@ _pending_total = sum(
     for d in (aiders, aiderg, smols, smolg) for lib in LIBS
 )
 if _pending_total:
-    print(f"⚠  WARNING: {_pending_total} Aider/smolagents cells (marked ‡) were scored under "
+    print(f"WARNING: {_pending_total} Aider/smolagents cells (marked ~) were scored under "
           f"`pytest -x` (denominator truncated) and are NOT comparable to the full-suite cells.")
     print("   Their rates and value_add_pp are upper-biased and pending re-validation — "
-          "see commit0/RE-VALIDATION.md. Do not cite ‡ cells.")
+          "see commit0/RE-VALIDATION.md. Do not cite ~ cells.")
     print("=" * 200)
 hdr = (
     f"{'lib':12} {'F?':>2} | "
@@ -308,7 +308,7 @@ print("  KD cells: pass% +pp vs same-model B2 xN llm_lean (cost ratio)")
 print("  OH cells: RES = resolved 100% / no = unresolved / FAIL = didn't complete")
 print("  +/- pp:   value-add over the LLM's single-shot baseline (same model)")
 print("  llm_lean: cost ratio -- 1x means 'spent same as just calling the LLM once'")
-print("  ‡:        Aider/smolagents cell scored under `pytest -x` (denominator truncated);")
+print("  ~:        Aider/smolagents cell scored under `pytest -x` (denominator truncated);")
 print("            rate + value_add_pp NOT comparable, pending re-validation (RE-VALIDATION.md)")
 print()
 
