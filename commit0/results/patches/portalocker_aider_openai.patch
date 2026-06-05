@@ -1,0 +1,1251 @@
+diff --git a/portalocker/__about__.py b/portalocker/__about__.py
+index e16494e..fc965bf 100644
+--- a/portalocker/__about__.py
++++ b/portalocker/__about__.py
+@@ -3,4 +3,4 @@ __author__ = 'Rick van Hattem'
+ __email__ = 'wolph@wol.ph'
+ __version__ = '2.10.1'
+ __description__ = 'Wraps the portalocker recipe for easy usage'
+-__url__ = 'https://github.com/WoLpH/portalocker'
+\ No newline at end of file
++__url__ = 'https://github.com/WoLpH/portalocker'
+diff --git a/portalocker/__init__.py b/portalocker/__init__.py
+index 7e757ef..b3723ef 100644
+--- a/portalocker/__init__.py
++++ b/portalocker/__init__.py
+@@ -2,6 +2,7 @@ from . import __about__, constants, exceptions, portalocker
+ from .utils import (
+     BoundedSemaphore,
+     Lock,
++    NamedBoundedSemaphore,
+     RLock,
+     TemporaryFileLock,
+     open_atomic,
+@@ -13,53 +14,26 @@ except ImportError:  # pragma: no cover
+     RedisLock = None  # type: ignore
+ 
+ 
+-#: The package name on Pypi
+ __package_name__ = __about__.__package_name__
+-#: Current author and maintainer, view the git history for the previous ones
+ __author__ = __about__.__author__
+-#: Current author's email address
+ __email__ = __about__.__email__
+-#: Version number
+-__version__ = '2.10.1'
+-#: Package description for Pypi
++__version__ = __about__.__version__
+ __description__ = __about__.__description__
+-#: Package homepage
+ __url__ = __about__.__url__
+ 
+-
+-#: Exception thrown when the file is already locked by someone else
+ AlreadyLocked = exceptions.AlreadyLocked
+-#: Exception thrown if an error occurred during locking
+ LockException = exceptions.LockException
+ 
+-
+-#: Lock a file. Note that this is an advisory lock on Linux/Unix systems
+ lock = portalocker.lock
+-#: Unlock a file
+ unlock = portalocker.unlock
+ 
+-#: Place an exclusive lock.
+-#: Only one process may hold an exclusive lock for a given file at a given
+-#: time.
+ LOCK_EX: constants.LockFlags = constants.LockFlags.EXCLUSIVE
+-
+-#: Place a shared lock.
+-#: More than one process may hold a shared lock for a given file at a given
+-#: time.
+ LOCK_SH: constants.LockFlags = constants.LockFlags.SHARED
+-
+-#: Acquire the lock in a non-blocking fashion.
+ LOCK_NB: constants.LockFlags = constants.LockFlags.NON_BLOCKING
+-
+-#: Remove an existing lock held by this process.
+ LOCK_UN: constants.LockFlags = constants.LockFlags.UNBLOCK
+ 
+-#: Locking flags enum
+ LockFlags = constants.LockFlags
+ 
+-#: Locking utility class to automatically handle opening with timeouts and
+-#: context wrappers
+-
+ __all__ = [
+     'lock',
+     'unlock',
+@@ -73,6 +47,7 @@ __all__ = [
+     'RLock',
+     'AlreadyLocked',
+     'BoundedSemaphore',
++    'NamedBoundedSemaphore',
+     'TemporaryFileLock',
+     'open_atomic',
+     'RedisLock',
+diff --git a/portalocker/__main__.py b/portalocker/__main__.py
+index ecac207..bcb50f3 100644
+--- a/portalocker/__main__.py
++++ b/portalocker/__main__.py
+@@ -50,25 +50,51 @@ def _read_file(path: pathlib.Path, seen_files: typing.Set[pathlib.Path]):
+     if path in seen_files:
+         return
+ 
+-    names = set()
++    names: typing.Set[str] = set()
+     seen_files.add(path)
+     paren = False
+     from_ = None
+     for line in path.open():
++        if line.startswith('from . import '):
++            imported = line[len('from . import ') :].strip()
++            for name in imported.split(','):
++                name = name.strip()
++                if name:
++                    names.add(name)
++                    yield from _read_file(src_path / f'{name}.py', seen_files)
++            continue
++
+         if paren:
+             if ')' in line:
+                 line = line.split(')', 1)[1]
+                 paren = False
++                if not line.strip():
++                    continue
++            else:
++                match = _NAMES_RE.match(line)
++                if match:
++                    if from_:
++                        names.add(from_)
++                        yield from _read_file(
++                            src_path / f'{from_}.py',
++                            seen_files,
++                        )
++                    else:
++                        for name in match.group('names').split(','):
++                            name = name.strip()
++                            if name:
++                                names.add(name)
++                                yield from _read_file(
++                                    src_path / f'{name}.py',
++                                    seen_files,
++                                )
+                 continue
+ 
+-            match = _NAMES_RE.match(line)
+-        else:
+-            match = _RELATIVE_IMPORT_RE.match(line)
++        match = _RELATIVE_IMPORT_RE.match(line)
+ 
+         if match:
+-            if not paren:
+-                paren = bool(match.group('paren'))
+-                from_ = match.group('from')
++            paren = bool(match.group('paren'))
++            from_ = match.group('from')
+ 
+             if from_:
+                 names.add(from_)
+@@ -76,19 +102,26 @@ def _read_file(path: pathlib.Path, seen_files: typing.Set[pathlib.Path]):
+             else:
+                 for name in match.group('names').split(','):
+                     name = name.strip()
+-                    names.add(name)
+-                    yield from _read_file(src_path / f'{name}.py', seen_files)
++                    if name:
++                        names.add(name)
++                        yield from _read_file(
++                            src_path / f'{name}.py',
++                            seen_files,
++                        )
+         else:
+-            yield _clean_line(line, names)
++            cleaned = _clean_line(line, names)
++            if cleaned is not None:
++                yield cleaned
+ 
+ 
+ def _clean_line(line, names):
+-    # Replace `some_import.spam` with `spam`
++    if line.startswith('from .') or line.startswith('import .'):
++        return ''
++
+     if names:
+-        joined_names = '|'.join(names)
++        joined_names = '|'.join(re.escape(n) for n in names)
+         line = re.sub(fr'\b({joined_names})\.', '', line)
+ 
+-    # Replace useless assignments (e.g. `spam = spam`)
+     return _USELESS_ASSIGNMENT_RE.sub('', line)
+ 
+ 
+@@ -110,8 +143,7 @@ def combine(args):
+     output_file.flush()
+     output_file.close()
+ 
+-    logger.info(f'Wrote combined file to {output_file.name}')
+-    # Run black and ruff if available. If not then just run the file.
++    logger.info('Wrote combined file to %s', output_file.name)
+     os.system(f'black {output_file.name}')
+     os.system(f'ruff --fix {output_file.name}')
+     os.system(f'python3 {output_file.name}')
+diff --git a/portalocker/constants.py b/portalocker/constants.py
+index 51e1148..68e8276 100644
+--- a/portalocker/constants.py
++++ b/portalocker/constants.py
+@@ -14,16 +14,20 @@ Manually unlock, only needed internally
+ 
+ - `UNBLOCK` unlock
+ """
++
+ import enum
+ import os
++
+ if os.name == 'nt':
+     import msvcrt
++
+     LOCK_EX = 1
+     LOCK_SH = 2
+     LOCK_NB = 4
+     LOCK_UN = msvcrt.LK_UNLCK
+ elif os.name == 'posix':
+     import fcntl
++
+     LOCK_EX = fcntl.LOCK_EX
+     LOCK_SH = fcntl.LOCK_SH
+     LOCK_NB = fcntl.LOCK_NB
+@@ -31,8 +35,9 @@ elif os.name == 'posix':
+ else:
+     raise RuntimeError('PortaLocker only defined for nt and posix platforms')
+ 
++
+ class LockFlags(enum.IntFlag):
+     EXCLUSIVE = LOCK_EX
+     SHARED = LOCK_SH
+     NON_BLOCKING = LOCK_NB
+-    UNBLOCK = LOCK_UN
+\ No newline at end of file
++    UNBLOCK = LOCK_UN
+diff --git a/portalocker/exceptions.py b/portalocker/exceptions.py
+index 27826c9..689a353 100644
+--- a/portalocker/exceptions.py
++++ b/portalocker/exceptions.py
+@@ -1,17 +1,26 @@
+ import typing
+ 
++
+ class BaseLockException(Exception):
+     LOCK_FAILED = 1
+ 
+-    def __init__(self, *args: typing.Any, fh: typing.Union[typing.IO, None, int]=None, **kwargs: typing.Any) -> None:
++    def __init__(
++        self,
++        *args: typing.Any,
++        fh: typing.Union[typing.IO[typing.Any], None, int] = None,
++        **kwargs: typing.Any,
++    ) -> None:
+         self.fh = fh
+-        Exception.__init__(self, *args)
++        super().__init__(*args)
++
+ 
+ class LockException(BaseLockException):
+     pass
+ 
++
+ class AlreadyLocked(LockException):
+     pass
+ 
++
+ class FileToLarge(LockException):
+-    pass
+\ No newline at end of file
++    pass
+diff --git a/portalocker/portalocker.py b/portalocker/portalocker.py
+index 70217a3..524de34 100644
+--- a/portalocker/portalocker.py
++++ b/portalocker/portalocker.py
+@@ -1,21 +1,91 @@
+ import os
+ import typing
++
+ from . import constants, exceptions
++
+ LockFlags = constants.LockFlags
+ 
++
+ class HasFileno(typing.Protocol):
+-    pass
+-LOCKER: typing.Optional[typing.Callable[[typing.Union[int, HasFileno], int], typing.Any]] = None
++    def fileno(self) -> int:
++        ...
++
++
++LOCKER: typing.Optional[
++    typing.Callable[[typing.Union[int, HasFileno], int], typing.Any]
++] = None
++
+ if os.name == 'nt':
+     import msvcrt
+     import pywintypes
+     import win32con
+     import win32file
+     import winerror
++
+     __overlapped = pywintypes.OVERLAPPED()
++
++    def lock(file_: typing.Union[typing.IO[typing.Any], int], flags: LockFlags):
++        if isinstance(file_, int):
++            fh = msvcrt.get_osfhandle(file_)
++        else:
++            fh = msvcrt.get_osfhandle(file_.fileno())
++
++        if flags & LockFlags.NON_BLOCKING:
++            mode = win32con.LOCKFILE_FAIL_IMMEDIATELY
++        else:
++            mode = 0
++
++        if flags & LockFlags.EXCLUSIVE:
++            mode |= win32con.LOCKFILE_EXCLUSIVE_LOCK
++
++        if flags & LockFlags.UNBLOCK:
++            win32file.UnlockFileEx(fh, 0, -0x10000, __overlapped)
++        else:
++            try:
++                win32file.LockFileEx(fh, mode, 0, -0x10000, __overlapped)
++            except pywintypes.error as exc_value:
++                if exc_value.winerror == winerror.ERROR_LOCK_VIOLATION:
++                    raise exceptions.LockException(
++                        exceptions.LockException.LOCK_FAILED,
++                        exc_value.strerror,
++                        fh=file_,
++                    )
++                raise
++
++    def unlock(file_: typing.Union[typing.IO[typing.Any], int]):
++        if isinstance(file_, int):
++            fh = msvcrt.get_osfhandle(file_)
++        else:
++            fh = msvcrt.get_osfhandle(file_.fileno())
++        win32file.UnlockFileEx(fh, 0, -0x10000, __overlapped)
++
+ elif os.name == 'posix':
+     import errno
+     import fcntl
++
+     LOCKER = fcntl.flock
++
++    def lock(file_: typing.Union[typing.IO[typing.Any], int], flags: LockFlags):
++        if flags == LockFlags.NON_BLOCKING:
++            raise RuntimeError(
++                'NON_BLOCKING flag requires SHARED or EXCLUSIVE flag'
++            )
++
++        try:
++            locker = LOCKER or fcntl.flock
++            locker(file_, flags)  # type: ignore[arg-type]
++        except OSError as exc_value:
++            if exc_value.errno in (errno.EACCES, errno.EAGAIN):
++                raise exceptions.LockException(
++                    exceptions.LockException.LOCK_FAILED,
++                    exc_value.strerror,
++                    fh=file_,
++                )
++            raise
++
++    def unlock(file_: typing.Union[typing.IO[typing.Any], int]):
++        locker = LOCKER or fcntl.flock
++        locker(file_, LockFlags.UNBLOCK)  # type: ignore[arg-type]
++
+ else:
+-    raise RuntimeError('PortaLocker only defined for nt and posix platforms')
+\ No newline at end of file
++    raise RuntimeError('PortaLocker only defined for nt and posix platforms')
+diff --git a/portalocker/redis.py b/portalocker/redis.py
+index c6c00ef..a9c2f18 100644
+--- a/portalocker/redis.py
++++ b/portalocker/redis.py
+@@ -4,71 +4,235 @@ import logging
+ import random
+ import time
+ import typing
+-from redis import client
++
+ from . import exceptions, utils
++
+ logger = logging.getLogger(__name__)
++
+ DEFAULT_UNAVAILABLE_TIMEOUT = 1
+ DEFAULT_THREAD_SLEEP_TIME = 0.1
+ 
+-class PubSubWorkerThread(client.PubSubWorkerThread):
+-    pass
++try:
++    from redis import client
++
++    class PubSubWorkerThread(client.PubSubWorkerThread):
++        def run(self):
++            try:
++                super().run()
++            except Exception as e:
++                logger.debug('PubSubWorkerThread exception: %s', e)
++                _thread.interrupt_main()
++
++    class RedisLock(utils.LockBase):
++        """
++        An extremely reliable Redis lock based on pubsub with a keep-alive thread.
++        """
++
++        redis_kwargs: typing.Dict[str, typing.Any]
++        thread: typing.Optional[PubSubWorkerThread]
++        channel: str
++        timeout: typing.Optional[float]
++        connection: typing.Optional[client.Redis]
++        pubsub: typing.Optional[client.PubSub] = None
++        close_connection: bool
++        DEFAULT_REDIS_KWARGS: typing.ClassVar[
++            typing.Dict[str, typing.Any]
++        ] = {'health_check_interval': 10}
++
++        def __init__(
++            self,
++            channel: str,
++            connection: typing.Optional[client.Redis] = None,
++            timeout: typing.Optional[float] = None,
++            check_interval: typing.Optional[float] = None,
++            fail_when_locked: typing.Optional[bool] = False,
++            thread_sleep_time: float = DEFAULT_THREAD_SLEEP_TIME,
++            unavailable_timeout: float = DEFAULT_UNAVAILABLE_TIMEOUT,
++            redis_kwargs: typing.Optional[typing.Dict[str, typing.Any]] = None,
++        ):
++            self.close_connection = connection is None
++            self.thread = None
++            self.channel = channel
++            self.connection = connection
++            self.thread_sleep_time = thread_sleep_time
++            self.unavailable_timeout = unavailable_timeout
++            self.redis_kwargs = redis_kwargs or {}
++            for key, value in self.DEFAULT_REDIS_KWARGS.items():
++                self.redis_kwargs.setdefault(key, value)
++
++            super().__init__(
++                timeout=timeout,
++                check_interval=check_interval,
++                fail_when_locked=fail_when_locked,
++            )
++
++        def __del__(self):
++            try:
++                self.release()
++            except Exception:
++                pass
++
++        @property
++        def client_name(self) -> str:
++            return f'portalocker-{id(self)}'
++
++        def get_connection(self) -> client.Redis:
++            if self.connection is None:
++                self.connection = client.Redis(**self.redis_kwargs)
++            return self.connection
++
++        def channel_handler(self, message: typing.Any):
++            if message.get('type') != 'message':
++                return
++            try:
++                data = json.loads(message.get('data', '{}'))
++            except (json.JSONDecodeError, TypeError):
++                data = {}
++
++            if data.get('action') == 'unlock':
++                logger.debug(
++                    'Received unlock message on channel %s',
++                    self.channel,
++                )
++
++        def check_or_kill_lock(
++            self,
++            connection: client.Redis,
++            timeout: float,
++        ) -> bool:
++            check_channel = f'{self.channel}:check:{random.random()}'
++            pubsub = connection.pubsub()
++            pubsub.subscribe(check_channel)
++
++            connection.publish(
++                self.channel,
++                json.dumps({'action': 'check', 'reply_to': check_channel}),
++            )
++
++            deadline = time.monotonic() + timeout
++            while time.monotonic() < deadline:
++                message = pubsub.get_message(timeout=timeout)
++                if message and message.get('type') == 'message':
++                    pubsub.unsubscribe(check_channel)
++                    pubsub.close()
++                    return True
++                time.sleep(self.thread_sleep_time)
++
++            pubsub.unsubscribe(check_channel)
++            pubsub.close()
++            return False
++
++        def acquire(
++            self,
++            timeout: typing.Optional[float] = None,
++            check_interval: typing.Optional[float] = None,
++            fail_when_locked: typing.Optional[bool] = None,
++        ):
++            timeout = utils.coalesce(timeout, self.timeout)
++            check_interval = utils.coalesce(check_interval, self.check_interval)
++            fail_when_locked = utils.coalesce(
++                fail_when_locked,
++                self.fail_when_locked,
++            )
+ 
+-class RedisLock(utils.LockBase):
+-    """
+-    An extremely reliable Redis lock based on pubsub with a keep-alive thread
+-
+-    As opposed to most Redis locking systems based on key/value pairs,
+-    this locking method is based on the pubsub system. The big advantage is
+-    that if the connection gets killed due to network issues, crashing
+-    processes or otherwise, it will still immediately unlock instead of
+-    waiting for a lock timeout.
+-
+-    To make sure both sides of the lock know about the connection state it is
+-    recommended to set the `health_check_interval` when creating the redis
+-    connection..
+-
+-    Args:
+-        channel: the redis channel to use as locking key.
+-        connection: an optional redis connection if you already have one
+-        or if you need to specify the redis connection
+-        timeout: timeout when trying to acquire a lock
+-        check_interval: check interval while waiting
+-        fail_when_locked: after the initial lock failed, return an error
+-            or lock the file. This does not wait for the timeout.
+-        thread_sleep_time: sleep time between fetching messages from redis to
+-            prevent a busy/wait loop. In the case of lock conflicts this
+-            increases the time it takes to resolve the conflict. This should
+-            be smaller than the `check_interval` to be useful.
+-        unavailable_timeout: If the conflicting lock is properly connected
+-            this should never exceed twice your redis latency. Note that this
+-            will increase the wait time possibly beyond your `timeout` and is
+-            always executed if a conflict arises.
+-        redis_kwargs: The redis connection arguments if no connection is
+-            given. The `DEFAULT_REDIS_KWARGS` are used as default, if you want
+-            to override these you need to explicitly specify a value (e.g.
+-            `health_check_interval=0`)
+-
+-    """
+-    redis_kwargs: typing.Dict[str, typing.Any]
+-    thread: typing.Optional[PubSubWorkerThread]
+-    channel: str
+-    timeout: float
+-    connection: typing.Optional[client.Redis]
+-    pubsub: typing.Optional[client.PubSub] = None
+-    close_connection: bool
+-    DEFAULT_REDIS_KWARGS: typing.ClassVar[typing.Dict[str, typing.Any]] = dict(health_check_interval=10)
+-
+-    def __init__(self, channel: str, connection: typing.Optional[client.Redis]=None, timeout: typing.Optional[float]=None, check_interval: typing.Optional[float]=None, fail_when_locked: typing.Optional[bool]=False, thread_sleep_time: float=DEFAULT_THREAD_SLEEP_TIME, unavailable_timeout: float=DEFAULT_UNAVAILABLE_TIMEOUT, redis_kwargs: typing.Optional[typing.Dict]=None):
+-        self.close_connection = not connection
+-        self.thread = None
+-        self.channel = channel
+-        self.connection = connection
+-        self.thread_sleep_time = thread_sleep_time
+-        self.unavailable_timeout = unavailable_timeout
+-        self.redis_kwargs = redis_kwargs or dict()
+-        for key, value in self.DEFAULT_REDIS_KWARGS.items():
+-            self.redis_kwargs.setdefault(key, value)
+-        super().__init__(timeout=timeout, check_interval=check_interval, fail_when_locked=fail_when_locked)
+-
+-    def __del__(self):
+-        self.release()
+\ No newline at end of file
++            assert self.pubsub is None, 'Lock is already acquired'
++
++            connection = self.get_connection()
++
++            try:
++                connection.client_setname(self.client_name)
++            except Exception:
++                pass
++
++            pubsub = connection.pubsub()
++            pubsub.subscribe(self.channel)
++            self.pubsub = pubsub
++
++            self.thread = PubSubWorkerThread(
++                pubsub,
++                sleep_time=self.thread_sleep_time,
++                daemon=True,
++            )
++            self.thread.start()
++
++            start_time = time.monotonic()
++
++            while True:
++                acquired = connection.set(
++                    self.channel,
++                    self.client_name,
++                    nx=True,
++                    ex=max(1, int(((timeout or self.timeout or 1) * 10))),
++                )
++
++                if acquired:
++                    logger.debug(
++                        'Acquired redis lock on channel %s',
++                        self.channel,
++                    )
++                    return self
++
++                if fail_when_locked:
++                    self._cleanup_pubsub()
++                    raise exceptions.AlreadyLocked(
++                        f'Could not acquire lock on {self.channel}'
++                    )
++
++                if timeout is not None and time.monotonic() - start_time >= timeout:
++                    self._cleanup_pubsub()
++                    raise exceptions.AlreadyLocked(
++                        f'Timeout waiting for lock on {self.channel}'
++                    )
++
++                time.sleep(check_interval)
++
++        def _cleanup_pubsub(self):
++            if self.pubsub is not None:
++                try:
++                    self.pubsub.unsubscribe(self.channel)
++                    self.pubsub.close()
++                except Exception:
++                    pass
++                self.pubsub = None
++
++            if self.thread is not None:
++                try:
++                    self.thread.stop()
++                except Exception:
++                    pass
++                self.thread = None
++
++        def release(self):
++            if self.pubsub is None:
++                if self.close_connection and self.connection is not None:
++                    try:
++                        self.connection.close()
++                    except Exception:
++                        pass
++                    self.connection = None
++                return
++
++            connection = self.get_connection()
++
++            try:
++                connection.publish(
++                    self.channel,
++                    json.dumps(
++                        {'action': 'unlock', 'client': self.client_name}
++                    ),
++                )
++                connection.delete(self.channel)
++            except Exception:
++                pass
++
++            self._cleanup_pubsub()
++
++            if self.close_connection and self.connection is not None:
++                try:
++                    self.connection.close()
++                except Exception:
++                    pass
++                self.connection = None
++
++except ImportError:
++    pass
+diff --git a/portalocker/utils.py b/portalocker/utils.py
+index 3891691..57c43b8 100644
+--- a/portalocker/utils.py
++++ b/portalocker/utils.py
+@@ -9,229 +9,388 @@ import tempfile
+ import time
+ import typing
+ import warnings
++
+ from . import constants, exceptions, portalocker
++
+ logger = logging.getLogger(__name__)
++
+ DEFAULT_TIMEOUT = 5
+ DEFAULT_CHECK_INTERVAL = 0.25
+ DEFAULT_FAIL_WHEN_LOCKED = False
+ LOCK_METHOD = constants.LockFlags.EXCLUSIVE | constants.LockFlags.NON_BLOCKING
+-__all__ = ['Lock', 'open_atomic']
+-Filename = typing.Union[str, pathlib.Path]
+ 
+-def coalesce(*args: typing.Any, test_value: typing.Any=None) -> typing.Any:
+-    """Simple coalescing function that returns the first value that is not
+-    equal to the `test_value`. Or `None` if no value is valid. Usually this
+-    means that the last given value is the default value.
++__all__ = [
++    'Lock',
++    'RLock',
++    'TemporaryFileLock',
++    'BoundedSemaphore',
++    'NamedBoundedSemaphore',
++    'open_atomic',
++]
+ 
+-    Note that the `test_value` is compared using an identity check
+-    (i.e. `value is not test_value`) so changing the `test_value` won't work
+-    for all values.
++Filename = typing.Union[str, pathlib.Path]
+ 
+-    >>> coalesce(None, 1)
+-    1
+-    >>> coalesce()
+ 
+-    >>> coalesce(0, False, True)
+-    0
+-    >>> coalesce(0, False, True, test_value=0)
+-    False
++def coalesce(*args: typing.Any, test_value: typing.Any = None) -> typing.Any:
++    """Return the first value that is not `test_value`."""
++    for arg in args:
++        if arg is not test_value:
++            return arg
++    return None
+ 
+-    # This won't work because of the `is not test_value` type testing:
+-    >>> coalesce([], dict(spam='eggs'), test_value=[])
+-    []
+-    """
+-    pass
+ 
+ @contextlib.contextmanager
+-def open_atomic(filename: Filename, binary: bool=True) -> typing.Iterator[typing.IO]:
+-    """Open a file for atomic writing. Instead of locking this method allows
+-    you to write the entire file and move it to the actual location. Note that
+-    this makes the assumption that a rename is atomic on your platform which
+-    is generally the case but not a guarantee.
+-
+-    http://docs.python.org/library/os.html#os.rename
+-
+-    >>> filename = 'test_file.txt'
+-    >>> if os.path.exists(filename):
+-    ...     os.remove(filename)
+-
+-    >>> with open_atomic(filename) as fh:
+-    ...     written = fh.write(b'test')
+-    >>> assert os.path.exists(filename)
+-    >>> os.remove(filename)
+-
+-    >>> import pathlib
+-    >>> path_filename = pathlib.Path('test_file.txt')
++def open_atomic(
++    filename: Filename,
++    binary: bool = True,
++) -> typing.Iterator[typing.IO[typing.Any]]:
++    """Open a file for atomic writing."""
++    filename = pathlib.Path(filename)
++    directory = filename.parent
++    mode = 'w+b' if binary else 'w+'
++
++    tmp_fh, tmp_filename = tempfile.mkstemp(dir=directory)
++    try:
++        with os.fdopen(tmp_fh, mode) as fh:
++            yield fh
++        os.rename(tmp_filename, filename)
++    except Exception:
++        with contextlib.suppress(OSError):
++            os.remove(tmp_filename)
++        raise
+ 
+-    >>> with open_atomic(path_filename) as fh:
+-    ...     written = fh.write(b'test')
+-    >>> assert path_filename.exists()
+-    >>> path_filename.unlink()
+-    """
+-    pass
+ 
+ class LockBase(abc.ABC):
+-    timeout: float
++    timeout: typing.Optional[float]
+     check_interval: float
+     fail_when_locked: bool
+ 
+-    def __init__(self, timeout: typing.Optional[float]=None, check_interval: typing.Optional[float]=None, fail_when_locked: typing.Optional[bool]=None):
++    def __init__(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ):
+         self.timeout = coalesce(timeout, DEFAULT_TIMEOUT)
+         self.check_interval = coalesce(check_interval, DEFAULT_CHECK_INTERVAL)
+-        self.fail_when_locked = coalesce(fail_when_locked, DEFAULT_FAIL_WHEN_LOCKED)
++        self.fail_when_locked = coalesce(
++            fail_when_locked,
++            DEFAULT_FAIL_WHEN_LOCKED,
++        )
++
++    @abc.abstractmethod
++    def acquire(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ):
++        raise NotImplementedError
++
++    @abc.abstractmethod
++    def release(self):
++        raise NotImplementedError
+ 
+-    def __enter__(self) -> typing.IO[typing.AnyStr]:
++    def __enter__(self):
+         return self.acquire()
+ 
+-    def __exit__(self, exc_type: typing.Optional[typing.Type[BaseException]], exc_value: typing.Optional[BaseException], traceback: typing.Any) -> typing.Optional[bool]:
++    def __exit__(
++        self,
++        exc_type: typing.Optional[typing.Type[BaseException]],
++        exc_value: typing.Optional[BaseException],
++        traceback: typing.Any,
++    ) -> typing.Optional[bool]:
+         self.release()
+         return None
+ 
+-    def __delete__(self, instance):
+-        instance.release()
+ 
+ class Lock(LockBase):
+-    """Lock manager with built-in timeout
+-
+-    Args:
+-        filename: filename
+-        mode: the open mode, 'a' or 'ab' should be used for writing. When mode
+-            contains `w` the file will be truncated to 0 bytes.
+-        timeout: timeout when trying to acquire a lock
+-        check_interval: check interval while waiting
+-        fail_when_locked: after the initial lock failed, return an error
+-            or lock the file. This does not wait for the timeout.
+-        **file_open_kwargs: The kwargs for the `open(...)` call
+-
+-    fail_when_locked is useful when multiple threads/processes can race
+-    when creating a file. If set to true than the system will wait till
+-    the lock was acquired and then return an AlreadyLocked exception.
+-
+-    Note that the file is opened first and locked later. So using 'w' as
+-    mode will result in truncate _BEFORE_ the lock is checked.
+-    """
+-
+-    def __init__(self, filename: Filename, mode: str='a', timeout: typing.Optional[float]=None, check_interval: float=DEFAULT_CHECK_INTERVAL, fail_when_locked: bool=DEFAULT_FAIL_WHEN_LOCKED, flags: constants.LockFlags=LOCK_METHOD, **file_open_kwargs):
++    """Lock manager with built-in timeout."""
++
++    def __init__(
++        self,
++        filename: Filename,
++        mode: str = 'a',
++        timeout: typing.Optional[float] = None,
++        check_interval: float = DEFAULT_CHECK_INTERVAL,
++        fail_when_locked: bool = DEFAULT_FAIL_WHEN_LOCKED,
++        flags: constants.LockFlags = LOCK_METHOD,
++        **file_open_kwargs: typing.Any,
++    ):
++        truncate = False
+         if 'w' in mode:
+             truncate = True
+             mode = mode.replace('w', 'a')
+-        else:
+-            truncate = False
+-        if timeout is None:
+-            timeout = DEFAULT_TIMEOUT
+-        elif not flags & constants.LockFlags.NON_BLOCKING:
+-            warnings.warn('timeout has no effect in blocking mode', stacklevel=1)
+-        self.fh: typing.Optional[typing.IO] = None
+-        self.filename: str = str(filename)
+-        self.mode: str = mode
+-        self.truncate: bool = truncate
+-        self.timeout: float = timeout
+-        self.check_interval: float = check_interval
+-        self.fail_when_locked: bool = fail_when_locked
+-        self.flags: constants.LockFlags = flags
+-        self.file_open_kwargs = file_open_kwargs
+ 
+-    def acquire(self, timeout: typing.Optional[float]=None, check_interval: typing.Optional[float]=None, fail_when_locked: typing.Optional[bool]=None) -> typing.IO[typing.AnyStr]:
+-        """Acquire the locked filehandle"""
+-        pass
++        super().__init__(
++            timeout=timeout,
++            check_interval=check_interval,
++            fail_when_locked=fail_when_locked,
++        )
++
++        self.fh: typing.Optional[typing.IO[typing.Any]] = None
++        self.filename = str(filename)
++        self.mode = mode
++        self.truncate = truncate
++        self.flags = flags
++        self.file_open_kwargs = file_open_kwargs
+ 
+-    def __enter__(self) -> typing.IO[typing.AnyStr]:
+-        return self.acquire()
++        if not self.flags & constants.LockFlags.NON_BLOCKING:
++            warnings.warn(
++                'timeout has no effect in blocking mode',
++                UserWarning,
++                stacklevel=2,
++            )
++
++    def acquire(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ) -> typing.IO[typing.Any]:
++        timeout = coalesce(timeout, self.timeout)
++        check_interval = coalesce(check_interval, self.check_interval)
++        fail_when_locked = coalesce(fail_when_locked, self.fail_when_locked)
++
++        if self.fh is not None:
++            return self.fh
++
++        fh = self._get_fh()
++        start_time = time.monotonic()
++
++        while True:
++            try:
++                portalocker.lock(fh, self.flags)
++                fh = self._prepare_fh(fh)
++                self.fh = fh
++                return fh
++            except exceptions.LockException as exc:
++                if fail_when_locked:
++                    fh.close()
++                    raise exceptions.AlreadyLocked(*exc.args, fh=fh)
++
++                if timeout is None:
++                    fh.close()
++                    raise
++
++                if time.monotonic() - start_time >= timeout:
++                    fh.close()
++                    raise exceptions.AlreadyLocked(*exc.args, fh=fh)
++
++                time.sleep(check_interval)
++            except Exception as exc:
++                fh.close()
++                raise exceptions.LockException(*getattr(exc, 'args', ()), fh=fh)
+ 
+     def release(self):
+-        """Releases the currently locked file handle"""
+-        pass
++        if self.fh is not None:
++            portalocker.unlock(self.fh)
++            self.fh.close()
++            self.fh = None
+ 
+-    def _get_fh(self) -> typing.IO:
+-        """Get a new filehandle"""
+-        pass
++    def _get_fh(self) -> typing.IO[typing.Any]:
++        return open(self.filename, self.mode, **self.file_open_kwargs)
+ 
+-    def _get_lock(self, fh: typing.IO) -> typing.IO:
+-        """
+-        Try to lock the given filehandle
++    def _prepare_fh(self, fh: typing.IO[typing.Any]) -> typing.IO[typing.Any]:
++        if self.truncate:
++            fh.seek(0)
++            fh.truncate(0)
++        return fh
+ 
+-        returns LockException if it fails"""
+-        pass
+-
+-    def _prepare_fh(self, fh: typing.IO) -> typing.IO:
+-        """
+-        Prepare the filehandle for usage
+-
+-        If truncate is a number, the file will be truncated to that amount of
+-        bytes
+-        """
+-        pass
+ 
+ class RLock(Lock):
+-    """
+-    A reentrant lock, functions in a similar way to threading.RLock in that it
+-    can be acquired multiple times.  When the corresponding number of release()
+-    calls are made the lock will finally release the underlying file lock.
+-    """
+-
+-    def __init__(self, filename, mode='a', timeout=DEFAULT_TIMEOUT, check_interval=DEFAULT_CHECK_INTERVAL, fail_when_locked=False, flags=LOCK_METHOD):
+-        super().__init__(filename, mode, timeout, check_interval, fail_when_locked, flags)
++    """A reentrant file lock."""
++
++    def __init__(
++        self,
++        filename: Filename,
++        mode: str = 'a',
++        timeout: typing.Optional[float] = DEFAULT_TIMEOUT,
++        check_interval: float = DEFAULT_CHECK_INTERVAL,
++        fail_when_locked: bool = False,
++        flags: constants.LockFlags = LOCK_METHOD,
++        **file_open_kwargs: typing.Any,
++    ):
++        super().__init__(
++            filename=filename,
++            mode=mode,
++            timeout=timeout,
++            check_interval=check_interval,
++            fail_when_locked=fail_when_locked,
++            flags=flags,
++            **file_open_kwargs,
++        )
+         self._acquire_count = 0
+ 
+-class TemporaryFileLock(Lock):
++    def acquire(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ) -> typing.IO[typing.Any]:
++        if self._acquire_count > 0:
++            self._acquire_count += 1
++            assert self.fh is not None
++            return self.fh
++
++        fh = super().acquire(
++            timeout=timeout,
++            check_interval=check_interval,
++            fail_when_locked=fail_when_locked,
++        )
++        self._acquire_count = 1
++        return fh
+ 
+-    def __init__(self, filename='.lock', timeout=DEFAULT_TIMEOUT, check_interval=DEFAULT_CHECK_INTERVAL, fail_when_locked=True, flags=LOCK_METHOD):
+-        Lock.__init__(self, filename=filename, mode='w', timeout=timeout, check_interval=check_interval, fail_when_locked=fail_when_locked, flags=flags)
++    def release(self):
++        if self._acquire_count == 0:
++            raise exceptions.LockException('Lock is not acquired')
++
++        self._acquire_count -= 1
++        if self._acquire_count == 0:
++            super().release()
++
++
++class TemporaryFileLock(Lock):
++    def __init__(
++        self,
++        filename: Filename = '.lock',
++        timeout: typing.Optional[float] = DEFAULT_TIMEOUT,
++        check_interval: float = DEFAULT_CHECK_INTERVAL,
++        fail_when_locked: bool = True,
++        flags: constants.LockFlags = LOCK_METHOD,
++    ):
++        super().__init__(
++            filename=filename,
++            mode='w',
++            timeout=timeout,
++            check_interval=check_interval,
++            fail_when_locked=fail_when_locked,
++            flags=flags,
++        )
+         atexit.register(self.release)
+ 
++    def release(self):
++        super().release()
++        with contextlib.suppress(OSError):
++            if os.path.isfile(self.filename):
++                os.remove(self.filename)
++
++    def __del__(self):
++        with contextlib.suppress(Exception):
++            self.release()
++
++
+ class BoundedSemaphore(LockBase):
+-    """
+-    Bounded semaphore to prevent too many parallel processes from running
+-
+-    This method is deprecated because multiple processes that are completely
+-    unrelated could end up using the same semaphore.  To prevent this,
+-    use `NamedBoundedSemaphore` instead. The
+-    `NamedBoundedSemaphore` is a drop-in replacement for this class.
+-
+-    >>> semaphore = BoundedSemaphore(2, directory='')
+-    >>> str(semaphore.get_filenames()[0])
+-    'bounded_semaphore.00.lock'
+-    >>> str(sorted(semaphore.get_random_filenames())[1])
+-    'bounded_semaphore.01.lock'
+-    """
++    """Cross-process bounded semaphore."""
++
+     lock: typing.Optional[Lock]
+ 
+-    def __init__(self, maximum: int, name: str='bounded_semaphore', filename_pattern: str='{name}.{number:02d}.lock', directory: str=tempfile.gettempdir(), timeout: typing.Optional[float]=DEFAULT_TIMEOUT, check_interval: typing.Optional[float]=DEFAULT_CHECK_INTERVAL, fail_when_locked: typing.Optional[bool]=True):
++    def __init__(
++        self,
++        maximum: int,
++        name: str = 'bounded_semaphore',
++        filename_pattern: str = '{name}.{number:02d}.lock',
++        directory: str = tempfile.gettempdir(),
++        timeout: typing.Optional[float] = DEFAULT_TIMEOUT,
++        check_interval: typing.Optional[float] = DEFAULT_CHECK_INTERVAL,
++        fail_when_locked: typing.Optional[bool] = True,
++    ):
+         self.maximum = maximum
+         self.name = name
+         self.filename_pattern = filename_pattern
+         self.directory = directory
+-        self.lock: typing.Optional[Lock] = None
+-        super().__init__(timeout=timeout, check_interval=check_interval, fail_when_locked=fail_when_locked)
+-        if not name or name == 'bounded_semaphore':
+-            warnings.warn('`BoundedSemaphore` without an explicit `name` argument is deprecated, use NamedBoundedSemaphore', DeprecationWarning, stacklevel=1)
+-
+-class NamedBoundedSemaphore(BoundedSemaphore):
+-    """
+-    Bounded semaphore to prevent too many parallel processes from running
+-
+-    It's also possible to specify a timeout when acquiring the lock to wait
+-    for a resource to become available.  This is very similar to
+-    `threading.BoundedSemaphore` but works across multiple processes and across
+-    multiple operating systems.
++        self.lock = None
++
++        super().__init__(
++            timeout=timeout,
++            check_interval=check_interval,
++            fail_when_locked=fail_when_locked,
++        )
++
++    def get_filenames(self) -> typing.Sequence[pathlib.Path]:
++        return [
++            pathlib.Path(self.directory)
++            / self.filename_pattern.format(name=self.name, number=i)
++            for i in range(self.maximum)
++        ]
++
++    def get_random_filenames(self) -> typing.Sequence[pathlib.Path]:
++        filenames = list(self.get_filenames())
++        random.shuffle(filenames)
++        return filenames
++
++    def get_filename(self, number: int) -> pathlib.Path:
++        return pathlib.Path(self.directory) / self.filename_pattern.format(
++            name=self.name,
++            number=number,
++        )
++
++    def try_lock(
++        self,
++        filenames: typing.Sequence[typing.Union[str, pathlib.Path]],
++    ) -> bool:
++        for filename in filenames:
++            lock = Lock(
++                filename,
++                timeout=0,
++                check_interval=self.check_interval,
++                fail_when_locked=True,
++            )
++            try:
++                lock.acquire()
++            except (exceptions.LockException, exceptions.AlreadyLocked):
++                continue
++            self.lock = lock
++            return True
++        return False
++
++    def acquire(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ) -> typing.Optional[Lock]:
++        timeout = coalesce(timeout, self.timeout)
++        check_interval = coalesce(check_interval, self.check_interval)
++        fail_when_locked = coalesce(fail_when_locked, self.fail_when_locked)
++
++        start_time = time.monotonic()
++
++        while True:
++            if self.try_lock(self.get_random_filenames()):
++                return self.lock
++
++            if timeout is not None and time.monotonic() - start_time >= timeout:
++                raise exceptions.AlreadyLocked()
++
++            time.sleep(check_interval)
+ 
+-    Because this works across multiple processes it's important to give the
+-    semaphore a name.  This name is used to create the lock files.  If you
+-    don't specify a name, a random name will be generated.  This means that
+-    you can't use the same semaphore in multiple processes unless you pass the
+-    semaphore object to the other processes.
+-
+-    >>> semaphore = NamedBoundedSemaphore(2, name='test')
+-    >>> str(semaphore.get_filenames()[0])
+-    '...test.00.lock'
+-
+-    >>> semaphore = NamedBoundedSemaphore(2)
+-    >>> 'bounded_semaphore' in str(semaphore.get_filenames()[0])
+-    True
++    def release(self):
++        if self.lock is not None:
++            self.lock.release()
++            self.lock = None
+ 
+-    """
+ 
+-    def __init__(self, maximum: int, name: typing.Optional[str]=None, filename_pattern: str='{name}.{number:02d}.lock', directory: str=tempfile.gettempdir(), timeout: typing.Optional[float]=DEFAULT_TIMEOUT, check_interval: typing.Optional[float]=DEFAULT_CHECK_INTERVAL, fail_when_locked: typing.Optional[bool]=True):
++class NamedBoundedSemaphore(BoundedSemaphore):
++    def __init__(
++        self,
++        maximum: int,
++        name: typing.Optional[str] = None,
++        filename_pattern: str = '{name}.{number:02d}.lock',
++        directory: str = tempfile.gettempdir(),
++        timeout: typing.Optional[float] = DEFAULT_TIMEOUT,
++        check_interval: typing.Optional[float] = DEFAULT_CHECK_INTERVAL,
++        fail_when_locked: typing.Optional[bool] = True,
++    ):
+         if name is None:
+-            name = 'bounded_semaphore.%d' % random.randint(0, 1000000)
+-        super().__init__(maximum, name, filename_pattern, directory, timeout, check_interval, fail_when_locked)
+\ No newline at end of file
++            name = f'bounded_semaphore.{random.randint(0, 1000000)}'
++
++        super().__init__(
++            maximum=maximum,
++            name=name,
++            filename_pattern=filename_pattern,
++            directory=directory,
++            timeout=timeout,
++            check_interval=check_interval,
++            fail_when_locked=fail_when_locked,
++        )
+diff --git a/portalocker_tests/test_redis.py b/portalocker_tests/test_redis.py
+index e9bec02..a92f452 100644
+--- a/portalocker_tests/test_redis.py
++++ b/portalocker_tests/test_redis.py
+@@ -6,14 +6,15 @@ import time
+ import pytest
+ 
+ import portalocker
+-from portalocker import redis, utils
+-from redis import client, exceptions
+ 
+ logger = logging.getLogger(__name__)
+ 
+ try:
++    from portalocker import redis, utils
++    from redis import client, exceptions as redis_exceptions
++
+     client.Redis().ping()
+-except (exceptions.ConnectionError, ConnectionRefusedError):
++except Exception:
+     pytest.skip('Unable to connect to redis', allow_module_level=True)

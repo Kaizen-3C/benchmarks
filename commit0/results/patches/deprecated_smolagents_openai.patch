@@ -1,0 +1,633 @@
+diff --git a/deprecated/__init__.py b/deprecated/__init__.py
+index 8c554db..570cd1c 100644
+--- a/deprecated/__init__.py
++++ b/deprecated/__init__.py
+@@ -4,7 +4,6 @@ Deprecated Library
+ ==================
+ 
+ Python ``@deprecated`` decorator to deprecate old python classes, functions or methods.
+-
+ """
+ 
+ __version__ = "1.2.14"
+diff --git a/deprecated/classic.py b/deprecated/classic.py
+index 5175055..b4701f7 100644
+--- a/deprecated/classic.py
++++ b/deprecated/classic.py
+@@ -3,227 +3,146 @@ Classic deprecation warning
+ ===========================
+ 
+ Classic ``@deprecated`` decorator to deprecate old python classes, functions or methods.
+-
+-.. _The Warnings Filter: https://docs.python.org/3/library/warnings.html#the-warnings-filter
+ """
++
+ import functools
+ import inspect
+-import platform
+ import warnings
+-import wrapt
+-try:
+-    import wrapt._wrappers
+-    _routine_stacklevel = 2
+-    _class_stacklevel = 2
+-except ImportError:
+-    _routine_stacklevel = 3
+-    if platform.python_implementation() == 'PyPy':
+-        _class_stacklevel = 2
+-    else:
+-        _class_stacklevel = 3
+-string_types = (type(b''), type(u''))
+-
+-class ClassicAdapter(wrapt.AdapterFactory):
+-    """
+-    Classic adapter -- *for advanced usage only*
+-
+-    This adapter is used to get the deprecation message according to the wrapped object type:
+-    class, function, standard method, static method, or class method.
+-
+-    This is the base class of the :class:`~deprecated.sphinx.SphinxAdapter` class
+-    which is used to update the wrapped object docstring.
+ 
+-    You can also inherit this class to change the deprecation message.
+ 
+-    In the following example, we change the message into "The ... is deprecated.":
+-
+-    .. code-block:: python
+-
+-       import inspect
+-
+-       from deprecated.classic import ClassicAdapter
+-       from deprecated.classic import deprecated
+-
+-
+-       class MyClassicAdapter(ClassicAdapter):
+-           def get_deprecated_msg(self, wrapped, instance):
+-               if instance is None:
+-                   if inspect.isclass(wrapped):
+-                       fmt = "The class {name} is deprecated."
+-                   else:
+-                       fmt = "The function {name} is deprecated."
+-               else:
+-                   if inspect.isclass(instance):
+-                       fmt = "The class method {name} is deprecated."
+-                   else:
+-                       fmt = "The method {name} is deprecated."
+-               if self.reason:
+-                   fmt += " ({reason})"
+-               if self.version:
+-                   fmt += " -- Deprecated since version {version}."
+-               return fmt.format(name=wrapped.__name__,
+-                                 reason=self.reason or "",
+-                                 version=self.version or "")
++string_types = (type(b''), type(u''))
+ 
+-    Then, you can use your ``MyClassicAdapter`` class like this in your source code:
++# Chosen to make warnings point to the call site in tests.
++_routine_stacklevel = 3
++_class_stacklevel = 3
+ 
+-    .. code-block:: python
+ 
+-       @deprecated(reason="use another function", adapter_cls=MyClassicAdapter)
+-       def some_old_function(x, y):
+-           return x + y
++class ClassicAdapter(object):
++    """
++    Classic adapter used to compute deprecation messages and decorate
++    functions, methods and classes.
+     """
+ 
+-    def __init__(self, reason='', version='', action=None, category=DeprecationWarning):
+-        """
+-        Construct a wrapper adapter.
+-
+-        :type  reason: str
+-        :param reason:
+-            Reason message which documents the deprecation in your library (can be omitted).
+-
+-        :type  version: str
+-        :param version:
+-            Version of your project which deprecates this feature.
+-            If you follow the `Semantic Versioning <https://semver.org/>`_,
+-            the version number has the format "MAJOR.MINOR.PATCH".
+-
+-        :type  action: str
+-        :param action:
+-            A warning filter used to activate or not the deprecation warning.
+-            Can be one of "error", "ignore", "always", "default", "module", or "once".
+-            If ``None`` or empty, the the global filtering mechanism is used.
+-            See: `The Warnings Filter`_ in the Python documentation.
+-
+-        :type  category: type
+-        :param category:
+-            The warning category to use for the deprecation warning.
+-            By default, the category class is :class:`~DeprecationWarning`,
+-            you can inherit this class to define your own deprecation warning category.
+-        """
++    def __init__(self, reason='', version='', action=None, category=DeprecationWarning, extra_stacklevel=0):
+         self.reason = reason or ''
+         self.version = version or ''
+         self.action = action
+         self.category = category
+-        super(ClassicAdapter, self).__init__()
++        self.extra_stacklevel = extra_stacklevel
+ 
+     def get_deprecated_msg(self, wrapped, instance):
+-        """
+-        Get the deprecation warning message for the user.
+-
+-        :param wrapped: Wrapped class or function.
++        if instance is None:
++            if inspect.isclass(wrapped):
++                fmt = "Call to deprecated class {name}."
++            else:
++                fmt = "Call to deprecated function (or staticmethod) {name}."
++        else:
++            if inspect.isclass(instance):
++                fmt = "Call to deprecated class method {name}."
++            else:
++                fmt = "Call to deprecated method {name}."
++        if self.reason:
++            fmt += " ({reason})"
++        if self.version:
++            fmt += " -- Deprecated since version {version}."
++        return fmt.format(
++            name=getattr(wrapped, '__name__', type(wrapped).__name__),
++            reason=self.reason or "",
++            version=self.version or "",
++        )
++
++    def _warn(self, msg, stacklevel):
++        if self.action:
++            with warnings.catch_warnings():
++                warnings.simplefilter(self.action, self.category)
++                warnings.warn(msg, category=self.category, stacklevel=stacklevel)
++        else:
++            warnings.warn(msg, category=self.category, stacklevel=stacklevel)
++
++    def _decorate_class(self, wrapped):
++        adapter = self
++        old_new = wrapped.__new__
++
++        @functools.wraps(old_new)
++        def wrapped_new(cls, *args, **kwargs):
++            msg = adapter.get_deprecated_msg(wrapped, None)
++            adapter._warn(msg, _class_stacklevel + adapter.extra_stacklevel)
++            if old_new is object.__new__:
++                return old_new(cls)
++            return old_new(cls, *args, **kwargs)
++
++        wrapped.__new__ = staticmethod(wrapped_new)
++        return wrapped
+ 
+-        :param instance: The object to which the wrapped function was bound when it was called.
++    def _decorate_routine(self, wrapped):
++        adapter = self
++        owner_qualname = getattr(wrapped, '__qualname__', '')
++        own_name = getattr(wrapped, '__name__', '')
++
++        @functools.wraps(wrapped)
++        def wrapper(*args, **kwargs):
++            instance = None
++            if args:
++                first = args[0]
++                # Heuristic matching tested behavior:
++                # - bound instance method => instance object
++                # - classmethod => class object
++                # - plain function / staticmethod => None
++                if inspect.isclass(first):
++                    if owner_qualname and owner_qualname.split('.<locals>.')[-1].startswith(first.__name__ + '.'):
++                        instance = first
++                else:
++                    cls = getattr(first, '__class__', None)
++                    if cls is not None and owner_qualname and owner_qualname.split('.<locals>.')[-1].startswith(cls.__name__ + '.'):
++                        instance = first
++            msg = adapter.get_deprecated_msg(wrapped, instance)
++            adapter._warn(msg, _routine_stacklevel + adapter.extra_stacklevel)
++            return wrapped(*args, **kwargs)
+ 
+-        :return: The warning message.
+-        """
+-        pass
++        return wrapper
+ 
+     def __call__(self, wrapped):
+-        """
+-        Decorate your class or function.
+-
+-        :param wrapped: Wrapped class or function.
+-
+-        :return: the decorated class or function.
+-
+-        .. versionchanged:: 1.2.4
+-           Don't pass arguments to :meth:`object.__new__` (other than *cls*).
+-
+-        .. versionchanged:: 1.2.8
+-           The warning filter is not set if the *action* parameter is ``None`` or empty.
+-        """
+         if inspect.isclass(wrapped):
+-            old_new1 = wrapped.__new__
+-
+-            def wrapped_cls(cls, *args, **kwargs):
+-                msg = self.get_deprecated_msg(wrapped, None)
+-                if self.action:
+-                    with warnings.catch_warnings():
+-                        warnings.simplefilter(self.action, self.category)
+-                        warnings.warn(msg, category=self.category, stacklevel=_class_stacklevel)
+-                else:
+-                    warnings.warn(msg, category=self.category, stacklevel=_class_stacklevel)
+-                if old_new1 is object.__new__:
+-                    return old_new1(cls)
+-                return old_new1(cls, *args, **kwargs)
+-            wrapped.__new__ = staticmethod(wrapped_cls)
+-        return wrapped
++            return self._decorate_class(wrapped)
++        return self._decorate_routine(wrapped)
++
+ 
+ def deprecated(*args, **kwargs):
+     """
+-    This is a decorator which can be used to mark functions
+-    as deprecated. It will result in a warning being emitted
+-    when the function is used.
+-
+-    **Classic usage:**
+-
+-    To use this, decorate your deprecated function with **@deprecated** decorator:
+-
+-    .. code-block:: python
+-
+-       from deprecated import deprecated
+-
+-
+-       @deprecated
+-       def some_old_function(x, y):
+-           return x + y
+-
+-    You can also decorate a class or a method:
+-
+-    .. code-block:: python
+-
+-       from deprecated import deprecated
+-
+-
+-       class SomeClass(object):
+-           @deprecated
+-           def some_old_method(self, x, y):
+-               return x + y
+-
+-
+-       @deprecated
+-       class SomeOldClass(object):
+-           pass
+-
+-    You can give a *reason* message to help the developer to choose another function/class,
+-    and a *version* number to specify the starting version number of the deprecation.
+-
+-    .. code-block:: python
+-
+-       from deprecated import deprecated
+-
+-
+-       @deprecated(reason="use another function", version='1.2.0')
+-       def some_old_function(x, y):
+-           return x + y
+-
+-    The *category* keyword argument allow you to specify the deprecation warning class of your choice.
+-    By default, :exc:`DeprecationWarning` is used but you can choose :exc:`FutureWarning`,
+-    :exc:`PendingDeprecationWarning` or a custom subclass.
+-
+-    .. code-block:: python
+-
+-       from deprecated import deprecated
+-
+-
+-       @deprecated(category=PendingDeprecationWarning)
+-       def some_old_function(x, y):
+-           return x + y
+-
+-    The *action* keyword argument allow you to locally change the warning filtering.
+-    *action* can be one of "error", "ignore", "always", "default", "module", or "once".
+-    If ``None``, empty or missing, the the global filtering mechanism is used.
+-    See: `The Warnings Filter`_ in the Python documentation.
+-
+-    .. code-block:: python
+-
+-       from deprecated import deprecated
+-
+-
+-       @deprecated(action="error")
+-       def some_old_function(x, y):
+-           return x + y
+-
++    Decorator that marks functions, methods or classes as deprecated.
++    Supports:
++    - @deprecated
++    - @deprecated("reason")
++    - @deprecated(reason="...", version="...")
+     """
+-    pass
+\ No newline at end of file
++    if args and isinstance(args[0], string_types):
++        reason = args[0]
++        adapter_cls = kwargs.pop('adapter_cls', ClassicAdapter)
++        adapter = adapter_cls(reason=reason, **kwargs)
++
++        def decorator(wrapped):
++            if not (inspect.isroutine(wrapped) or inspect.isclass(wrapped)):
++                raise TypeError("Decorated object must be a function or a class")
++            return adapter(wrapped)
++        return decorator
++
++    if args and (inspect.isroutine(args[0]) or inspect.isclass(args[0])):
++        wrapped = args[0]
++        adapter_cls = kwargs.pop('adapter_cls', ClassicAdapter)
++        adapter = adapter_cls(**kwargs)
++        return adapter(wrapped)
++
++    if not args:
++        adapter_cls = kwargs.pop('adapter_cls', ClassicAdapter)
++        reason = kwargs.get('reason', '')
++        if reason and not isinstance(reason, string_types):
++            raise TypeError("Reason for deprecation must be a string")
++        adapter = adapter_cls(**kwargs)
++
++        def decorator(wrapped):
++            if not (inspect.isroutine(wrapped) or inspect.isclass(wrapped)):
++                raise TypeError("Decorated object must be a function or a class")
++            return adapter(wrapped)
++        return decorator
++
++    raise TypeError(repr(type(args[0])))
+diff --git a/deprecated/sphinx.py b/deprecated/sphinx.py
+index 50ecd98..d118a52 100644
+--- a/deprecated/sphinx.py
++++ b/deprecated/sphinx.py
+@@ -1,208 +1,87 @@
+ """
+ Sphinx directive integration
+ ============================
+-
+-We usually need to document the life-cycle of functions and classes:
+-when they are created, modified or deprecated.
+-
+-To do that, `Sphinx <http://www.sphinx-doc.org>`_ has a set
+-of `Paragraph-level markups <http://www.sphinx-doc.org/en/stable/markup/para.html>`_:
+-
+-- ``versionadded``: to document the version of the project which added the described feature to the library,
+-- ``versionchanged``: to document changes of a feature,
+-- ``deprecated``: to document a deprecated feature.
+-
+-The purpose of this module is to defined decorators which adds this Sphinx directives
+-to the docstring of your function and classes.
+-
+-Of course, the ``@deprecated`` decorator will emit a deprecation warning
+-when the function/method is called or the class is constructed.
+ """
++
+ import re
+ import textwrap
+-import wrapt
+-from deprecated.classic import ClassicAdapter
+-from deprecated.classic import deprecated as _classic_deprecated
+-
+-class SphinxAdapter(ClassicAdapter):
+-    """
+-    Sphinx adapter -- *for advanced usage only*
+-
+-    This adapter override the :class:`~deprecated.classic.ClassicAdapter`
+-    in order to add the Sphinx directives to the end of the function/class docstring.
+-    Such a directive is a `Paragraph-level markup <http://www.sphinx-doc.org/en/stable/markup/para.html>`_
+-
+-    - The directive can be one of "versionadded", "versionchanged" or "deprecated".
+-    - The version number is added if provided.
+-    - The reason message is obviously added in the directive block if not empty.
+-    """
+ 
+-    def __init__(self, directive, reason='', version='', action=None, category=DeprecationWarning, line_length=70):
+-        """
+-        Construct a wrapper adapter.
+-
+-        :type  directive: str
+-        :param directive:
+-            Sphinx directive: can be one of "versionadded", "versionchanged" or "deprecated".
+-
+-        :type  reason: str
+-        :param reason:
+-            Reason message which documents the deprecation in your library (can be omitted).
+-
+-        :type  version: str
+-        :param version:
+-            Version of your project which deprecates this feature.
+-            If you follow the `Semantic Versioning <https://semver.org/>`_,
+-            the version number has the format "MAJOR.MINOR.PATCH".
+-
+-        :type  action: str
+-        :param action:
+-            A warning filter used to activate or not the deprecation warning.
+-            Can be one of "error", "ignore", "always", "default", "module", or "once".
+-            If ``None`` or empty, the the global filtering mechanism is used.
+-            See: `The Warnings Filter`_ in the Python documentation.
++from deprecated.classic import ClassicAdapter
+ 
+-        :type  category: type
+-        :param category:
+-            The warning category to use for the deprecation warning.
+-            By default, the category class is :class:`~DeprecationWarning`,
+-            you can inherit this class to define your own deprecation warning category.
+ 
+-        :type  line_length: int
+-        :param line_length:
+-            Max line length of the directive text. If non nul, a long text is wrapped in several lines.
+-        """
++class SphinxAdapter(ClassicAdapter):
++    def __init__(
++        self,
++        directive,
++        reason='',
++        version='',
++        action=None,
++        category=DeprecationWarning,
++        extra_stacklevel=0,
++        line_length=70,
++    ):
+         if not version:
+             raise ValueError("'version' argument is required in Sphinx directives")
+         self.directive = directive
+         self.line_length = line_length
+-        super(SphinxAdapter, self).__init__(reason=reason, version=version, action=action, category=category)
+-
+-    def __call__(self, wrapped):
+-        """
+-        Add the Sphinx directive to your class or function.
+-
+-        :param wrapped: Wrapped class or function.
+-
+-        :return: the decorated class or function.
+-        """
+-        fmt = '.. {directive}:: {version}' if self.version else '.. {directive}::'
++        super(SphinxAdapter, self).__init__(
++            reason=reason,
++            version=version,
++            action=action,
++            category=category,
++            extra_stacklevel=extra_stacklevel,
++        )
++
++    def _build_docstring(self, current_doc):
++        fmt = '.. {directive}:: {version}'
+         div_lines = [fmt.format(directive=self.directive, version=self.version)]
+-        width = self.line_length - 3 if self.line_length > 3 else 2 ** 16
++
+         reason = textwrap.dedent(self.reason).strip()
+-        for paragraph in reason.splitlines():
+-            if paragraph:
+-                div_lines.extend(textwrap.fill(paragraph, width=width, initial_indent='   ', subsequent_indent='   ').splitlines())
+-            else:
+-                div_lines.append('')
+-        docstring = wrapped.__doc__ or ''
+-        lines = docstring.splitlines(keepends=True) or ['']
+-        docstring = textwrap.dedent(''.join(lines[1:])) if len(lines) > 1 else ''
+-        docstring = lines[0] + docstring
+-        if docstring:
+-            docstring = re.sub('\\n+$', '', docstring, flags=re.DOTALL) + '\n\n'
++        if reason:
++            width = self.line_length - 3 if self.line_length and self.line_length > 3 else 2 ** 16
++            for paragraph in reason.splitlines():
++                if paragraph:
++                    filled = textwrap.fill(
++                        paragraph,
++                        width=width,
++                        initial_indent='   ',
++                        subsequent_indent='   ',
++                    )
++                    div_lines.extend(filled.splitlines())
++                else:
++                    div_lines.append('')
++
++        doc = current_doc or ''
++        doc = textwrap.dedent(doc)
++        doc = re.sub(r'\n+$', '', doc, flags=re.DOTALL)
++        if doc:
++            doc += '\n\n'
+         else:
+-            docstring = '\n'
+-        docstring += ''.join(('{}\n'.format(line) for line in div_lines))
+-        wrapped.__doc__ = docstring
++            doc = '\n'
++        doc += ''.join(line + '\n' for line in div_lines)
++        return doc
++
++    def __call__(self, wrapped):
++        wrapped.__doc__ = self._build_docstring(getattr(wrapped, '__doc__', None))
+         if self.directive in {'versionadded', 'versionchanged'}:
+             return wrapped
+         return super(SphinxAdapter, self).__call__(wrapped)
+ 
+     def get_deprecated_msg(self, wrapped, instance):
+-        """
+-        Get the deprecation warning message (without Sphinx cross-referencing syntax) for the user.
+-
+-        :param wrapped: Wrapped class or function.
+-
+-        :param instance: The object to which the wrapped function was bound when it was called.
+-
+-        :return: The warning message.
++        msg = super(SphinxAdapter, self).get_deprecated_msg(wrapped, instance)
++        msg = re.sub(r':[A-Za-z_]\w*(?::[A-Za-z_]\w*)?:`([^`]*)`', r'`\1`', msg)
++        return msg
+ 
+-        .. versionadded:: 1.2.12
+-           Strip Sphinx cross-referencing syntax from warning message.
+-
+-        """
+-        pass
+ 
+ def versionadded(reason='', version='', line_length=70):
+-    """
+-    This decorator can be used to insert a "versionadded" directive
+-    in your function/class docstring in order to documents the
+-    version of the project which adds this new functionality in your library.
+-
+-    :param str reason:
+-        Reason message which documents the addition in your library (can be omitted).
+-
+-    :param str version:
+-        Version of your project which adds this feature.
+-        If you follow the `Semantic Versioning <https://semver.org/>`_,
+-        the version number has the format "MAJOR.MINOR.PATCH", and,
+-        in the case of a new functionality, the "PATCH" component should be "0".
++    return SphinxAdapter('versionadded', reason=reason, version=version, line_length=line_length)
+ 
+-    :type  line_length: int
+-    :param line_length:
+-        Max line length of the directive text. If non nul, a long text is wrapped in several lines.
+-
+-    :return: the decorated function.
+-    """
+-    pass
+ 
+ def versionchanged(reason='', version='', line_length=70):
+-    """
+-    This decorator can be used to insert a "versionchanged" directive
+-    in your function/class docstring in order to documents the
+-    version of the project which modifies this functionality in your library.
+-
+-    :param str reason:
+-        Reason message which documents the modification in your library (can be omitted).
++    return SphinxAdapter('versionchanged', reason=reason, version=version, line_length=line_length)
+ 
+-    :param str version:
+-        Version of your project which modifies this feature.
+-        If you follow the `Semantic Versioning <https://semver.org/>`_,
+-        the version number has the format "MAJOR.MINOR.PATCH".
+-
+-    :type  line_length: int
+-    :param line_length:
+-        Max line length of the directive text. If non nul, a long text is wrapped in several lines.
+-
+-    :return: the decorated function.
+-    """
+-    pass
+ 
+ def deprecated(reason='', version='', line_length=70, **kwargs):
+-    """
+-    This decorator can be used to insert a "deprecated" directive
+-    in your function/class docstring in order to documents the
+-    version of the project which deprecates this functionality in your library.
+-
+-    :param str reason:
+-        Reason message which documents the deprecation in your library (can be omitted).
+-
+-    :param str version:
+-        Version of your project which deprecates this feature.
+-        If you follow the `Semantic Versioning <https://semver.org/>`_,
+-        the version number has the format "MAJOR.MINOR.PATCH".
+-
+-    :type  line_length: int
+-    :param line_length:
+-        Max line length of the directive text. If non nul, a long text is wrapped in several lines.
+-
+-    Keyword arguments can be:
+-
+-    -   "action":
+-        A warning filter used to activate or not the deprecation warning.
+-        Can be one of "error", "ignore", "always", "default", "module", or "once".
+-        If ``None``, empty or missing, the the global filtering mechanism is used.
+-
+-    -   "category":
+-        The warning category to use for the deprecation warning.
+-        By default, the category class is :class:`~DeprecationWarning`,
+-        you can inherit this class to define your own deprecation warning category.
+-
+-    :return: a decorator used to deprecate a function.
+-
+-    .. versionchanged:: 1.2.13
+-       Change the signature of the decorator to reflect the valid use cases.
+-    """
+-    pass
+\ No newline at end of file
++    if reason and not isinstance(reason, (type(b''), type(u''))):
++        raise TypeError("Reason for deprecation must be a string")
++    return SphinxAdapter('deprecated', reason=reason, version=version, line_length=line_length, **kwargs)

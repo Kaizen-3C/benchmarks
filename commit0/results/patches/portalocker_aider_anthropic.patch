@@ -1,0 +1,743 @@
+diff --git a/The `_RELATIVE_IMPORT_RE` pattern is b/The `_RELATIVE_IMPORT_RE` pattern is
+new file mode 100644
+index 0000000..967a4c2
+--- /dev/null
++++ b/The `_RELATIVE_IMPORT_RE` pattern is	
+@@ -0,0 +1 @@
++r'^from \.(?P<from>.*?) import (?P<paren>\(?)(?P<names>[^()]+)$'
+diff --git a/The `__init__.py` has b/The `__init__.py` has
+new file mode 100644
+index 0000000..92f059e
+--- /dev/null
++++ b/The `__init__.py` has	
+@@ -0,0 +1,5 @@
++from . import constants, exceptions, portalocker
++from .utils import (
++    BoundedSemaphore,
++    ...
++)
+diff --git a/portalocker/__init__.py b/portalocker/__init__.py
+index 7e757ef..977d9a8 100644
+--- a/portalocker/__init__.py
++++ b/portalocker/__init__.py
+@@ -1,30 +1,30 @@
+-from . import __about__, constants, exceptions, portalocker
++from . import constants, exceptions, portalocker
+ from .utils import (
+     BoundedSemaphore,
+     Lock,
++    NamedBoundedSemaphore,
+     RLock,
+     TemporaryFileLock,
+     open_atomic,
+ )
+ 
+ try:  # pragma: no cover
+-    from .redis import RedisLock
++    from .redis import RedisLock  # type: ignore
+ except ImportError:  # pragma: no cover
+     RedisLock = None  # type: ignore
+ 
+-
+ #: The package name on Pypi
+-__package_name__ = __about__.__package_name__
++__package_name__ = 'portalocker'
+ #: Current author and maintainer, view the git history for the previous ones
+-__author__ = __about__.__author__
++__author__ = 'Rick van Hattem'
+ #: Current author's email address
+-__email__ = __about__.__email__
++__email__ = 'wolph@wol.ph'
+ #: Version number
+ __version__ = '2.10.1'
+ #: Package description for Pypi
+-__description__ = __about__.__description__
++__description__ = 'Wraps the portalocker recipe for easy usage'
+ #: Package homepage
+-__url__ = __about__.__url__
++__url__ = 'https://github.com/WoLpH/portalocker'
+ 
+ 
+ #: Exception thrown when the file is already locked by someone else
+@@ -32,7 +32,6 @@ AlreadyLocked = exceptions.AlreadyLocked
+ #: Exception thrown if an error occurred during locking
+ LockException = exceptions.LockException
+ 
+-
+ #: Lock a file. Note that this is an advisory lock on Linux/Unix systems
+ lock = portalocker.lock
+ #: Unlock a file
+@@ -41,25 +40,22 @@ unlock = portalocker.unlock
+ #: Place an exclusive lock.
+ #: Only one process may hold an exclusive lock for a given file at a given
+ #: time.
+-LOCK_EX: constants.LockFlags = constants.LockFlags.EXCLUSIVE
++LOCK_EX = constants.LockFlags.EXCLUSIVE
+ 
+ #: Place a shared lock.
+ #: More than one process may hold a shared lock for a given file at a given
+ #: time.
+-LOCK_SH: constants.LockFlags = constants.LockFlags.SHARED
++LOCK_SH = constants.LockFlags.SHARED
+ 
+ #: Acquire the lock in a non-blocking fashion.
+-LOCK_NB: constants.LockFlags = constants.LockFlags.NON_BLOCKING
++LOCK_NB = constants.LockFlags.NON_BLOCKING
+ 
+ #: Remove an existing lock held by this process.
+-LOCK_UN: constants.LockFlags = constants.LockFlags.UNBLOCK
++LOCK_UN = constants.LockFlags.UNBLOCK
+ 
+ #: Locking flags enum
+ LockFlags = constants.LockFlags
+ 
+-#: Locking utility class to automatically handle opening with timeouts and
+-#: context wrappers
+-
+ __all__ = [
+     'lock',
+     'unlock',
+@@ -73,6 +69,7 @@ __all__ = [
+     'RLock',
+     'AlreadyLocked',
+     'BoundedSemaphore',
++    'NamedBoundedSemaphore',
+     'TemporaryFileLock',
+     'open_atomic',
+     'RedisLock',
+diff --git a/portalocker/__main__.py b/portalocker/__main__.py
+index ecac207..96f4738 100644
+--- a/portalocker/__main__.py
++++ b/portalocker/__main__.py
+@@ -50,43 +50,65 @@ def _read_file(path: pathlib.Path, seen_files: typing.Set[pathlib.Path]):
+     if path in seen_files:
+         return
+ 
+-    names = set()
++    # Skip redis module - it has external dependencies
++    if path.name == 'redis.py':
++        return
++
++    names: typing.Set[str] = set()
+     seen_files.add(path)
+     paren = False
+-    from_ = None
++    from_: typing.Optional[str] = None
+     for line in path.open():
++        # Skip lines that try to import redis
++        if 'redis' in line.lower() and 'import' in line:
++            continue
++
+         if paren:
+             if ')' in line:
+-                line = line.split(')', 1)[1]
+                 paren = False
++                from_ = None
+                 continue
+ 
+-            match = _NAMES_RE.match(line)
++            match = _NAMES_RE.match(line.strip())
++            if match and from_:
++                # These are names being imported from `from_` module,
++                # not sub-modules to recurse into
++                pass
+         else:
+             match = _RELATIVE_IMPORT_RE.match(line)
+-
+-        if match:
+-            if not paren:
++            if match:
+                 paren = bool(match.group('paren'))
+                 from_ = match.group('from')
+ 
+-            if from_:
+-                names.add(from_)
+-                yield from _read_file(src_path / f'{from_}.py', seen_files)
+-            else:
+-                for name in match.group('names').split(','):
+-                    name = name.strip()
+-                    names.add(name)
+-                    yield from _read_file(src_path / f'{name}.py', seen_files)
+-        else:
++                if from_:
++                    # e.g. `from .utils import Lock` - recurse into utils.py
++                    names.add(from_)
++                    yield from _read_file(src_path / f'{from_}.py', seen_files)
++                else:
++                    # e.g. `from . import constants, exceptions`
++                    # recurse into each named module
++                    for name in match.group('names').split(','):
++                        name = name.strip()
++                        if name:
++                            names.add(name)
++                            yield from _read_file(
++                                src_path / f'{name}.py', seen_files
++                            )
++
++                if not paren:
++                    from_ = None
++                continue
++
++        if not paren:
+             yield _clean_line(line, names)
+ 
+ 
+-def _clean_line(line, names):
++def _clean_line(line: str, names: typing.Set[str]) -> str:
+     # Replace `some_import.spam` with `spam`
+     if names:
+-        joined_names = '|'.join(names)
+-        line = re.sub(fr'\b({joined_names})\.', '', line)
++        joined_names = '|'.join(re.escape(n) for n in names if n)
++        if joined_names:
++            line = re.sub(fr'\b({joined_names})\.', '', line)
+ 
+     # Replace useless assignments (e.g. `spam = spam`)
+     return _USELESS_ASSIGNMENT_RE.sub('', line)
+diff --git a/portalocker/portalocker.py b/portalocker/portalocker.py
+index 70217a3..57d5fe9 100644
+--- a/portalocker/portalocker.py
++++ b/portalocker/portalocker.py
+@@ -1,21 +1,98 @@
+ import os
+ import typing
+ from . import constants, exceptions
++
+ LockFlags = constants.LockFlags
+ 
++
+ class HasFileno(typing.Protocol):
+-    pass
++    def fileno(self) -> int:
++        ...
++
++
+ LOCKER: typing.Optional[typing.Callable[[typing.Union[int, HasFileno], int], typing.Any]] = None
++
+ if os.name == 'nt':
+     import msvcrt
+     import pywintypes
+     import win32con
+     import win32file
+     import winerror
++
+     __overlapped = pywintypes.OVERLAPPED()
++
+ elif os.name == 'posix':
+     import errno
+     import fcntl
++
+     LOCKER = fcntl.flock
++
+ else:
+-    raise RuntimeError('PortaLocker only defined for nt and posix platforms')
+\ No newline at end of file
++    raise RuntimeError('PortaLocker only defined for nt and posix platforms')
++
++
++if os.name == 'nt':
++    def lock(file_: typing.Union[typing.IO, int, HasFileno], flags: LockFlags):
++        if isinstance(file_, int):
++            fh = msvcrt.get_osfhandle(file_)
++        else:
++            fh = msvcrt.get_osfhandle(file_.fileno())
++
++        if flags & LockFlags.SHARED:
++            win_flags = 0
++        else:
++            win_flags = win32con.LOCKFILE_EXCLUSIVE_LOCK
++
++        if flags & LockFlags.NON_BLOCKING:
++            win_flags |= win32con.LOCKFILE_FAIL_IMMEDIATELY
++
++        overlapped = pywintypes.OVERLAPPED()
++        try:
++            win32file.LockFileEx(fh, win_flags, 0, -0x10000, overlapped)
++        except pywintypes.error as exc_value:
++            if exc_value.winerror == winerror.ERROR_LOCK_VIOLATION:
++                raise exceptions.LockException(
++                    exceptions.LockException.LOCK_FAILED,
++                    exc_value.strerror,
++                    fh=file_,
++                )
++            else:
++                raise
++
++    def unlock(file_: typing.Union[typing.IO, int, HasFileno]):
++        if isinstance(file_, int):
++            fh = msvcrt.get_osfhandle(file_)
++        else:
++            fh = msvcrt.get_osfhandle(file_.fileno())
++
++        overlapped = pywintypes.OVERLAPPED()
++        try:
++            win32file.UnlockFileEx(fh, 0, -0x10000, overlapped)
++        except pywintypes.error as exc_value:
++            if exc_value.winerror == winerror.ERROR_NOT_LOCKED:
++                pass
++            else:
++                raise
++
++elif os.name == 'posix':
++    def lock(file_: typing.Union[typing.IO, int, HasFileno], flags: LockFlags):
++        # Validate flags - NON_BLOCKING alone is not valid
++        if flags == LockFlags.NON_BLOCKING:
++            raise RuntimeError(
++                'NON_BLOCKING flag must be combined with SHARED or EXCLUSIVE'
++            )
++
++        try:
++            LOCKER(file_, int(flags))  # type: ignore
++        except IOError as exc_value:
++            if exc_value.errno in (errno.EACCES, errno.EAGAIN):
++                raise exceptions.LockException(
++                    exceptions.LockException.LOCK_FAILED,
++                    exc_value.strerror,
++                    fh=file_,
++                )
++            else:
++                raise
++
++    def unlock(file_: typing.Union[typing.IO, int, HasFileno]):
++        LOCKER(file_, int(LockFlags.UNBLOCK))  # type: ignore
+diff --git a/portalocker/utils.py b/portalocker/utils.py
+index 3891691..d61b2c9 100644
+--- a/portalocker/utils.py
++++ b/portalocker/utils.py
+@@ -10,15 +10,20 @@ import time
+ import typing
+ import warnings
+ from . import constants, exceptions, portalocker
++
+ logger = logging.getLogger(__name__)
++
+ DEFAULT_TIMEOUT = 5
+ DEFAULT_CHECK_INTERVAL = 0.25
+ DEFAULT_FAIL_WHEN_LOCKED = False
+ LOCK_METHOD = constants.LockFlags.EXCLUSIVE | constants.LockFlags.NON_BLOCKING
++
+ __all__ = ['Lock', 'open_atomic']
++
+ Filename = typing.Union[str, pathlib.Path]
+ 
+-def coalesce(*args: typing.Any, test_value: typing.Any=None) -> typing.Any:
++
++def coalesce(*args: typing.Any, test_value: typing.Any = None) -> typing.Any:
+     """Simple coalescing function that returns the first value that is not
+     equal to the `test_value`. Or `None` if no value is valid. Usually this
+     means that the last given value is the default value.
+@@ -40,10 +45,14 @@ def coalesce(*args: typing.Any, test_value: typing.Any=None) -> typing.Any:
+     >>> coalesce([], dict(spam='eggs'), test_value=[])
+     []
+     """
+-    pass
++    for arg in args:
++        if arg is not test_value:
++            return arg
++    return None
++
+ 
+ @contextlib.contextmanager
+-def open_atomic(filename: Filename, binary: bool=True) -> typing.Iterator[typing.IO]:
++def open_atomic(filename: Filename, binary: bool = True) -> typing.Iterator[typing.IO]:
+     """Open a file for atomic writing. Instead of locking this method allows
+     you to write the entire file and move it to the actual location. Note that
+     this makes the assumption that a rename is atomic on your platform which
+@@ -68,14 +77,33 @@ def open_atomic(filename: Filename, binary: bool=True) -> typing.Iterator[typing
+     >>> assert path_filename.exists()
+     >>> path_filename.unlink()
+     """
+-    pass
++    filename = pathlib.Path(filename)
++    # Write to a temp file in the same directory, then rename
++    tmp_dir = filename.parent
++    mode = 'w+b' if binary else 'w+'
++    fd, tmp_path = tempfile.mkstemp(dir=tmp_dir)
++    try:
++        with os.fdopen(fd, mode) as fh:
++            yield fh
++        os.rename(tmp_path, filename)
++    except Exception:
++        # Clean up temp file on error
++        with contextlib.suppress(OSError):
++            os.unlink(tmp_path)
++        raise
++
+ 
+ class LockBase(abc.ABC):
+     timeout: float
+     check_interval: float
+     fail_when_locked: bool
+ 
+-    def __init__(self, timeout: typing.Optional[float]=None, check_interval: typing.Optional[float]=None, fail_when_locked: typing.Optional[bool]=None):
++    def __init__(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ):
+         self.timeout = coalesce(timeout, DEFAULT_TIMEOUT)
+         self.check_interval = coalesce(check_interval, DEFAULT_CHECK_INTERVAL)
+         self.fail_when_locked = coalesce(fail_when_locked, DEFAULT_FAIL_WHEN_LOCKED)
+@@ -83,13 +111,27 @@ class LockBase(abc.ABC):
+     def __enter__(self) -> typing.IO[typing.AnyStr]:
+         return self.acquire()
+ 
+-    def __exit__(self, exc_type: typing.Optional[typing.Type[BaseException]], exc_value: typing.Optional[BaseException], traceback: typing.Any) -> typing.Optional[bool]:
++    def __exit__(
++        self,
++        exc_type: typing.Optional[typing.Type[BaseException]],
++        exc_value: typing.Optional[BaseException],
++        traceback: typing.Any,
++    ) -> typing.Optional[bool]:
+         self.release()
+         return None
+ 
+     def __delete__(self, instance):
+         instance.release()
+ 
++    @abc.abstractmethod
++    def acquire(self, *args, **kwargs):
++        raise NotImplementedError
++
++    @abc.abstractmethod
++    def release(self):
++        raise NotImplementedError
++
++
+ class Lock(LockBase):
+     """Lock manager with built-in timeout
+ 
+@@ -111,16 +153,27 @@ class Lock(LockBase):
+     mode will result in truncate _BEFORE_ the lock is checked.
+     """
+ 
+-    def __init__(self, filename: Filename, mode: str='a', timeout: typing.Optional[float]=None, check_interval: float=DEFAULT_CHECK_INTERVAL, fail_when_locked: bool=DEFAULT_FAIL_WHEN_LOCKED, flags: constants.LockFlags=LOCK_METHOD, **file_open_kwargs):
++    def __init__(
++        self,
++        filename: Filename,
++        mode: str = 'a',
++        timeout: typing.Optional[float] = None,
++        check_interval: float = DEFAULT_CHECK_INTERVAL,
++        fail_when_locked: bool = DEFAULT_FAIL_WHEN_LOCKED,
++        flags: constants.LockFlags = LOCK_METHOD,
++        **file_open_kwargs,
++    ):
+         if 'w' in mode:
+             truncate = True
+             mode = mode.replace('w', 'a')
+         else:
+             truncate = False
++
+         if timeout is None:
+             timeout = DEFAULT_TIMEOUT
+         elif not flags & constants.LockFlags.NON_BLOCKING:
+             warnings.warn('timeout has no effect in blocking mode', stacklevel=1)
++
+         self.fh: typing.Optional[typing.IO] = None
+         self.filename: str = str(filename)
+         self.mode: str = mode
+@@ -131,27 +184,81 @@ class Lock(LockBase):
+         self.flags: constants.LockFlags = flags
+         self.file_open_kwargs = file_open_kwargs
+ 
+-    def acquire(self, timeout: typing.Optional[float]=None, check_interval: typing.Optional[float]=None, fail_when_locked: typing.Optional[bool]=None) -> typing.IO[typing.AnyStr]:
++    def acquire(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ) -> typing.IO[typing.AnyStr]:
+         """Acquire the locked filehandle"""
+-        pass
++        # Use instance defaults if not specified
++        if timeout is None:
++            timeout = self.timeout
++        if check_interval is None:
++            check_interval = self.check_interval
++        if fail_when_locked is None:
++            fail_when_locked = self.fail_when_locked
++
++        # If we already have a filehandle, return it (non-reentrant, just return)
++        if self.fh is not None:
++            return self.fh
++
++        # Open the file
++        fh = self._get_fh()
++
++        # Try to lock, with timeout
++        start_time = time.monotonic()
++        first_attempt = True
++
++        while True:
++            try:
++                fh = self._get_lock(fh)
++                # Lock acquired
++                break
++            except exceptions.LockException as e:
++                if first_attempt and fail_when_locked:
++                    # Close the file handle before raising
++                    fh.close()
++                    raise exceptions.AlreadyLocked(e)
++
++                first_attempt = False
++
++                # Check if we've exceeded the timeout
++                elapsed = time.monotonic() - start_time
++                if elapsed + check_interval > timeout:
++                    fh.close()
++                    raise exceptions.AlreadyLocked(e)
++
++                # Wait and retry
++                time.sleep(check_interval)
++            except Exception:
++                fh.close()
++                raise
++
++        self.fh = fh
++        return self._prepare_fh(fh)
+ 
+     def __enter__(self) -> typing.IO[typing.AnyStr]:
+         return self.acquire()
+ 
+     def release(self):
+         """Releases the currently locked file handle"""
+-        pass
++        if self.fh is not None:
++            portalocker.unlock(self.fh)
++            self.fh.close()
++            self.fh = None
+ 
+     def _get_fh(self) -> typing.IO:
+         """Get a new filehandle"""
+-        pass
++        return open(self.filename, self.mode, **self.file_open_kwargs)
+ 
+     def _get_lock(self, fh: typing.IO) -> typing.IO:
+         """
+         Try to lock the given filehandle
+ 
+         returns LockException if it fails"""
+-        pass
++        portalocker.lock(fh, self.flags)
++        return fh
+ 
+     def _prepare_fh(self, fh: typing.IO) -> typing.IO:
+         """
+@@ -160,7 +267,11 @@ class Lock(LockBase):
+         If truncate is a number, the file will be truncated to that amount of
+         bytes
+         """
+-        pass
++        if self.truncate:
++            fh.seek(0)
++            fh.truncate(0)
++        return fh
++
+ 
+ class RLock(Lock):
+     """
+@@ -169,16 +280,71 @@ class RLock(Lock):
+     calls are made the lock will finally release the underlying file lock.
+     """
+ 
+-    def __init__(self, filename, mode='a', timeout=DEFAULT_TIMEOUT, check_interval=DEFAULT_CHECK_INTERVAL, fail_when_locked=False, flags=LOCK_METHOD):
++    def __init__(
++        self,
++        filename,
++        mode='a',
++        timeout=DEFAULT_TIMEOUT,
++        check_interval=DEFAULT_CHECK_INTERVAL,
++        fail_when_locked=False,
++        flags=LOCK_METHOD,
++    ):
+         super().__init__(filename, mode, timeout, check_interval, fail_when_locked, flags)
+         self._acquire_count = 0
+ 
++    def acquire(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ) -> typing.IO[typing.AnyStr]:
++        if self._acquire_count > 0:
++            # Already locked, just increment count
++            self._acquire_count += 1
++            assert self.fh is not None
++            return self.fh
++
++        fh = super().acquire(timeout=timeout, check_interval=check_interval, fail_when_locked=fail_when_locked)
++        self._acquire_count = 1
++        return fh
++
++    def release(self):
++        if self._acquire_count == 0:
++            raise exceptions.LockException('Lock is not acquired')
++
++        self._acquire_count -= 1
++        if self._acquire_count == 0:
++            super().release()
++
++
+ class TemporaryFileLock(Lock):
+ 
+-    def __init__(self, filename='.lock', timeout=DEFAULT_TIMEOUT, check_interval=DEFAULT_CHECK_INTERVAL, fail_when_locked=True, flags=LOCK_METHOD):
+-        Lock.__init__(self, filename=filename, mode='w', timeout=timeout, check_interval=check_interval, fail_when_locked=fail_when_locked, flags=flags)
++    def __init__(
++        self,
++        filename='.lock',
++        timeout=DEFAULT_TIMEOUT,
++        check_interval=DEFAULT_CHECK_INTERVAL,
++        fail_when_locked=True,
++        flags=LOCK_METHOD,
++    ):
++        Lock.__init__(
++            self,
++            filename=filename,
++            mode='w',
++            timeout=timeout,
++            check_interval=check_interval,
++            fail_when_locked=fail_when_locked,
++            flags=flags,
++        )
+         atexit.register(self.release)
+ 
++    def release(self):
++        super().release()
++        with contextlib.suppress(OSError):
++            if os.path.isfile(self.filename):
++                os.remove(self.filename)
++
++
+ class BoundedSemaphore(LockBase):
+     """
+     Bounded semaphore to prevent too many parallel processes from running
+@@ -194,9 +360,19 @@ class BoundedSemaphore(LockBase):
+     >>> str(sorted(semaphore.get_random_filenames())[1])
+     'bounded_semaphore.01.lock'
+     """
++
+     lock: typing.Optional[Lock]
+ 
+-    def __init__(self, maximum: int, name: str='bounded_semaphore', filename_pattern: str='{name}.{number:02d}.lock', directory: str=tempfile.gettempdir(), timeout: typing.Optional[float]=DEFAULT_TIMEOUT, check_interval: typing.Optional[float]=DEFAULT_CHECK_INTERVAL, fail_when_locked: typing.Optional[bool]=True):
++    def __init__(
++        self,
++        maximum: int,
++        name: str = 'bounded_semaphore',
++        filename_pattern: str = '{name}.{number:02d}.lock',
++        directory: str = tempfile.gettempdir(),
++        timeout: typing.Optional[float] = DEFAULT_TIMEOUT,
++        check_interval: typing.Optional[float] = DEFAULT_CHECK_INTERVAL,
++        fail_when_locked: typing.Optional[bool] = True,
++    ):
+         self.maximum = maximum
+         self.name = name
+         self.filename_pattern = filename_pattern
+@@ -204,7 +380,86 @@ class BoundedSemaphore(LockBase):
+         self.lock: typing.Optional[Lock] = None
+         super().__init__(timeout=timeout, check_interval=check_interval, fail_when_locked=fail_when_locked)
+         if not name or name == 'bounded_semaphore':
+-            warnings.warn('`BoundedSemaphore` without an explicit `name` argument is deprecated, use NamedBoundedSemaphore', DeprecationWarning, stacklevel=1)
++            warnings.warn(
++                '`BoundedSemaphore` without an explicit `name` argument is deprecated, use NamedBoundedSemaphore',
++                DeprecationWarning,
++                stacklevel=1,
++            )
++
++    def get_filenames(self) -> typing.Sequence[pathlib.Path]:
++        filenames = []
++        for number in range(self.maximum):
++            filename = self.filename_pattern.format(name=self.name, number=number)
++            if self.directory:
++                filenames.append(pathlib.Path(self.directory) / filename)
++            else:
++                filenames.append(pathlib.Path(filename))
++        return filenames
++
++    def get_random_filenames(self) -> typing.Sequence[pathlib.Path]:
++        filenames = list(self.get_filenames())
++        random.shuffle(filenames)
++        return filenames
++
++    def get_filename(self, number) -> pathlib.Path:
++        filename = self.filename_pattern.format(name=self.name, number=number)
++        if self.directory:
++            return pathlib.Path(self.directory) / filename
++        return pathlib.Path(filename)
++
++    def acquire(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ) -> typing.Optional[Lock]:
++        if timeout is None:
++            timeout = self.timeout
++        if check_interval is None:
++            check_interval = self.check_interval
++        if fail_when_locked is None:
++            fail_when_locked = self.fail_when_locked
++
++        filenames = self.get_random_filenames()
++
++        start_time = time.monotonic()
++
++        while True:
++            if self.try_lock(filenames):
++                return self.lock
++
++            if fail_when_locked:
++                raise exceptions.AlreadyLocked('Already locked')
++
++            elapsed = time.monotonic() - start_time
++            if elapsed + check_interval > timeout:
++                raise exceptions.AlreadyLocked('Already locked')
++
++            time.sleep(check_interval)
++
++    def try_lock(self, filenames: typing.Sequence[typing.Union[str, pathlib.Path]]) -> bool:
++        for filename in filenames:
++            lock = Lock(
++                filename,
++                mode='a',
++                timeout=0,
++                check_interval=0,
++                fail_when_locked=False,
++                flags=LOCK_METHOD,
++            )
++            try:
++                lock.acquire(timeout=0, check_interval=0, fail_when_locked=True)
++                self.lock = lock
++                return True
++            except exceptions.LockException:
++                continue
++        return False
++
++    def release(self):
++        if self.lock is not None:
++            self.lock.release()
++            self.lock = None
++
+ 
+ class NamedBoundedSemaphore(BoundedSemaphore):
+     """
+@@ -231,7 +486,16 @@ class NamedBoundedSemaphore(BoundedSemaphore):
+ 
+     """
+ 
+-    def __init__(self, maximum: int, name: typing.Optional[str]=None, filename_pattern: str='{name}.{number:02d}.lock', directory: str=tempfile.gettempdir(), timeout: typing.Optional[float]=DEFAULT_TIMEOUT, check_interval: typing.Optional[float]=DEFAULT_CHECK_INTERVAL, fail_when_locked: typing.Optional[bool]=True):
++    def __init__(
++        self,
++        maximum: int,
++        name: typing.Optional[str] = None,
++        filename_pattern: str = '{name}.{number:02d}.lock',
++        directory: str = tempfile.gettempdir(),
++        timeout: typing.Optional[float] = DEFAULT_TIMEOUT,
++        check_interval: typing.Optional[float] = DEFAULT_CHECK_INTERVAL,
++        fail_when_locked: typing.Optional[bool] = True,
++    ):
+         if name is None:
+             name = 'bounded_semaphore.%d' % random.randint(0, 1000000)
+-        super().__init__(maximum, name, filename_pattern, directory, timeout, check_interval, fail_when_locked)
+\ No newline at end of file
++        super().__init__(maximum, name, filename_pattern, directory, timeout, check_interval, fail_when_locked)
