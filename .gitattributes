@@ -1,0 +1,14 @@
+# Generated benchmark artifacts — exclude from diffs, GitHub language stats, and
+# automated code review (Copilot skips linguist-generated + binary files). These are
+# agent-produced outputs / measured data, not human-authored code.
+# See commit0/AAR_2026-06-04_REVALIDATION.md and commit0/RE-VALIDATION.md.
+
+# Per-cell result JSONs + aggregates + OpenHands run dirs (measured data)
+commit0/results/**                 linguist-generated=true
+
+# Agent-generated code diffs (provenance; e.g. chardet patch is ~41k lines of data tables)
+commit0/results/patches/**         -diff linguist-generated=true
+
+# Rendered figures (binary)
+paper/figures/*.pdf                -diff linguist-generated=true
+paper/figures/*.png                binary linguist-generated=true
