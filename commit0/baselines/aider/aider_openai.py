@@ -16,6 +16,7 @@ from pathlib import Path
 from _aider_runner import WORKSPACE, load_dotenv, run_aider_on_lib
 
 MODEL_ID = "openai/gpt-5.4"
+MODEL_ID = os.environ.get("KAIZEN_MODEL", MODEL_ID)  # sampling: cheap-model override
 RESULTS_DIR = WORKSPACE / "baselines" / "results"
 
 

@@ -47,10 +47,10 @@ def branch_of(arch: str, provider: str) -> str:
         return "single_shot_sonnet" if provider == "anthropic" else "single_shot_openai"
     raise ValueError(arch)
 
-def one_rep(arch, provider, lib, k, temperature, seed, dry):
+def one_rep(arch, provider, lib, k, temperature, seed, dry, model=None):
     """Run + score one rep. Returns the rep dict (or None on dry-run)."""
     cmd = runner_cmd(arch, provider, lib)
-    print(f"    rep{k}: {' '.join(cmd)}")
+    print(f"    rep{k}: {' '.join(cmd)}  [model={model or 'default'}]")
     if dry:
         return None
     env = dict(os.environ)
@@ -58,6 +58,8 @@ def one_rep(arch, provider, lib, k, temperature, seed, dry):
         env["KAIZEN_LLM_TEMPERATURE"] = str(temperature)   # T5 (runner-honoring TODO)
     if seed is not None:
         env["KAIZEN_LLM_SEED"] = str(seed + k)
+    if model:
+        env["KAIZEN_MODEL"] = model   # cheap-model override honored by the inner runner scripts
     subprocess.run(cmd, cwd=WORKSPACE, env=env)
     # robust re-score of the branch the agent just produced (score_branch, not the
     # runner's own scoring) so every rep is scored identically (T1-T4).
@@ -72,7 +74,7 @@ def one_rep(arch, provider, lib, k, temperature, seed, dry):
             pass
     return {
         "repo": lib, "arch": arch, "provider": provider, "rep": k,
-        "temperature": temperature, "seed": (None if seed is None else seed + k),
+        "model": model, "temperature": temperature, "seed": (None if seed is None else seed + k),
         "scoring": sc["scoring"], "final_counts": sc["counts"],
         "collected": sc["collected"], "rate": sc["rate"],
         "collection_gated": sc["collection_gated"],
@@ -80,11 +82,11 @@ def one_rep(arch, provider, lib, k, temperature, seed, dry):
         "score_attempts": sc["attempts"],
     }
 
-def run_cell(arch, provider, lib, reps, max_redraws, temperature, seed, dry, out_dir, sleep_s=0):
+def run_cell(arch, provider, lib, reps, max_redraws, temperature, seed, dry, out_dir, sleep_s=0, model=None):
     print(f"  cell {lib}/{arch}/{provider}: target {reps} valid reps")
     valid = 0; draw = 0; invalid = 0
     while valid < reps and draw < reps + max_redraws:
-        d = one_rep(arch, provider, lib, valid, temperature, seed, dry)
+        d = one_rep(arch, provider, lib, valid, temperature, seed, dry, model)
         draw += 1
         if dry:
             valid += 1; continue
@@ -116,13 +118,14 @@ def main():
     ap.add_argument("--temperature", type=float, default=None)
     ap.add_argument("--seed", type=int, default=None)
     ap.add_argument("--out-dir", default=str(OUT_DIR))
+    ap.add_argument("--model", default=None, help="litellm model override (e.g. openai/gpt-5.4-mini) for cheap Phase-A runs")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
     out_dir = Path(a.out_dir)
     print(f"== sampling: {a.arch} x {a.provider} x {len(a.libs)} libs x {a.reps} reps "
           f"{'(DRY-RUN, no spend)' if a.dry_run else ''} ==")
-    print(f"   out: {out_dir}   temperature={a.temperature} seed={a.seed} max_redraws={a.max_redraws}")
+    print(f"   out: {out_dir}   model={a.model or 'default'} temperature={a.temperature} seed={a.seed} max_redraws={a.max_redraws}")
     if not a.dry_run:
         out_dir.mkdir(parents=True, exist_ok=True)
         # T5/env-gotcha: keep editable jinja2 on a working branch so litellm imports
@@ -131,7 +134,7 @@ def main():
     tot_valid = tot_invalid = 0
     for lib in a.libs:
         v, iv = run_cell(a.arch, a.provider, lib, a.reps, a.max_redraws,
-                         a.temperature, a.seed, a.dry_run, out_dir, a.sleep)
+                         a.temperature, a.seed, a.dry_run, out_dir, a.sleep, a.model)
         tot_valid += v; tot_invalid += iv
     print(f"\n== done: {tot_valid} valid reps, {tot_invalid} invalid (discarded) ==")
     if not a.dry_run:
