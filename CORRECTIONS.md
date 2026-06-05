@@ -72,6 +72,12 @@ by `python commit0/baselines/value_add_fingerprint.py` and by Figure 1
 - **Aider × Sonnet: 7 / 16** valid; the other **9 cells are a documented provider-limited gap**
   (connection/duration-level failures on the run host, *not* a rate cap — diagnostics ruled that
   out). They render `n/a` in Figure 1 and are flagged pending by the provenance guard.
+- **4 cells were mis-stamped full-suite with 0 collected** by the pre-fix runner — import/collection
+  crashes whose traceback was never parsed into an `errors` count: `marshmallow_smolagents_anthropic`,
+  `marshmallow_aider_openai`, `portalocker_smolagents_openai`, `jinja_aider_openai`. They are re-marked
+  `pending-regeneration` (they contributed 0/0 to their aggregates, so the corrected numbers are
+  unaffected), and the provenance guard now **fails any full-suite cell with 0 collected** so this
+  class can't recur. A patched-runner re-run will record their real collection-`errors` count.
 
 ### Known limitations (honesty about what is *not* yet established)
 

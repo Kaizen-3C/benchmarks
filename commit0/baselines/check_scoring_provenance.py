@@ -37,12 +37,23 @@ RESULTS = Path(__file__).resolve().parents[1] / "results"
 VALID_SCORING = {"commit0-test-full-suite", "full-suite-local-pytest"}
 COMPETITOR_ARCHS = {"aider", "smolagents"}
 
-# Known `-x`-truncated cells still pending re-validation (see RE-VALIDATION.md).
+# Known cells still pending re-validation (see RE-VALIDATION.md / CORRECTIONS.md).
 # 2026-06-04: OpenAI (all 32) + Anthropic smolagents (16) + Anthropic aider (7 valid) re-scored
-# full-suite. Remaining 10 = 9 aider/anthropic cells corrupted by provider timeouts (voluptuous,
-# chardet, simpy, imapclient, marshmallow, cookiecutter, babel, jinja, minitorch) + their
-# aggregate, pending a targeted re-run once Anthropic is stable. Lower to 0 then.
-EXPECTED_PENDING = 10
+# full-suite. Remaining baseline = 14:
+#   * 9 aider/anthropic cells corrupted by provider timeouts (voluptuous, chardet, simpy,
+#     imapclient, marshmallow, cookiecutter, babel, jinja, minitorch) + their aggregate (=10), and
+#   * 4 cells mis-stamped full-suite by the pre-fix runner but with 0 collected (import/collection
+#     crash, no captured count): marshmallow_smolagents_anthropic, marshmallow_aider_openai,
+#     portalocker_smolagents_openai, jinja_aider_openai. Re-marked pending-regeneration; a
+#     patched-runner re-run will record their real `errors` count. Lower to 0 once all regenerated.
+EXPECTED_PENDING = 14
+
+
+def _collected(d: dict) -> int:
+    c = d.get("final_counts") or d.get("counts") or {}
+    return (int(c.get("passed", 0) or 0)
+            + int(c.get("failed", 0) or 0)
+            + int(c.get("errors", 0) or 0))
 
 
 def classify(path: Path) -> tuple[str, bool]:
@@ -50,14 +61,19 @@ def classify(path: Path) -> tuple[str, bool]:
 
     `arch` is "" for files that are not architecture result cells.
     Aggregates count as valid only if EVERY per_library entry is tagged.
+
+    A per-cell full-suite score is valid ONLY if it also has parseable non-zero
+    counts: a cell stamped `commit0-test-full-suite` with 0 collected (a traceback
+    that never produced a pytest summary, even an `errors` count) is a mis-stamp,
+    not a real score — see CORRECTIONS.md. Such cells are treated as pending.
     """
     j = json.loads(path.read_text(encoding="utf-8"))  # may raise -> caller handles
     arch = j.get("branch") or j.get("architecture") or ""
-    if "per_library" in j:  # aggregate
+    if "per_library" in j:  # aggregate (regenerated wholesale; tag-only check)
         entries = (j.get("per_library") or {}).values()
         valid = bool(entries) and all(e.get("scoring") in VALID_SCORING for e in entries)
         return arch, valid
-    return arch, j.get("scoring") in VALID_SCORING
+    return arch, (j.get("scoring") in VALID_SCORING and _collected(j) > 0)
 
 
 def main() -> int:

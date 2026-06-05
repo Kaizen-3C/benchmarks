@@ -47,8 +47,15 @@ def branch_of(arch: str, provider: str) -> str:
         return "single_shot_sonnet" if provider == "anthropic" else "single_shot_openai"
     raise ValueError(arch)
 
-def one_rep(arch, provider, lib, k, temperature, seed, dry, model=None):
-    """Run + score one rep. Returns the rep dict (or None on dry-run)."""
+def one_rep(arch, provider, lib, k, temperature, seed, dry, model=None, seed_key=None):
+    """Run + score one rep. Returns the rep dict (or None on dry-run).
+
+    `seed_key` (default k) offsets the seed. The caller passes a per-DRAW counter, not
+    the valid-rep index, so an invalid-rep redraw gets a NEW seed — otherwise, once the
+    runners honor seeds (T5), a redraw would deterministically repeat the same sample.
+    """
+    if seed_key is None:
+        seed_key = k
     cmd = runner_cmd(arch, provider, lib)
     print(f"    rep{k}: {' '.join(cmd)}  [model={model or 'default'}]")
     if dry:
@@ -57,7 +64,7 @@ def one_rep(arch, provider, lib, k, temperature, seed, dry, model=None):
     if temperature is not None:
         env["KAIZEN_LLM_TEMPERATURE"] = str(temperature)   # T5 (runner-honoring TODO)
     if seed is not None:
-        env["KAIZEN_LLM_SEED"] = str(seed + k)
+        env["KAIZEN_LLM_SEED"] = str(seed + seed_key)
     if model:
         env["KAIZEN_MODEL"] = model   # cheap-model override honored by the inner runner scripts
     subprocess.run(cmd, cwd=WORKSPACE, env=env)
@@ -74,7 +81,7 @@ def one_rep(arch, provider, lib, k, temperature, seed, dry, model=None):
             pass
     return {
         "repo": lib, "arch": arch, "provider": provider, "rep": k,
-        "model": model, "temperature": temperature, "seed": (None if seed is None else seed + k),
+        "model": model, "temperature": temperature, "seed": (None if seed is None else seed + seed_key),
         "scoring": sc["scoring"], "final_counts": sc["counts"],
         "collected": sc["collected"], "rate": sc["rate"],
         "collection_gated": sc["collection_gated"],
@@ -86,7 +93,8 @@ def run_cell(arch, provider, lib, reps, max_redraws, temperature, seed, dry, out
     print(f"  cell {lib}/{arch}/{provider}: target {reps} valid reps")
     valid = 0; draw = 0; invalid = 0
     while valid < reps and draw < reps + max_redraws:
-        d = one_rep(arch, provider, lib, valid, temperature, seed, dry, model)
+        # seed_key=draw (monotonic per attempt) so an invalid-rep redraw gets a fresh seed
+        d = one_rep(arch, provider, lib, valid, temperature, seed, dry, model, seed_key=draw)
         draw += 1
         if dry:
             valid += 1; continue

@@ -2,7 +2,7 @@
   "repo": "marshmallow",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "smolagents",
-  "scoring": "commit0-test-full-suite",
+  "scoring": "pending-regeneration",
   "code_branch": "smolagents",
   "patch_file": "patches/marshmallow_smolagents_anthropic.patch",
   "patch_sha256": "04d0ad805f0e8067b3f13b8fb73750b155c17bf0ad6edf183478270c59b749e3",
@@ -28,5 +28,7 @@
     "wall_clock_capped": false,
     "cost_capped": false,
     "callback_errors": []
-  }
+  },
+  "scoring_superseded": "commit0-test-full-suite",
+  "scoring_note": "MIS-STAMPED by the pre-fix runner: import/collection crash produced a traceback, not a pytest summary, so final_counts is 0/0/0/0 and this was never a valid full-suite score. Awaits regeneration with the patched runner (which records the real collection `errors` count). See CORRECTIONS.md."
 }

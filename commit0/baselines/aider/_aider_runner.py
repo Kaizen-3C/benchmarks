@@ -120,10 +120,15 @@ def _materialize_spec_md(repo_dir: Path) -> Path | None:
 
 
 def _counts_from_summary(summary: str) -> dict[str, int]:
-    """Parse a pytest summary line into {passed, failed, skipped, errors}."""
+    """Parse a pytest summary line into {passed, failed, skipped, errors}.
+
+    Case-insensitive (matching _is_pytest_summary) and lower-cases the matched kind,
+    so an upper/mixed-case token can't pass the gate yet record all-zero counts.
+    """
     counts = {"passed": 0, "failed": 0, "skipped": 0, "errors": 0}
-    for n, kind in re.findall(r"(\d+)\s+(passed|failed|skipped|error[s]?)", summary or ""):
-        counts["errors" if kind.startswith("error") else kind] = int(n)
+    for n, kind in re.findall(r"(\d+)\s+(passed|failed|skipped|error[s]?)", summary or "", re.I):
+        k = kind.lower()
+        counts["errors" if k.startswith("error") else k] = int(n)
     return counts
 
 
@@ -147,7 +152,7 @@ def _start_branch(repo_dir: Path, branch: str) -> None:
     via `commit0 test --branch`.
     """
     git(repo_dir, "checkout", "commit0", check=True)
-    git(repo_dir, "clean", "-fd")           # drop prior-run artifacts (spec.md, agent caches)
+    git(repo_dir, "clean", "-fd", check=True)  # drop prior-run artifacts; a failed clean would leave noise in the patch
     git(repo_dir, "branch", "-D", branch)   # no-op if it doesn't exist (check=False)
     git(repo_dir, "checkout", "-b", branch, check=True)
 
@@ -185,14 +190,16 @@ def _persist_and_score(
 
     # 2. Authoritative full-suite score via the same path as every other arch.
     exit_code, summary = run_pytest_via_commit0(lib_name, branch)
-    if _is_pytest_summary(summary):
-        counts = _counts_from_summary(summary)
+    counts = _counts_from_summary(summary)
+    collected = counts["passed"] + counts["failed"] + counts["errors"]
+    if _is_pytest_summary(summary) and collected > 0:
         scoring = SCORING_VIA_COMMIT0
     else:
-        # Fallback: commit0 produced no PARSEABLE summary (it returns the last 500
-        # bytes of stdout/stderr otherwise — non-empty but not a result line); score
-        # locally, full suite, and stamp the cell honestly as a local fallback.
-        print(f"  [warn] {lib_name}: commit0 test emitted no parseable summary; local pytest fallback",
+        # Fallback: commit0 produced no PARSEABLE, non-zero summary. It returns the
+        # last 500 bytes of stdout/stderr when it finds no summary line, and an
+        # import/collection crash yields a traceback that parses to 0/0/0/0 — never
+        # stamp full-suite on zero collected. Score locally, full suite, stamp LOCAL.
+        print(f"  [warn] {lib_name}: commit0 test emitted no parseable/non-zero summary; local pytest fallback",
               file=sys.stderr)
         summary, counts = _final_pytest(repo_dir, SCORING_TEST_CMD)
         scoring = SCORING_VIA_LOCAL
@@ -233,7 +240,8 @@ def _final_pytest(repo_dir: Path, test_cmd: str = SCORING_TEST_CMD) -> tuple[str
     # Parse pytest summary from the last few lines
     summary_line = ""
     for line in reversed(output.splitlines()):
-        if "passed" in line or "failed" in line or "error" in line:
+        low = line.lower()  # collection failures emit upper-case "ERROR"/"Interrupted: N errors"
+        if "passed" in low or "failed" in low or "error" in low:
             summary_line = line.strip()
             break
     counts = _counts_from_summary(summary_line)
