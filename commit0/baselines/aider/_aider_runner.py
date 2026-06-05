@@ -146,10 +146,10 @@ def _start_branch(repo_dir: Path, branch: str) -> None:
     those edits onto `branch` so the generated code is recoverable and scoreable
     via `commit0 test --branch`.
     """
-    git(repo_dir, "checkout", "commit0")
+    git(repo_dir, "checkout", "commit0", check=True)
     git(repo_dir, "clean", "-fd")           # drop prior-run artifacts (spec.md, agent caches)
     git(repo_dir, "branch", "-D", branch)   # no-op if it doesn't exist (check=False)
-    git(repo_dir, "checkout", "-b", branch)
+    git(repo_dir, "checkout", "-b", branch, check=True)
 
 
 def _strip_agent_noise(repo_dir: Path) -> None:
@@ -180,8 +180,8 @@ def _persist_and_score(
     #    clean code only. Binary caches (.aider.tags.cache/*) make the container's
     #    patch application fail, silently scoring the baseline. See ../../RE-VALIDATION.md.
     _strip_agent_noise(repo_dir)
-    git(repo_dir, "add", "-A")
-    git(repo_dir, "commit", "--allow-empty", "-m", f"{branch} generated output ({lib_name})")
+    git(repo_dir, "add", "-A", check=True)
+    git(repo_dir, "commit", "--allow-empty", "-m", f"{branch} generated output ({lib_name})", check=True)
 
     # 2. Authoritative full-suite score via the same path as every other arch.
     exit_code, summary = run_pytest_via_commit0(lib_name, branch)

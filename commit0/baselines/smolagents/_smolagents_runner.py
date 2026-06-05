@@ -125,10 +125,10 @@ def _start_branch(repo_dir: Path, branch: str) -> None:
     The agent then edits the working tree, and we commit those edits onto `branch`
     so the generated code is recoverable and scoreable via `commit0 test --branch`.
     """
-    git(repo_dir, "checkout", "commit0")
+    git(repo_dir, "checkout", "commit0", check=True)
     git(repo_dir, "clean", "-fd")           # drop prior-run artifacts (spec.md, agent caches)
     git(repo_dir, "branch", "-D", branch)   # no-op if it doesn't exist (check=False)
-    git(repo_dir, "checkout", "-b", branch)
+    git(repo_dir, "checkout", "-b", branch, check=True)
 
 
 def _final_pytest(repo_dir: Path) -> tuple[str, dict[str, int]]:
@@ -176,8 +176,8 @@ def _persist_and_score(
     #    Strip agent noise FIRST (see _strip_agent_noise) so commit0's patch.diff is
     #    clean code only — committing binaries silently scores the baseline.
     _strip_agent_noise(repo_dir)
-    git(repo_dir, "add", "-A")
-    git(repo_dir, "commit", "--allow-empty", "-m", f"{branch} generated output ({lib_name})")
+    git(repo_dir, "add", "-A", check=True)
+    git(repo_dir, "commit", "--allow-empty", "-m", f"{branch} generated output ({lib_name})", check=True)
 
     # 2. Authoritative full-suite score via the same path as every other arch.
     exit_code, summary = run_pytest_via_commit0(lib_name, branch)

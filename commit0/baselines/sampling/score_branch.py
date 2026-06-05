@@ -81,6 +81,15 @@ def score_branch(lib: str, branch: str, repo_dir: Path | None = None,
     log_root = WORKSPACE / "logs" / "pytest" / lib / branch
 
     if commit:
+        # Ensure HEAD is the branch we are about to commit to AND score. Otherwise we
+        # would commit the working tree onto the wrong ref (and strip noise from the
+        # wrong tree) while `commit0 test --branch <branch>` scores the stale target
+        # branch — the silent mis-scoring this module exists to prevent. _git fails
+        # fast (check=True), so a dirty-tree checkout conflict raises rather than
+        # mis-scoring.
+        cur = _git(repo_dir, "rev-parse", "--abbrev-ref", "HEAD").strip()
+        if cur != branch:
+            _git(repo_dir, "checkout", branch)
         if strip_noise:
             _strip_noise(repo_dir)            # T1
         _git(repo_dir, "add", "-A")

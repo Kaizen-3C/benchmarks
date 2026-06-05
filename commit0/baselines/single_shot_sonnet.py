@@ -217,10 +217,21 @@ def write_files(repo_dir: Path, files: dict[str, str]) -> list[str]:
     return written
 
 
-def git(repo_dir: Path, *args: str) -> str:
+def git(repo_dir: Path, *args: str, check: bool = False) -> str:
+    """Run a git command in repo_dir and return stdout+stderr.
+
+    check=False (default) preserves tolerant callers that expect a non-zero exit to
+    be a no-op (e.g. `branch -D` when the branch doesn't exist). Pass check=True for
+    mutating operations whose failure must NOT pass silently — a swallowed
+    `add`/`commit`/`checkout` failure can leave commit0 scoring stale/baseline code.
+    """
     r = subprocess.run(
         ["git", *args], cwd=repo_dir, capture_output=True, text=True, check=False
     )
+    if check and r.returncode != 0:
+        raise RuntimeError(
+            f"git {' '.join(args)} failed in {repo_dir} (exit {r.returncode}): "
+            f"{(r.stderr or r.stdout).strip()}")
     return (r.stdout + r.stderr).strip()
 
 

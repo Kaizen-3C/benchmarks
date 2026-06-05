@@ -107,6 +107,30 @@ def run_cell(arch, provider, lib, reps, max_redraws, temperature, seed, dry, out
         print(f"      !! only {valid}/{reps} valid reps after {draw} draws ({invalid} invalid) — provider unstable?")
     return valid, invalid
 
+def _fix_jinja_editable_install():
+    """Opt-in WSL workaround: an editable jinja2 install in repos/jinja must sit on a
+    non-stub branch or litellm's `import jinja2` breaks mid-run. Gated + validated +
+    logged so it is NOT a silent, unrelated side effect on other hosts.
+
+    Controlled by env KAIZEN_FIX_JINJA_EDITABLE (default "1"; set "0" to disable).
+    No-ops cleanly if the jinja repo isn't present; warns (does not crash) on failure.
+    """
+    if os.environ.get("KAIZEN_FIX_JINJA_EDITABLE", "1") == "0":
+        return
+    jinja_repo = WORKSPACE / "repos" / "jinja"
+    if not jinja_repo.is_dir():
+        return
+    r = subprocess.run(["git", "-C", str(jinja_repo), "checkout", "-f", "smolagents"],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        print(f"  [warn] jinja editable-install workaround (checkout smolagents) failed: "
+              f"{r.stderr.strip()} — set KAIZEN_FIX_JINJA_EDITABLE=0 if not needed here",
+              file=sys.stderr)
+    else:
+        print("  [info] jinja editable-install pinned to 'smolagents' branch "
+              "(KAIZEN_FIX_JINJA_EDITABLE; set 0 to disable)")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--arch", required=True, choices=["aider", "smolagents", "single_shot"])
@@ -128,9 +152,7 @@ def main():
     print(f"   out: {out_dir}   model={a.model or 'default'} temperature={a.temperature} seed={a.seed} max_redraws={a.max_redraws}")
     if not a.dry_run:
         out_dir.mkdir(parents=True, exist_ok=True)
-        # T5/env-gotcha: keep editable jinja2 on a working branch so litellm imports
-        subprocess.run(["git", "-C", str(WORKSPACE / "repos" / "jinja"),
-                        "checkout", "-f", "smolagents"], capture_output=True)
+        _fix_jinja_editable_install()
     tot_valid = tot_invalid = 0
     for lib in a.libs:
         v, iv = run_cell(a.arch, a.provider, lib, a.reps, a.max_redraws,
