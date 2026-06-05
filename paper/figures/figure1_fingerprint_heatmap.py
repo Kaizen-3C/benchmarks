@@ -11,8 +11,8 @@ Cols: 6 (architecture × provider) cells — KD-S, KD-G, B3-S, B3-G, OH-S, OH-G
 
 Reads from benchmarks/commit0/results/.
 Outputs:
-  benchmarks/paper/figures/figure1.pdf  (vector, publication-quality)
-  benchmarks/paper/figures/figure1.png  (raster, 300 DPI)
+  benchmarks/paper/figures/figure1.pdf  (vector, publication-quality — tracked in git)
+  benchmarks/paper/figures/figure1.png  (raster, 300 DPI — written locally but git-ignored)
 
 Usage:
   py -3.12 benchmarks/paper/figures/figure1_fingerprint_heatmap.py

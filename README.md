@@ -114,7 +114,7 @@ python commit0/baselines/value_add_table.py         # us-vs-them per-lib table
 The fingerprint heatmap (Figure 1 in the methodology paper) regenerates from the same JSONs:
 
 ```bash
-python paper/figures/figure1_fingerprint_heatmap.py   # → paper/figures/figure1.{pdf,png}
+python paper/figures/figure1_fingerprint_heatmap.py   # → figure1.pdf (tracked); figure1.png also written locally but git-ignored
 ```
 
 ### Environment & pinning

@@ -9,6 +9,6 @@ commit0/results/**                 linguist-generated=true
 # Agent-generated code diffs (provenance; e.g. chardet patch is ~41k lines of data tables)
 commit0/results/patches/**         -diff linguist-generated=true
 
-# Rendered figures (binary)
+# Rendered figure — only the vector PDF is tracked (the PNG raster is git-ignored;
+# see .gitignore — it is regenerated locally to avoid ~1.2 MB binary blobs in history)
 paper/figures/*.pdf                -diff linguist-generated=true
-paper/figures/*.png                binary linguist-generated=true
