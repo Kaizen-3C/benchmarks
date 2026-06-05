@@ -107,6 +107,18 @@ def _counts_from_summary(summary: str) -> dict[str, int]:
     return counts
 
 
+def _is_pytest_summary(summary: str) -> bool:
+    """True only if `summary` is a real pytest result line (contains a
+    pass/fail/error/skip count).
+
+    `run_pytest_via_commit0` returns the last 500 bytes of stdout/stderr when it
+    finds no summary line — non-empty but unparseable junk. Gating on mere
+    truthiness would mis-stamp such a cell as `commit0-test-full-suite` with
+    all-zero counts (a silent baseline-style mis-score). Gate on parseability.
+    """
+    return bool(re.search(r"\d+\s+(passed|failed|skipped|error)", summary or "", re.I))
+
+
 def _start_branch(repo_dir: Path, branch: str) -> None:
     """Reset to the pinned commit0 starter and open a fresh arch branch.
 
@@ -169,11 +181,14 @@ def _persist_and_score(
 
     # 2. Authoritative full-suite score via the same path as every other arch.
     exit_code, summary = run_pytest_via_commit0(lib_name, branch)
-    if summary:
+    if _is_pytest_summary(summary):
         counts = _counts_from_summary(summary)
         scoring = SCORING_VIA_COMMIT0
     else:
-        print(f"  [warn] {lib_name}: commit0 test emitted no summary; local pytest fallback",
+        # Fallback: commit0 produced no PARSEABLE summary (it returns the last 500
+        # bytes of stdout/stderr otherwise — non-empty but not a result line); score
+        # locally, full suite, and stamp the cell honestly as a local fallback.
+        print(f"  [warn] {lib_name}: commit0 test emitted no parseable summary; local pytest fallback",
               file=sys.stderr)
         summary, counts = _final_pytest(repo_dir)
         scoring = SCORING_VIA_LOCAL

@@ -27,8 +27,19 @@ TEST_DIR_OVERRIDES = {"voluptuous": "voluptuous/tests", "chardet": ".",
 _SUMMARY_RE = re.compile(
     r"(\d+)\s+(passed|failed|skipped|error[s]?|xfailed|xpassed|deselected)", re.I)
 
-def _git(repo: Path, *a):
-    return subprocess.run(["git", *a], cwd=repo, capture_output=True, text=True).stdout
+def _git(repo: Path, *a, check: bool = True):
+    """Run a git command. Fail fast on error (with stderr) unless check=False.
+
+    Silently swallowing a failed `git add`/`commit` would let `commit0 test
+    --branch` score an unintended state (including the BASELINE) with no signal —
+    the exact mis-scoring this module exists to prevent.
+    """
+    r = subprocess.run(["git", *a], cwd=repo, capture_output=True, text=True)
+    if check and r.returncode != 0:
+        raise RuntimeError(
+            f"git {' '.join(a)} failed in {repo} (exit {r.returncode}): "
+            f"{(r.stderr or r.stdout).strip()}")
+    return r.stdout
 
 def _strip_noise(repo: Path):  # T1
     for n in list(repo.glob(".aider*")) + [repo / "spec.md"]:
