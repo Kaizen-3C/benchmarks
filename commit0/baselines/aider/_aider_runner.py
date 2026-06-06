@@ -56,7 +56,6 @@ from single_shot_sonnet import (  # noqa: E402
     git,
     load_dotenv,
     pin_jinja_for_litellm,
-    run_pytest_via_commit0,
 )
 from score_branch import score_branch as _score_branch  # noqa: E402  (robust commit0 scorer)
 

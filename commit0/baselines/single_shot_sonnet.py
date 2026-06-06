@@ -254,7 +254,7 @@ def pin_jinja_for_litellm() -> None:
     Pin repos/jinja to a branch whose jinja2 actually imports (smolagents=3.1.4,
     kaizen_stage2=3.1.6) first. WSL-only env workaround; see ../RERUN_CHECKLIST.md (A5).
     """
-    repo = Path.home() / "kaizen-commit0" / "repos" / "jinja"
+    repo = WORKSPACE / "repos" / "jinja"
     if not repo.is_dir():
         return
     for b in ("smolagents", "kaizen_stage2"):
