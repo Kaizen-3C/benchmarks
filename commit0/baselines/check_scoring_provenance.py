@@ -37,16 +37,18 @@ RESULTS = Path(__file__).resolve().parents[1] / "results"
 VALID_SCORING = {"commit0-test-full-suite", "full-suite-local-pytest"}
 COMPETITOR_ARCHS = {"aider", "smolagents"}
 
-# Known cells still pending re-validation (see RE-VALIDATION.md / CORRECTIONS.md).
+# Known cells still pending re-validation (see RE-VALIDATION.md / CORRECTIONS.md / REPRODUCIBILITY.md).
 # 2026-06-04: OpenAI (all 32) + Anthropic smolagents (16) + Anthropic aider (7 valid) re-scored
-# full-suite. Remaining baseline = 14:
+# full-suite. Remaining baseline = 17:
 #   * 9 aider/anthropic cells corrupted by provider timeouts (voluptuous, chardet, simpy,
-#     imapclient, marshmallow, cookiecutter, babel, jinja, minitorch) + their aggregate (=10), and
-#   * 4 cells mis-stamped full-suite by the pre-fix runner but with 0 collected (import/collection
-#     crash, no captured count): marshmallow_smolagents_anthropic, marshmallow_aider_openai,
-#     portalocker_smolagents_openai, jinja_aider_openai. Re-marked pending-regeneration; a
-#     patched-runner re-run will record their real `errors` count. Lower to 0 once all regenerated.
-EXPECTED_PENDING = 14
+#     imapclient, marshmallow, cookiecutter, babel, jinja, minitorch) + their aggregate (=10);
+#   * 4 cells mis-stamped full-suite by the pre-fix runner but with 0 collected: re-marked
+#     pending-regeneration (marshmallow_smolagents_anthropic, marshmallow_aider_openai,
+#     portalocker_smolagents_openai, jinja_aider_openai) (=14); and
+#   * 3 aggregates that EMBED those re-marked entries and so now correctly read as pending:
+#     aggregate_lite_{aider_openai, smolagents_anthropic, smolagents_openai} (=17).
+# A patched-runner re-run (RERUN_CHECKLIST.md) records their real counts; lower to 0 once done.
+EXPECTED_PENDING = 17
 
 
 def _collected(d: dict) -> int:
