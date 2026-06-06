@@ -2,24 +2,28 @@
   "repo": "pyjwt",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "aider",
-  "elapsed_s": 52.3,
-  "final_summary": "147 passed, 114 skipped, 1 xfailed in 0.19s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/pyjwt_aider_anthropic.patch",
+  "patch_sha256": "a7b52ee716ad65e325e923962b1a24102f09b1f6a3e78a72fe6d0ea800a8649d",
+  "elapsed_s": 389.7,
+  "final_summary": "============= 5 failed, 254 passed, 2 skipped, 1 xfailed in 5.27s ==============",
   "final_counts": {
-    "passed": 147,
-    "failed": 0,
-    "skipped": 114,
+    "passed": 254,
+    "failed": 5,
+    "skipped": 2,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 89144,
-    "output_tokens": 4580,
+    "input_tokens": 431802,
+    "output_tokens": 29710,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.3361
+    "cost_usd": 1.7411
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
-    "malformed_responses": 0,
+    "malformed_responses": 2,
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false

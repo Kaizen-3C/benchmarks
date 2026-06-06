@@ -2,20 +2,24 @@
   "repo": "imapclient",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "smolagents",
-  "elapsed_s": 170.0,
-  "final_summary": "1 failed, 22 passed in 0.09s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/imapclient_smolagents_anthropic.patch",
+  "patch_sha256": "f5d29573141e31d60c20e91d8363b43d5344f210d82a9c84cbefa30fa5ce18db",
+  "elapsed_s": 183.0,
+  "final_summary": "=================== 32 failed, 54 passed, 13 errors in 0.86s ===================",
   "final_counts": {
-    "passed": 22,
-    "failed": 1,
+    "passed": 54,
+    "failed": 32,
     "skipped": 0,
-    "errors": 0
+    "errors": 13
   },
   "totals": {
-    "input_tokens": 772401,
-    "output_tokens": 10006,
+    "input_tokens": 903326,
+    "output_tokens": 10206,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 2.4673
+    "cost_usd": 2.8631
   },
   "smolagents_diagnostics": {
     "llm_calls": 21,

@@ -2,20 +2,24 @@
   "repo": "deprecated",
   "model": "openai/gpt-5.4",
   "branch": "aider",
-  "elapsed_s": 57.0,
-  "final_summary": "1 error in 0.03s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/deprecated_aider_openai.patch",
+  "patch_sha256": "3b818615ee82d188cc02e86300e0074086460d5edf30ea32dcfc83e63d32697c",
+  "elapsed_s": 25.9,
+  "final_summary": "======================= 171 passed, 5 warnings in 0.35s ========================",
   "final_counts": {
-    "passed": 0,
+    "passed": 171,
     "failed": 0,
     "skipped": 0,
-    "errors": 1
+    "errors": 0
   },
   "totals": {
-    "input_tokens": 84302,
-    "output_tokens": 4802,
+    "input_tokens": 39747,
+    "output_tokens": 2225,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.205
+    "cost_usd": 0.1327
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
@@ -23,5 +27,6 @@
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

@@ -1,0 +1,27 @@
+{
+  "repo": "cookiecutter",
+  "model": "openai/gpt-5.4",
+  "branch": "aider",
+  "elapsed_s": 236.3,
+  "final_summary": "========================= 1 failed, 15 passed in 1.38s =========================",
+  "final_counts": {
+    "passed": 15,
+    "failed": 1,
+    "skipped": 0,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 486553,
+    "output_tokens": 16448,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.769
+  },
+  "aider_diagnostics": {
+    "exhausted_context_windows": 0,
+    "malformed_responses": 0,
+    "test_cmd": "pytest -x --tb=no -q",
+    "wall_clock_capped": false,
+    "cost_capped": false
+  }
+}

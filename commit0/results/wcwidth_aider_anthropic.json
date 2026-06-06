@@ -2,24 +2,28 @@
   "repo": "wcwidth",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "aider",
-  "elapsed_s": 140.6,
-  "final_summary": "\u001b[31m\u001b[31m\u001b[1m1 failed\u001b[0m, \u001b[32m20 passed\u001b[0m\u001b[31m in 0.06s\u001b[0m\u001b[0m",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/wcwidth_aider_anthropic.patch",
+  "patch_sha256": "dff8fd23d7e89d8518daa89d845bd689807135e8715887f270bda53d360e2d90",
+  "elapsed_s": 211.4,
+  "final_summary": "=================== 6 failed, 32 passed, 1 skipped in 0.65s ====================",
   "final_counts": {
-    "passed": 20,
-    "failed": 1,
-    "skipped": 0,
+    "passed": 32,
+    "failed": 6,
+    "skipped": 1,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 356504,
-    "output_tokens": 7784,
+    "input_tokens": 334265,
+    "output_tokens": 11186,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 1.1863
+    "cost_usd": 1.1706
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
-    "malformed_responses": 0,
+    "malformed_responses": 1,
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false

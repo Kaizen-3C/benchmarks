@@ -3,7 +3,7 @@
 ## Figure 1 — Value-Add Fingerprint Heatmap
 
 **Generator:** [`figure1_fingerprint_heatmap.py`](figure1_fingerprint_heatmap.py)
-**Outputs:** `figure1.pdf` (vector, publication-quality), `figure1.png` (300 DPI raster)
+**Outputs:** `figure1.pdf` (vector, publication-quality — the tracked artifact). The generator also writes `figure1.png` (300 DPI raster) locally for quick viewing, but it is git-ignored (regenerated on demand; not committed, to keep ~1.2 MB binary blobs out of history).
 **First rendered:** 2026-04-25 (Day 3)
 
 ### What it shows

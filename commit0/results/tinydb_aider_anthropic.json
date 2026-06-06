@@ -2,20 +2,24 @@
   "repo": "tinydb",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "aider",
-  "elapsed_s": 94.5,
-  "final_summary": "============================= 201 passed in 0.71s ==============================",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/tinydb_aider_anthropic.patch",
+  "patch_sha256": "051fddbbc9551cc8b122749de24b2904f795fba353c01130a52d716a115bb77f",
+  "elapsed_s": 359.3,
+  "final_summary": "======================== 3 failed, 198 passed in 2.10s =========================",
   "final_counts": {
-    "passed": 201,
-    "failed": 0,
+    "passed": 198,
+    "failed": 3,
     "skipped": 0,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 49894,
-    "output_tokens": 9194,
+    "input_tokens": 269190,
+    "output_tokens": 23640,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.2876
+    "cost_usd": 1.1622
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,

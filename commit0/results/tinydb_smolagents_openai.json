@@ -2,8 +2,12 @@
   "repo": "tinydb",
   "model": "openai/gpt-5.4",
   "branch": "smolagents",
-  "elapsed_s": 187.3,
-  "final_summary": "============================= 201 passed in 0.71s ==============================",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/tinydb_smolagents_openai.patch",
+  "patch_sha256": "504bd6efddc0fda77b7667fa32fe4c0ff96715bba6dc2c0e9b43115b6a28614f",
+  "elapsed_s": 202.1,
+  "final_summary": "============================= 201 passed in 2.02s ==============================",
   "final_counts": {
     "passed": 201,
     "failed": 0,
@@ -11,18 +15,19 @@
     "errors": 0
   },
   "totals": {
-    "input_tokens": 182117,
-    "output_tokens": 16731,
-    "cache_read_tokens": 145280,
+    "input_tokens": 425798,
+    "output_tokens": 18965,
+    "cache_read_tokens": 389760,
     "cache_write_tokens": 0,
-    "cost_usd": 0.3794
+    "cost_usd": 0.472
   },
   "smolagents_diagnostics": {
-    "llm_calls": 7,
+    "llm_calls": 11,
     "max_steps": 20,
     "executor_type": "local",
     "wall_clock_capped": false,
     "cost_capped": false,
     "callback_errors": []
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

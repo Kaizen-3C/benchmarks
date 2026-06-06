@@ -2,20 +2,24 @@
   "repo": "pyjwt",
   "model": "openai/gpt-5.4",
   "branch": "aider",
-  "elapsed_s": 302.5,
-  "final_summary": "1 failed, 105 passed, 94 skipped in 0.16s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/pyjwt_aider_openai.patch",
+  "patch_sha256": "24d791fe0b82b41bc2be10470d5f2bc9e6c970b2a372a2e00ffae551fe21a909",
+  "elapsed_s": 10.1,
+  "final_summary": "============= 1 failed, 258 passed, 2 skipped, 1 xfailed in 5.36s ==============",
   "final_counts": {
-    "passed": 105,
+    "passed": 258,
     "failed": 1,
-    "skipped": 94,
+    "skipped": 2,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 349907,
-    "output_tokens": 22975,
+    "input_tokens": 69756,
+    "output_tokens": 309,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.7788
+    "cost_usd": 0.179
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
@@ -23,5 +27,6 @@
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

@@ -2,20 +2,24 @@
   "repo": "parsel",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "smolagents",
-  "elapsed_s": 75.6,
-  "final_summary": "1 error in 0.01s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/parsel_smolagents_anthropic.patch",
+  "patch_sha256": "36c8747691711eac834f39ef3ac0654e8e2ff439742966ac991c4ea420fceb9f",
+  "elapsed_s": 393.3,
+  "final_summary": "================== 81 failed, 125 passed, 2 skipped in 1.59s ===================",
   "final_counts": {
-    "passed": 0,
-    "failed": 0,
-    "skipped": 0,
-    "errors": 1
+    "passed": 125,
+    "failed": 81,
+    "skipped": 2,
+    "errors": 0
   },
   "totals": {
-    "input_tokens": 786683,
-    "output_tokens": 3824,
+    "input_tokens": 1165521,
+    "output_tokens": 27016,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 2.4174
+    "cost_usd": 3.9018
   },
   "smolagents_diagnostics": {
     "llm_calls": 21,

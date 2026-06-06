@@ -36,8 +36,11 @@ Cost tracking:
 from __future__ import annotations
 
 import bz2
+import hashlib
 import json
 import os
+import re
+import shutil
 import subprocess
 import sys
 import time
@@ -50,7 +53,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from single_shot_sonnet import (  # noqa: E402
     discover_stub_files,
     extract_pdf_text,
+    git,
     load_dotenv,
+    run_pytest_via_commit0,
 )
 
 # ---------- Hard caps (per PHASE1_COST_REVIEW.md §2.2) ----------
@@ -64,7 +69,28 @@ AUTHORIZED_IMPORTS = [
     "io", "sys", "math", "typing", "collections", "itertools", "functools",
 ]
 
-DEFAULT_TEST_CMD = "pytest -x --tb=no -q"
+DEFAULT_TEST_CMD = "pytest -x --tb=no -q"   # agent's in-loop convergence heuristic only
+
+# ---------- Authoritative scoring (full suite, never -x) ----------
+# The recorded pass/fail counts MUST come from the full suite. We score through
+# `commit0 test --branch` — the SAME path single_shot/reflexion/KD use — so the
+# cell is byte-for-byte comparable (same Docker image, same test_dir). Scoring
+# with `-x` truncates the denominator at the first failure; see ../../RE-VALIDATION.md.
+CODE_BRANCH = "smolagents"            # legacy default; runs now use a PER-PROVIDER branch (A1)
+SCORING_VIA_COMMIT0 = "commit0-test-full-suite"
+
+
+def _provider_of(model_id: str) -> str:
+    """Map a litellm model id to its provider for a PER-PROVIDER code branch (A1).
+    A single shared `smolagents` branch kept only the last-run provider's code; per-provider
+    branches keep both. See ../../RERUN_CHECKLIST.md."""
+    head = model_id.split("/", 1)[0].lower()
+    if head in ("openai", "anthropic"):
+        return head
+    low = model_id.lower()
+    return "anthropic" if ("claude" in low or "sonnet" in low) else "openai"
+SCORING_VIA_LOCAL = "full-suite-local-pytest"   # fallback if commit0 emits no summary
+SCORING_TEST_CMD = "pytest --tb=no -q"          # fallback command (still full suite)
 
 
 def _materialize_spec_md(repo_dir: Path) -> str:
@@ -84,9 +110,48 @@ def _materialize_spec_md(repo_dir: Path) -> str:
     return text
 
 
+def _counts_from_summary(summary: str) -> dict[str, int]:
+    """Parse a pytest summary line into {passed, failed, skipped, errors}.
+
+    Case-insensitive (matching _is_pytest_summary) and lower-cases the matched kind,
+    so an upper/mixed-case token can't pass the gate yet record all-zero counts.
+    """
+    counts = {"passed": 0, "failed": 0, "skipped": 0, "errors": 0}
+    for n, kind in re.findall(r"(\d+)\s+(passed|failed|skipped|error[s]?)", summary or "", re.I):
+        k = kind.lower()
+        counts["errors" if k.startswith("error") else k] = int(n)
+    return counts
+
+
+def _is_pytest_summary(summary: str) -> bool:
+    """True only if `summary` is a real pytest result line (contains a
+    pass/fail/error/skip count).
+
+    `run_pytest_via_commit0` returns the last 500 bytes of stdout/stderr when it
+    finds no summary line — non-empty but unparseable junk. Gating on mere
+    truthiness would mis-stamp such a cell as `commit0-test-full-suite` with
+    all-zero counts (a silent baseline-style mis-score). Gate on parseability.
+    """
+    return bool(re.search(r"\d+\s+(passed|failed|skipped|error)", summary or "", re.I))
+
+
+def _start_branch(repo_dir: Path, branch: str) -> None:
+    """Reset to the pinned commit0 starter and open a fresh arch branch.
+
+    The agent then edits the working tree, and we commit those edits onto `branch`
+    so the generated code is recoverable and scoreable via `commit0 test --branch`.
+    """
+    git(repo_dir, "checkout", "commit0", check=True)
+    git(repo_dir, "clean", "-fd", check=True)  # drop prior-run artifacts; a failed clean would leave noise in the patch
+    git(repo_dir, "branch", "-D", branch)   # no-op if it doesn't exist (check=False)
+    git(repo_dir, "checkout", "-b", branch, check=True)
+
+
 def _final_pytest(repo_dir: Path) -> tuple[str, dict[str, int]]:
+    # FULL SUITE (SCORING_TEST_CMD, no -x) — local fallback when commit0 emits no
+    # summary. Not the agent's -x loop command. See ../../RE-VALIDATION.md.
     proc = subprocess.run(
-        DEFAULT_TEST_CMD.split(),
+        SCORING_TEST_CMD.split(),
         cwd=repo_dir,
         capture_output=True,
         timeout=300,
@@ -94,14 +159,78 @@ def _final_pytest(repo_dir: Path) -> tuple[str, dict[str, int]]:
     output = proc.stdout.decode(errors="replace") + proc.stderr.decode(errors="replace")
     summary = ""
     for line in reversed(output.splitlines()):
-        if "passed" in line or "failed" in line or "error" in line:
+        low = line.lower()  # collection failures emit upper-case "ERROR"/"Interrupted: N errors"
+        if "passed" in low or "failed" in low or "error" in low:
             summary = line.strip()
             break
-    import re
-    counts = {"passed": 0, "failed": 0, "skipped": 0, "errors": 0}
-    for n, kind in re.findall(r"(\d+)\s+(passed|failed|skipped|error[s]?)", summary):
-        counts["errors" if kind.startswith("error") else kind] = int(n)
-    return summary, counts
+    return summary, _counts_from_summary(summary)
+
+
+def _strip_agent_noise(repo_dir: Path) -> None:
+    """Remove non-code agent artifacts before committing the branch.
+
+    Committing binary/noise files (e.g. .aider.tags.cache, spec.md) makes commit0's
+    container-side patch application fail, silently scoring the baseline. Strip them
+    so the branch — and thus commit0's patch.diff — is clean code only.
+    """
+    for n in list(repo_dir.glob(".aider*")) + [repo_dir / "spec.md"]:
+        if n.is_dir():
+            shutil.rmtree(n, ignore_errors=True)
+        elif n.exists():
+            n.unlink()
+    for pyc in repo_dir.rglob("__pycache__"):
+        shutil.rmtree(pyc, ignore_errors=True)
+
+
+def _persist_and_score(
+    lib_name: str, repo_dir: Path, branch: str, out_path: Path,
+) -> tuple[str, dict[str, int], str, str | None, str | None]:
+    """Commit the agent's edits, score the FULL suite via commit0, export a patch.
+
+    Returns (summary, counts, scoring_provenance, patch_rel_path, patch_sha256).
+    """
+    # 1. Persist generated code onto the arch branch (recoverable in the workspace).
+    #    Strip agent noise FIRST (see _strip_agent_noise) so commit0's patch.diff is
+    #    clean code only — committing binaries silently scores the baseline.
+    _strip_agent_noise(repo_dir)
+    git(repo_dir, "add", "-A", check=True)
+    git(repo_dir, "commit", "--allow-empty", "-m", f"{branch} generated output ({lib_name})", check=True)
+
+    # 2. Authoritative full-suite score via the same path as every other arch.
+    exit_code, summary = run_pytest_via_commit0(lib_name, branch)
+    counts = _counts_from_summary(summary)
+    collected = counts["passed"] + counts["failed"] + counts["errors"]
+    if _is_pytest_summary(summary) and collected > 0:
+        scoring = SCORING_VIA_COMMIT0
+    else:
+        # Fallback: commit0 produced no PARSEABLE, non-zero summary. It returns the
+        # last 500 bytes of stdout/stderr when it finds no summary line, and an
+        # import/collection crash yields a traceback that parses to 0/0/0/0 — never
+        # stamp full-suite on zero collected. Score locally, full suite, stamp LOCAL.
+        print(f"  [warn] {lib_name}: commit0 test emitted no parseable/non-zero summary; local pytest fallback",
+              file=sys.stderr)
+        summary, counts = _final_pytest(repo_dir)
+        scoring = SCORING_VIA_LOCAL
+
+    # 3. Export the generated diff into THIS repo (workspace-independent artifact).
+    patch_rel = patch_sha = None
+    try:
+        # exclude non-code noise so the saved patch is pure generated code
+        diff = git(repo_dir, "diff", "commit0", branch, "--", ".",
+                   ":(exclude)spec.md",
+                   ":(exclude,glob).aider**",
+                   ":(exclude,glob)**/__pycache__/**")
+        if diff and not diff.endswith("\n"):
+            diff += "\n"                          # A3: trailing newline so plain `git apply` works
+        patch_dir = out_path.parent / "patches"
+        patch_dir.mkdir(parents=True, exist_ok=True)
+        patch_path = patch_dir / f"{out_path.stem}.patch"
+        patch_path.write_text(diff, encoding="utf-8", newline="\n")  # A3: force LF on any platform
+        patch_rel = f"patches/{patch_path.name}"
+        patch_sha = hashlib.sha256(diff.encode("utf-8")).hexdigest()
+    except Exception as e:
+        print(f"  [warn] {lib_name}: patch export failed: {e}", file=sys.stderr)
+    return summary, counts, scoring, patch_rel, patch_sha
 
 
 class _CostTracker:
@@ -161,12 +290,23 @@ def run_smolagents_on_lib(
     """Run smolagents.CodeAgent end-to-end on one commit0 library."""
     import litellm
     from smolagents import CodeAgent, LiteLLMModel
+    # #3 (sane retries): fail fast on a stalled provider call (litellm default 600s ->
+    # multi-hour thrash on a degraded window). 180s + bounded retries; the gate moves on.
+    litellm.request_timeout = 180
+    litellm.num_retries = 4
+
+    # Per-provider code branch (A1) so both providers' code persists + is patch-exportable.
+    code_branch = f"smolagents_{_provider_of(model_id)}"
+
+    # Open a fresh branch off the pinned commit0 starter BEFORE any edits, so the
+    # agent's changes land on a clean tree and can be committed + scored + exported.
+    _start_branch(repo_dir, code_branch)
 
     spec_text = _materialize_spec_md(repo_dir)
     stub_files = discover_stub_files(repo_dir)
     if not stub_files:
         return {
-            "repo": lib_name, "model": model_id, "branch": "smolagents",
+            "repo": lib_name, "model": model_id, "branch": code_branch,
             "error": "no stub files discovered",
             "final_counts": {"passed": 0, "failed": 0, "skipped": 0, "errors": 0},
         }
@@ -215,13 +355,20 @@ def run_smolagents_on_lib(
         print(f"  [error] smolagents raised: {error}", file=sys.stderr)
     elapsed = time.time() - t0
 
-    # Final authoritative pytest
-    final_summary, final_counts = _final_pytest(repo_dir)
+    # Persist the generated code onto the arch branch, score the FULL suite via
+    # commit0 test --branch (parity with every other arch), and export a patch.
+    final_summary, final_counts, scoring, patch_file, patch_sha = _persist_and_score(
+        lib_name, repo_dir, code_branch, out_path,
+    )
 
     result = {
         "repo": lib_name,
         "model": model_id,
-        "branch": "smolagents",
+        "branch": code_branch,
+        "scoring": scoring,              # commit0 full-suite (or local fallback) — see ../../RE-VALIDATION.md
+        "code_branch": code_branch,      # per-provider git branch the generated code is committed to (A1)
+        "patch_file": patch_file,        # committed diff artifact (workspace-independent)
+        "patch_sha256": patch_sha,
         "elapsed_s": round(elapsed, 1),
         "final_summary": final_summary,
         "final_counts": final_counts,

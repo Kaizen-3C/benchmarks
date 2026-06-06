@@ -2,20 +2,24 @@
   "repo": "imapclient",
   "model": "openai/gpt-5.4",
   "branch": "aider",
-  "elapsed_s": 467.8,
-  "final_summary": "1 failed in 0.06s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/imapclient_aider_openai.patch",
+  "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "elapsed_s": 6.7,
+  "final_summary": "============================== 18 errors in 0.25s ==============================",
   "final_counts": {
     "passed": 0,
-    "failed": 1,
+    "failed": 0,
     "skipped": 0,
-    "errors": 0
+    "errors": 18
   },
   "totals": {
-    "input_tokens": 420045,
-    "output_tokens": 40537,
+    "input_tokens": 74352,
+    "output_tokens": 300,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 1.1392
+    "cost_usd": 0.1904
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
@@ -23,5 +27,6 @@
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

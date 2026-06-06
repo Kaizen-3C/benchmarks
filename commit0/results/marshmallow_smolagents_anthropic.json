@@ -2,8 +2,12 @@
   "repo": "marshmallow",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "smolagents",
-  "elapsed_s": 62.1,
-  "final_summary": "",
+  "scoring": "pending-regeneration",
+  "code_branch": "smolagents",
+  "patch_file": "patches/marshmallow_smolagents_anthropic.patch",
+  "patch_sha256": "04d0ad805f0e8067b3f13b8fb73750b155c17bf0ad6edf183478270c59b749e3",
+  "elapsed_s": 429.2,
+  "final_summary": "est.py:5: in <module>\n    from tests.base import Blog, User, UserSchema\ntests/base.py:11: in <module>\n    from marshmallow import Schema, fields, missing, post_load, validate\nsrc/marshmallow/__init__.py:17: in <module>\n    from marshmallow.schema import Schema, SchemaOpts\nsrc/marshmallow/schema.py:128: in <module>\n    class Schema(base.SchemaABC, metaclass=SchemaMeta):\nsrc/marshmallow/schema.py:58: in __new__\n    for field_name, _ in cls_fields:\nE   TypeError: 'NoneType' object is not iterable\n\n",
   "final_counts": {
     "passed": 0,
     "failed": 0,
@@ -11,11 +15,11 @@
     "errors": 0
   },
   "totals": {
-    "input_tokens": 382967,
-    "output_tokens": 2414,
+    "input_tokens": 1003803,
+    "output_tokens": 30766,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 1.1851
+    "cost_usd": 3.4729
   },
   "smolagents_diagnostics": {
     "llm_calls": 21,
@@ -24,5 +28,7 @@
     "wall_clock_capped": false,
     "cost_capped": false,
     "callback_errors": []
-  }
+  },
+  "scoring_superseded": "commit0-test-full-suite",
+  "scoring_note": "MIS-STAMPED by the pre-fix runner: import/collection crash produced a traceback, not a pytest summary, so final_counts is 0/0/0/0 and this was never a valid full-suite score. Awaits regeneration with the patched runner (which records the real collection `errors` count). See CORRECTIONS.md."
 }

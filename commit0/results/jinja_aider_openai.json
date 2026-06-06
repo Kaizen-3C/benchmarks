@@ -2,20 +2,24 @@
   "repo": "jinja",
   "model": "openai/gpt-5.4",
   "branch": "aider",
-  "elapsed_s": 18.3,
-  "final_summary": "1 failed, 24 passed in 0.17s",
+  "scoring": "pending-regeneration",
+  "code_branch": "aider",
+  "patch_file": "patches/jinja_aider_openai.patch",
+  "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "elapsed_s": 16.6,
+  "final_summary": " jinja2 import loaders\nsrc/jinja2/__init__.py:9: in <module>\n    from .environment import Environment as Environment\nsrc/jinja2/environment.py:14: in <module>\n    from . import nodes\nE     File \"/testbed/src/jinja2/nodes.py\", line 80\nE       raise TypeError(f'{type(self).__name__!r} takes 0 or {len(self.fields)} argument{('s' if len(self.fields) != 1 else '')}')\nE                                                                                          ^\nE   SyntaxError: f-string: unmatched '('\n\n",
   "final_counts": {
-    "passed": 24,
-    "failed": 1,
+    "passed": 0,
+    "failed": 0,
     "skipped": 0,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 170473,
-    "output_tokens": 795,
+    "input_tokens": 145926,
+    "output_tokens": 455,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.4381
+    "cost_usd": 0.3716
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
@@ -23,5 +27,8 @@
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04",
+  "scoring_superseded": "commit0-test-full-suite",
+  "scoring_note": "MIS-STAMPED by the pre-fix runner: import/collection crash produced a traceback, not a pytest summary, so final_counts is 0/0/0/0 and this was never a valid full-suite score. Awaits regeneration with the patched runner (which records the real collection `errors` count). See CORRECTIONS.md."
 }

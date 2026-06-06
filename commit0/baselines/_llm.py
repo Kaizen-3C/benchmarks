@@ -42,7 +42,8 @@ GPT54_OUTPUT = 10.00
 GPT54_CACHE_READ = 0.125
 
 DEFAULT_MAX_TOKENS = 48_000  # raised: 16K -> 32K (voluptuous fix) -> 48K (marshmallow fields.py / jinja compiler.py)
-DEFAULT_TIMEOUT_S = 300
+DEFAULT_TIMEOUT_S = 180   # #3: fail fast on a stalled provider call (was 300); a hung
+                          # call no longer burns minutes before the retry/gate kicks in
 DEFAULT_RETRIES = 4
 
 DEFAULT_MODELS = {

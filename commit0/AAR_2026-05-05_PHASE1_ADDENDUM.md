@@ -1,5 +1,13 @@
 # After Action Review — Phase 1 Matrix Extension (Aider + smolagents)
 
+> ⚠ **Correction (pending re-validation).** Every Aider/smolagents pass-rate, per-cell
+> value-add, and aggregate in this AAR was scored with `pytest -x` (stop at first failure),
+> which truncates the denominator. These figures are **not comparable** to the full-suite
+> (`commit0 test`) cells and are **not reproducible** under `PROTOCOL.md` §6. The qualitative
+> finding (Aider/smolagents collect past where KD collects 0) stands; the magnitudes do not.
+> Runner scoring is now fixed; the numbers below await an ≈$65 re-run — see
+> [`RE-VALIDATION.md`](RE-VALIDATION.md). Do not cite the rates below until then.
+
 **Date:** 2026-05-05 (Day 13 of 90, 17 days ahead of Day 30 target)
 **Disposition:** Phase 1 fully landed early. 6-architecture matrix (KD, OH, B2, B3, Aider, smolagents) × 2 providers × 16 libs now complete; 140 / 160 cells populated, $65.12 spend on the Phase 1 leg, all four sweeps within budget.
 **Predecessor:** [`AAR_2026-04-22_FINAL.md`](AAR_2026-04-22_FINAL.md), [`AAR_2026-04-22_B3_ADDENDUM.md`](AAR_2026-04-22_B3_ADDENDUM.md)

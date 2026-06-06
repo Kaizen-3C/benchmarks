@@ -1,0 +1,27 @@
+{
+  "repo": "portalocker",
+  "model": "anthropic/claude-sonnet-4-6",
+  "branch": "aider",
+  "elapsed_s": 27.6,
+  "final_summary": "1 failed, 34 passed, 2 skipped, 3 warnings in 2.21s",
+  "final_counts": {
+    "passed": 34,
+    "failed": 1,
+    "skipped": 2,
+    "errors": 0
+  },
+  "totals": {
+    "input_tokens": 29067,
+    "output_tokens": 2509,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.1248
+  },
+  "aider_diagnostics": {
+    "exhausted_context_windows": 0,
+    "malformed_responses": 0,
+    "test_cmd": "pytest -x --tb=no -q",
+    "wall_clock_capped": false,
+    "cost_capped": false
+  }
+}

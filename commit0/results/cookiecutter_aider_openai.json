@@ -2,20 +2,24 @@
   "repo": "cookiecutter",
   "model": "openai/gpt-5.4",
   "branch": "aider",
-  "elapsed_s": 236.3,
-  "final_summary": "========================= 1 failed, 15 passed in 1.38s =========================",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/cookiecutter_aider_openai.patch",
+  "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "elapsed_s": 7.8,
+  "final_summary": "============= 325 failed, 16 passed, 4 skipped, 26 errors in 6.67s =============",
   "final_counts": {
-    "passed": 15,
-    "failed": 1,
-    "skipped": 0,
-    "errors": 0
+    "passed": 16,
+    "failed": 325,
+    "skipped": 4,
+    "errors": 26
   },
   "totals": {
-    "input_tokens": 486553,
-    "output_tokens": 16448,
+    "input_tokens": 103015,
+    "output_tokens": 197,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.769
+    "cost_usd": 0.2605
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
@@ -23,5 +27,6 @@
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false
-  }
+  },
+  "recovered_from": "openai-sweep-rescore-2026-06-04"
 }

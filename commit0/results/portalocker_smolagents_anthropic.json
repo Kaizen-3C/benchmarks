@@ -2,20 +2,24 @@
   "repo": "portalocker",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "smolagents",
-  "elapsed_s": 158.3,
-  "final_summary": "1 failed, 2 passed, 2 skipped, 1 warning in 0.45s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/portalocker_smolagents_anthropic.patch",
+  "patch_sha256": "8b962e1da3271dc9dfc79746f68d23d82f56628e5a7688d4c2431c22171d3dea",
+  "elapsed_s": 193.1,
+  "final_summary": "=================== 13 failed, 27 passed, 2 skipped in 3.98s ===================",
   "final_counts": {
-    "passed": 2,
-    "failed": 1,
+    "passed": 27,
+    "failed": 13,
     "skipped": 2,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 929698,
-    "output_tokens": 9791,
+    "input_tokens": 911614,
+    "output_tokens": 10545,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 2.936
+    "cost_usd": 2.893
   },
   "smolagents_diagnostics": {
     "llm_calls": 21,

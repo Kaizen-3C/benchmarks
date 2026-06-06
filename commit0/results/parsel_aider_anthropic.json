@@ -2,24 +2,28 @@
   "repo": "parsel",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "aider",
-  "elapsed_s": 217.5,
-  "final_summary": "1 failed, 14 passed in 0.13s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "aider",
+  "patch_file": "patches/parsel_aider_anthropic.patch",
+  "patch_sha256": "33c833a629b70d25fc0456b31adee41ccdf1833ddd785e7fb43458ea21a7dcbc",
+  "elapsed_s": 356.3,
+  "final_summary": "================== 62 failed, 144 passed, 2 skipped in 1.56s ===================",
   "final_counts": {
-    "passed": 14,
-    "failed": 1,
-    "skipped": 0,
+    "passed": 144,
+    "failed": 62,
+    "skipped": 2,
     "errors": 0
   },
   "totals": {
-    "input_tokens": 249595,
-    "output_tokens": 17349,
+    "input_tokens": 270566,
+    "output_tokens": 25251,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 1.009
+    "cost_usd": 1.1905
   },
   "aider_diagnostics": {
     "exhausted_context_windows": 0,
-    "malformed_responses": 1,
+    "malformed_responses": 0,
     "test_cmd": "pytest -x --tb=no -q",
     "wall_clock_capped": false,
     "cost_capped": false

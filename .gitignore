@@ -38,6 +38,11 @@ Thumbs.db
 .vscode/
 .vs/
 .idea/
+.claude/
+
+# Generated figure raster — regenerated locally; only the vector PDF is tracked
+# (avoids a fresh ~1.2 MB binary blob in history on every regeneration)
+paper/figures/figure1.png
 
 # Environment / secrets
 .env

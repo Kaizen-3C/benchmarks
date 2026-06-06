@@ -2,20 +2,24 @@
   "repo": "simpy",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "smolagents",
-  "elapsed_s": 137.1,
-  "final_summary": "1 error in 0.01s",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/simpy_smolagents_anthropic.patch",
+  "patch_sha256": "3c5fa64facfc288dee540c2165bb41503f61681b14a39d4544ad6e254a9c58a3",
+  "elapsed_s": 335.6,
+  "final_summary": "================= 43 failed, 97 passed, 10 deselected in 2.28s =================",
   "final_counts": {
-    "passed": 0,
-    "failed": 0,
+    "passed": 97,
+    "failed": 43,
     "skipped": 0,
-    "errors": 1
+    "errors": 0
   },
   "totals": {
-    "input_tokens": 1063461,
-    "output_tokens": 7658,
+    "input_tokens": 1348616,
+    "output_tokens": 19813,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 3.3053
+    "cost_usd": 4.343
   },
   "smolagents_diagnostics": {
     "llm_calls": 21,

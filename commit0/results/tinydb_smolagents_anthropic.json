@@ -2,8 +2,12 @@
   "repo": "tinydb",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "smolagents",
-  "elapsed_s": 21.4,
-  "final_summary": "============================= 201 passed in 1.53s ==============================",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/tinydb_smolagents_anthropic.patch",
+  "patch_sha256": "26c9f5a5b919f21951df7de9e8cce2550a5512f84b1489fdbb77ecbbe43d512f",
+  "elapsed_s": 252.6,
+  "final_summary": "======================== 201 passed, 1 warning in 1.51s ========================",
   "final_counts": {
     "passed": 201,
     "failed": 0,
@@ -11,14 +15,14 @@
     "errors": 0
   },
   "totals": {
-    "input_tokens": 114563,
-    "output_tokens": 584,
+    "input_tokens": 1018652,
+    "output_tokens": 16769,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 0.3524
+    "cost_usd": 3.3075
   },
   "smolagents_diagnostics": {
-    "llm_calls": 10,
+    "llm_calls": 17,
     "max_steps": 20,
     "executor_type": "local",
     "wall_clock_capped": false,

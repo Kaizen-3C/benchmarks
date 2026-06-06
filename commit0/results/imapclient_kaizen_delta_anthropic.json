@@ -423,5 +423,8 @@
         }
       ]
     }
-  ]
+  ],
+  "scoring_superseded": null,
+  "scoring": "pending-regeneration",
+  "scoring_note": "CONFIRMED silent-baseline (patch-noise era): recorded final_counts 16/7/15 == the single_shot_sonnet baseline, i.e. the KD patch did not apply and the baseline was scored. Re-score of the kaizen_delta branch differs (25/62/4), so the recorded value is wrong; the true per-provider KD value is NOT confidently recoverable (KD shares one branch across providers, no patch exported). Awaits regeneration. See REPRODUCIBILITY.md / CORRECTIONS.md."
 }

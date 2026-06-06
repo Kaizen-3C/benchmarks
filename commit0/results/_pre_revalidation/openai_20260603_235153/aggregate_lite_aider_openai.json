@@ -1,0 +1,500 @@
+{
+  "architecture": "aider",
+  "provider": "openai",
+  "split": "lite",
+  "completed": [
+    "wcwidth",
+    "deprecated",
+    "cachetools",
+    "voluptuous",
+    "portalocker",
+    "pyjwt",
+    "chardet",
+    "tinydb",
+    "simpy",
+    "imapclient",
+    "parsel",
+    "marshmallow",
+    "cookiecutter",
+    "babel",
+    "jinja",
+    "minitorch"
+  ],
+  "per_library": {
+    "wcwidth": {
+      "repo": "wcwidth",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 9.5,
+      "final_summary": "\u001b[32m\u001b[32m\u001b[1m39 passed\u001b[0m\u001b[32m in 1.02s\u001b[0m\u001b[0m",
+      "final_counts": {
+        "passed": 39,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 78251,
+        "output_tokens": 137,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.1977
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 16.4
+    },
+    "deprecated": {
+      "repo": "deprecated",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 57.0,
+      "final_summary": "1 error in 0.03s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 84302,
+        "output_tokens": 4802,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.205
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 61.6
+    },
+    "cachetools": {
+      "repo": "cachetools",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 243.7,
+      "final_summary": "1 error in 0.02s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 202649,
+        "output_tokens": 19201,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.5245
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 270.7
+    },
+    "voluptuous": {
+      "repo": "voluptuous",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 357.8,
+      "final_summary": "============================== 1 failed in 0.03s ===============================",
+      "final_counts": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 220584,
+        "output_tokens": 30945,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.9114
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 391.4
+    },
+    "portalocker": {
+      "repo": "portalocker",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 194.0,
+      "final_summary": "1 failed, 1 passed, 2 skipped, 1 warning in 0.38s",
+      "final_counts": {
+        "passed": 1,
+        "failed": 1,
+        "skipped": 2,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 127090,
+        "output_tokens": 15318,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.4248
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 222.3
+    },
+    "pyjwt": {
+      "repo": "pyjwt",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 302.5,
+      "final_summary": "1 failed, 105 passed, 94 skipped in 0.16s",
+      "final_counts": {
+        "passed": 105,
+        "failed": 1,
+        "skipped": 94,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 349907,
+        "output_tokens": 22975,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.7788
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 328.7
+    },
+    "chardet": {
+      "repo": "chardet",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 20.8,
+      "final_summary": "=============================== 1 error in 0.24s ===============================",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 312133,
+        "output_tokens": 202,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 1.5652
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 27.4
+    },
+    "tinydb": {
+      "repo": "tinydb",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 300.7,
+      "final_summary": "============================= 201 passed in 1.52s ==============================",
+      "final_counts": {
+        "passed": 201,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 233878,
+        "output_tokens": 20758,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.6075
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 333.7
+    },
+    "simpy": {
+      "repo": "simpy",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 323.7,
+      "final_summary": "1 error in 0.01s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 345790,
+        "output_tokens": 25376,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.7653
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 370.9
+    },
+    "imapclient": {
+      "repo": "imapclient",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 467.8,
+      "final_summary": "1 failed in 0.06s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 420045,
+        "output_tokens": 40537,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 1.1392
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 499.3
+    },
+    "parsel": {
+      "repo": "parsel",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 124.4,
+      "final_summary": "1 error in 0.01s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 204318,
+        "output_tokens": 9144,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.3893
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 147.4
+    },
+    "marshmallow": {
+      "repo": "marshmallow",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 607.8,
+      "final_summary": "",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 200730,
+        "output_tokens": 205,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.0539
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 616.7
+    },
+    "cookiecutter": {
+      "repo": "cookiecutter",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 236.3,
+      "final_summary": "========================= 1 failed, 15 passed in 1.38s =========================",
+      "final_counts": {
+        "passed": 15,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 486553,
+        "output_tokens": 16448,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.769
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 262.4
+    },
+    "babel": {
+      "repo": "babel",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 18.9,
+      "final_summary": "1 error in 0.06s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 227608,
+        "output_tokens": 513,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.5767
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 26.7
+    },
+    "jinja": {
+      "repo": "jinja",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 18.3,
+      "final_summary": "1 failed, 24 passed in 0.17s",
+      "final_counts": {
+        "passed": 24,
+        "failed": 1,
+        "skipped": 0,
+        "errors": 0
+      },
+      "totals": {
+        "input_tokens": 170473,
+        "output_tokens": 795,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.4381
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 26.8
+    },
+    "minitorch": {
+      "repo": "minitorch",
+      "model": "openai/gpt-5.4",
+      "branch": "aider",
+      "elapsed_s": 17.6,
+      "final_summary": "1 error in 0.07s",
+      "final_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 1
+      },
+      "totals": {
+        "input_tokens": 110720,
+        "output_tokens": 250,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "cost_usd": 0.2806
+      },
+      "aider_diagnostics": {
+        "exhausted_context_windows": 0,
+        "malformed_responses": 0,
+        "test_cmd": "pytest -x --tb=no -q",
+        "wall_clock_capped": false,
+        "cost_capped": false
+      },
+      "runner_exit": 0,
+      "wrapper_elapsed_s": 30.1
+    }
+  },
+  "aggregate": {
+    "libraries_total": 16,
+    "tests_passed": 385,
+    "tests_failed": 6,
+    "tests_skipped": 96,
+    "tests_errored": 7,
+    "tests_attempted_total": 398,
+    "pass_rate_attempted": 0.9673,
+    "cost_usd_total": 9.63,
+    "wall_seconds_total": 3300.8
+  }
+}

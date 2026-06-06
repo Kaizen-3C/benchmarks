@@ -2,20 +2,24 @@
   "repo": "chardet",
   "model": "anthropic/claude-sonnet-4-6",
   "branch": "smolagents",
-  "elapsed_s": 74.5,
-  "final_summary": "=============================== 1 error in 0.13s ===============================",
+  "scoring": "commit0-test-full-suite",
+  "code_branch": "smolagents",
+  "patch_file": "patches/chardet_smolagents_anthropic.patch",
+  "patch_sha256": "ffaf2eef75e505501ce89b7d03e52c5053c0f0ec677e8b066b7d1a64d3f27b44",
+  "elapsed_s": 86.6,
+  "final_summary": "============= 1 failed, 375 passed, 6 xfailed, 1 xpassed in 11.85s =============",
   "final_counts": {
-    "passed": 0,
-    "failed": 0,
+    "passed": 375,
+    "failed": 1,
     "skipped": 0,
-    "errors": 1
+    "errors": 0
   },
   "totals": {
-    "input_tokens": 666203,
-    "output_tokens": 2789,
+    "input_tokens": 725895,
+    "output_tokens": 3048,
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
-    "cost_usd": 2.0404
+    "cost_usd": 2.2234
   },
   "smolagents_diagnostics": {
     "llm_calls": 21,
