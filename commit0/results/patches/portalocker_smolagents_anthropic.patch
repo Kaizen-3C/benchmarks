@@ -1,0 +1,785 @@
+diff --git a/portalocker/constants.py b/portalocker/constants.py
+index 51e1148..941009e 100644
+--- a/portalocker/constants.py
++++ b/portalocker/constants.py
+@@ -16,14 +16,17 @@ Manually unlock, only needed internally
+ """
+ import enum
+ import os
++
+ if os.name == 'nt':
+     import msvcrt
++
+     LOCK_EX = 1
+     LOCK_SH = 2
+     LOCK_NB = 4
+     LOCK_UN = msvcrt.LK_UNLCK
+ elif os.name == 'posix':
+     import fcntl
++
+     LOCK_EX = fcntl.LOCK_EX
+     LOCK_SH = fcntl.LOCK_SH
+     LOCK_NB = fcntl.LOCK_NB
+@@ -31,8 +34,9 @@ elif os.name == 'posix':
+ else:
+     raise RuntimeError('PortaLocker only defined for nt and posix platforms')
+ 
++
+ class LockFlags(enum.IntFlag):
+     EXCLUSIVE = LOCK_EX
+     SHARED = LOCK_SH
+     NON_BLOCKING = LOCK_NB
+-    UNBLOCK = LOCK_UN
+\ No newline at end of file
++    UNBLOCK = LOCK_UN
+diff --git a/portalocker/portalocker.py b/portalocker/portalocker.py
+index 70217a3..ede4b08 100644
+--- a/portalocker/portalocker.py
++++ b/portalocker/portalocker.py
+@@ -1,21 +1,112 @@
+ import os
+ import typing
+ from . import constants, exceptions
++
+ LockFlags = constants.LockFlags
+ 
++
+ class HasFileno(typing.Protocol):
+-    pass
++    def fileno(self) -> int:
++        ...
++
++
+ LOCKER: typing.Optional[typing.Callable[[typing.Union[int, HasFileno], int], typing.Any]] = None
++
+ if os.name == 'nt':
+     import msvcrt
+     import pywintypes
+     import win32con
+     import win32file
+     import winerror
++
+     __overlapped = pywintypes.OVERLAPPED()
++
++    def lock(file_: typing.IO, flags: LockFlags):
++        if isinstance(file_, int):
++            # file descriptor
++            file_handle = msvcrt.get_osfhandle(file_)
++        else:
++            file_handle = msvcrt.get_osfhandle(file_.fileno())
++
++        if flags & LockFlags.NON_BLOCKING:
++            win32_flags = win32con.LOCKFILE_FAIL_IMMEDIATELY
++        else:
++            win32_flags = 0
++
++        if flags & LockFlags.EXCLUSIVE:
++            win32_flags |= win32con.LOCKFILE_EXCLUSIVE_LOCK
++
++        if not flags & LockFlags.UNBLOCK:
++            try:
++                win32file.LockFileEx(file_handle, win32_flags, 0, -0x10000, __overlapped)
++            except pywintypes.error as exc_value:
++                if exc_value.winerror == winerror.ERROR_LOCK_VIOLATION:
++                    raise exceptions.LockException(
++                        exceptions.LockException.LOCK_FAILED,
++                        exc_value.strerror,
++                        fh=file_,
++                    )
++                else:
++                    raise
++        else:
++            try:
++                win32file.UnlockFileEx(file_handle, 0, -0x10000, __overlapped)
++            except pywintypes.error as exc_value:
++                if exc_value.winerror == winerror.ERROR_NOT_LOCKED:
++                    pass
++                else:
++                    raise
++
++    def unlock(file_: typing.IO):
++        lock(file_, LockFlags.UNBLOCK)
++
+ elif os.name == 'posix':
+     import errno
+     import fcntl
++
+     LOCKER = fcntl.flock
++
++    def lock(file_: typing.Union[typing.IO, int], flags: LockFlags):
++        # Translate our flags to the platform-specific flags
++        locking_exceptions = (IOError,)
++        try:
++            locking_exceptions += (BlockingIOError,)
++        except NameError:
++            pass
++
++        # If flags is just NON_BLOCKING without SHARED or EXCLUSIVE,
++        # raise RuntimeError
++        if flags == LockFlags.NON_BLOCKING:
++            raise RuntimeError(
++                'NON_BLOCKING flag requires either SHARED or EXCLUSIVE'
++            )
++
++        # Map flags to fcntl values
++        fcntl_flags = 0
++        if flags & LockFlags.SHARED:
++            fcntl_flags |= fcntl.LOCK_SH
++        if flags & LockFlags.EXCLUSIVE:
++            fcntl_flags |= fcntl.LOCK_EX
++        if flags & LockFlags.NON_BLOCKING:
++            fcntl_flags |= fcntl.LOCK_NB
++        if flags & LockFlags.UNBLOCK:
++            fcntl_flags |= fcntl.LOCK_UN
++
++        try:
++            LOCKER(file_, fcntl_flags)
++        except locking_exceptions as exc_value:
++            # Python 3.5+ gives errno.EAGAIN for non-blocking locks
++            if exc_value.errno in (errno.EACCES, errno.EAGAIN):
++                raise exceptions.LockException(
++                    exceptions.LockException.LOCK_FAILED,
++                    exc_value.strerror,
++                    fh=file_,
++                )
++            else:
++                raise
++
++    def unlock(file_: typing.IO):
++        lock(file_, LockFlags.UNBLOCK)
++
+ else:
+-    raise RuntimeError('PortaLocker only defined for nt and posix platforms')
+\ No newline at end of file
++    raise RuntimeError('PortaLocker only defined for nt and posix platforms')
+diff --git a/portalocker/redis.py b/portalocker/redis.py
+index c6c00ef..2b51fbd 100644
+--- a/portalocker/redis.py
++++ b/portalocker/redis.py
+@@ -6,12 +6,21 @@ import time
+ import typing
+ from redis import client
+ from . import exceptions, utils
++
+ logger = logging.getLogger(__name__)
++
+ DEFAULT_UNAVAILABLE_TIMEOUT = 1
+ DEFAULT_THREAD_SLEEP_TIME = 0.1
+ 
++
+ class PubSubWorkerThread(client.PubSubWorkerThread):
+-    pass
++    def run(self):
++        try:
++            super().run()
++        except Exception as e:
++            logger.exception('PubSubWorkerThread exception: %s', e)
++            _thread.interrupt_main()
++
+ 
+ class RedisLock(utils.LockBase):
+     """
+@@ -49,6 +58,7 @@ class RedisLock(utils.LockBase):
+             `health_check_interval=0`)
+ 
+     """
++
+     redis_kwargs: typing.Dict[str, typing.Any]
+     thread: typing.Optional[PubSubWorkerThread]
+     channel: str
+@@ -56,9 +66,21 @@ class RedisLock(utils.LockBase):
+     connection: typing.Optional[client.Redis]
+     pubsub: typing.Optional[client.PubSub] = None
+     close_connection: bool
+-    DEFAULT_REDIS_KWARGS: typing.ClassVar[typing.Dict[str, typing.Any]] = dict(health_check_interval=10)
++    DEFAULT_REDIS_KWARGS: typing.ClassVar[typing.Dict[str, typing.Any]] = dict(
++        health_check_interval=10
++    )
+ 
+-    def __init__(self, channel: str, connection: typing.Optional[client.Redis]=None, timeout: typing.Optional[float]=None, check_interval: typing.Optional[float]=None, fail_when_locked: typing.Optional[bool]=False, thread_sleep_time: float=DEFAULT_THREAD_SLEEP_TIME, unavailable_timeout: float=DEFAULT_UNAVAILABLE_TIMEOUT, redis_kwargs: typing.Optional[typing.Dict]=None):
++    def __init__(
++        self,
++        channel: str,
++        connection: typing.Optional[client.Redis] = None,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = False,
++        thread_sleep_time: float = DEFAULT_THREAD_SLEEP_TIME,
++        unavailable_timeout: float = DEFAULT_UNAVAILABLE_TIMEOUT,
++        redis_kwargs: typing.Optional[typing.Dict] = None,
++    ):
+         self.close_connection = not connection
+         self.thread = None
+         self.channel = channel
+@@ -68,7 +90,132 @@ class RedisLock(utils.LockBase):
+         self.redis_kwargs = redis_kwargs or dict()
+         for key, value in self.DEFAULT_REDIS_KWARGS.items():
+             self.redis_kwargs.setdefault(key, value)
+-        super().__init__(timeout=timeout, check_interval=check_interval, fail_when_locked=fail_when_locked)
++        super().__init__(
++            timeout=timeout,
++            check_interval=check_interval,
++            fail_when_locked=fail_when_locked,
++        )
+ 
+     def __del__(self):
+-        self.release()
+\ No newline at end of file
++        self.release()
++
++    @property
++    def client_name(self):
++        return self.channel
++
++    def get_connection(self) -> client.Redis:
++        if self.connection is None:
++            self.connection = client.Redis(**self.redis_kwargs)
++            self.close_connection = True
++        return self.connection
++
++    def channel_handler(self, message):
++        logger.debug('channel_handler: %s', message)
++
++    def acquire(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ):
++        timeout = utils.coalesce(timeout, self.timeout)
++        check_interval = utils.coalesce(check_interval, self.check_interval)
++        fail_when_locked = utils.coalesce(fail_when_locked, self.fail_when_locked)
++
++        assert self.pubsub is None, 'This lock is already acquired'
++
++        connection = self.get_connection()
++
++        timeout_end = time.time() + timeout
++
++        # Subscribe to the channel
++        pubsub = connection.pubsub()
++        pubsub.subscribe(**{self.channel: self.channel_handler})
++        self.thread = PubSubWorkerThread(
++            pubsub,
++            sleep_time=self.thread_sleep_time,
++            daemon=True,
++        )
++        self.thread.start()
++
++        # Try to acquire the lock by publishing
++        # We use a pubsub approach: the lock holder subscribes and publishes
++        # The lock is held as long as the subscriber is alive
++        
++        # Try to acquire lock using Redis SET NX (via a key-based approach)
++        # But we use pubsub: try to set a key, if it fails wait for message
++        
++        while True:
++            # Try to acquire: publish a lock request
++            # We use a simple key-value lock with expiry as the actual mechanism
++            # and pubsub just to get notifications
++            acquired = connection.set(
++                self.channel,
++                1,
++                nx=True,
++                ex=int(self.unavailable_timeout * 10) or 1,
++            )
++            
++            if acquired:
++                # We got the lock
++                self.pubsub = pubsub
++                return self
++
++            # Check if we should fail immediately
++            if fail_when_locked:
++                self.pubsub = None
++                if self.thread is not None:
++                    self.thread.stop()
++                    self.thread = None
++                pubsub.unsubscribe(self.channel)
++                raise exceptions.AlreadyLocked('Redis lock already locked')
++
++            # Check for timeout  
++            if self.check_or_kill_lock(connection, timeout_end):
++                continue
++
++            if time.time() >= timeout_end:
++                # Clean up
++                self.pubsub = None
++                if self.thread is not None:
++                    self.thread.stop()
++                    self.thread = None
++                pubsub.unsubscribe(self.channel)
++                raise exceptions.AlreadyLocked('Timeout while waiting for Redis lock')
++
++            time.sleep(check_interval)
++
++    def check_or_kill_lock(self, connection, timeout):
++        """Check if the lock exists and is still valid. Return True if retrying."""
++        if isinstance(timeout, float) and timeout < time.time():
++            return False
++        # Check if key is still set - if not, retry immediately
++        if not connection.exists(self.channel):
++            return True
++        return False
++
++    def release(self):
++        if self.pubsub is not None:
++            # Release the key
++            if self.connection is not None:
++                try:
++                    self.connection.delete(self.channel)
++                    # Publish a message to wake up waiting clients
++                    self.connection.publish(self.channel, 'unlocked')
++                except Exception:
++                    pass
++
++            self.pubsub.unsubscribe(self.channel)
++            self.pubsub = None
++
++        if self.thread is not None:
++            self.thread.stop()
++            self.thread = None
++
++        if self.close_connection and self.connection is not None:
++            try:
++                self.connection.close()
++            except Exception:
++                pass
++            self.connection = None
++            self.close_connection = False
+diff --git a/portalocker/utils.py b/portalocker/utils.py
+index 3891691..4400fb2 100644
+--- a/portalocker/utils.py
++++ b/portalocker/utils.py
+@@ -9,16 +9,22 @@ import tempfile
+ import time
+ import typing
+ import warnings
++
+ from . import constants, exceptions, portalocker
++
+ logger = logging.getLogger(__name__)
++
+ DEFAULT_TIMEOUT = 5
+ DEFAULT_CHECK_INTERVAL = 0.25
+ DEFAULT_FAIL_WHEN_LOCKED = False
+ LOCK_METHOD = constants.LockFlags.EXCLUSIVE | constants.LockFlags.NON_BLOCKING
++
+ __all__ = ['Lock', 'open_atomic']
++
+ Filename = typing.Union[str, pathlib.Path]
+ 
+-def coalesce(*args: typing.Any, test_value: typing.Any=None) -> typing.Any:
++
++def coalesce(*args: typing.Any, test_value: typing.Any = None) -> typing.Any:
+     """Simple coalescing function that returns the first value that is not
+     equal to the `test_value`. Or `None` if no value is valid. Usually this
+     means that the last given value is the default value.
+@@ -40,10 +46,14 @@ def coalesce(*args: typing.Any, test_value: typing.Any=None) -> typing.Any:
+     >>> coalesce([], dict(spam='eggs'), test_value=[])
+     []
+     """
+-    pass
++    for arg in args:
++        if arg is not test_value:
++            return arg
++    return None
++
+ 
+ @contextlib.contextmanager
+-def open_atomic(filename: Filename, binary: bool=True) -> typing.Iterator[typing.IO]:
++def open_atomic(filename: Filename, binary: bool = True) -> typing.Iterator[typing.IO]:
+     """Open a file for atomic writing. Instead of locking this method allows
+     you to write the entire file and move it to the actual location. Note that
+     this makes the assumption that a rename is atomic on your platform which
+@@ -68,14 +78,41 @@ def open_atomic(filename: Filename, binary: bool=True) -> typing.Iterator[typing
+     >>> assert path_filename.exists()
+     >>> path_filename.unlink()
+     """
+-    pass
++    # Convert to Path for easier manipulation
++    path = pathlib.Path(filename)
++    
++    # Create a temporary file in the same directory
++    dir_ = path.parent
++    mode = 'w+b' if binary else 'w+'
++    
++    fd, tmp_filename = tempfile.mkstemp(dir=str(dir_))
++    tmp_path = pathlib.Path(tmp_filename)
++    
++    try:
++        with os.fdopen(fd, 'wb' if binary else 'w') as fh:
++            yield fh
++        # Atomic rename
++        tmp_path.rename(path)
++    except Exception:
++        # Clean up temp file on exception
++        try:
++            tmp_path.unlink()
++        except Exception:
++            pass
++        raise
++
+ 
+ class LockBase(abc.ABC):
+     timeout: float
+     check_interval: float
+     fail_when_locked: bool
+ 
+-    def __init__(self, timeout: typing.Optional[float]=None, check_interval: typing.Optional[float]=None, fail_when_locked: typing.Optional[bool]=None):
++    def __init__(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ):
+         self.timeout = coalesce(timeout, DEFAULT_TIMEOUT)
+         self.check_interval = coalesce(check_interval, DEFAULT_CHECK_INTERVAL)
+         self.fail_when_locked = coalesce(fail_when_locked, DEFAULT_FAIL_WHEN_LOCKED)
+@@ -83,13 +120,27 @@ class LockBase(abc.ABC):
+     def __enter__(self) -> typing.IO[typing.AnyStr]:
+         return self.acquire()
+ 
+-    def __exit__(self, exc_type: typing.Optional[typing.Type[BaseException]], exc_value: typing.Optional[BaseException], traceback: typing.Any) -> typing.Optional[bool]:
++    def __exit__(
++        self,
++        exc_type: typing.Optional[typing.Type[BaseException]],
++        exc_value: typing.Optional[BaseException],
++        traceback: typing.Any,
++    ) -> typing.Optional[bool]:
+         self.release()
+         return None
+ 
+     def __delete__(self, instance):
+         instance.release()
+ 
++    @abc.abstractmethod
++    def acquire(self, *args, **kwargs):
++        raise NotImplementedError
++
++    @abc.abstractmethod
++    def release(self):
++        raise NotImplementedError
++
++
+ class Lock(LockBase):
+     """Lock manager with built-in timeout
+ 
+@@ -111,16 +162,27 @@ class Lock(LockBase):
+     mode will result in truncate _BEFORE_ the lock is checked.
+     """
+ 
+-    def __init__(self, filename: Filename, mode: str='a', timeout: typing.Optional[float]=None, check_interval: float=DEFAULT_CHECK_INTERVAL, fail_when_locked: bool=DEFAULT_FAIL_WHEN_LOCKED, flags: constants.LockFlags=LOCK_METHOD, **file_open_kwargs):
++    def __init__(
++        self,
++        filename: Filename,
++        mode: str = 'a',
++        timeout: typing.Optional[float] = None,
++        check_interval: float = DEFAULT_CHECK_INTERVAL,
++        fail_when_locked: bool = DEFAULT_FAIL_WHEN_LOCKED,
++        flags: constants.LockFlags = LOCK_METHOD,
++        **file_open_kwargs,
++    ):
+         if 'w' in mode:
+             truncate = True
+             mode = mode.replace('w', 'a')
+         else:
+             truncate = False
++
+         if timeout is None:
+             timeout = DEFAULT_TIMEOUT
+         elif not flags & constants.LockFlags.NON_BLOCKING:
+             warnings.warn('timeout has no effect in blocking mode', stacklevel=1)
++
+         self.fh: typing.Optional[typing.IO] = None
+         self.filename: str = str(filename)
+         self.mode: str = mode
+@@ -131,27 +193,75 @@ class Lock(LockBase):
+         self.flags: constants.LockFlags = flags
+         self.file_open_kwargs = file_open_kwargs
+ 
+-    def acquire(self, timeout: typing.Optional[float]=None, check_interval: typing.Optional[float]=None, fail_when_locked: typing.Optional[bool]=None) -> typing.IO[typing.AnyStr]:
++    def acquire(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ) -> typing.IO[typing.AnyStr]:
+         """Acquire the locked filehandle"""
+-        pass
++        # Use current values as defaults
++        timeout = coalesce(timeout, self.timeout)
++        check_interval = coalesce(check_interval, self.check_interval)
++        fail_when_locked = coalesce(fail_when_locked, self.fail_when_locked)
++
++        # If we already have a filehandle, return it
++        if self.fh is not None:
++            return self.fh
++
++        # Open the file
++        fh = self._get_fh()
++        
++        # Try to lock the file
++        try:
++            fh = self._get_lock(fh)
++        except exceptions.LockException as exc:
++            # If fail_when_locked is True, we wait but then raise AlreadyLocked
++            if fail_when_locked:
++                # Wait for lock to be released so we can acquire it, then raise
++                # Actually: wait for lock to be available (timeout), then raise AlreadyLocked
++                # But we need to try to get the lock first - if fail_when_locked=True, raise immediately
++                fh.close()
++                raise exceptions.AlreadyLocked(exc, fh=fh)
++            else:
++                # Wait with timeout
++                timeout_end = time.time() + timeout
++                while True:
++                    if time.time() >= timeout_end:
++                        fh.close()
++                        raise exceptions.LockException(exc, fh=fh)
++                    time.sleep(check_interval)
++                    try:
++                        fh = self._get_lock(fh)
++                        break
++                    except exceptions.LockException:
++                        pass
++
++        # Prepare and store the filehandle
++        self.fh = self._prepare_fh(fh)
++        return self.fh
+ 
+     def __enter__(self) -> typing.IO[typing.AnyStr]:
+         return self.acquire()
+ 
+     def release(self):
+         """Releases the currently locked file handle"""
+-        pass
++        if self.fh is not None:
++            portalocker.unlock(self.fh)
++            self.fh.close()
++            self.fh = None
+ 
+     def _get_fh(self) -> typing.IO:
+         """Get a new filehandle"""
+-        pass
++        return open(self.filename, self.mode, **self.file_open_kwargs)
+ 
+     def _get_lock(self, fh: typing.IO) -> typing.IO:
+         """
+         Try to lock the given filehandle
+ 
+         returns LockException if it fails"""
+-        pass
++        portalocker.lock(fh, self.flags)
++        return fh
+ 
+     def _prepare_fh(self, fh: typing.IO) -> typing.IO:
+         """
+@@ -160,7 +270,11 @@ class Lock(LockBase):
+         If truncate is a number, the file will be truncated to that amount of
+         bytes
+         """
+-        pass
++        if self.truncate:
++            fh.seek(0)
++            fh.truncate(0)
++        return fh
++
+ 
+ class RLock(Lock):
+     """
+@@ -169,16 +283,70 @@ class RLock(Lock):
+     calls are made the lock will finally release the underlying file lock.
+     """
+ 
+-    def __init__(self, filename, mode='a', timeout=DEFAULT_TIMEOUT, check_interval=DEFAULT_CHECK_INTERVAL, fail_when_locked=False, flags=LOCK_METHOD):
++    def __init__(
++        self,
++        filename,
++        mode='a',
++        timeout=DEFAULT_TIMEOUT,
++        check_interval=DEFAULT_CHECK_INTERVAL,
++        fail_when_locked=False,
++        flags=LOCK_METHOD,
++    ):
+         super().__init__(filename, mode, timeout, check_interval, fail_when_locked, flags)
+         self._acquire_count = 0
+ 
++    def acquire(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ) -> typing.IO[typing.AnyStr]:
++        """Acquire the locked filehandle"""
++        if self._acquire_count == 0:
++            # First acquisition, call parent
++            fh = super().acquire(timeout=timeout, check_interval=check_interval, fail_when_locked=fail_when_locked)
++        else:
++            # Already locked, just return existing fh
++            fh = self.fh
++        self._acquire_count += 1
++        return fh
++
++    def release(self):
++        """Releases the currently locked file handle"""
++        if self._acquire_count == 0:
++            raise exceptions.LockException('Lock is not acquired')
++        self._acquire_count -= 1
++        if self._acquire_count == 0:
++            super().release()
++
++
+ class TemporaryFileLock(Lock):
+ 
+-    def __init__(self, filename='.lock', timeout=DEFAULT_TIMEOUT, check_interval=DEFAULT_CHECK_INTERVAL, fail_when_locked=True, flags=LOCK_METHOD):
+-        Lock.__init__(self, filename=filename, mode='w', timeout=timeout, check_interval=check_interval, fail_when_locked=fail_when_locked, flags=flags)
++    def __init__(
++        self,
++        filename='.lock',
++        timeout=DEFAULT_TIMEOUT,
++        check_interval=DEFAULT_CHECK_INTERVAL,
++        fail_when_locked=True,
++        flags=LOCK_METHOD,
++    ):
++        Lock.__init__(
++            self,
++            filename=filename,
++            mode='w',
++            timeout=timeout,
++            check_interval=check_interval,
++            fail_when_locked=fail_when_locked,
++            flags=flags,
++        )
+         atexit.register(self.release)
+ 
++    def release(self):
++        Lock.release(self)
++        if os.path.isfile(self.filename):
++            os.remove(self.filename)
++
++
+ class BoundedSemaphore(LockBase):
+     """
+     Bounded semaphore to prevent too many parallel processes from running
+@@ -194,17 +362,95 @@ class BoundedSemaphore(LockBase):
+     >>> str(sorted(semaphore.get_random_filenames())[1])
+     'bounded_semaphore.01.lock'
+     """
++
+     lock: typing.Optional[Lock]
+ 
+-    def __init__(self, maximum: int, name: str='bounded_semaphore', filename_pattern: str='{name}.{number:02d}.lock', directory: str=tempfile.gettempdir(), timeout: typing.Optional[float]=DEFAULT_TIMEOUT, check_interval: typing.Optional[float]=DEFAULT_CHECK_INTERVAL, fail_when_locked: typing.Optional[bool]=True):
++    def __init__(
++        self,
++        maximum: int,
++        name: str = 'bounded_semaphore',
++        filename_pattern: str = '{name}.{number:02d}.lock',
++        directory: str = tempfile.gettempdir(),
++        timeout: typing.Optional[float] = DEFAULT_TIMEOUT,
++        check_interval: typing.Optional[float] = DEFAULT_CHECK_INTERVAL,
++        fail_when_locked: typing.Optional[bool] = True,
++    ):
+         self.maximum = maximum
+         self.name = name
+         self.filename_pattern = filename_pattern
+         self.directory = directory
+         self.lock: typing.Optional[Lock] = None
+-        super().__init__(timeout=timeout, check_interval=check_interval, fail_when_locked=fail_when_locked)
++        super().__init__(
++            timeout=timeout,
++            check_interval=check_interval,
++            fail_when_locked=fail_when_locked,
++        )
+         if not name or name == 'bounded_semaphore':
+-            warnings.warn('`BoundedSemaphore` without an explicit `name` argument is deprecated, use NamedBoundedSemaphore', DeprecationWarning, stacklevel=1)
++            warnings.warn(
++                '`BoundedSemaphore` without an explicit `name` argument is deprecated, use NamedBoundedSemaphore',
++                DeprecationWarning,
++                stacklevel=1,
++            )
++
++    def get_filename(self, number) -> pathlib.Path:
++        filename = self.filename_pattern.format(name=self.name, number=number)
++        return pathlib.Path(self.directory) / filename
++
++    def get_filenames(self) -> typing.Sequence[pathlib.Path]:
++        return [self.get_filename(i) for i in range(self.maximum)]
++
++    def get_random_filenames(self) -> typing.Sequence[pathlib.Path]:
++        filenames = list(self.get_filenames())
++        random.shuffle(filenames)
++        return filenames
++
++    def acquire(
++        self,
++        timeout: typing.Optional[float] = None,
++        check_interval: typing.Optional[float] = None,
++        fail_when_locked: typing.Optional[bool] = None,
++    ) -> typing.Optional[Lock]:
++        timeout = coalesce(timeout, self.timeout)
++        check_interval = coalesce(check_interval, self.check_interval)
++        fail_when_locked = coalesce(fail_when_locked, self.fail_when_locked)
++
++        timeout_end = time.time() + timeout
++
++        while True:
++            filenames = self.get_random_filenames()
++            if self.try_lock(filenames):
++                return self.lock
++
++            if fail_when_locked:
++                raise exceptions.AlreadyLocked()
++
++            if time.time() >= timeout_end:
++                raise exceptions.AlreadyLocked()
++
++            time.sleep(check_interval)
++
++    def try_lock(self, filenames: typing.Sequence[typing.Union[str, pathlib.Path]]) -> bool:
++        for filename in filenames:
++            lock = Lock(
++                filename,
++                timeout=0,
++                check_interval=0,
++                fail_when_locked=False,
++                flags=LOCK_METHOD,
++            )
++            try:
++                lock.acquire(timeout=0, check_interval=0, fail_when_locked=False)
++                self.lock = lock
++                return True
++            except exceptions.LockException:
++                pass
++        return False
++
++    def release(self):
++        if self.lock is not None:
++            self.lock.release()
++            self.lock = None
++
+ 
+ class NamedBoundedSemaphore(BoundedSemaphore):
+     """
+@@ -231,7 +477,18 @@ class NamedBoundedSemaphore(BoundedSemaphore):
+ 
+     """
+ 
+-    def __init__(self, maximum: int, name: typing.Optional[str]=None, filename_pattern: str='{name}.{number:02d}.lock', directory: str=tempfile.gettempdir(), timeout: typing.Optional[float]=DEFAULT_TIMEOUT, check_interval: typing.Optional[float]=DEFAULT_CHECK_INTERVAL, fail_when_locked: typing.Optional[bool]=True):
++    def __init__(
++        self,
++        maximum: int,
++        name: typing.Optional[str] = None,
++        filename_pattern: str = '{name}.{number:02d}.lock',
++        directory: str = tempfile.gettempdir(),
++        timeout: typing.Optional[float] = DEFAULT_TIMEOUT,
++        check_interval: typing.Optional[float] = DEFAULT_CHECK_INTERVAL,
++        fail_when_locked: typing.Optional[bool] = True,
++    ):
+         if name is None:
+             name = 'bounded_semaphore.%d' % random.randint(0, 1000000)
+-        super().__init__(maximum, name, filename_pattern, directory, timeout, check_interval, fail_when_locked)
+\ No newline at end of file
++        super().__init__(
++            maximum, name, filename_pattern, directory, timeout, check_interval, fail_when_locked
++        )

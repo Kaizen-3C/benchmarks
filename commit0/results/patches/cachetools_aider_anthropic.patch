@@ -1,0 +1,280 @@
+diff --git a/src/cachetools/func.py b/src/cachetools/func.py
+index 9436992..8060613 100644
+--- a/src/cachetools/func.py
++++ b/src/cachetools/func.py
+@@ -1,28 +1,110 @@
+ """`functools.lru_cache` compatible memoizing function decorators."""
+ __all__ = ('fifo_cache', 'lfu_cache', 'lru_cache', 'mru_cache', 'rr_cache', 'ttl_cache')
++
++import collections
+ import math
+ import random
+ import time
++
+ try:
+     from threading import RLock
+ except ImportError:
+     from dummy_threading import RLock
++
+ from . import FIFOCache, LFUCache, LRUCache, MRUCache, RRCache, TTLCache
+-from . import cached
+ from . import keys
+ 
++_CacheInfo = collections.namedtuple(
++    "CacheInfo", ["hits", "misses", "maxsize", "currsize"]
++)
++
++
+ class _UnboundTTLCache(TTLCache):
+ 
+     def __init__(self, ttl, timer):
+         TTLCache.__init__(self, math.inf, ttl, timer)
+ 
++
++def _make_wrapper(func, cache, reported_maxsize, typed, lock):
++    """Create a memoizing wrapper with cache_info and cache_parameters."""
++    _key = keys.typedkey if typed else keys.hashkey
++    hits = 0
++    misses = 0
++
++    if cache is None:
++        def wrapper(*args, **kwargs):
++            nonlocal misses
++            misses += 1
++            return func(*args, **kwargs)
++
++        def cache_clear():
++            nonlocal hits, misses
++            hits = misses = 0
++
++        def cache_info():
++            return _CacheInfo(hits, misses, 0, 0)
++
++    else:
++        def wrapper(*args, **kwargs):
++            nonlocal hits, misses
++            k = _key(*args, **kwargs)
++            try:
++                with lock:
++                    result = cache[k]
++                    hits += 1
++                    return result
++            except KeyError:
++                with lock:
++                    misses += 1
++            v = func(*args, **kwargs)
++            try:
++                with lock:
++                    return cache.setdefault(k, v)
++            except ValueError:
++                return v  # value too large
++
++        def cache_clear():
++            nonlocal hits, misses
++            with lock:
++                cache.clear()
++                hits = misses = 0
++
++        def cache_info():
++            with lock:
++                return _CacheInfo(hits, misses, reported_maxsize, cache.currsize)
++
++    import functools
++    wrapper = functools.update_wrapper(wrapper, func)
++    wrapper.cache = cache
++    wrapper.cache_key = _key
++    wrapper.cache_lock = lock
++    wrapper.cache_clear = cache_clear
++    wrapper.cache_info = cache_info
++    wrapper.cache_parameters = lambda: {"maxsize": reported_maxsize, "typed": typed}
++    return wrapper
++
++
+ def fifo_cache(maxsize=128, typed=False):
+     """Decorator to wrap a function with a memoizing callable that saves
+     up to `maxsize` results based on a First In First Out (FIFO)
+     algorithm.
+ 
+     """
+-    pass
++    if callable(maxsize) and not typed:
++        user_function = maxsize
++        return _make_wrapper(user_function, FIFOCache(128), 128, False, RLock())
++
++    def decorator(func):
++        if maxsize is None:
++            cache = FIFOCache(math.inf)
++        elif maxsize == 0:
++            cache = None
++        else:
++            cache = FIFOCache(maxsize)
++        return _make_wrapper(func, cache, maxsize, typed, RLock())
++
++    return decorator
++
+ 
+ def lfu_cache(maxsize=128, typed=False):
+     """Decorator to wrap a function with a memoizing callable that saves
+@@ -30,7 +112,21 @@ def lfu_cache(maxsize=128, typed=False):
+     algorithm.
+ 
+     """
+-    pass
++    if callable(maxsize) and not typed:
++        user_function = maxsize
++        return _make_wrapper(user_function, LFUCache(128), 128, False, RLock())
++
++    def decorator(func):
++        if maxsize is None:
++            cache = LFUCache(math.inf)
++        elif maxsize == 0:
++            cache = None
++        else:
++            cache = LFUCache(maxsize)
++        return _make_wrapper(func, cache, maxsize, typed, RLock())
++
++    return decorator
++
+ 
+ def lru_cache(maxsize=128, typed=False):
+     """Decorator to wrap a function with a memoizing callable that saves
+@@ -38,14 +134,45 @@ def lru_cache(maxsize=128, typed=False):
+     algorithm.
+ 
+     """
+-    pass
++    if callable(maxsize) and not typed:
++        user_function = maxsize
++        return _make_wrapper(user_function, LRUCache(128), 128, False, RLock())
++
++    def decorator(func):
++        if maxsize is None:
++            cache = LRUCache(math.inf)
++        elif maxsize == 0:
++            cache = None
++        else:
++            cache = LRUCache(maxsize)
++        return _make_wrapper(func, cache, maxsize, typed, RLock())
++
++    return decorator
++
+ 
+ def mru_cache(maxsize=128, typed=False):
+     """Decorator to wrap a function with a memoizing callable that saves
+     up to `maxsize` results based on a Most Recently Used (MRU)
+     algorithm.
+     """
+-    pass
++    import warnings
++    warnings.warn("mru_cache is deprecated", DeprecationWarning, stacklevel=2)
++
++    if callable(maxsize) and not typed:
++        user_function = maxsize
++        return _make_wrapper(user_function, MRUCache(128), 128, False, RLock())
++
++    def decorator(func):
++        if maxsize is None:
++            cache = MRUCache(math.inf)
++        elif maxsize == 0:
++            cache = None
++        else:
++            cache = MRUCache(maxsize)
++        return _make_wrapper(func, cache, maxsize, typed, RLock())
++
++    return decorator
++
+ 
+ def rr_cache(maxsize=128, choice=random.choice, typed=False):
+     """Decorator to wrap a function with a memoizing callable that saves
+@@ -53,11 +180,38 @@ def rr_cache(maxsize=128, choice=random.choice, typed=False):
+     algorithm.
+ 
+     """
+-    pass
++    if callable(maxsize) and not typed:
++        user_function = maxsize
++        return _make_wrapper(user_function, RRCache(128), 128, False, RLock())
++
++    def decorator(func):
++        if maxsize is None:
++            cache = RRCache(math.inf, choice=choice)
++        elif maxsize == 0:
++            cache = None
++        else:
++            cache = RRCache(maxsize, choice=choice)
++        return _make_wrapper(func, cache, maxsize, typed, RLock())
++
++    return decorator
++
+ 
+ def ttl_cache(maxsize=128, ttl=600, timer=time.monotonic, typed=False):
+     """Decorator to wrap a function with a memoizing callable that saves
+     up to `maxsize` results based on a Least Recently Used (LRU)
+     algorithm with a per-item time-to-live (TTL) value.
+     """
+-    pass
+\ No newline at end of file
++    if callable(maxsize) and not typed:
++        user_function = maxsize
++        return _make_wrapper(user_function, _UnboundTTLCache(ttl=600, timer=time.monotonic), 128, False, RLock())
++
++    def decorator(func):
++        if maxsize is None:
++            cache = _UnboundTTLCache(ttl=ttl, timer=timer)
++        elif maxsize == 0:
++            cache = None
++        else:
++            cache = TTLCache(maxsize, ttl=ttl, timer=timer)
++        return _make_wrapper(func, cache, maxsize, typed, RLock())
++
++    return decorator
+diff --git a/src/cachetools/keys.py b/src/cachetools/keys.py
+index 3615183..83f1702 100644
+--- a/src/cachetools/keys.py
++++ b/src/cachetools/keys.py
+@@ -1,6 +1,7 @@
+ """Key functions for memoizing decorators."""
+ __all__ = ('hashkey', 'methodkey', 'typedkey', 'typedmethodkey')
+ 
++
+ class _HashedTuple(tuple):
+     """A tuple that ensures that hash() will be called no more than once
+     per element, since cache decorators will hash the key multiple
+@@ -24,20 +25,32 @@ class _HashedTuple(tuple):
+ 
+     def __getstate__(self):
+         return {}
++
++
+ _kwmark = (_HashedTuple,)
+ 
++
+ def hashkey(*args, **kwargs):
+     """Return a cache key for the specified hashable arguments."""
+-    pass
++    if kwargs:
++        return _HashedTuple(args + _kwmark + tuple(sorted(kwargs.items())))
++    else:
++        return _HashedTuple(args)
++
+ 
+ def methodkey(self, *args, **kwargs):
+     """Return a cache key for use with cached methods."""
+-    pass
++    return hashkey(*args, **kwargs)
++
+ 
+ def typedkey(*args, **kwargs):
+     """Return a typed cache key for the specified hashable arguments."""
+-    pass
++    key = hashkey(*args, **kwargs)
++    key += tuple(type(v) for v in args)
++    key += tuple(type(v) for _, v in sorted(kwargs.items()))
++    return key
++
+ 
+ def typedmethodkey(self, *args, **kwargs):
+     """Return a typed cache key for use with cached methods."""
+-    pass
+\ No newline at end of file
++    return typedkey(*args, **kwargs)
