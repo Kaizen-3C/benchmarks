@@ -63,17 +63,31 @@ def _parse(summary: str) -> dict:  # T7: one parser; errors (collection) kept se
 def _collected(c: dict) -> int:
     return c["passed"] + c["failed"] + c["errors"]
 
-def _newest_after(log_root: Path, watermark: set) -> Path | None:  # T4
+def _newest_since(log_root: Path, t0: float) -> Path | None:  # T4: mtime watermark
+    """Run dir written by THIS run = the one whose test_output.txt mtime >= t0.
+
+    Uses an mtime watermark (a timestamp), NOT a path set. commit0 names each log dir by
+    a content HASH and REUSES it for identical code, so a 'strictly-new dir' path-set check
+    never sees a re-scored unchanged branch (it returns None -> 0/0/0). That broke the
+    verification path and would also zero-out any sampling rep that regenerates identical
+    code. mtime-based selection handles both new and reused dirs and matches this module's
+    documented intent.
+    """
     if not log_root.is_dir():
         return None
-    dirs = [d for d in log_root.iterdir() if d.is_dir() and str(d) not in watermark]
-    if not dirs:
-        return None
-    return max(dirs, key=lambda d: d.stat().st_mtime)
+    cands = []
+    for d in log_root.iterdir():
+        if not d.is_dir():
+            continue
+        out = d / "test_output.txt"
+        m = out.stat().st_mtime if out.exists() else d.stat().st_mtime
+        if m >= t0 - 1.0:   # 1s slack for clock skew
+            cands.append((m, d))
+    return max(cands)[1] if cands else None
 
 def score_branch(lib: str, branch: str, repo_dir: Path | None = None,
                  test_dir: str | None = None, retries: int = 3, backoff_s: float = 3.0,
-                 strip_noise: bool = True, commit: bool = True) -> dict:
+                 strip_noise: bool = True, commit: bool = True, timeout_s: int = 600) -> dict:
     """Score `branch` for `lib` on the FULL suite, robustly. Returns a dict with
     counts, collected, rate, scoring tag, summary, attempts, and `baseline_suspect`."""
     repo_dir = repo_dir or (WORKSPACE / "repos" / lib)
@@ -101,11 +115,11 @@ def score_branch(lib: str, branch: str, repo_dir: Path | None = None,
     attempts = 0
     for attempt in range(retries + 1):
         attempts = attempt + 1
-        watermark = {str(d) for d in log_root.iterdir()} if log_root.is_dir() else set()  # T4
+        t0 = time.time()                                                        # T4 mtime watermark
         subprocess.run(["commit0", "test", lib, test_dir, "--branch", branch,
-                        "--backend", "local", "--timeout", "600"],
+                        "--backend", "local", "--timeout", str(timeout_s)],
                        cwd=WORKSPACE, capture_output=True, text=True)            # T2 (no -x)
-        run_dir = _newest_after(log_root, watermark)
+        run_dir = _newest_since(log_root, t0)
         if run_dir is None:
             time.sleep(backoff_s); continue
         out = (run_dir / "test_output.txt")
