@@ -115,6 +115,11 @@ def score_branch(lib: str, branch: str, repo_dir: Path | None = None,
     attempts = 0
     for attempt in range(retries + 1):
         attempts = attempt + 1
+        # Remove any orphaned eval container first: a leftover `commit0.eval.<lib>` (from a
+        # killed/timed-out prior run) makes commit0 fail with a 409 name-conflict in ~3s,
+        # producing a false 0/0/0. Self-heal so verification is robust.
+        subprocess.run(["docker", "rm", "-f", f"commit0.eval.{lib}"],
+                       capture_output=True, text=True)
         t0 = time.time()                                                        # T4 mtime watermark
         subprocess.run(["commit0", "test", lib, test_dir, "--branch", branch,
                         "--backend", "local", "--timeout", str(timeout_s)],
