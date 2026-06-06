@@ -53,17 +53,14 @@ The **4 real non-reproductions**:
    now `docker rm -f`s any stale `commit0.eval.<lib>` before each run (self-healing). All 6 babel
    cells reproduced on re-score; only `portalocker_reflexion` remained (corrupt branch, above).
    Not a data defect.
-2. **Empty patches (9 cells) — adjudicated.** Cells where the agent produced no applyable
-   code (collection-crash floor libs). An empty patch means "no change → score the `commit0`
-   baseline"; `verify_patches` now scores the baseline for a 0-byte patch. **8 of 9 are
-   consistent** — recorded counts == baseline (e.g. `imapclient_aider_openai` 0/0/18,
-   `minitorch_*` 0/0/10, `babel_aider_openai` 0/0/22), i.e. they faithfully reproduce.
-   **`cookiecutter_aider_openai` is a confirmed provenance gap:** recorded `16/325/26` ≠
-   baseline `111/242/14`, yet both the patch (empty) *and* the shared `aider` branch (an empty
-   commit) hold no code — the agent code that produced these counts was never persisted. The
-   value is a real non-baseline result from the original run but is **not independently
-   reproducible** from committed artifacts (flagged `provenance_gap` in its JSON; counts
-   retained, not proven wrong).
+2. **Empty patches (9 cells) — adjudicated, all consistent.** Cells where the agent produced
+   no applyable code. An empty patch means "no change → score the **`commit0` stub** baseline";
+   `verify_patches` scores the `commit0` branch for a 0-byte patch. **All 9 reproduce exactly**
+   (recorded counts == the stub-baseline re-score: `imapclient_aider_openai` 0/0/18,
+   `minitorch_*` 0/0/10, `babel_aider_openai` 0/0/22, `cookiecutter_aider_openai` 16/325/26).
+   (Note: the `commit0` *stub* baseline is NOT the `single_shot` architecture — e.g. cookiecutter
+   stub = 16/325/26 while `single_shot_openai` = 111/242/14; comparing an empty patch to
+   single_shot would falsely flag a gap. The correct baseline is the `commit0` stub.)
 3. **Un-verifiable from committed artifacts (41 cells).**
    - **kaizen_delta (32):** the runner uses a single `kaizen_delta` branch for both providers
      (only the last-run provider's code survives) **and exports no patch** — so at most one
