@@ -28,5 +28,7 @@
     "wall_clock_capped": false,
     "cost_capped": false
   },
-  "recovered_from": "openai-sweep-rescore-2026-06-04"
+  "recovered_from": "openai-sweep-rescore-2026-06-04",
+  "provenance_gap": true,
+  "provenance_note": "Code artifact LOST: the patch is empty (0 bytes) AND the shared `aider` branch is an empty commit (git diff commit0..aider is empty), so the agent code that produced these counts (16/325/26, a real non-baseline result) was never persisted. The recorded value is from the original run but is NOT independently reproducible from committed artifacts. Counts retained (not proven wrong); regeneration would restore verifiability. See REPRODUCIBILITY.md."
 }

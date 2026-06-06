@@ -62,6 +62,11 @@ def _normalize(patch: Path) -> Path:
 def apply_and_score(lib: str, patch: Path):
     """Apply patch onto clean commit0 -> VERIFY_BRANCH, score full-suite. Returns (counts|None, note)."""
     repo = WORKSPACE / "repos" / lib
+    if patch.stat().st_size == 0:
+        # Empty patch = agent produced no applyable change -> the cell scores the commit0
+        # baseline (a 0-byte file is not a valid diff). Score the baseline branch directly.
+        sc = sb.score_branch(lib, "commit0", commit=False, timeout_s=TIMEOUT.get(lib, DEFAULT_TIMEOUT))
+        return sc["counts"], "empty->baseline"
     sb._git(repo, "checkout", "-f", "commit0")
     sb._git(repo, "clean", "-fd")
     sb._git(repo, "checkout", "-B", VERIFY_BRANCH, "commit0")

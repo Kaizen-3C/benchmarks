@@ -53,11 +53,17 @@ The **4 real non-reproductions**:
    now `docker rm -f`s any stale `commit0.eval.<lib>` before each run (self-healing). All 6 babel
    cells reproduced on re-score; only `portalocker_reflexion` remained (corrupt branch, above).
    Not a data defect.
-2. **Empty patches (9 cells).** Cells where the agent produced no applyable code
-   (collection-crash floor libs: babel/jinja/marshmallow/minitorch/voluptuous/imapclient
-   aider-openai, etc.). The empty diff → baseline collection-error, which matches their
-   recorded collection counts. **`cookiecutter_aider_openai` is the exception** (empty patch
-   but recorded 16/325) — a genuine provenance gap to re-derive.
+2. **Empty patches (9 cells) — adjudicated.** Cells where the agent produced no applyable
+   code (collection-crash floor libs). An empty patch means "no change → score the `commit0`
+   baseline"; `verify_patches` now scores the baseline for a 0-byte patch. **8 of 9 are
+   consistent** — recorded counts == baseline (e.g. `imapclient_aider_openai` 0/0/18,
+   `minitorch_*` 0/0/10, `babel_aider_openai` 0/0/22), i.e. they faithfully reproduce.
+   **`cookiecutter_aider_openai` is a confirmed provenance gap:** recorded `16/325/26` ≠
+   baseline `111/242/14`, yet both the patch (empty) *and* the shared `aider` branch (an empty
+   commit) hold no code — the agent code that produced these counts was never persisted. The
+   value is a real non-baseline result from the original run but is **not independently
+   reproducible** from committed artifacts (flagged `provenance_gap` in its JSON; counts
+   retained, not proven wrong).
 3. **Un-verifiable from committed artifacts (41 cells).**
    - **kaizen_delta (32):** the runner uses a single `kaizen_delta` branch for both providers
      (only the last-run provider's code survives) **and exports no patch** — so at most one
@@ -67,10 +73,14 @@ The **4 real non-reproductions**:
    exactly the single-shot baseline; the real code re-scores to `25/62/4`. The patch-noise
    bug reached a KD cell. (See CORRECTIONS.md.) `voluptuous_kaizen_delta_openai` recorded ==
    baseline too.
-5. **Patch artifacts need LF normalization.** The committed `.patch` files carry Windows
-   CRLF + no trailing newline, so `git apply` reports "corrupt patch". `verify_patches`
-   normalizes on the fly; the files in the data PR should be re-committed normalized so an
-   external reviewer can apply them directly.
+5. **Patch CRLF / apply hygiene (RESOLVED).** The committed `.patch` blobs are stored **LF**
+   and their `patch_sha256` matches; the CRLF only appeared on Windows checkout (autocrlf).
+   `.gitattributes` now marks `commit0/results/patches/** -text`, so checkouts preserve the
+   exact LF bytes on every platform (sha-verify + apply work). The patches are kept
+   **byte-faithful** to the scored code (some preserve a no-trailing-newline final line, so
+   plain `git apply` needs `--recount` + a trailing newline — `verify_patches` does this
+   automatically; documented in `commit0/results/patches/README.md`). We deliberately did NOT
+   rewrite the patch bytes (which would desync the recorded shas from the original run).
 
 ## Methodology caveat surfaced (for the paper)
 

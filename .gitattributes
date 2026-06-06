@@ -6,8 +6,11 @@
 # Per-cell result JSONs + aggregates + OpenHands run dirs (measured data)
 commit0/results/**                 linguist-generated=true
 
-# Agent-generated code diffs (provenance; e.g. chardet patch is ~41k lines of data tables)
-commit0/results/patches/**         -diff linguist-generated=true
+# Agent-generated code diffs (provenance; e.g. chardet patch is ~41k lines of data tables).
+# -text: never apply CRLF conversion — patches are stored byte-exact LF so `patch_sha256`
+# verifies and `git apply` works on every platform (Windows autocrlf would otherwise
+# corrupt them on checkout). See commit0/results/patches/README.md.
+commit0/results/patches/**         -diff -text linguist-generated=true
 
 # Rendered figure — only the vector PDF is tracked (the PNG raster is git-ignored;
 # see .gitignore — it is regenerated locally to avoid ~1.2 MB binary blobs in history)
