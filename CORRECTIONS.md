@@ -78,6 +78,14 @@ by `python commit0/baselines/value_add_fingerprint.py` and by Figure 1
   `pending-regeneration` (they contributed 0/0 to their aggregates, so the corrected numbers are
   unaffected), and the provenance guard now **fails any full-suite cell with 0 collected** so this
   class can't recur. A patched-runner re-run will record their real collection-`errors` count.
+- **Measurement-reproducibility verification (2026-06; see [`commit0/REPRODUCIBILITY.md`](commit0/REPRODUCIBILITY.md)).**
+  Re-scoring committed code against published counts: **100/102 faithfully-verifiable cells reproduce
+  exactly (98%)**; patch-based (the externally-runnable method) was **44/44**. It also **confirmed one
+  more silent-baseline defect**: `imapclient_kaizen_delta_anthropic` recorded `16/7/15` == the
+  single-shot baseline (KD patch never applied). Re-marked `pending-regeneration`; the true KD value is
+  not confidently recoverable (KD shares one branch across providers and exports no patch — a documented
+  provenance limit). So the patch-noise silent-baseline bug reached a **kaizen_delta** cell, not only
+  the aider/smolagents cells.
 
 ### Known limitations (honesty about what is *not* yet established)
 
