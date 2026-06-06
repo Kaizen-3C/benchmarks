@@ -31,6 +31,31 @@ print("ok:", j["patch_file"])
 PY
 ```
 
+## Applying a patch (re-deriving a cell's score, $0, no API keys)
+
+The patches are **byte-faithful** to what the agents produced — including agent source files
+that lack a trailing newline — so `patch_sha256` matches the exact bytes that were scored.
+Two consequences for applying them:
+
+- They are stored **LF** and `.gitattributes` marks `commit0/results/patches/** -text` so a
+  checkout never converts them to CRLF (which would break both `git apply` and the sha check).
+- Because some preserve a no-trailing-newline final line, plain `git apply` can report
+  "corrupt patch"; apply with the tolerant invocation the verifier uses:
+
+```bash
+# canonical, robust apply (handles the no-trailing-newline tail):
+python commit0/baselines/verify_patches.py --results-dir commit0/results \
+    --patches-dir commit0/results/patches --only <lib>_<arch>_<provider>
+# or manually: printf '\n' >> p.patch ; git apply --recount --whitespace=nowarn p.patch
+```
+
+**Empty patches.** 9 cells have a 0-byte patch — the agent produced no applyable change
+(collection-crash floor libs, e.g. `*_aider_openai` on babel/jinja/marshmallow/minitorch).
+An empty patch means "no change → the cell scores the `commit0` baseline"; their recorded
+counts are the baseline collection-error counts. `verify_patches` treats an empty patch as a
+baseline score. (`cookiecutter_aider_openai` is the one empty patch whose recorded counts are
+non-baseline — a known provenance gap to re-derive; see REPRODUCIBILITY.md.)
+
 ## Why this is a separate pull request
 
 These 55 patches are ~135k lines of generated data. They are split into their own
