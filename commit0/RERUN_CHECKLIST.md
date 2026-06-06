@@ -19,6 +19,9 @@ Without these, a re-run reproduces the same provenance defects.
 | A3 | **Patch export hygiene** — LF + trailing newline | Committed patches needed on-the-fly normalization to `git apply`. | **DONE** — `.gitattributes -text` (CRLF) + export now appends a trailing newline and writes `newline="\n"` in both runners |
 | A4 | Scoring fixes (noise-strip before commit; full-suite `commit0 test` never `-x`; stamp scoring only on parseable, non-zero counts; mtime watermark; `docker rm -f commit0.eval.<lib>` self-heal; `git(check=True)`; case-insensitive parse) | The patch-noise / `-x` / silent-baseline / orphaned-container / 0/0/0 bugs. | **DONE** |
 | A5 | **Pre-campaign hygiene**: `docker rm -f commit0.eval.*`, flag stale verify branches, confirm pinned env | Orphaned containers caused false 0/0/0; stale branches cause confounds. | **DONE** — `commit0/baselines/preflight_clean.sh` |
+| A6 | **Verified WSL sync** — run `commit0/baselines/sync_to_wsl.sh` BEFORE any run | A bulk `cp -rf … 2>/dev/null` SILENTLY skipped files (left a stale 808-line `kaizen_delta.py`), so the 2026-06-06 Part-B run used the OLD runner (no per-provider branches). | **DONE** — `sync_to_wsl.sh` copies via redirection (cannot skip), diffs every file, checks markers; fails loud |
+
+> **Operational note (2026-06-06 Part-B-OpenAI attempt):** failed on *environment*, not code — the stale sync above + OpenAI `APIConnectionError`s (only 8/16 KD cells) + a transient smolagents `AgentGenerationError`. Nothing was committed. Lesson: a regeneration run needs verified sync (A6), per-cell provider-error retries, and active monitoring; even OpenAI was flaky. The harness code is correct; the blocker is run-host reliability.
 
 ---
 
