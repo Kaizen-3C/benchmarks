@@ -18,27 +18,41 @@ not call any model.
 
 ## Result (2026-06)
 
+Final tally after clearing the orphaned-container noise (below) and re-scoring those cells:
+
 | Verifier | Cells scored | Reproduce exactly | Non-repro |
 |---|---:|---:|---|
-| Branch (single_shot + reflexion) | 58 | **56** | 2 |
-| Patch (aider + smolagents) | 44 | **44** | 0 |
-| **Total (faithful + scored)** | **102** | **100 (98%)** | **2** |
+| Branch (single_shot + reflexion) | 64 | **60** | 4 |
+| Patch (aider + smolagents, non-empty) | 46 | **46** | 0 |
+| **Total (faithful + scored)** | **110** | **106 (96%)** | **4** |
 
 - The KD **headline claim reproduces**: `voluptuous/kaizen_delta` → 58/91 = **39%**.
+- The babel **headline cell reproduces**: `babel/smolagents-anthropic` → **5663 passed** (in 17s,
+  once the stale container is removed — see below).
 - The `pyjwt` denominator spread (182 vs 259) **reproduces** → it is real, code-dependent
   test collection (a methodology caveat, below), not a scoring bug.
-- **Patch-based reproduction was 44/44** — zero real mismatches on the artifacts an external
+- **Patch-based reproduction was 46/46** — zero real mismatches on the artifacts an external
   party would use.
 
-The 2 branch-verified exceptions: `portalocker_single_shot_openai` (33/7 → 35/5, two tests
-flipped — env-sensitive) and `tinydb_reflexion_openai` (recorded counts were empty `0/0/0`).
+The **4 real non-reproductions**:
+- `portalocker_reflexion_sonnet` / `_openai` — the committed reflexion branch is **corrupt**: the
+  LLM's chain-of-thought prose leaked into `portalocker/utils.py` (`"Wait - I still haven't
+  resolved the semaphore test..."`) → `SyntaxError` → import fails → `0/0/0`. The recorded
+  `30/10` / `13/27` were scored from clean code that was never committed; **reflexion exports no
+  patch**, so these are unverifiable from the committed artifact. (A reflexion-runner provenance
+  defect — committed code ≠ scored code.)
+- `portalocker_single_shot_openai` (33/7 → 35/5, two tests flipped — env-sensitive).
+- `tinydb_reflexion_openai` (recorded counts were empty `0/0/0`).
 
 ## Known limitations & open items (NOT counted as reproduction failures)
 
-1. **Harness timeouts (11 cells).** Big suites (babel = 5663 tests, marshmallow, jinja) can
-   exceed the score timeout and yield a false `0/0/0`. `score_branch` now takes `timeout_s`
-   and `verify_patches` sets generous per-lib timeouts; babel still needs a longer budget /
-   re-score. Not a data defect.
+1. **Orphaned-container failures (RESOLVED).** The cells that first showed `0/0/0` were *not*
+   timeouts — a leftover `commit0.eval.<lib>` container (e.g. babel's, "Up 37 hours" from a
+   killed prior run) made commit0 fail with a 409 name-conflict in ~3s → false `0/0/0`. babel
+   actually runs in <10s and reproduces `5663 passed` once the orphan is removed. `score_branch`
+   now `docker rm -f`s any stale `commit0.eval.<lib>` before each run (self-healing). All 6 babel
+   cells reproduced on re-score; only `portalocker_reflexion` remained (corrupt branch, above).
+   Not a data defect.
 2. **Empty patches (9 cells).** Cells where the agent produced no applyable code
    (collection-crash floor libs: babel/jinja/marshmallow/minitorch/voluptuous/imapclient
    aider-openai, etc.). The empty diff → baseline collection-error, which matches their
