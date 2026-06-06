@@ -246,6 +246,23 @@ def git(repo_dir: Path, *args: str, check: bool = False) -> str:
     return (r.stdout + r.stderr).strip()
 
 
+def pin_jinja_for_litellm() -> None:
+    """Call BEFORE `import litellm`. litellm transitively imports jinja2, which in the WSL
+    workspace is pip-EDITABLE-installed from the commit0 `repos/jinja` benchmark. On most
+    branches that jinja doesn't import as a real library (the commit0 stub deliberately
+    fails with `_failing_new`; broken agent code raises too) -> `import litellm` crashes.
+    Pin repos/jinja to a branch whose jinja2 actually imports (smolagents=3.1.4,
+    kaizen_stage2=3.1.6) first. WSL-only env workaround; see ../RERUN_CHECKLIST.md (A5).
+    """
+    repo = Path.home() / "kaizen-commit0" / "repos" / "jinja"
+    if not repo.is_dir():
+        return
+    for b in ("smolagents", "kaizen_stage2"):
+        if subprocess.run(["git", "-C", str(repo), "checkout", "-f", b],
+                          capture_output=True, text=True).returncode == 0:
+            return
+
+
 _ANSI = re.compile(r"\x1b\[[0-9;]*m")
 _PYTEST_FINAL_RE = re.compile(
     r"={3,}\s+((?:\d+\s+(?:passed|failed|skipped|error[s]?|warning[s]?|deselected|xfailed|xpassed)[, ]*)+).*?\sin\s+[\d.]+s\s+={3,}",

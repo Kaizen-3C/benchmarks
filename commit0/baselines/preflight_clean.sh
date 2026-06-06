@@ -27,4 +27,12 @@ for r in "$HOME"/kaizen-commit0/repos/*/; do
 done
 [ "$found" = 0 ] && echo "  none"
 
+echo "=== 5. pin repos/jinja so litellm's transitive jinja2 import resolves ==="
+jr="$HOME/kaizen-commit0/repos/jinja"
+if [ -d "$jr" ]; then
+  for b in smolagents kaizen_stage2; do
+    if git -C "$jr" checkout -qf "$b" 2>/dev/null; then echo "  repos/jinja -> $b"; break; fi
+  done
+else echo "  (no jinja repo)"; fi
+
 echo "PREFLIGHT DONE — safe to start the sweep (use repeat_runner.py for pacing + valid-rep gating)"
