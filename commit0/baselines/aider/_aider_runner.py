@@ -47,6 +47,7 @@ WORKSPACE = Path.home() / "kaizen-commit0"
 
 # Reuse single_shot_sonnet.py helpers — they live in the parent dir.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "sampling"))
 from single_shot_sonnet import (  # noqa: E402
     EXCLUDE_DIRS,
     _candidate_package_dirs,
@@ -54,8 +55,9 @@ from single_shot_sonnet import (  # noqa: E402
     extract_pdf_text,
     git,
     load_dotenv,
-    run_pytest_via_commit0,
+    pin_jinja_for_litellm,
 )
+from score_branch import score_branch as _score_branch  # noqa: E402  (robust commit0 scorer)
 
 # ---------- Hard caps (per PHASE1_COST_REVIEW.md §2.1) ----------
 MAX_WALL_S = 30 * 60               # 30 min wall-clock per library
@@ -202,21 +204,13 @@ def _persist_and_score(
     git(repo_dir, "add", "-A", check=True)
     git(repo_dir, "commit", "--allow-empty", "-m", f"{branch} generated output ({lib_name})", check=True)
 
-    # 2. Authoritative full-suite score via the same path as every other arch.
-    exit_code, summary = run_pytest_via_commit0(lib_name, branch)
-    counts = _counts_from_summary(summary)
-    collected = counts["passed"] + counts["failed"] + counts["errors"]
-    if _is_pytest_summary(summary) and collected > 0:
-        scoring = SCORING_VIA_COMMIT0
-    else:
-        # Fallback: commit0 produced no PARSEABLE, non-zero summary. It returns the
-        # last 500 bytes of stdout/stderr when it finds no summary line, and an
-        # import/collection crash yields a traceback that parses to 0/0/0/0 — never
-        # stamp full-suite on zero collected. Score locally, full suite, stamp LOCAL.
-        print(f"  [warn] {lib_name}: commit0 test emitted no parseable/non-zero summary; local pytest fallback",
-              file=sys.stderr)
-        summary, counts = _final_pytest(repo_dir, SCORING_TEST_CMD)
-        scoring = SCORING_VIA_LOCAL
+    # 2. Authoritative full-suite score via the SHARED robust scorer (score_branch):
+    #    commit0-only with mtime watermark + orphaned-container self-heal + retry. NO local
+    #    pytest fallback — local collects differently than the container (e.g. portalocker
+    #    52 local vs 40 commit0), producing non-canonical counts. A 0-collected result is
+    #    honestly tagged "no-summary" (not a valid full-suite score). See ../../REPRODUCIBILITY.md.
+    sc = _score_branch(lib_name, branch, repo_dir=repo_dir, commit=False)
+    summary, counts, scoring = sc["summary"], sc["counts"], sc["scoring"]
 
     # 3. Export the generated diff into THIS repo (workspace-independent artifact).
     patch_rel = patch_sha = None
@@ -287,6 +281,7 @@ def run_aider_on_lib(
     # 600s, which turned a degraded-Anthropic window into multi-hour thrash. 180s is
     # ample for large generations but cuts a hung call to ~3min; bounded retries +
     # the repeat_runner valid-rep gate then move on instead of hanging.
+    pin_jinja_for_litellm()   # WSL env: make litellm's transitive jinja2 import resolve
     import litellm
     litellm.request_timeout = 180
     litellm.num_retries = 4
