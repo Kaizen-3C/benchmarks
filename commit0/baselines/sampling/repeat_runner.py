@@ -41,8 +41,8 @@ def runner_cmd(arch: str, provider: str, lib: str) -> list[str]:
     raise ValueError(f"unsupported arch for sampling scaffold: {arch}")
 
 def branch_of(arch: str, provider: str) -> str:
-    if arch in ("aider", "smolagents"):
-        return arch                                   # CODE_BRANCH in the fixed runners
+    if arch in ("aider", "smolagents", "kaizen_delta"):
+        return f"{arch}_{provider}"                    # A1: per-provider branch (matches the fixed runners)
     if arch == "single_shot":
         return "single_shot_sonnet" if provider == "anthropic" else "single_shot_openai"
     raise ValueError(arch)

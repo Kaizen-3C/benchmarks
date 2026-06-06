@@ -76,8 +76,19 @@ DEFAULT_TEST_CMD = "pytest -x --tb=no -q"   # agent's in-loop convergence heuris
 # `commit0 test --branch` — the SAME path single_shot/reflexion/KD use — so the
 # cell is byte-for-byte comparable (same Docker image, same test_dir). Scoring
 # with `-x` truncates the denominator at the first failure; see ../../RE-VALIDATION.md.
-CODE_BRANCH = "smolagents"            # git branch the generated code is committed to
+CODE_BRANCH = "smolagents"            # legacy default; runs now use a PER-PROVIDER branch (A1)
 SCORING_VIA_COMMIT0 = "commit0-test-full-suite"
+
+
+def _provider_of(model_id: str) -> str:
+    """Map a litellm model id to its provider for a PER-PROVIDER code branch (A1).
+    A single shared `smolagents` branch kept only the last-run provider's code; per-provider
+    branches keep both. See ../../RERUN_CHECKLIST.md."""
+    head = model_id.split("/", 1)[0].lower()
+    if head in ("openai", "anthropic"):
+        return head
+    low = model_id.lower()
+    return "anthropic" if ("claude" in low or "sonnet" in low) else "openai"
 SCORING_VIA_LOCAL = "full-suite-local-pytest"   # fallback if commit0 emits no summary
 SCORING_TEST_CMD = "pytest --tb=no -q"          # fallback command (still full suite)
 
@@ -209,10 +220,12 @@ def _persist_and_score(
                    ":(exclude)spec.md",
                    ":(exclude,glob).aider**",
                    ":(exclude,glob)**/__pycache__/**")
+        if diff and not diff.endswith("\n"):
+            diff += "\n"                          # A3: trailing newline so plain `git apply` works
         patch_dir = out_path.parent / "patches"
         patch_dir.mkdir(parents=True, exist_ok=True)
         patch_path = patch_dir / f"{out_path.stem}.patch"
-        patch_path.write_text(diff, encoding="utf-8")
+        patch_path.write_text(diff, encoding="utf-8", newline="\n")  # A3: force LF on any platform
         patch_rel = f"patches/{patch_path.name}"
         patch_sha = hashlib.sha256(diff.encode("utf-8")).hexdigest()
     except Exception as e:
@@ -282,15 +295,18 @@ def run_smolagents_on_lib(
     litellm.request_timeout = 180
     litellm.num_retries = 4
 
+    # Per-provider code branch (A1) so both providers' code persists + is patch-exportable.
+    code_branch = f"smolagents_{_provider_of(model_id)}"
+
     # Open a fresh branch off the pinned commit0 starter BEFORE any edits, so the
     # agent's changes land on a clean tree and can be committed + scored + exported.
-    _start_branch(repo_dir, CODE_BRANCH)
+    _start_branch(repo_dir, code_branch)
 
     spec_text = _materialize_spec_md(repo_dir)
     stub_files = discover_stub_files(repo_dir)
     if not stub_files:
         return {
-            "repo": lib_name, "model": model_id, "branch": "smolagents",
+            "repo": lib_name, "model": model_id, "branch": code_branch,
             "error": "no stub files discovered",
             "final_counts": {"passed": 0, "failed": 0, "skipped": 0, "errors": 0},
         }
@@ -342,15 +358,15 @@ def run_smolagents_on_lib(
     # Persist the generated code onto the arch branch, score the FULL suite via
     # commit0 test --branch (parity with every other arch), and export a patch.
     final_summary, final_counts, scoring, patch_file, patch_sha = _persist_and_score(
-        lib_name, repo_dir, CODE_BRANCH, out_path,
+        lib_name, repo_dir, code_branch, out_path,
     )
 
     result = {
         "repo": lib_name,
         "model": model_id,
-        "branch": "smolagents",
+        "branch": code_branch,
         "scoring": scoring,              # commit0 full-suite (or local fallback) — see ../../RE-VALIDATION.md
-        "code_branch": CODE_BRANCH,      # git branch the generated code is committed to
+        "code_branch": code_branch,      # per-provider git branch the generated code is committed to (A1)
         "patch_file": patch_file,        # committed diff artifact (workspace-independent)
         "patch_sha256": patch_sha,
         "elapsed_s": round(elapsed, 1),

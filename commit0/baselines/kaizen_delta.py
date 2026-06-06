@@ -384,9 +384,9 @@ def run_one_lib(repo: str, provider: str, model: str, max_retries_per_file: int 
     else:
         print(f"  test-import scan: none found (file regen will run without contract)")
 
-    branch = "kaizen_delta"
-    git(repo_dir, "checkout", "commit0")
-    git(repo_dir, "branch", "-D", branch)
+    branch = f"kaizen_delta_{provider}"   # A1: per-provider branch so BOTH providers' code
+    git(repo_dir, "checkout", "commit0")  # persists (the shared `kaizen_delta` branch kept only
+    git(repo_dir, "branch", "-D", branch) # the last-run provider). See ../RERUN_CHECKLIST.md.
     git(repo_dir, "checkout", "-b", branch)
 
     client = LLMClient(provider, model)

@@ -211,6 +211,17 @@ def write_files(repo_dir: Path, files: dict[str, str]) -> list[str]:
         if not target.is_relative_to(repo_dir):
             print(f"  REFUSED (path escape): {relpath}", file=sys.stderr)
             continue
+        # A2: reject syntactically-invalid Python. If the model leaks chain-of-thought
+        # prose into a fenced block, writing it commits a SyntaxError that breaks ALL test
+        # collection (the portalocker_reflexion defect). Keep the stub instead so the rest
+        # of the suite still collects. See ../RERUN_CHECKLIST.md.
+        if relpath.endswith(".py"):
+            import ast
+            try:
+                ast.parse(content)
+            except SyntaxError as e:
+                print(f"  REFUSED (invalid Python, kept stub): {relpath}: {e}", file=sys.stderr)
+                continue
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(content, encoding="utf-8", newline="")
         written.append(relpath)

@@ -14,11 +14,11 @@ Without these, a re-run reproduces the same provenance defects.
 
 | # | Fix | Why | Status |
 |---|-----|-----|--------|
-| A1 | **Per-provider branch names** for aider / smolagents / kaizen_delta (e.g. `aider_openai` / `aider_anthropic`, not a single `aider`) | The shared branch keeps only the *last-run* provider's code → the other provider is unverifiable and patch-export collides. Root cause of the KD "lost provider" + the shared-branch confound. | **TODO (critical)** |
-| A2 | **Reflexion: strip LLM chain-of-thought from generated code** before commit | `portalocker_reflexion_{sonnet,openai}` committed the model's prose (`"Wait - I still haven't resolved..."`) into `utils.py` → `SyntaxError`. Audit other reflexion cells for the same. | **TODO** |
-| A3 | **Patch export hygiene** — write LF + trailing newline (or keep byte-faithful + `-text`, as now) | Committed patches needed on-the-fly normalization to `git apply`. `.gitattributes -text` already prevents CRLF; a trailing newline at export would make plain `git apply` work. | Partly done (`-text`); export tweak TODO |
-| A4 | Scoring fixes (noise-strip before commit; full-suite `commit0 test` never `-x`; stamp scoring only on parseable, non-zero counts; mtime watermark; `docker rm -f commit0.eval.<lib>` self-heal; `git(check=True)`; case-insensitive parse) | The patch-noise / `-x` / silent-baseline / orphaned-container / 0/0/0 bugs. | **DONE (this session)** |
-| A5 | **Pre-campaign hygiene**: `docker rm -f commit0.eval.*`, delete stale arch branches, confirm pinned env | Orphaned containers caused false 0/0/0; stale branches cause confounds. | Runbook TODO |
+| A1 | **Per-provider branch names** for aider / smolagents / kaizen_delta (`aider_openai` / `aider_anthropic`, not a single `aider`) | The shared branch keeps only the *last-run* provider's code → the other provider is unverifiable and patch-export collides. Root cause of the KD "lost provider" + the shared-branch confound. | **DONE** — `_provider_of()` + `code_branch=f"{arch}_{provider}"` in all 3 runners; `repeat_runner.branch_of` updated |
+| A2 | **Reflexion: reject non-Python generated code** before commit | `portalocker_reflexion_{sonnet,openai}` committed the model's prose (`"Wait - I still haven't resolved..."`) into `utils.py` → `SyntaxError` that broke ALL collection. | **DONE** — `write_files()` (shared by single_shot + reflexion) now `ast.parse`-validates each `.py` and refuses invalid content (keeps the stub) |
+| A3 | **Patch export hygiene** — LF + trailing newline | Committed patches needed on-the-fly normalization to `git apply`. | **DONE** — `.gitattributes -text` (CRLF) + export now appends a trailing newline and writes `newline="\n"` in both runners |
+| A4 | Scoring fixes (noise-strip before commit; full-suite `commit0 test` never `-x`; stamp scoring only on parseable, non-zero counts; mtime watermark; `docker rm -f commit0.eval.<lib>` self-heal; `git(check=True)`; case-insensitive parse) | The patch-noise / `-x` / silent-baseline / orphaned-container / 0/0/0 bugs. | **DONE** |
+| A5 | **Pre-campaign hygiene**: `docker rm -f commit0.eval.*`, flag stale verify branches, confirm pinned env | Orphaned containers caused false 0/0/0; stale branches cause confounds. | **DONE** — `commit0/baselines/preflight_clean.sh` |
 
 ---
 
