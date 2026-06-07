@@ -38,6 +38,11 @@ def runner_cmd(arch: str, provider: str, lib: str) -> list[str]:
     if arch == "single_shot":
         script = "run_lite_single_shot.py" if provider == "anthropic" else "run_lite_single_shot_openai.py"
         return [py, str(BASELINES / script), "--only", lib]
+    if arch == "kaizen_delta":
+        return [py, str(BASELINES / "run_lite_kaizen_delta.py"), "--provider", provider, "--only", lib]
+    if arch == "reflexion":
+        script = "run_lite_reflexion.py" if provider == "anthropic" else "run_lite_reflexion_openai.py"
+        return [py, str(BASELINES / script), "--only", lib]
     raise ValueError(f"unsupported arch for sampling scaffold: {arch}")
 
 def branch_of(arch: str, provider: str) -> str:
@@ -45,7 +50,25 @@ def branch_of(arch: str, provider: str) -> str:
         return f"{arch}_{provider}"                    # A1: per-provider branch (matches the fixed runners)
     if arch == "single_shot":
         return "single_shot_sonnet" if provider == "anthropic" else "single_shot_openai"
+    if arch == "reflexion":
+        return "reflexion_sonnet" if provider == "anthropic" else "reflexion_openai"
     raise ValueError(arch)
+
+def _cost_from_runner_json(d: dict, provider: str) -> float:
+    """cost_usd if recorded (>0), else compute from tokens (single_shot records tokens,
+    not totals.cost_usd). Mirrors value_add_fingerprint pricing so the valid-rep gate
+    doesn't discard a real run as 'billed nothing'."""
+    totals = d.get("totals") or {}
+    c = totals.get("cost_usd")
+    if c and float(c) > 0:
+        return float(c)
+    def g(key):
+        return float(totals.get(key, d.get(key, 0)) or 0)
+    inp, out, cached = g("input_tokens"), g("output_tokens"), g("cached_input_tokens")
+    if provider == "anthropic":
+        return (inp * 3 + out * 15) / 1_000_000
+    return ((inp - cached) * 1.25 + cached * 0.125 + out * 10) / 1_000_000
+
 
 def one_rep(arch, provider, lib, k, temperature, seed, dry, model=None, seed_key=None):
     """Run + score one rep. Returns the rep dict (or None on dry-run).
@@ -71,12 +94,15 @@ def one_rep(arch, provider, lib, k, temperature, seed, dry, model=None, seed_key
     # robust re-score of the branch the agent just produced (score_branch, not the
     # runner's own scoring) so every rep is scored identically (T1-T4).
     sc = sb.score_branch(lib, branch_of(arch, provider))
-    # cost from the runner's own JSON (it tracks the LLM spend)
+    # cost from the runner's own JSON. Some runners (single_shot) record TOKENS but not
+    # totals.cost_usd -> read cost_usd if present, else compute from tokens (mirrors
+    # value_add_fingerprint pricing). Otherwise a real run reads as $0 and the valid-rep
+    # gate (cost<=0) would wrongly discard it.
     runner_json = WORKSPACE / "baselines" / "results" / f"{lib}_{arch}_{provider}.json"
     cost = 0.0
     if runner_json.exists():
         try:
-            cost = float((json.loads(runner_json.read_text()).get("totals") or {}).get("cost_usd", 0) or 0)
+            cost = _cost_from_runner_json(json.loads(runner_json.read_text()), provider)
         except Exception:
             pass
     return {
@@ -141,7 +167,8 @@ def _fix_jinja_editable_install():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--arch", required=True, choices=["aider", "smolagents", "single_shot"])
+    ap.add_argument("--arch", required=True,
+                    choices=["aider", "smolagents", "single_shot", "kaizen_delta", "reflexion"])
     ap.add_argument("--provider", required=True, choices=["anthropic", "openai"])
     ap.add_argument("--libs", nargs="+", required=True)
     ap.add_argument("--reps", type=int, default=5)
