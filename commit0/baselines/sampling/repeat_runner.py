@@ -38,6 +38,11 @@ def runner_cmd(arch: str, provider: str, lib: str) -> list[str]:
     if arch == "single_shot":
         script = "run_lite_single_shot.py" if provider == "anthropic" else "run_lite_single_shot_openai.py"
         return [py, str(BASELINES / script), "--only", lib]
+    if arch == "kaizen_delta":
+        return [py, str(BASELINES / "run_lite_kaizen_delta.py"), "--provider", provider, "--only", lib]
+    if arch == "reflexion":
+        script = "run_lite_reflexion.py" if provider == "anthropic" else "run_lite_reflexion_openai.py"
+        return [py, str(BASELINES / script), "--only", lib]
     raise ValueError(f"unsupported arch for sampling scaffold: {arch}")
 
 def branch_of(arch: str, provider: str) -> str:
@@ -45,6 +50,8 @@ def branch_of(arch: str, provider: str) -> str:
         return f"{arch}_{provider}"                    # A1: per-provider branch (matches the fixed runners)
     if arch == "single_shot":
         return "single_shot_sonnet" if provider == "anthropic" else "single_shot_openai"
+    if arch == "reflexion":
+        return "reflexion_sonnet" if provider == "anthropic" else "reflexion_openai"
     raise ValueError(arch)
 
 def _cost_from_runner_json(d: dict, provider: str) -> float:
@@ -160,7 +167,8 @@ def _fix_jinja_editable_install():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--arch", required=True, choices=["aider", "smolagents", "single_shot"])
+    ap.add_argument("--arch", required=True,
+                    choices=["aider", "smolagents", "single_shot", "kaizen_delta", "reflexion"])
     ap.add_argument("--provider", required=True, choices=["anthropic", "openai"])
     ap.add_argument("--libs", nargs="+", required=True)
     ap.add_argument("--reps", type=int, default=5)
