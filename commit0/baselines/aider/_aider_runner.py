@@ -286,8 +286,9 @@ def run_aider_on_lib(
     litellm.request_timeout = 180
     litellm.num_retries = 4
 
+    provider = _provider_of(model_id)
     # Per-provider code branch (A1) so both providers' code persists + is patch-exportable.
-    code_branch = f"aider_{_provider_of(model_id)}"
+    code_branch = f"aider_{provider}"
 
     # Open a fresh branch off the pinned commit0 starter BEFORE any edits, so the
     # agent's changes land on a clean tree and can be committed + scored + exported.
@@ -322,8 +323,8 @@ def run_aider_on_lib(
         read_only_fnames=[str(p) for p in read_only],
         auto_test=True,
         test_cmd=test_cmd,
-        cache_prompts=True,         # native Anthropic prompt cache
-        stream=False,
+        cache_prompts=(os.environ.get("KAIZEN_AIDER_CACHE", "1") != "0"),  # native Anthropic prompt cache; KAIZEN_AIDER_CACHE=0 disables
+        stream=(provider == "anthropic"),  # stream on ANTHROPIC ONLY: it cancels non-streaming requests at its ~10-min server cap, which large-generation cells (chardet/voluptuous/marshmallow/jinja) exceed -> httpcore.RemoteProtocolError "Server disconnected" (elapsed_s~600 = the cap). OpenAI keeps its validated stream=False path (no such cap observed). Root cause via $0 request-capture diagnostic 2026-06-08; see RERUN_CHECKLIST.md.
         auto_commits=False,         # don't pollute the starter repo with commits
         dirty_commits=False,
         verbose=False,

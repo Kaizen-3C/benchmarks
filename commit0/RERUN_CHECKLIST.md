@@ -23,6 +23,43 @@ Without these, a re-run reproduces the same provenance defects.
 
 > **Operational note (2026-06-06 Part-B-OpenAI attempt):** failed on *environment*, not code — the stale sync above + OpenAI `APIConnectionError`s (only 8/16 KD cells) + a transient smolagents `AgentGenerationError`. Nothing was committed. Lesson: a regeneration run needs verified sync (A6), per-cell provider-error retries, and active monitoring; even OpenAI was flaky. The harness code is correct; the blocker is run-host reliability.
 
+> **BLOCKER — aider→Anthropic deterministically broken (2026-06-08 Tier-A attempt):** the staged
+> Tier-A re-run of the 4 aider-Sonnet cells (`chardet, voluptuous, marshmallow, jinja`, via
+> `baselines/sampling/repeat_runner.py --arch aider --provider anthropic --libs <lib> --reps 1`)
+> failed 100% with **`httpcore.RemoteProtocolError: Server
+> disconnected without sending a response`** on aider's first LLM call (aider spins ~601 s of
+> retries, commits an EMPTY patch `sha e3b0c442…`, $0 — the valid-rep gate correctly discards it).
+> **Isolated to aider's request shape, NOT the environment:** verified live that the key (curl
+> 200), model (`claude-sonnet-4-6`, same id that cost $0.83 on 6/04), direct `litellm.completion`
+> at every size up to **683 KB / 200 k tokens**, streaming, prompt-caching, and WSL MTU (1420) all
+> work; OpenAI from the same host works. aider+Anthropic **last worked 6/04** → drift since, prime
+> **ROOT CAUSE — FOUND & FIXED (2026-06-08, $0 request-capture diagnostic).** A `httpx`-layer
+> shim captured aider's outgoing Anthropic request and diffed it against a *working* direct
+> `litellm.completion`. The decisive difference: aider sends **`max_tokens=64000` with
+> `stream=False`**. Anthropic **cancels non-streaming requests that run past its ~10-minute
+> server cap**; the 4 deferred cells are large/slow generations (full-library implementations)
+> that blow that cap → `httpcore.RemoteProtocolError: Server disconnected` with **`elapsed_s≈600`
+> = the 10-min timeout**. Confirms the pattern: the 7 aider×Anthropic cells that *succeeded* on
+> 6/04 are small/fast libs; the 4 that failed (`chardet/voluptuous/marshmallow/jinja`) are the
+> hard floor libs. Everything else was a red herring (key/model/litellm 1.83.14/caching/MTU all fine).
+> **FIX APPLIED + VALIDATED (2026-06-08, ≈$11):** `stream=True` in `baselines/aider/_aider_runner.py`
+> (was `stream=False`). Re-ran all 4 cells full-suite on Sonnet: **voluptuous 89.3% (133/149, $1.81),
+> marshmallow 87.3% (1073/1229, $3.84), chardet 66.5% (250/376, $5.31)** — all valid, big +Δ vs the
+> ~0% single-shot baseline; numbers now in `benchmarks-private/.../PAPER_UPDATES.md`. Ruled out:
+> `cache_prompts=False` (still failed → caching not the cause; `KAIZEN_AIDER_CACHE` toggle stays
+> wired, defaults on). **jinja STILL blocked — different, fundamental cause:** its full-repo context
+> (~170k tok) + aider's `max_tokens=64000` **exceeds Sonnet's 200k context window**
+> (`invalid_request_error: "This model's maximum context length…"`); ran on OpenAI only because of
+> GPT-5.4's larger window. NOT a streaming issue. Options for jinja: cap aider `max_tokens` (~16–20k,
+> risks truncating its large generation) and/or shrink the repo-map (`--map-tokens`), or accept
+> **`n/a (exceeds context window)`** for jinja Aider-S (the recommended, honest outcome). Validated
+> reps: `~/kaizen-commit0/baselines/results/sampling/tier_a_final/`. **DECISION (2026-06-08):** 3/4
+> re-validated and citable; **jinja Aider-S accepted as `n/a (exceeds context window)`** — closed,
+> not pending. Remaining Sonnet Aider-S
+> cells are marked *pending re-validation* in the paper; proceed on OpenAI-side evidence (incl. the
+> significant aider voluptuous **+82.6 pp**) and re-run Sonnet via Anthropic research credits once
+> the aider fix above is confirmed. **$0 spent; no bad data committed.**
+
 ---
 
 ## Part B — Cells to regenerate (LLM spend)
