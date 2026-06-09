@@ -322,8 +322,8 @@ def run_aider_on_lib(
         read_only_fnames=[str(p) for p in read_only],
         auto_test=True,
         test_cmd=test_cmd,
-        cache_prompts=True,         # native Anthropic prompt cache
-        stream=False,
+        cache_prompts=(os.environ.get("KAIZEN_AIDER_CACHE", "1") != "0"),  # native Anthropic prompt cache; KAIZEN_AIDER_CACHE=0 disables
+        stream=True,                # MUST stream on Anthropic: non-streaming requests are cancelled at the ~10-min server cap, and large-generation cells (chardet/voluptuous/marshmallow/jinja) exceed it -> httpcore.RemoteProtocolError "Server disconnected" (elapsed_s~600 = the 10-min cap). Root cause confirmed via $0 request-capture diagnostic 2026-06-08; see RERUN_CHECKLIST.md.
         auto_commits=False,         # don't pollute the starter repo with commits
         dirty_commits=False,
         verbose=False,

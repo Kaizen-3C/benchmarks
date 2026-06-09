@@ -55,7 +55,7 @@ The binary diff **fails to apply** in the container, and commit0 then silently s
 
 | Cell | Original (wrong) | Corrected (full-suite, 2026-06) |
 |---|---:|---:|
-| Aider × Sonnet | 493 / 506 | **partial — 7 / 16 cells** (9 a documented provider gap) |
+| Aider × Sonnet | 493 / 506 | **partial — 10 / 16 cells full-suite-scored** (7 at 2026-06-04 + chardet/marshmallow/voluptuous re-validated 2026-06-08; jinja n/a; rest a documented provider gap) |
 | Aider × GPT-5.4 | 385 / 398 | **1,508 / 2,212** |
 | smolagents × Sonnet | 639 / 650 | **8,437 / 8,638** |
 | smolagents × GPT-5.4 | 830 / 843 | **3,223 / 4,519** |
@@ -69,9 +69,13 @@ by `python commit0/baselines/value_add_fingerprint.py` and by Figure 1
 - **OpenAI cells (32) recovered for $0** — re-scored from the already-committed branches; no LLM
   re-run was needed.
 - **smolagents × Sonnet (16)** re-run with the fixed runner.
-- **Aider × Sonnet: 7 / 16** valid; the other **9 cells are a documented provider-limited gap**
-  (connection/duration-level failures on the run host, *not* a rate cap — diagnostics ruled that
-  out). They render `n/a` in Figure 1 and are flagged pending by the provenance guard.
+- **Aider × Sonnet: 10 / 16** full-suite-scored. 7 at the 2026-06-04 re-validation; a 2026-06-08
+  Tier-A re-run added **chardet (66.5%), marshmallow (87.3%), voluptuous (89.3%)** after fixing the
+  runner's `stream=False` bug (Anthropic cancels non-streaming requests past its ~10-min cap, which
+  the large floor-lib generations hit → `Server disconnected`; fix = `stream=True`, see
+  [`RERUN_CHECKLIST.md`](commit0/RERUN_CHECKLIST.md)). **jinja is `n/a`** — its repo context exceeds
+  Sonnet's 200k window via aider. The remaining cells are a documented provider gap. The earlier
+  `7/16` and the connection-level diagnosis stand for 2026-06-04; this row supersedes them.
 - **4 cells were mis-stamped full-suite with 0 collected** by the pre-fix runner — import/collection
   crashes whose traceback was never parsed into an `errors` count: `marshmallow_smolagents_anthropic`,
   `marshmallow_aider_openai`, `portalocker_smolagents_openai`, `jinja_aider_openai`. They are re-marked
