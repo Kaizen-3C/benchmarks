@@ -446,9 +446,10 @@ fig.text(
     "Floor libraries (* and bold row labels): collection or import-graph problems that block most architectures at 0%. "
     "Cells marked 'n/r' = not run (e.g., OH-Sonnet covered 6 of 16 libs). "
     "Cells marked 'no' = OpenHands ran but did not resolve. "
-    "Cells marked 'n/a' = pending full-suite re-validation (Aider-S, 9 provider-limited cells).\n"
+    "Cells marked 'n/a' (Aider-S) = not re-validated: 5 provider-limited cells, plus jinja (its repo context exceeds the model window).\n"
     "Aider/smolagents cells re-scored full-suite via commit0 test --branch (2026-06; corrects an "
-    "earlier pytest -x denominator-truncation). See commit0/RE-VALIDATION.md.",
+    "earlier pytest -x denominator-truncation); the 3 re-validated Aider-S floor cells (chardet/marshmallow/voluptuous) "
+    "use streaming (Anthropic 10-min non-streaming cap). See commit0/CORRECTIONS.md.",
     ha="center", fontsize=8.5, style="italic", color="#444444",
 )
 
