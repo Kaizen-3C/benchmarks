@@ -24,8 +24,9 @@ Without these, a re-run reproduces the same provenance defects.
 > **Operational note (2026-06-06 Part-B-OpenAI attempt):** failed on *environment*, not code — the stale sync above + OpenAI `APIConnectionError`s (only 8/16 KD cells) + a transient smolagents `AgentGenerationError`. Nothing was committed. Lesson: a regeneration run needs verified sync (A6), per-cell provider-error retries, and active monitoring; even OpenAI was flaky. The harness code is correct; the blocker is run-host reliability.
 
 > **BLOCKER — aider→Anthropic deterministically broken (2026-06-08 Tier-A attempt):** the staged
-> Tier-A re-run of the 4 aider-Sonnet cells (`chardet, voluptuous, marshmallow, jinja`;
-> `.git/run_tier_a_sonnet.sh`) failed 100% with **`httpcore.RemoteProtocolError: Server
+> Tier-A re-run of the 4 aider-Sonnet cells (`chardet, voluptuous, marshmallow, jinja`, via
+> `baselines/sampling/repeat_runner.py --arch aider --provider anthropic --libs <lib> --reps 1`)
+> failed 100% with **`httpcore.RemoteProtocolError: Server
 > disconnected without sending a response`** on aider's first LLM call (aider spins ~601 s of
 > retries, commits an EMPTY patch `sha e3b0c442…`, $0 — the valid-rep gate correctly discards it).
 > **Isolated to aider's request shape, NOT the environment:** verified live that the key (curl
