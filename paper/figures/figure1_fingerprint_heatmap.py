@@ -306,7 +306,7 @@ plt.rcParams.update({
     "axes.titleweight": "bold",
 })
 
-fig, axes = plt.subplots(1, 2, figsize=(17, 8.5), gridspec_kw={"width_ratios": [1, 1], "wspace": 0.30})
+fig, axes = plt.subplots(1, 2, figsize=(14, 9.0), gridspec_kw={"width_ratios": [1, 1], "wspace": 0.08})
 
 # Row labels: floor libs starred + bold
 row_labels = [(f"{lib}*" if lib in FLOOR else lib) for lib in LIBS]
@@ -442,18 +442,16 @@ fig.suptitle(
     fontsize=12.5, fontweight="bold", y=0.995,
 )
 fig.text(
-    0.5, 0.015,
-    "Floor libraries (* and bold row labels): collection or import-graph problems that block most architectures at 0%. "
-    "Cells marked 'n/r' = not run (e.g., OH-Sonnet covered 6 of 16 libs). "
-    "Cells marked 'no' = OpenHands ran but did not resolve. "
-    "Cells marked 'n/a' (Aider-S) = not re-validated: 5 provider-limited cells, plus jinja (its repo context exceeds the model window).\n"
-    "Aider/smolagents cells re-scored full-suite via commit0 test --branch (2026-06; corrects an "
-    "earlier pytest -x denominator-truncation); the 3 re-validated Aider-S floor cells (chardet/marshmallow/voluptuous) "
-    "use streaming (Anthropic 10-min non-streaming cap). See commit0/CORRECTIONS.md.",
-    ha="center", fontsize=8.5, style="italic", color="#444444",
+    0.5, 0.012,
+    "Floor libraries (* and bold row labels): collection or import-graph problems that block most architectures at 0%.\n"
+    "'n/r' = not run (e.g., OH-Sonnet covered 6 of 16 libs).    'no' = OpenHands ran but did not resolve.\n"
+    "'n/a' (Aider-S) = not re-validated: 5 provider-limited cells, plus jinja (its repo context exceeds the model window).\n"
+    "Aider/smolagents cells re-scored full-suite, correcting an earlier pytest -x truncation. See commit0/CORRECTIONS.md.",
+    ha="center", va="bottom", fontsize=13, style="italic", color="#444444", linespacing=1.35,
 )
 
-plt.tight_layout(rect=(0, 0.04, 1, 0.97))
+plt.tight_layout(rect=(0, 0.16, 1, 0.95))
+fig.subplots_adjust(bottom=0.22)   # reserve clear space below the x-axis labels for the footnote
 
 # ---------- Save ----------
 OUT_DIR.mkdir(parents=True, exist_ok=True)
