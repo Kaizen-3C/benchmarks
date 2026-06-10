@@ -121,17 +121,13 @@
       "elapsed_s": 5444.5,
       "final_summary": "========================= 1 failed, 11 passed in 0.05s =========================",
       "final_counts": {
-        "passed": 11,
-        "failed": 1,
+        "passed": 133,
+        "failed": 16,
         "skipped": 0,
         "errors": 0
       },
       "totals": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 0,
-        "cost_usd": 0.0
+        "cost_usd": 1.8075
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -139,7 +135,17 @@
         "test_cmd": "pytest -x --tb=no -q",
         "wall_clock_capped": true,
         "cost_capped": false
-      }
+      },
+      "counts": {
+        "passed": 133,
+        "failed": 16,
+        "skipped": 0,
+        "errors": 0
+      },
+      "collected": 149,
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider_anthropic",
+      "revalidated": "2026-06-08 Tier-A (stream=True fix)"
     },
     "portalocker": {
       "repo": "portalocker",
@@ -210,17 +216,13 @@
       "elapsed_s": 1533.2,
       "final_summary": "========================= 1 failed, 6 passed in 0.17s ==========================",
       "final_counts": {
-        "passed": 6,
-        "failed": 1,
+        "passed": 250,
+        "failed": 126,
         "skipped": 0,
         "errors": 0
       },
       "totals": {
-        "input_tokens": 1315166,
-        "output_tokens": 30978,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 0,
-        "cost_usd": 4.4102
+        "cost_usd": 5.3136
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -228,7 +230,17 @@
         "test_cmd": "pytest -x --tb=no -q",
         "wall_clock_capped": false,
         "cost_capped": false
-      }
+      },
+      "counts": {
+        "passed": 250,
+        "failed": 126,
+        "skipped": 0,
+        "errors": 0
+      },
+      "collected": 376,
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider_anthropic",
+      "revalidated": "2026-06-08 Tier-A (stream=True fix)"
     },
     "tinydb": {
       "repo": "tinydb",
@@ -353,17 +365,13 @@
       "elapsed_s": 5450.4,
       "final_summary": "========================= 1 failed, 11 passed in 0.16s =========================",
       "final_counts": {
-        "passed": 11,
-        "failed": 1,
+        "passed": 1073,
+        "failed": 156,
         "skipped": 0,
         "errors": 0
       },
       "totals": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 0,
-        "cost_usd": 0.0
+        "cost_usd": 3.8395
       },
       "aider_diagnostics": {
         "exhausted_context_windows": 0,
@@ -371,7 +379,17 @@
         "test_cmd": "pytest -x --tb=no -q",
         "wall_clock_capped": true,
         "cost_capped": false
-      }
+      },
+      "counts": {
+        "passed": 1073,
+        "failed": 156,
+        "skipped": 0,
+        "errors": 0
+      },
+      "collected": 1229,
+      "scoring": "commit0-test-full-suite",
+      "code_branch": "aider_anthropic",
+      "revalidated": "2026-06-08 Tier-A (stream=True fix)"
     },
     "cookiecutter": {
       "repo": "cookiecutter",
